@@ -1,4 +1,4 @@
-baseurl = "https://hugo.unusually.pink/"
+baseurl = "https://unusually.pink/"
 languageCode = "en-us"
 theme = "terminal"
 paginate = 5
@@ -50,7 +50,7 @@ paginate = 5
     subtitle = "Blog for John Fabry"
     owner = "John Fabry"
     keywords = "UnsuallyPink"
-    copyright = "2021"
+    copyright = "2021 - John Fabry"
     menuMore = "Show more"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
