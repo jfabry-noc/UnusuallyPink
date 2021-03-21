@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>irssi on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/irssi/</link>
+    <description>Recent content in irssi on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 29 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/irssi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Connecting Irssi To Twitch.tv IRC</title>
+      <link>https://hugo.unusually.pink/posts/connectin-irssi-to-twitchtv-irc/</link>
+      <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/connectin-irssi-to-twitchtv-irc/</guid>
+      <description>A couple of days ago Brandi decided to try streaming her latest obsession, Animal Crossing: New Horizons on Twitch. As the unofficial game of the coronavirus quarantine, it seemed like a good idea. When she told me, I decided to do the comfortable thing and turn on her stream from the Twitch app on my Amazon Fire TV Stick so I could watch it on my TV. This works well for most of the streams I might happen to watch because I never actually care about interacting with the chat.</description>
+      <content>&lt;p&gt;&lt;img src=&#34;images/ConnectingIrssiToTwitchtvIRC_twitch_irc_photo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;A couple of days ago Brandi decided to try streaming her latest obsession, &lt;em&gt;Animal Crossing: New Horizons&lt;/em&gt; on &lt;a href=&#34;https://twitch.tv&#34;&gt;Twitch&lt;/a&gt;. As the unofficial game of the coronavirus quarantine, it seemed like a good idea. When she told me, I decided to do the comfortable thing and turn on her stream from the Twitch app on my Amazon Fire TV Stick so I could watch it on my TV. This works well for most of the streams I might happen to watch because I never actually care about interacting with the chat. While the app on my Fire TV Stick does allow me to view the chat, trying to type anything via a remote&amp;rsquo;s D-pad and an on-screen keyboard on my TV would be painful to say the least.&lt;/p&gt;
+&lt;p&gt;In this particular instance, though, I wanted to be able to chat with Brandi and a few other friends who popped into her stream. I initially had her stream open on my phone and was chatting there, but it was annoying to have to keep waking my phone up to look at the chat. Then I opened her stream in a browser on my &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;Pinebook Pro&lt;/a&gt;. I simply paused the stream since I didn&amp;rsquo;t need it running twice, but this left a tiny sidebar for the chat that was less than ideal.&lt;/p&gt;
+&lt;p&gt;Being a regular user of IRC, I was aware that Twitch chat is just an IRC channel under the hood; this is pretty obvious given that the bots most decent-sized Twitch streamers employ in their chats are just IRC bots. I&amp;rsquo;d know since I once wrote a really shitty IRC bot for an IRC server I ran for my team at a previous job. As such, I figured I could just connect a regular IRC client to Twitch&amp;rsquo;s IRC servers, find Brandi&amp;rsquo;s channel, and chat that way. Given that I &lt;a href=&#34;https://jfabhd.com&#34;&gt;already use IRC regularly&lt;/a&gt;, I have a server that I normally connect from via my favorite client, &lt;a href=&#34;https://irssi.org&#34;&gt;Irssi&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Getting the connection right took a little doing as finding up-to-date information on Twitch&amp;rsquo;s IRC setup is a bit spotty. I ended up combining information from a bunch of different sites before I got everything to work properly.&lt;/p&gt;
+&lt;p&gt;I&amp;rsquo;m not going to cover how to get and access Irssi; if you need help with that you can use &lt;a href=&#34;https://irssi.org/documentation/&#34;&gt;their own documentation&lt;/a&gt;. Assuming you&amp;rsquo;ve got access to Irssi and you&amp;rsquo;ve just launched the application, the first thing to do is to define a new network for Twitch; for any of the below examples just replace what appears in [brackets] with your own information:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/network add -nick \[username\] Twitch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This defines a new IRC network in Irssi and states what your nickname will be for it, which is just your Twitch.tv username. You could technically name the network anything you like, you don&amp;rsquo;t have to call it &amp;ldquo;Twitch&amp;rdquo;, but simplicity is generally the best approach. The next step is to define the server information for that network.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/server add -auto -ssl -network Twitch irc.twitch.tv 6697 \[oauth password\]
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This defines the server of &lt;code&gt;irc.twitch.tv&lt;/code&gt; for the Twitch IRC network, specifies the port to use, and gives the password to authenticate your account. &lt;strong&gt;Note:&lt;/strong&gt; Your OAuth password is &lt;strong&gt;not&lt;/strong&gt; the same as your regular password to log in to Twitch! You must set that up at the &lt;a href=&#34;http://twitchapps.com/tmi/&#34;&gt;OAuth password setup page&lt;/a&gt; for Twitch. Then copy and paste the password value you&amp;rsquo;ve generated into the command above. You &lt;em&gt;must&lt;/em&gt; leave it prefaced with &amp;ldquo;oauth:&amp;rdquo; just like how Twitch provides it to you in the command; don&amp;rsquo;t strip that off the front.&lt;/p&gt;
+&lt;p&gt;With all of that done, now you can simply connect to your newly defined IRC network via:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/connect Twitch
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This should show you a message letting you know that you&amp;rsquo;ve successfully connected. The channel to join is simply the name of the Twitch account prefaced by a hashtag just like every other IRC channel. So to join a particular channel you would just type:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/join #favoriteStreamerName
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That&amp;rsquo;s all there is to it! You can now happily chat with a stream from Irssi while watching the actual video feed on another device. I assume the steps above could be pretty easily translated into a different IRC client if you prefer something other than Irssi.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/ConnectingIrssiToTwitchtvIRC_irssi.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;There are, however, just a couple of caveats to keep in mind. As you might imagine, there is no support for Twitch emotes within IRC. When someone else in the chat uses an emote, for example, you will simply see the plaintext rendition of it. So if someone uses the BibleThump emote, you will see that text rather than the character from &lt;a href=&#34;https://bindingofisaac.com&#34;&gt;The Binding of Isaac&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The other main caveat is that as a guest in the channel you cannot see the other participants of the chat from IRC if you check who is in the channel. You can, however, still see whatever messages they send, and Irssi will still auto-complete their names if you want to mention them. For example, when running Irssi&amp;rsquo;s &lt;code&gt;/names&lt;/code&gt; command to see a list of channel members, I see only myself:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/ConnectingIrssiToTwitchtvIRC_irssi_names.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;As you can see in the screenshot above, a friend of ours is also actively using Twitch chat, but I am the only member listed in the channel. This isn&amp;rsquo;t a big ordeal once you realize it (unless you&amp;rsquo;re really jonesing to see everyone&amp;rsquo;s name for some reason), but it did trip me up initially since I had assumed that I was not connecting to the proper channel. I eventually left both IRC and Twitch chat open in a browser until someone else typed something so that I could verify the same message appeared in both places.&lt;/p&gt;
+&lt;p&gt;On the whole I found this to be a streamlined, elegant way to actually participate in Brandi&amp;rsquo;s Twitch chat from my low-end laptop while watching her actual video stream on my TV from the comfort of my couch. Plus, you just get to feel awesome for using IRC.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

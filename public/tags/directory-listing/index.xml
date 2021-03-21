@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>directory-listing on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/directory-listing/</link>
+    <description>Recent content in directory-listing on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/directory-listing/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable Directory Listing On Specific Directory With Nginx</title>
+      <link>https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/</link>
+      <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/</guid>
+      <description>Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
+Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site.</description>
+      <content>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.&lt;/p&gt;
+&lt;p&gt;Generally when you navigate to a website, such as &lt;a href=&#34;https://unusually.pink/&#34;&gt;https://unusually.pink/&lt;/a&gt;, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site. Instead, the web server software will be configured to look for specific files in each folder, such as &lt;code&gt;index.html&lt;/code&gt;, and render those. In some instances, however, you may actually &lt;em&gt;want&lt;/em&gt; to allow someone to browser the files in a directory. This was the situation I found myself in a few days ago for a skunkworks project at work. I already had a server set up running Nginx, and I just needed to expose a particular directory.&lt;/p&gt;
+&lt;p&gt;Most searches I did appeared fairly straightforward. The easiest way to do this is to define the &lt;code&gt;autoindex&lt;/code&gt; parameter inside of a &lt;code&gt;location&lt;/code&gt; block of the site&amp;rsquo;s configuration file at: &lt;code&gt;/etc/nginx/sites-available&lt;/code&gt;. I initially did that and had something that looked like this. Note that these are only the relevant pieces for this post, and this is &lt;em&gt;not&lt;/em&gt; the full configuration file:&lt;/p&gt;
+&lt;p&gt;root /var/www/my.website.com/html;
+index index.html index.htm index.nginx-debian.html;
+server_name my.website.com;
+location / {
+try_files $uri $uri/ =404;
+}
+location /targetfolder {
+root /var/www/my.website.com/html/targetfolder;
+index index.html;
+autoindex on;
+autoindex_exact_size off;
+}&lt;/p&gt;
+&lt;p&gt;Everything in the second &lt;code&gt;location&lt;/code&gt; block contained my newly added content to make this directory I had just created, &lt;code&gt;targetfolder&lt;/code&gt;, exposed. After saving the file, I first tested my configuration with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo nginx -t
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Crucially, this told me the configuration syntax was okay. Then I restarted my web server via:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo systemctl reload nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Finally, I tried navigating to my directory via a web browser&amp;hellip; only to be greeted by a 404 error. The 404 (which indicates that the requested resource wasn&amp;rsquo;t found on the server) tells me that something is likely amiss with how I&amp;rsquo;m referencing the requested content. I compared my configuration to a handful of samples online, though, and didn&amp;rsquo;t see what was wrong. Eventually, it dawned on me that all of the examples I found were showing how to enable directory listing for an &lt;em&gt;entire&lt;/em&gt; site, whereas my scenario was as little different considering I only wanted to expose a subfolder. I did a few more searches with that slant in mind, and I eventually hit upon a thread where someone mentioned that having multiple &lt;code&gt;root&lt;/code&gt; definitions in their configuration file caused problems for them.&lt;/p&gt;
+&lt;p&gt;I tried adding one additional character to my configuration to comment out the &lt;code&gt;root&lt;/code&gt; definition in my second &lt;code&gt;location&lt;/code&gt; block:&lt;/p&gt;
+&lt;p&gt;root /var/www/my.website.com/html;
+index index.html index.htm index.nginx-debian.html;
+server_name my.website.com;
+location / {
+try_files $uri $uri/ =404;
+}
+location /targetfolder {
+#root /var/www/my.website.com/html/targetfolder;
+index index.html;
+autoindex on;
+autoindex_exact_size off;
+}&lt;/p&gt;
+&lt;p&gt;After another &lt;code&gt;sudo systemctl reload nginx&lt;/code&gt;, I was able to view the directory just like I expected. In hindsight this makes a lot of sense; if I already define the root of the site somewhere earlier in the file, I can&amp;rsquo;t simply change it on a whim later on. Instead, the &lt;code&gt;location /targetfolder&lt;/code&gt; directive is going to be &lt;em&gt;relative&lt;/em&gt; to the &lt;code&gt;root&lt;/code&gt; I already specified. It was interesting to me that checking my configuration with &lt;code&gt;sudo nginx -t&lt;/code&gt; originally didn&amp;rsquo;t alert me to anything, but I&amp;rsquo;m hardly an Nginx guru. It&amp;rsquo;s certainly possible there may be some scenario where the setup I had was valid.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

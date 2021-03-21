@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Full Content RSS Feeds With Hugo :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Last week I made a test post on Mastodon linking to one of my blogs via curl. I was doing this to see how to best handle the formatting for a script I was working on to periodically check my blog and link to any new posts from Mastodon. My friend tomasino who I’ve known for quite a while through SDF reached out to ask if there was an RSS feed for it." />
+<meta name="keywords" content="hugo, rss" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Full Content RSS Feeds With Hugo">
+<meta property="og:description" content="Last week I made a test post on Mastodon linking to one of my blogs via curl. I was doing this to see how to best handle the formatting for a script I was working on to periodically check my blog and link to any new posts from Mastodon. My friend tomasino who I’ve known for quite a while through SDF reached out to ask if there was an RSS feed for it." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-08-23 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/">Full Content RSS Feeds With Hugo</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-08-23 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/hugo/">hugo</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/rss/">rss</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Last week I made a test post on Mastodon linking to one of my blogs via <code>curl</code>. I was doing this to see how to best handle the formatting for a script I was working on to periodically check my blog and link to any new posts from Mastodon. My friend <a href="https://tilde.zone/@tomasino">tomasino</a> who I’ve known for quite a while through SDF reached out to ask if there was an RSS feed for it. (Note that I now link to the RSS feed from the menu!) After he subscribed, he noticed that the RSS feed is only showing part of each post. It turns out that <a href="https://themes.gohugo.io/hugo-theme-terminal/">my theme</a>, like many others, is using the <a href="https://gohugo.io/templates/rss/">default RSS template</a> in Hugo. This only publishes a portion of each post to the RSS feed, the idea undoubtedly being that people will navigate to the site to finish reading the content, allowing whatever trackers are in place to see this. Since I don’t have any trackers on my site and don’t care about hits, this just serves to be a pain in the butt for anyone trying to use RSS; I personally hate having to move out of my own RSS reader in order to finish reading something.</p>
+<p>With a <em>lot</em> of help from tomasino (who clearly knows a <strong>significantly</strong> more about RSS than I do), I started trying to modify my RSS template to include the full content for each post. Since the Terminal theme is using the default template, I started by taking the <a href="https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml">base template content</a> and placing that in <code>/layouts/_defaults/</code> as <code>index.xml</code> so that I had something to modify. The first thing that I did was modify the <code>&lt;description&gt;</code> tag so that it contained <code>.Content</code> instead of <code>.Summary</code>. This <em>did</em> cause the full content to be displayed in the RSS feed but caused all sorts of HTML encoding problems. Next I tried modifying the <code>&lt;description&gt;</code> block again so that instead of:</p>
+<pre><code>.Content | html
+</code></pre><p>It was:</p>
+<pre><code>.Content | safeHTML
+</code></pre><p>This was… slightly better. It fixed the HTML encoding problems, but it also caused the paragraph tags to disappear, meaning each post was a wall of text. tomasino’s thought was that I needed a <code>CDATA</code> block, which I also saw <a href="https://discourse.gohugo.io/t/full-text-rss-feed/8368/2">mentioned in the Hugo support forum</a>. The problem I quickly ran into was that the block, which I was now adding in addition to the <code>&lt;description&gt;</code> block, needed to look something like this:</p>
+<pre><code>&lt;content:encoded&gt;&lt;![CDATA[{{ .Content | safeHTML }}]]&gt;&lt;/content:encoded&gt;
+</code></pre><p>Adding that directly to to the layout file cause the leading <code>&lt;</code> get HTML encoded, thus breaking the entire thing. Back to hunting on DuckDuckGo, I found <a href="https://github.com/gohugoio/hugo/issues/1740">several people</a> with the <a href="https://github.com/gohugoio/hugo/issues/4242">same issue</a>. While a few people in those threads had offered some solutions for how to properly escape things, tomasino ultimately found the <a href="https://github.com/ttys3/hugo-theme-terminal/commit/86c8d80e396b82f28927b659e0e0edd9d8959afe">cleanest solution</a>. After recompiling my site yet again, the encoding looked good, but the XML was still missing some metadata. Trying to open it in Firefox would give the following error:</p>
+<blockquote>
+<p>XML Parsing Error: prefix not bound to a namespace</p>
+</blockquote>
+<p>It’s worth noting, since I was missing this initially, that Firefox will <em>not</em> render the XML when you’re using the <code>view-source:</code> view. This makes complete sense, but I had overlooked it. You need to actually navigate to the file normally, e.g. <a href="https://my.site/index.xml">https://my.site/index.xml</a>. What was going on here was that I needed to define the namespace, which I did by just copying the same line from tomasino’s own XML file for a site of his:</p>
+<pre><code>&lt;rss version=&quot;2.0&quot; xmlns:atom=&quot;http://www.w3.org/2005/Atom&quot; xmlns:content=&quot;http://purl.org/rss/1.0/modules/content/&quot;&gt;
+</code></pre><p>After this addition and yet another recompile of the site, everything finally started to appear correctly in RSS readers. Suffice to say I would’ve preferred if I could simply toggle something in my <code>config.toml</code> file to switch my RSS feed from a summary to the full text, but at least it’s possible to modify this on your own if you have to.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/its-always-dns/">
+                <span class="button__icon">←</span>
+                <span class="button__text">It&#39;s Always DNS</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/pythons-beautiful-soup/">
+                <span class="button__text">Python&#39;s Beautiful Soup</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

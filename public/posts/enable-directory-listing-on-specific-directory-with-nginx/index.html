@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Enable Directory Listing On Specific Directory With Nginx :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
+Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site." />
+<meta name="keywords" content="autoindex, directory-listing, nginx, web-development, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Enable Directory Listing On Specific Directory With Nginx">
+<meta property="og:description" content="Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
+Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-03-04 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/">Enable Directory Listing On Specific Directory With Nginx</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-03-04 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/autoindex/">autoindex</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/directory-listing/">directory-listing</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/nginx/">nginx</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/web-development/">web-development</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p><strong>Note:</strong> In the sample below, I&rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.</p>
+<p>Generally when you navigate to a website, such as <a href="https://unusually.pink/">https://unusually.pink/</a>, you don&rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site. Instead, the web server software will be configured to look for specific files in each folder, such as <code>index.html</code>, and render those. In some instances, however, you may actually <em>want</em> to allow someone to browser the files in a directory. This was the situation I found myself in a few days ago for a skunkworks project at work. I already had a server set up running Nginx, and I just needed to expose a particular directory.</p>
+<p>Most searches I did appeared fairly straightforward. The easiest way to do this is to define the <code>autoindex</code> parameter inside of a <code>location</code> block of the site&rsquo;s configuration file at: <code>/etc/nginx/sites-available</code>. I initially did that and had something that looked like this. Note that these are only the relevant pieces for this post, and this is <em>not</em> the full configuration file:</p>
+<p>root /var/www/my.website.com/html;
+index index.html index.htm index.nginx-debian.html;
+server_name my.website.com;
+location / {
+try_files $uri $uri/ =404;
+}
+location /targetfolder {
+root /var/www/my.website.com/html/targetfolder;
+index index.html;
+autoindex on;
+autoindex_exact_size off;
+}</p>
+<p>Everything in the second <code>location</code> block contained my newly added content to make this directory I had just created, <code>targetfolder</code>, exposed. After saving the file, I first tested my configuration with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo nginx -t
+</code></pre></div><p>Crucially, this told me the configuration syntax was okay. Then I restarted my web server via:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl reload nginx
+</code></pre></div><p>Finally, I tried navigating to my directory via a web browser&hellip; only to be greeted by a 404 error. The 404 (which indicates that the requested resource wasn&rsquo;t found on the server) tells me that something is likely amiss with how I&rsquo;m referencing the requested content. I compared my configuration to a handful of samples online, though, and didn&rsquo;t see what was wrong. Eventually, it dawned on me that all of the examples I found were showing how to enable directory listing for an <em>entire</em> site, whereas my scenario was as little different considering I only wanted to expose a subfolder. I did a few more searches with that slant in mind, and I eventually hit upon a thread where someone mentioned that having multiple <code>root</code> definitions in their configuration file caused problems for them.</p>
+<p>I tried adding one additional character to my configuration to comment out the <code>root</code> definition in my second <code>location</code> block:</p>
+<p>root /var/www/my.website.com/html;
+index index.html index.htm index.nginx-debian.html;
+server_name my.website.com;
+location / {
+try_files $uri $uri/ =404;
+}
+location /targetfolder {
+#root /var/www/my.website.com/html/targetfolder;
+index index.html;
+autoindex on;
+autoindex_exact_size off;
+}</p>
+<p>After another <code>sudo systemctl reload nginx</code>, I was able to view the directory just like I expected. In hindsight this makes a lot of sense; if I already define the root of the site somewhere earlier in the file, I can&rsquo;t simply change it on a whim later on. Instead, the <code>location /targetfolder</code> directive is going to be <em>relative</em> to the <code>root</code> I already specified. It was interesting to me that checking my configuration with <code>sudo nginx -t</code> originally didn&rsquo;t alert me to anything, but I&rsquo;m hardly an Nginx guru. It&rsquo;s certainly possible there may be some scenario where the setup I had was valid.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/upgrading-star-labs-firmware-on-manjaro-linux/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Upgrading Star Labs Firmware On Manjaro Linux</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/online-reading-redux/">
+                <span class="button__text">Online Reading Redux</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>static on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/static/</link>
+    <description>Recent content in static on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/static/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Self-Hosting A Static Website</title>
+      <link>https://hugo.unusually.pink/posts/self-hosting-a-static-website/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/self-hosting-a-static-website/</guid>
+      <description>Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.</description>
+      <content>&lt;p&gt;Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.&lt;/p&gt;
+&lt;p&gt;We first took some early steps gathering requirements. What did he want for the site? Literally just the privacy policy. Where did he want to host it? Wherever was the cheapest. Did he have a domain name already? Yes! This was fairly straightforward; he literally &lt;em&gt;just&lt;/em&gt; wanted the very basics. After a bit of discussion I convinced him to write up a quick &amp;ldquo;about me&amp;rdquo; type of page so that we could have more than just the privacy policy. From there I could get to work.&lt;/p&gt;
+&lt;h1 id=&#34;hosting&#34;&gt;Hosting&lt;/h1&gt;
+&lt;p&gt;The first thing I did was have him head over to &lt;a href=&#34;https://www.vultr.com/&#34;&gt;Vultr&lt;/a&gt; and spin up their cheapest instance. I think this is running him $5 USD per month. I had him pick &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; as the server operating system given that it&amp;rsquo;s the one I&amp;rsquo;m most familiar with. My friend has some familiarity with Linux but not a lot of practical knowledge; when I asked him to shoot me some SSH credentials with &lt;code&gt;sudo&lt;/code&gt; access he literally sent me the root account from Vultr. Ick.&lt;/p&gt;
+&lt;h1 id=&#34;configuring-the-host&#34;&gt;Configuring The Host&lt;/h1&gt;
+&lt;h3 id=&#34;accounts&#34;&gt;Accounts&lt;/h3&gt;
+&lt;p&gt;My first goal was to configure the host. I started that off by creating user accounts for each of us:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;adduser username
+usermod -aG sudo username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After switching users and verifying my new account worked, I disabled root&amp;rsquo;s ability to log in:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo passwd -l root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ports&#34;&gt;Ports&lt;/h3&gt;
+&lt;p&gt;Next I wanted to change the default SSH port since having 22 open means a million places from across the planet are going to throw garbage traffic at your server. I did this by modifying the SSH config at &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;, finding the line with &lt;code&gt;#Port 22&lt;/code&gt;, uncommenting it, and changing the port to a high number of my friend&amp;rsquo;s choice. Then I restarted SSH:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo systemctl restart ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;firewall&#34;&gt;Firewall&lt;/h3&gt;
+&lt;p&gt;I wanted to enable the firewall as well, so I opened up with the new SSH port &lt;em&gt;and&lt;/em&gt; 80 and 443 for our eventual website:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo ufw allow sshPortNumber/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webserver&#34;&gt;Webserver&lt;/h3&gt;
+&lt;p&gt;I next needed a web server; &lt;a href=&#34;http://nginx.org/&#34;&gt;Nginx&lt;/a&gt; has been my go-to choice for a long time. Rather than re-hashing all of the steps, I&amp;rsquo;ll just recommend following the excellent documentation from &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04&#34;&gt;DigitalOcean&lt;/a&gt; which nicely covers the Nginx configuration. That takes you to the point where you are hosting a website. Then you just need content on it.&lt;/p&gt;
+&lt;h3 id=&#34;certificate&#34;&gt;Certificate&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m an advocate of using HTTPS for everything, and with free certificates from &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt; there&amp;rsquo;s no reason not to. Given that we have shell access, using &lt;code&gt;certbot&lt;/code&gt; is the way to go. There&amp;rsquo;s also excellent &lt;a href=&#34;https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx&#34;&gt;documentation on that process on Ubuntu with Nginx&lt;/a&gt;. I highly recommend selecting the option to redirect any HTTP traffic to HTTPS.&lt;/p&gt;
+&lt;h1 id=&#34;website&#34;&gt;Website&lt;/h1&gt;
+&lt;p&gt;Now for the website itself. I&amp;rsquo;m not really much of a web developer, and I dislike making anything frontend; I don&amp;rsquo;t exactly have the best design sense. So I once again opted to leverage &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; to take care of that for me. I&amp;rsquo;ve written about &lt;a href=&#34;https://failti.me/posts/hugo_setup_guide/&#34;&gt;the specifics of using Hugo in detail&lt;/a&gt;. Since we really just wanted a generic landing page with my friend&amp;rsquo;s socials and then links to the About and Privacy Policy pages, I ended up going with the &lt;a href=&#34;https://themes.gohugo.io/hermit/&#34;&gt;Hermit theme&lt;/a&gt;. It has a nice, simple look. My friend&amp;rsquo;s favorite color is mint green, so the default background also works nicely with that when I changed the accent color. The theme nicely includes an &lt;a href=&#34;https://github.com/Track3/hermit/tree/master/exampleSite&#34;&gt;exampleSite&lt;/a&gt; so that I can steal their &lt;code&gt;config.toml&lt;/code&gt; file and also their &amp;ldquo;About&amp;rdquo; page to make things even easier for myself.&lt;/p&gt;
+&lt;h1 id=&#34;backups&#34;&gt;Backups&lt;/h1&gt;
+&lt;p&gt;One of the nice things about Hugo is that, since everything is a simple text file, it&amp;rsquo;s very easy to compress your entire site and save a backup. Then if something terrible happens to your server, it&amp;rsquo;s extremely easy to get the site back up and running on a different machine. In this case, I made tarballs for both the finished, compiled site and the Hugo directory storing the configuration and Markdown.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf ~/temp/html_output.tar.gz /var/www/mySite.com/
+tar -zvcf ~/temp/hugo_directory.tar.gz /var/www/mySite.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the tarballs created, I used an SFTP client to copy them off the server for safe keeping.&lt;/p&gt;
+&lt;h1 id=&#34;wrap-up&#34;&gt;Wrap Up&lt;/h1&gt;
+&lt;p&gt;In total it took me about an hour and a half to get everything up and running. Having gone through this process &lt;em&gt;many&lt;/em&gt; times for websites of my own, I&amp;rsquo;ve got a decent bit of experience with the process, but this shows it still doesn&amp;rsquo;t necessarily take a super long time to get a decent website up and running. The big benefits are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The site is &lt;em&gt;cheap&lt;/em&gt; to run. Even the smallest instance at any VPS provider will be able to handle multiple sites with ease unless they start getting really popular, so if my friend wants to create any other sites in the future he won&amp;rsquo;t need additional hosting.&lt;/li&gt;
+&lt;li&gt;Backups are stupid simple. My friend isn&amp;rsquo;t beholden to a hosting provider or trying to work within the confines of something more expensive like Wordpress or Squarespace.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The downsides are present, though, so you have to be cool with them:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Setup takes more technical chops than clicking through a Squarespace template editor. While the documentation for everything in this post is extremely good, if working out a terminal freaks you out then this likely isn&amp;rsquo;t for you.&lt;/li&gt;
+&lt;li&gt;Content is authored in Markdown. This likely doesn&amp;rsquo;t matter for my friend at the moment since he&amp;rsquo;s not really posting anything new to the site, but it would be something to keep in mind if he decided to start a blog. In that scenario, I usually just SSH to the server and author my content in &lt;a href=&#34;https://www.vim.org/&#34;&gt;Vim&lt;/a&gt;. You could also author the Markdown elsewhere and copy it to the server, or use SFTP to open the Markdown file on the server from an editor on your local machine. It&amp;rsquo;s definitely &lt;em&gt;not&lt;/em&gt; as simple as a WYIWYG editor in your browser, though.&lt;/li&gt;
+&lt;li&gt;Maintenance is something that will need to be done at least periodically. The server will need to be patched. That&amp;rsquo;s easy enough to do with a simple &lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt; and then reboot when necessary, but it&amp;rsquo;s just another step to keep in mind. Likewise, bouncing the server means that the website will be down, even if it&amp;rsquo;s typically only for a moment or two.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Being kind of pretentious, technical snob I personally find it &lt;em&gt;easier&lt;/em&gt; to author my comment in Markdown on Vim instead of using a WYSIWYG editor in a GUI, but your mileage will vary based on your own prefrences.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

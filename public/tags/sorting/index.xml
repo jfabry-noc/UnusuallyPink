@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sorting on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/sorting/</link>
+    <description>Recent content in sorting on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sorting IP Addresses With PowerShell</title>
+      <link>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</guid>
+      <description>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
+Get-Content -Path .\ipListFixed.txt | Sort-Object
+The results were, suffice to say, lackluster. I ended up with something like this:</description>
+      <content>&lt;p&gt;I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the &lt;strong&gt;Sort-Object&lt;/strong&gt; cmdlet:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Get-Content -Path .\ipListFixed.txt | Sort-Object&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The results were, suffice to say, lackluster. I ended up with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10.1.69.1
+10.1.69.12
+10.1.69.148
+10.1.69.149
+10.1.69.17
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gross, right? Obviously 10.1.69.17 shouldn’t be after 10.1.69.148 or .149. The issue is that the whole octet isn’t being considered. It’s being sorted like they’re just strings rather than IP addresses; 7 is bigger than 4 so they’re sorted accordingly. PowerShell isn’t really comparing the numbers of 17 to 148, for example, to realize that 17 is actually smaller.&lt;/p&gt;
+&lt;p&gt;It makes sense; PowerShell can’t assume that the value is an IP address so it’s treating the value like a string instead. This means that the key is to &lt;em&gt;tell&lt;/em&gt; PowerShell it’s an IP address so that PowerShell can adjust the way it does sorting. This is possible by casting the values as the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/system.version?view=netcore-2.2&#34;&gt;.NET Version class&lt;/a&gt;. Since I happened to be pulling the IPs from a file, I did the casting within the &lt;strong&gt;-Property&lt;/strong&gt; parameter that I added to the &lt;strong&gt;Sort-Object&lt;/strong&gt; cmdlet:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Get-Content -Path .\ipListFixed.txt | Sort-Object -Property { [System.Version]$_ }&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This yields &lt;em&gt;significantly&lt;/em&gt; better results:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10.1.69.1
+10.1.69.2
+10.1.69.12
+10.1.69.17
+10.1.69.29
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Stay pink!&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

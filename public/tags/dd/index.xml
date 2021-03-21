@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dd on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/dd/</link>
+    <description>Recent content in dd on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sat, 13 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/dd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Swapfile Fix on Manjaro Linux Pinebook Pro</title>
+      <link>https://hugo.unusually.pink/posts/swapfile-fix-on-manjar-linux-pinebook-pro/</link>
+      <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/swapfile-fix-on-manjar-linux-pinebook-pro/</guid>
+      <description>I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
+Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life.</description>
+      <content>&lt;p&gt;I wrote about a month ago of an update &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;on my Pinebook Pro&lt;/a&gt; after &lt;a href=&#34;https://www.unusually.pink/blog/pinebook-pro-follow-up-manjaro-linux&#34;&gt;switching to Manjaro Linux&lt;/a&gt;. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.&lt;/p&gt;
+&lt;p&gt;Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the &lt;a href=&#34;https://wiki.manjaro.org/index.php?title=Swap#Using_a_Swapfile&#34;&gt;directions from the Manjaro wiki&lt;/a&gt; so that I could hibernate the machine and get &lt;em&gt;much&lt;/em&gt; better battery life. I literally just opened the device back up, though, and saw a familiar message that there wasn&amp;rsquo;t enough swap space to successfully hibernate the machine, leaving me with about 20% less battery life than I had been expecting. Running &lt;code&gt;htop&lt;/code&gt; quickly showed me that my swap space was back to nothing. Weird.&lt;/p&gt;
+&lt;p&gt;Following the instructions, my swapfile is literally called &lt;strong&gt;swapfile&lt;/strong&gt; on the root of the filesystem. I verified it was still in place with:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ll / | grep swap
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;With the file still in place, I ran through the instructions again. These ones were both successful:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo mkswap /swapfile
+sudo chmod u=rw,go= /swapfile
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I got an error when running this, though:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo swapon /swappfile
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This told me:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;swapon: /swapfile: swapon failed: Invalid argument&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Weird. I verified that I still had my swapfile entry in &lt;code&gt;/etc/fstab&lt;/code&gt; to assign the swapfile on boot by running:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo cat /etc/fstab
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I tried running the &lt;code&gt;swapon&lt;/code&gt; command a different way to have it apply everything in the &lt;code&gt;fstab&lt;/code&gt; file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo swapon -a
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This gave me another &amp;ldquo;Invalid argument&amp;rdquo; error still referencing &amp;ldquo;/swapfile&amp;rdquo;. At this point, I took to the Internet. After a couple of searches, I stumbled across &lt;a href=&#34;https://unix.stackexchange.com/questions/294600/i-cant-enable-swap-space-on-centos-7&#34;&gt;a matching Stack Exchange question&lt;/a&gt;. The top answer claims that the issue is the initial &lt;code&gt;fallocate&lt;/code&gt; command used to create the file (the same command used in the Manjaro wiki) doesn&amp;rsquo;t physically allocate the 4 GB on the storage for speed, but that&amp;rsquo;s apparently problematic for &lt;code&gt;swapon&lt;/code&gt;. Following that answer, I ran a &lt;code&gt;dd&lt;/code&gt; command to replace my swapfile with something physically allocated:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This takes a few moments to run, especially on the eMMC storage of the Pinebook Pro. Once it completed, though, I repeated the other commands and verified they were all successful. Sure enough, running &lt;code&gt;htop&lt;/code&gt; once again shows my 4 GB of allocated swap space.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

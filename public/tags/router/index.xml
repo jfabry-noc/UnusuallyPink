@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>router on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/router/</link>
+    <description>Recent content in router on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/router/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>It&#39;s Always DNS</title>
+      <link>https://hugo.unusually.pink/posts/its-always-dns/</link>
+      <pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/its-always-dns/</guid>
+      <description>There&amp;rsquo;s a saying among system administrators:
+ It&amp;rsquo;s always DNS.
+ Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.
+My home network is currently running off of a Cradlepoint router. Cradlepoint’s specialty is making routers that can leverage LTE, so my router is configured to use my home ISP as the primary WAN link, but it will fail over to a cellular connection if my home ISP is unavailable.</description>
+      <content>&lt;p&gt;There&amp;rsquo;s a saying among system administrators:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;It&amp;rsquo;s always DNS.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.&lt;/p&gt;
+&lt;p&gt;My home network is currently running off of a &lt;a href=&#34;https://cradlepoint.com/&#34;&gt;Cradlepoint&lt;/a&gt; router. Cradlepoint’s specialty is making routers that can leverage LTE, so my router is configured to use my home ISP as the primary WAN link, but it will fail over to a cellular connection if my home ISP is unavailable. This is pretty handy, especially considering that I now work from home full-time. That being said, mobile data isn’t cheap here, and the data plan the Cradlepoint is using is paid for by my company. While it’s nice to fail over to LTE while I’m trying to work, I &lt;em&gt;don’t&lt;/em&gt; want to be eating through LTE data while I’m just sitting on the couch watching Hulu. As a result, I’ve configured alerting from the router’s cloud management platform to notify me when a failover occurs so that I can troubleshoot the network and tailor my online activity accordingly if I’m going to be on LTE for a while.&lt;/p&gt;
+&lt;p&gt;This morning was basically one of the worst starts to a weekend morning where I want to hang out with a cup of coffee and catch up on my RSS feeds. I woke up to an email alert from a few hours prior letting me know that my router had failed over to LTE. It happened once around 6 AM for a few minutes, failed back over to my ISP network, and then maintained that for roughly 40 minutes before failing over to LTE again a little before 7 AM. The first step, which I could easily do from bed with my phone, was to check for any outages from my ISP. Logging into my account there showed me that there weren’t any known outages, though.&lt;/p&gt;
+&lt;p&gt;Finally being forced to shuffle out of bed and into the living room to get eyes on the situation, I saw that the lights on the modem looked normal. I logged into the router’s management interface and verified that everything looked correct. I rebooted the modem to be safe, and the Cradlepoint immediately reconnected to LTE rather than using my modem’s connection. I bounced the Cradlepoint, and the connection status persisted. I disabled LTE on the router, and it listed the Ethernet port as the current WAN link, which seemed good. I tried connecting to &lt;a href=&#34;https://laifu.moe&#34;&gt;Laifu.moe&lt;/a&gt;, though, and it wouldn’t load up. I tried to ping one of the &lt;a href=&#34;https://www.opendns.com/&#34;&gt;OpenDNS&lt;/a&gt; servers of &lt;code&gt;208.67.220.220&lt;/code&gt; and also got no response. This was a critical mistake, though I didn’t know it yet at the time.&lt;/p&gt;
+&lt;p&gt;Thinking now that maybe something was up with my Cradlepoint, I pulled a bin of miscellaneous tech stuff out of the closet and fished through it to find the router from my ISP that I never use. I plugged that in line after my modem, removing the Cradlepoint from the equation, and bounced the modem. The ISP-provided router came online right away with the characteristic blue light that indicates everything is fine. I connected my laptop to its WiFi network and tried to load a webpage… with no success. I once again tried to ping &lt;code&gt;208.67.220.220&lt;/code&gt; also without any response.&lt;/p&gt;
+&lt;p&gt;This was when I finally realized the flaw in my troubleshooting. Both the Cradlepoint and my ISP-provided router had been configured by me to use the OpenDNS servers as what they hand out with DHCP leases. Literally all of my devices are using &lt;code&gt;208.67.220.220&lt;/code&gt; and &lt;code&gt;208.67.222.222&lt;/code&gt; as their DNS servers. Likewise, the Cradlepoint needs something it can test to determine if a WAN link is up or down so that it can fail over to LTE and fail back to the Ethernet WAN link. I had &lt;em&gt;that&lt;/em&gt; set as &lt;code&gt;208.67.220.220&lt;/code&gt; as well. So what if &lt;strong&gt;that&lt;/strong&gt; was the problem? While still connected to my ISP router’s WiFi network, I tried to ping &lt;code&gt;8.8.8.8&lt;/code&gt; and immediately got a response. OpenDNS is what was unreachable.&lt;/p&gt;
+&lt;p&gt;Ripping the ISP router out of the network, I linked the Cradlepoint back up. I reconfigured it to use &lt;a href=&#34;http://1.1.1.1/&#34;&gt;1.1.1.1&lt;/a&gt; as the DNS servers it hands out, and to leverage that for the state of the WAN link. As soon as I did that, everything began working and the Cradlepoint failed back to the Ethernet WAN link on the next check. I should probably rethink this setup where I’m using the same IP address for DNS as I am for the state of the WAN, but I should also remember that it’s always DNS and check that a little earlier in the process.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

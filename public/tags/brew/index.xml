@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>brew on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/brew/</link>
+    <description>Recent content in brew on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/brew/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
+      <link>https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/</guid>
+      <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
+ Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
+ When this happens, not only is Homebrew broken, but git itself is broken.</description>
+      <content>&lt;p&gt;After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running &lt;code&gt;brew update&lt;/code&gt; to update all of the packages available in &lt;a href=&#34;https://brew.sh/&#34;&gt;Homebrew&lt;/a&gt;, I got a wall of text regarding things going off the rails that ultimately culminated with this error:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Error: Failure while executing; &lt;code&gt;git config --replace-all homebrew.analyticsmessage true&lt;/code&gt; was terminated by uncaught signal KILL.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;When this happens, not only is Homebrew broken, but &lt;code&gt;git&lt;/code&gt; itself is broken. Running a simple &lt;code&gt;git status&lt;/code&gt; inside of an existing repository will similarly result in an error. I initially tweeted about it after I found a &lt;a href=&#34;https://github.com/Homebrew/discussions/discussions/673&#34;&gt;relevant thread on GitHub&lt;/a&gt;.&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;I did have to combine the steps from a few different support threads, though, so after I had to go through the same process again after upgrading from macOS 11.2 to 11.2.1, I figured I&amp;rsquo;d throw together a quick post about what worked for me. From the input others are sharing on GitHub, it seems different combinations are working for different people, so your mileage may vary.&lt;/p&gt;
+&lt;p&gt;The first thing that I needed to do is reinstall the Xcode CLI tools. This is &lt;em&gt;not&lt;/em&gt; a full Xcode installation, so no need to worry about a massive download. If you get the warning about being on battery and the recommendation that you only do the installation while the device is plugged in, you can likely just ignore it and proceed on battery power; on my system the install takes about 2 minutes.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;For some people, the second and final step is to reinstall &lt;code&gt;git&lt;/code&gt;. This did &lt;em&gt;not&lt;/em&gt; work for me, though. Following &lt;a href=&#34;https://github.com/Homebrew/discussions/discussions/439#discussioncomment-261267&#34;&gt;another thread&lt;/a&gt;, I discovered that I needed to reinstall two dependencies of &lt;code&gt;git&lt;/code&gt;: &lt;code&gt;gettext&lt;/code&gt; and &lt;code&gt;pcre2&lt;/code&gt;. I&amp;rsquo;m assuming that you can likely reinstall both with one command without any issues, but both times I&amp;rsquo;ve seen the problem thus far I&amp;rsquo;ve run the commands individually:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;brew reinstall gettext
+brew reinstall pcre2
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The final step then is to &lt;em&gt;now&lt;/em&gt; reinstall &lt;code&gt;git&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;brew reinstall git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once that&amp;rsquo;s done, now re-running &lt;code&gt;brew update&lt;/code&gt; or &lt;em&gt;any&lt;/em&gt; &lt;code&gt;git&lt;/code&gt; command should be successful.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

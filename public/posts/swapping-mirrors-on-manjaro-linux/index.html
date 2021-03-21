@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Swapping Mirrors On Manjaro Linux :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="One of my favorite aspects of Linux ever since my first Ubuntu 6.06 installation has been the software repository. Back in 2006, installing the overwhelming majority of the software I might need from a supported repository stood in stark contrast with the Windows XP method of searching the web for the software you wanted, finding a download link that didn&amp;rsquo;t seem shady, and then hoping for the best.
+Repositories are frequently hosted by the maintainer of a Linux distribution (e." />
+<meta name="keywords" content="linux, manjaro, mirror, software" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/swapping-mirrors-on-manjaro-linux/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Swapping Mirrors On Manjaro Linux">
+<meta property="og:description" content="One of my favorite aspects of Linux ever since my first Ubuntu 6.06 installation has been the software repository. Back in 2006, installing the overwhelming majority of the software I might need from a supported repository stood in stark contrast with the Windows XP method of searching the web for the software you wanted, finding a download link that didn&amp;rsquo;t seem shady, and then hoping for the best.
+Repositories are frequently hosted by the maintainer of a Linux distribution (e." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/swapping-mirrors-on-manjaro-linux/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-03-12 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/swapping-mirrors-on-manjaro-linux/">Swapping Mirrors On Manjaro Linux</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-03-12 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/linux/">linux</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/manjaro/">manjaro</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/mirror/">mirror</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/software/">software</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>One of my favorite aspects of Linux ever since my first Ubuntu 6.06 installation has been the software repository. Back in 2006, installing the overwhelming majority of the software I might need from a supported repository stood in stark contrast with the Windows XP method of searching the web for the software you wanted, finding a download link that didn&rsquo;t <em>seem</em> shady, and then hoping for the best.</p>
+<p>Repositories are frequently hosted by the maintainer of a Linux distribution (e.g. <a href="https://ubuntu.com/">Ubuntu</a> has official repos hosted by <a href="https://canonical.com/">Canonical</a>, <a href="https://getfedora.org/">Fedora</a> has official repos hosted by <a href="https://www.redhat.com/en">Red Hat</a>, etc.) That being said, often times repositories are mirrored by service providers (e.g. <a href="https://www.linode.com/">Linode</a> hosts many mirrors so that repository content can be served out of the same datacenter as the virtual machines), Linux interest groups, and other community members. This is great because it allows for the repos to be geographically diverse. Pulling downloads from a repository hosted in the same continent, for example, will typically show a marked improvement over using one on the opposite side of the planet.</p>
+<p>The downside to this is that repos occasionally become unavailable for whatever reason. This happened to be recently, as I went to update one of my <a href="https://manjaro.org/">Manjaro</a> installs via:</p>
+<p><code>sudo pacman -Syu</code></p>
+<p>After sitting for an unusual amount of time, I was told that a connection couldn&rsquo;t be established to my current mirror, which happened to be: <strong>us.mirrors.fossho.st</strong></p>
+<p>It&rsquo;s worth noting that, at least on Manjaro, your mirror is only displayed when the connection fails. If the connection is successful, you only see the results of the update check. I could have simply tried again later, but without knowing how long the outage would be I instead decided to hunt for how to swap to a different mirror. Fortunately, the process is extremely easy. The current mirrors are contained in the file:</p>
+<p><code>/etc/pacman.d/mirrorlist</code></p>
+<p>The file contains a list of mirrors, with a comment above each indicating the country. At the very top of my list was my current mirror of <strong>us.mirrors.fossho.st</strong>. I simply added a <code>#</code> to the start of the line for it, commenting it out. I next ran a full package sync to make sure I didn&rsquo;t have anything cached locally that wouldn&rsquo;t be reflected on a different mirror:</p>
+<p><code>sudo pacman -Syyu</code></p>
+<p>This picked a different mirror, and everything worked as expected. The problem was solved. Not satisfied with leaving things at that, though, I decided to see if I could tell of any indicators of a mirror being down. I first confirmed that I could ping <strong>us.mirrors.fossho.st</strong>. Likewise, I could connect to it over port 80 (HTTP.) However, I couldn&rsquo;t connect to it over port 443 (HTTPS.) I don&rsquo;t actually know what mechanism is used for deliver updates, but I feel like it&rsquo;s <em>very</em> likely that HTTPS is used; I couldn&rsquo;t see HTTP being the norm given that you wouldn&rsquo;t be able to ensure the updates hadn&rsquo;t been tampered with. A random port is always possible, though.</p>
+<p>For the sake of comparison, I opened <code>/etc/pacman.d/mirrorlist</code> back up and searched for another mirror in the US. <strong>mirror.dacentec.com</strong> was the first hit. I repeated the same process and confirmed that I <em>could</em> reach it on both ports 80 and 443.</p>
+<p><img src="images/nmap_mirrors_full.png" alt=""></p>
+<p>It seems like 443 is the key. It was only after doing this, though, that I realized a project like Manjaro likely has a status page for their mirrors. <a href="https://repo.manjaro.org/">I wasn&rsquo;t disappointed.</a> Checking this did appear to indicate that my original mirror is experiencing issues. Incidentally, the baseline mirror I tested is included in the same screenshot, and it&rsquo;s shown to be up.</p>
+<p><img src="images/mirror_status-1024x139.png" alt=""></p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/upgrading-star-labs-firmware-on-manjaro-linux/">
+                <span class="button__text">Upgrading Star Labs Firmware On Manjaro Linux</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

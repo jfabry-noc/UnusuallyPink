@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>JSON-to-Go :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Lately I&amp;rsquo;ve been working through the very arduous (for me) process of learning Go for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn Kotlin since I&amp;rsquo;ve been working with another JVM-based language in Groovy, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow." />
+<meta name="keywords" content="go, golang, json" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/json-to-go/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="JSON-to-Go">
+<meta property="og:description" content="Lately I&amp;rsquo;ve been working through the very arduous (for me) process of learning Go for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn Kotlin since I&amp;rsquo;ve been working with another JVM-based language in Groovy, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/json-to-go/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-07-09 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/json-to-go/">JSON-to-Go</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-07-09 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/go/">go</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/golang/">golang</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/json/">json</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Lately I&rsquo;ve been working through the <em>very</em> arduous (for me) process of learning <a href="https://golang.org/">Go</a> for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn <a href="https://kotlinlang.org/">Kotlin</a> since I&rsquo;ve been working with another JVM-based language in <a href="https://failti.me/posts/groovy_prog/">Groovy</a>, but it&rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&rsquo;t fit at all into my workflow. Go, on the other hand, has a handy package manager built into the same binary you use to compile your own code.</p>
+<p>After going through a book to get the basics of Go down (I won&rsquo;t link the book because I actually thought it was a pretty terrible source, and I wouldn&rsquo;t recommend it) I jumped in to doing a little bit of API work since that&rsquo;ll be important for some of the project ideas I&rsquo;m kicking around. It was fairly simple to look up how to leverage the <code>io/ioutil</code> and <code>net/http</code> packages to make an unauthenticated call to a REST API endpoint. This gives the data back in a byte slice. I can cast that to a string to view it and verify that I got back the expected data, but obviously I can&rsquo;t actually <em>do</em> anything I want with the data in a byte slice. In many other languages this is where I would use some type of JSON library to parse the response into something like a map/hashtable/dictionary. I&rsquo;m used to languages where the interpreter just kind of figures that out for you based on the syntax of the JSON.</p>
+<p>Go isn&rsquo;t like that, though. Instead, I need to define a <code>struct</code> that matches the format of the API response. If I have that, I can use the <code>encoding/json</code> package in Go to create a struct. That&rsquo;s something I <em>could</em> do manually, but that would be extremely tedious. For example, this is what I see when dumping the byte array I get back from querying my <a href="https://mastodon.sdf.org/@failtime">own Mastodon account</a> as a string:</p>
+<p>{
+[
+{
+&ldquo;id&rdquo;:&ldquo;49&rdquo;,
+&ldquo;username&rdquo;:&ldquo;failtime&rdquo;,
+&ldquo;acct&rdquo;:&ldquo;failtime&rdquo;,
+&ldquo;display_name&rdquo;:&ldquo;failtime&rdquo;,
+&ldquo;locked&rdquo;:false,
+&ldquo;bot&rdquo;:false,
+&ldquo;discoverable&rdquo;:false,
+&ldquo;group&rdquo;:false,
+&ldquo;created_at&rdquo;:&ldquo;2017-04-24T15:48:10.334Z&rdquo;,
+&ldquo;note&rdquo;:&quot;\u003cp\u003eProfessional loser.\u003c/p\u003e&quot;,
+&ldquo;url&rdquo;:&ldquo;<a href="https://mastodon.sdf.org/@failtime%22,">https://mastodon.sdf.org/@failtime&quot;,</a>
+&ldquo;avatar&rdquo;:&ldquo;<a href="https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,">https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&quot;,</a>
+&ldquo;avatar_static&rdquo;:&ldquo;<a href="https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,">https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&quot;,</a>
+&ldquo;header&rdquo;:&ldquo;<a href="https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,">https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&quot;,</a>
+&ldquo;header_static&rdquo;:&ldquo;<a href="https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,">https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&quot;,</a>
+&ldquo;followers_count&rdquo;:99,
+&ldquo;following_count&rdquo;:69,
+&ldquo;statuses_count&rdquo;:1880,
+&ldquo;last_status_at&rdquo;:&ldquo;2020-06-27&rdquo;,
+&ldquo;emojis&rdquo;:[],
+&ldquo;fields&rdquo;:[
+{
+&ldquo;name&rdquo;:&ldquo;Blog&rdquo;,
+&ldquo;value&rdquo;:&quot;\u003ca href=\&ldquo;<a href="https://failti.me">https://failti.me</a>\&rdquo; rel=\&ldquo;me nofollow noopener noreferrer\&rdquo; target=\&quot;_blank\&quot;\u003e\u003cspan class=\&ldquo;invisible\&quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&quot;\&quot;\u003efailti.me\u003c/span\u003e\u003cspan class=\&ldquo;invisible\&quot;\u003e\u003c/span\u003e\u003c/a\u003e&rdquo;,
+&ldquo;verified_at&rdquo;:&ldquo;2020-06-24T00:27:59.294+00:00&rdquo;
+},
+{
+&ldquo;name&rdquo;:&ldquo;Laifu&rdquo;,
+&ldquo;value&rdquo;:&quot;\u003ca href=\&ldquo;<a href="https://laifu.moe">https://laifu.moe</a>\&rdquo; rel=\&ldquo;me nofollow noopener noreferrer\&rdquo; target=\&quot;_blank\&quot;\u003e\u003cspan class=\&ldquo;invisible\&quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&quot;\&quot;\u003elaifu.moe\u003c/span\u003e\u003cspan class=\&ldquo;invisible\&quot;\u003e\u003c/span\u003e\u003c/a\u003e&rdquo;,
+&ldquo;verified_at&rdquo;:&ldquo;2020-06-15T00:37:19.734+00:00&rdquo;
+}
+]
+}
+]
+}</p>
+<p>I <em>really</em> don&rsquo;t want to have to go through that to create a struct out of it. I started digging around to see if there was a better way and, as is usually the case when dealing with code, came across a <a href="https://stackoverflow.com/questions/43624404/golang-how-to-parse-unmarshal-decode-a-json-array-api-response">Stack Overflow post on the topic</a>. Along with some other helpful information that I used to improve my code a little, one of the replies linked to <a href="https://mholt.github.io/json-to-go/">JSON-to-Go</a>. The service allows me to paste in JSON output like what I included above in this post, and it will automatically generate the corresponding struct. I tried it out, and it nicely gave me the following:</p>
+<p>type AutoGenerated struct {
+ID             string        `json:&ldquo;id&rdquo;`
+Username       string        `json:&ldquo;username&rdquo;`
+Acct           string        `json:&ldquo;acct&rdquo;`
+DisplayName    string        `json:&ldquo;display_name&rdquo;`
+Locked         bool          `json:&ldquo;locked&rdquo;`
+Bot            bool          `json:&ldquo;bot&rdquo;`
+Discoverable   bool          `json:&ldquo;discoverable&rdquo;`
+Group          bool          `json:&ldquo;group&rdquo;`
+CreatedAt      time.Time     `json:&ldquo;created_at&rdquo;`
+Note           string        `json:&ldquo;note&rdquo;`
+URL            string        `json:&ldquo;url&rdquo;`
+Avatar         string        `json:&ldquo;avatar&rdquo;`
+AvatarStatic   string        `json:&ldquo;avatar_static&rdquo;`
+Header         string        `json:&ldquo;header&rdquo;`
+HeaderStatic   string        `json:&ldquo;header_static&rdquo;`
+FollowersCount int           `json:&ldquo;followers_count&rdquo;`
+FollowingCount int           `json:&ldquo;following_count&rdquo;`
+StatusesCount  int           `json:&ldquo;statuses_count&rdquo;`
+LastStatusAt   string        `json:&ldquo;last_status_at&rdquo;`
+Emojis         []interface{} `json:&ldquo;emojis&rdquo;`
+Fields         []struct {
+Name       string    `json:&ldquo;name&rdquo;`
+Value      string    `json:&ldquo;value&rdquo;`
+VerifiedAt time.Time `json:&ldquo;verified_at&rdquo;`
+} `json:&ldquo;fields&rdquo;`
+}</p>
+<p>I pasted it into my code, changed the name from <code>AutoGenerated</code> to something a little more fitting, and sure enough I was now able to <code>Unmarshal</code> my API response into a usable struct&hellip; without having to go through the pain of creating the struct myself. Huge kudos to the creator for such an awesome and useful service.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/gotoot-cli-mastodon-client/">
+                <span class="button__icon">←</span>
+                <span class="button__text">GoToot CLI Mastodon Client</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/self-hosting-a-static-website/">
+                <span class="button__text">Self-Hosting A Static Website</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

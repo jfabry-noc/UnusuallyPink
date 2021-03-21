@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Python&#39;s Beautiful Soup :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="In my last post, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about what I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain." />
+<meta name="keywords" content="python, scripting, twitter" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/pythons-beautiful-soup/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Python&#39;s Beautiful Soup">
+<meta property="og:description" content="In my last post, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about what I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/pythons-beautiful-soup/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-08-18 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/pythons-beautiful-soup/">Python&rsquo;s Beautiful Soup</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-08-18 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/python/">python</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/twitter/">twitter</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>In my <a href="https://unusually.pink/twitter-development-impressions/">last post</a>, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about <em>what</em> I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain.</p>
+<h2 id="background">Background<a href="#background" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>A little over a year ago, a friend and I started a podcast. I won’t go into the backstory of why we named it what we did, but the name of the podcast revolved around the color pink due to an inside joke between my friend and I. We ended up publishing 21 episodes in the span of a year before we decided to stop it. I had moved about an hour away from where I previously lived for a new job, so recording in-person involved a decent bit of travel for one of us. Then the coronavirus pandemic really started to take off in my country, and given what a dumpster fire trying to record a podcast remotely is, my friend and I jointly decided to shutter the podcast. It was a fun experience, but nothing either of us were really wanting to keep putting time and money into. As is typically the case, we reached this conclusion just a month after the hosting for both the podcast and our website renewed. Go figure.</p>
+<p>That being said, we had set up social media for the podcast, and that social media was now doing exactly nothing. While I didn’t want to do anything with the Facebook or Instagram accounts that my co-host ran (you couldn’t pay me to touch a Facebook property), I thought about what I could do with the lingering Twitter account. I eventually decided to make a simple bot that would tweet a different shade of the color pink each day.</p>
+<h2 id="python-and-beautiful-soup">Python and Beautiful Soup<a href="#python-and-beautiful-soup" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>As I <a href="https://unusually.pink/twitter-development-impressions/">mentioned previously</a>, the actual code to post to Twitter ended up being extremely simple. I just used the <a href="https://github.com/ryanmcgrath/twython">Twython</a> library to do the heavy lifting. What ended up being more interesting was how to create the database of colors I would use. After all, I don’t personally know that many different shades fo pink, and I wanted to include the RGB and hex color codes for each shade in the daily post. I basically needed a repository of shades of pink. After some DuckDuckGo-fu, I eventually found <a href="https://html-color.codes/pink#:~:text=Pink%20Color%20Codes%3A%20colors%20shown%20are%20similar%20to,palevioletred%3A%20%23db7093%20%2F%20rgb%28219%2C112%2C147%29%20deeppink%3A%20%23ff1493%20%2F%20rgb%28255%2C20%2C147%29">a page that included not just the RGB and hex color codes, but also a <em>name</em></a>. It was exactly what I needed.</p>
+<p>The only problem was how to get the information from that page into something I could use in my script for the bot. My immediate thought was to copy and paste all of the information, but along with being error-prone over hundreds of shades, that’s also insanely tedious. In a shell script, something like <code>xmllint</code> would fit the bill. Since I was already working in Python, though, I decided to use <a href="https://pypi.org/project/beautifulsoup4/">Beautiful Soup</a>. I had actually used Beautiful Soup one time before on a project years ago where I admittedly didn’t really know Python and most definitely didn’t understand what I was doing with Beautiful Soup; I just ended up copying and pasting a bunch of code from the Internet until things worked the way I wanted.</p>
+<p>This time, I took just a little time to read the documentation for Beautiful Soup and understand what I was actually doing. The crux of my script comes down to:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">divisions <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find_all(<span style="color:#e6db74">&#34;div&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;color-inner&#34;</span>})
+</code></pre></div><p>This gets me each of the <code>div</code> groupings for a color. With each of those groupings defined, it was then simple to get the name, hex, and RGB information I needed:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">for</span> division <span style="color:#f92672">in</span> divisions:
+    color_name <span style="color:#f92672">=</span> division<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;color-sub&#34;</span>})<span style="color:#f92672">.</span>get_text()
+    color_hex <span style="color:#f92672">=</span> division<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;color-id&#34;</span>})<span style="color:#f92672">.</span>get_text()
+    color_rgb <span style="color:#f92672">=</span> division<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;span&#34;</span>, {<span style="color:#e6db74">&#34;class&#34;</span>: <span style="color:#e6db74">&#34;color-rgb&#34;</span>})<span style="color:#f92672">.</span>get_text()
+</code></pre></div><p>Instead of trying to copy everything by hand, I had a working script to get all of the colors without needing to worry about human error. Plus, if the source website adds any new colors it’s trivial to re-run the script and get an updated list. I ended up making a map for each color and adding all of the maps to a list.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">rows<span style="color:#f92672">.</span>append({<span style="color:#e6db74">&#34;name&#34;</span>: color_name, <span style="color:#e6db74">&#34;hex&#34;</span>: color_hex, <span style="color:#e6db74">&#34;rgb&#34;</span>: color_rgb})
+</code></pre></div><p>Then I wrapped it all up at the end by exporting the list of maps to a JSON file.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#39;pinks.json&#39;</span>, <span style="color:#e6db74">&#39;w&#39;</span>) <span style="color:#66d9ef">as</span> outfile:
+   json<span style="color:#f92672">.</span>dump(all_colors, outfile)
+</code></pre></div><p>My other script which actually pushes the post to Twitter ingests this JSON file and then selects a random shade from it.</p>
+<h2 id="twitter-still-sucks">Twitter Still Sucks<a href="#twitter-still-sucks" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>As if further proof was needed that Twitter is garbage, though, I found myself simultaneously amused and irritated just a few days ago when I saw that a daily post had not been completed. When logging into the account for the bot, I received a notification that the account had been flagged for “suspicious activity”, and I had to walk through a verification process before the account could post again. It’s amazing to me that a platform which tolerates the most hateful and dangerous rhetoric chooses to flag a clear bot that makes a single post each day with details on a different shade of the color pink as “suspicious.” It’s just further proof that Twitter really isn’t worth anyone’s time at this point.</p>
+<p>My latest project, though, involves pushing data to Mastodon instead of Twitter. This post will serve as the first test of it, so assuming everything works look for a post on that in the near future.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Full Content RSS Feeds With Hugo</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/twitter-development-impressions/">
+                <span class="button__text">Twitter Development Impressions</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

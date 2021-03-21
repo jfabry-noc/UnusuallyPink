@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>GitHub Pages Hosting :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="As I had mentioned in my post about Dropbox Passwords, I&amp;rsquo;m looking to cut down on the number of services that I pay for each month. One of the areas I&amp;rsquo;ve decided to cut down on are my domains; I&amp;rsquo;m letting a few domains that I never ended up finding much of a use for expire rather than having them automatically renew. Some have been renewing like this for years just because I didn&amp;rsquo;t want to lose them for some reason despite never having any real use for them." />
+<meta name="keywords" content="dns, github-pages, hosting, lets-encrypt, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/github-pages-hosting/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="GitHub Pages Hosting">
+<meta property="og:description" content="As I had mentioned in my post about Dropbox Passwords, I&amp;rsquo;m looking to cut down on the number of services that I pay for each month. One of the areas I&amp;rsquo;ve decided to cut down on are my domains; I&amp;rsquo;m letting a few domains that I never ended up finding much of a use for expire rather than having them automatically renew. Some have been renewing like this for years just because I didn&amp;rsquo;t want to lose them for some reason despite never having any real use for them." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/github-pages-hosting/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-09-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/github-pages-hosting/">GitHub Pages Hosting</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-09-20 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/dns/">dns</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/github-pages/">github-pages</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/hosting/">hosting</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/lets-encrypt/">lets-encrypt</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>As I had mentioned in my <a href="https://unusually.pink/dropbox-passwords/">post about Dropbox Passwords</a>, I&rsquo;m looking to cut down on the number of services that I pay for each month. One of the areas I&rsquo;ve decided to cut down on are my domains; I&rsquo;m letting a few domains that I never ended up finding much of a use for expire rather than having them automatically renew. Some have been renewing like this for years just because I didn&rsquo;t want to lose them for some reason despite never having any real use for them. With a decrease in my domains comes a decrease in websites, to the point where I started to wonder if I could get away with ditching my VPS. I had been using the same VPS for over 2 years, and it served me well. In a world with so many hosting options, though, it seemed overkill just to run 2 static websites, each of which were only a single page.</p>
+<p>One of my sites I placed on <a href="https://firebase.google.com/">Firebase</a>. I&rsquo;m not a fan of using Google products, but I&rsquo;ve used Firebase previously (moving my website to an existing, stale Firebase project will be the topic of another post), and the free <a href="https://firebase.google.com/pricing">Spark plan</a> gives me more than enough for a simple site with 1 GB of storage and 10 GB of egress traffic each month.</p>
+<p>I wanted to check out some different options for <a href="https://jfabhd.com">jfabhd.com</a>, though. After recently reading one of <a href="https://kevq.uk/static-site-generators-revisited/">Kev Quirk&rsquo;s blog posts</a>, I thought I would give <a href="https://www.netlify.com/">Netlify</a> a shot. Their <a href="https://www.netlify.com/pricing/">free Starter plan</a> seems great for a simple hobby site and includes CI (continuous integration) from a git repository. I signed up for an account but quickly disliked the fact that leveraging my own domain meant I needed to move my nameservers for it to Netlify. While this isn&rsquo;t horrible, I <em>really</em> prefer to keep managing my DNS in a single place as opposed to scattering nameservers around to wherever my content is hosted. Currently all of my personal domains have DNS hosted in the same place, and I&rsquo;d like to keep it that way. As a result, I shelved the idea of Netlify and looked to <a href="https://pages.github.com/">GitHub Pages</a> instead.</p>
+<p>I actually used GitHub Pages before, way back in the day when they were brand new and I set up my first <a href="https://jekyllrb.com/">Jekyll</a>-based blog. It wasn&rsquo;t bad by any stretch, but a lot of it was clunky. I remembered having to manually add some text files to the repository to configure my custom domain and to host content out of a folder that was named differently than what was expected. Likewise, there were no SSL options, so I ended up putting my GitHub Pages site behind <a href="https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/">CloudFlare</a> in order to secure it. I figured this would be a good opportunity to see what, if anything, had changed. If I hated it, I wouldn&rsquo;t be out anything and could continue to look at other options.</p>
+<p>The initial setup is still the same as I remember: just create a public repository with a name of:</p>
+<pre><code>github-account.github.io
+</code></pre><p>I did this through the GitHub website in less than a minute. Next up I ran <code>git clone</code> in order to initialize the repository on my local laptop in the same directory where I keep all of my other GitHub repos. With my local environment ready, I just copied the handful of files that I had backed up from my VPS into the root directory for the repository; if I don&rsquo;t take any other action, GitHub will host content from the root of the repo. Since this is a static, single page site, I don&rsquo;t need to worry about compiling it with static site generators like Jekyll or <a href="https://gohugo.io/">Hugo</a>. I was able to <code>commit</code> the change for adding the files, navigate to <a href="https://jfabry-noc.github.io">https://jfaby-noc.github.io</a>, and see my site.</p>
+<p>With the content out of the way, I wanted to set up my custom domain. The GitHub side of the work can now be done through the <strong>Settings</strong> menu of the repository; it basically replaces the manual work that I previously had to do by adding files to my repository:</p>
+<p><img src="images/gh_pages.png" alt=""></p>
+<p>The top allows me to change the branch and directory to host content from; in my case I could just leave the defaults. The <strong>Custom domain</strong> sections allows me to type in my domain of choice. This just adds a file named <code>CNAME</code> to my repo containing the domain information. Then I just had to follow <a href="https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site">the directions</a> for setting up a custom domain in my DNS host&rsquo;s settings.</p>
+<p><strong>Note:</strong> It&rsquo;s a little wonky from the directions, but to make GitHub redirect everything appropriately when using both an apex domain and a subdomain, you follow both sections of the instructions verbatim. For example, I wanted the domain to be <code>jfabhd.com</code>, but I also wanted <code>www.jfabhd.com</code> to still redirect to the site. I configured the apex domain via the instructions above, creating 4 A records pointing to different IP addresses. Then I configured a CNAME record for <code>www.jfabhd.com</code> pointing <em>not</em> to <code>jfabhd.com</code>, but instead to <code>jfaby-noc.github.io</code>. If you do it this way, GitHub will work it all out under the hood.</p>
+<p>Immediately after setting up my DNS records, the option for <strong>Enforce HTTPS</strong> was not available, telling me that the site was not configured properly. I rightly assumed this just meant DNS needed time to propagate. I checked back 15 minutes later (which is the TTL of my DNS records), and it presented me with a new message that the certificate wasn&rsquo;t finished being created yet. I once again rightly assumed that they were spinning up these certificates through <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a>, so I browsed <a href="https://news.ycombinator.com/">Hacker News</a> for a few minutes until refreshing my repository&rsquo;s settings showed that the option to force HTTPS was now available. I simply checked the box, waited a few minutes, and then verified that going explicitly to <code>http://jfabhd.com</code> would redirect me successfully to <code>https://jfabhd.com</code>. If this doesn&rsquo;t work for you, chances are that you just didn&rsquo;t give it enough time. While the tooltip in the GibHub UI says it can take up to 24 hours, it took about 5 minutes for my site.</p>
+<p>The last thing to check was that the CI was working so that changes to the repo would be reflected on the site. A few things had changed since I took the backup of my site, meaning there were some needed tweaks with which I could test. For one I restarted this blog and I deleted my Twitter account since Twitter is a cesspool (that might be a good topic for another post&hellip;), so I wanted to swap the Twitter link on my site with one for this blog. I first did a <code>git pull</code> to get local copies of things like the <code>CNAME</code> file that had been made in the cloud, and then I quickly updated my HTML to share a link with the <a href="https://fontawesome.com/icons/rss?style=solid">Font Awesome RSS feed icon</a> as the content. After committing and pushing the change, I refreshed the site to confirm it had also been updated.</p>
+<p>On the whole, there&rsquo;s really nothing for me to complain about with GitHub Pages. It&rsquo;s free, I can use the same GitHub account I&rsquo;m already in every day, I can use a custom domain without moving my DNS, and I get a Let&rsquo;s Encrypt certificate out of the box. Obviously, though, my use case for it is very simple, and your mileage may vary. With options like this, though, I feel even better about my idea to stop running my own VPS just to host a couple of small, low-traffic websites.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/connecting-an-existing-firebase-hosting-project-to-a-new-site/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Connecting An Existing Firebase Hosting Project To A New Site</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/salvaging-images-from-squarespace/">
+                <span class="button__text">Salvaging Images From Squarespace</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

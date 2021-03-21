@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>active-directory on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/active-directory/</link>
+    <description>Recent content in active-directory on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/active-directory/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV</title>
+      <link>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
+      <description>I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
+Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .</description>
+      <content>&lt;p&gt;I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.&lt;/p&gt;
+&lt;h2 id=&#34;exporting-non-standard-attributes-to-csv&#34;&gt;Exporting Non-standard Attributes To CSV&lt;/h2&gt;
+&lt;p&gt;My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .csv file. When I say “non-standard” I don’t mean that we’ve done a custom schema extension or anything like that. Instead, I simply mean that the AD PowerShell module only wants to include certain attributes when exporting AD objects to a .csv file. For example, if I run &lt;strong&gt;Get-ADObject&lt;/strong&gt; &lt;strong&gt;-Properties *&lt;/strong&gt; against a particular contact object and simply let the output dump to my shell, I see all of the attributes I expect including stuff like &lt;strong&gt;givenName&lt;/strong&gt; and &lt;strong&gt;sn&lt;/strong&gt;. However, if I run the exact same cmdlet but pipe the result to &lt;strong&gt;Export-Csv&lt;/strong&gt; rather than sending it to the shell I will not have all the same attributes; ones like &lt;strong&gt;givenName&lt;/strong&gt; and &lt;strong&gt;sn&lt;/strong&gt; will now be missing. That’s a problem.&lt;/p&gt;
+&lt;h2 id=&#34;storing-mutli-value-attributes-in-a-csv&#34;&gt;Storing Mutli-Value Attributes In a CSV&lt;/h2&gt;
+&lt;p&gt;The other problem was that one of the attributes I needed is &lt;strong&gt;proxyAddresses&lt;/strong&gt;. This is a multi-value attribute as contacts could very likely have multiple proxy addresses associated with a particular mailbox. They may have an alias, x500 addresses, etc. If you use PowerShell to pull this information from AD and dump it to the screen you’ll see the expected proxy address information. If you call &lt;strong&gt;GetType()&lt;/strong&gt; on the &lt;strong&gt;proxyAddresses&lt;/strong&gt; attribute you’ll see it listed as an array. That’s why if you export a contact to a .csv file and include &lt;strong&gt;proxyAddresses&lt;/strong&gt;, the value for each contact in that particular column will simply read:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft.ActiveDirectory.Management.ADPropertyValueCollection&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PowerShell isn’t sure what to do with a multi-value attribute as far as the .csv file goes so it stores the data type. This is also a problem!&lt;/p&gt;
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;My solution to this was the following. Note that it’ll be easier to view &lt;a href=&#34;https://gist.github.com/JFFail/6dd9acb0020845a905eeda8fbc8de1a7&#34;&gt;the Gist for it&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Get the objects with the required attributes and storing proxyAddresses properly in the .csv file.
+Get-ADObject -Filter { objectClass -eq &amp;quot;contact&amp;quot; } -Server myserver.mydomain.net -SearchBase &amp;quot;OU=Contacts,DC=mydomain,DC=net&amp;quot; -SearchScope OneLevel -Properties name,givenName,sn,displayName,telephoneNumber,proxyAddresses,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title | Select-Object name,givenName,sn,displayName,telephoneNumber,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title,@{name=&amp;quot;proxyAddresses&amp;quot;; expression={$_.proxyAddresses -join &amp;quot;;&amp;quot;}} | Export-Csv -Path .\sample.csv -Encoding ASCII -Append -NoClobber -NoTypeInformation
+
+# Shows how to then use the proxyAddresses attribute in the future.
+$allContacts = Import-Csv -Path .\sample.csv
+foreach($singleContact in $allContacts) {
+    $proxyAddresses = $singleContact.proxyAddresses.Split(&amp;quot;;&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The first thing I needed was to get the properties I actually needed as opposed to just the ones PowerShell felt like including due to the object type. The solution was to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Specify all of the attributes I wanted in &lt;strong&gt;-Properties&lt;/strong&gt; to ensure they would be available.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pipe the AD object to &lt;strong&gt;Select-Object&lt;/strong&gt; and then re-specify each of the properties I wanted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This works because PowerShell is selecting the attributes to include in the .csv file based on the type of object. &lt;strong&gt;Select-Object&lt;/strong&gt; takes whatever comes through the pipeline, though, and makes a brand new, generic object from it. That object will include any properties from that original object that you specify, hence why I tell it the exact listing of properties that I need again.&lt;/p&gt;
+&lt;p&gt;This leads to the solution to the second problem which is what to do for &lt;strong&gt;proxyAddresses&lt;/strong&gt;. PowerShell allows for the use of an expression to parse together a new property. In this instance the expression is to take the existing &lt;strong&gt;proxyAddresses&lt;/strong&gt; array and &lt;strong&gt;-join&lt;/strong&gt; it into a string. Each of the items in the array are separated by a semicolon. If a contact has the following proxy addresses, for example:&lt;/p&gt;
+&lt;p&gt;SMTP:pretty@unusually.pink
+smtp:awesome@unusually.pink&lt;/p&gt;
+&lt;p&gt;Then the property in the .csv file will be stored as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SMTP:pretty@unusually.pink;smtp:awesome@unusually.pink
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You could pick any character for the delimiter that you want as long as it isn’t used in other data that you’re storing.&lt;/p&gt;
+&lt;p&gt;In this instance my goal was to take the exported data, re-import it, and then create contacts in a different AD forest. When creating a new object AD is expecting an array for the &lt;strong&gt;proxyAddresses&lt;/strong&gt; attribute. A string with a random delimiter won’t do it. That’s where the second part of the example comes into play. If I’m looping through all of the data stored in the .csv file I can recreate the array of proxy addresses by splitting the string on my delimiter (in this case a semicolon) and assigning the result to a variable. That variable will be an array which can then be used to popular &lt;strong&gt;proxyAddresses&lt;/strong&gt; when running &lt;strong&gt;New-ADObject&lt;/strong&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Updating PowerShellGet :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="It&amp;rsquo;s not too often these days that I find myself needing to update the underpinnings of PowerShell. The majority of the PowerShell work I do now is based on PowerShell Core, the current version of which is 7.0.3, and frequently just comes with newer versions of the supporting modules. PowerShell Core began with PowerShell 6 and is created with .NET Core, which is Microsoft&amp;rsquo;s open source and cross-platform flavor of ." />
+<meta name="keywords" content="nuget, powershell, powershellget, windows" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/updating-powershellget/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Updating PowerShellGet">
+<meta property="og:description" content="It&amp;rsquo;s not too often these days that I find myself needing to update the underpinnings of PowerShell. The majority of the PowerShell work I do now is based on PowerShell Core, the current version of which is 7.0.3, and frequently just comes with newer versions of the supporting modules. PowerShell Core began with PowerShell 6 and is created with .NET Core, which is Microsoft&amp;rsquo;s open source and cross-platform flavor of ." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/updating-powershellget/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-10-11 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/updating-powershellget/">Updating PowerShellGet</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-10-11 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/nuget/">nuget</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/powershell/">powershell</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/powershellget/">powershellget</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/windows/">windows</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>It&rsquo;s not too often these days that I find myself needing to update the underpinnings of PowerShell. The majority of the PowerShell work I do now is based on <a href="https://github.com/PowerShell/PowerShell">PowerShell Core</a>, the current version of which is 7.0.3, and frequently just comes with newer versions of the supporting modules. PowerShell Core began with PowerShell 6 and is created with .NET Core, which is Microsoft&rsquo;s open source and cross-platform flavor of .NET. PowerShell version 5 and before, known as Windows PowerShell, is the original, Windows-specific variant of PowerShell. Microsoft doesn&rsquo;t really do any new development work on Windows PowerShell, instead opting to work on PowerShell Core and slowly make the full set of functionality available on all platforms.</p>
+<p>This is awesome, but some systems very specifically target Windows PowerShell. This can easily happen since the interpreter even has a different name; Windows PowerShell calls <code>powershell.exe</code> while PowerShell Core calls <code>pwsh.exe</code> in an effort to allow the two versions to co-exist on the same Windows host. As a result, systems which proxy PowerShell commands or scripts on your behalf down to a target machine that have not been updated to expect PowerShell Core will generally target Windows PowerShell instead. This was the situation I found myself in last week.</p>
+<p>I was attempting to load a script that I had written into a monitoring platform which will then send my script down to any number of &ldquo;collector&rdquo; machines in order to for it to execute and do the actual data aggregation. In this case, my script failed because it was calling the <code>MSAL.PS</code> module. <a href="https://github.com/AzureAD/microsoft-authentication-library-for-dotnet">MSAL</a> is the Microsoft Authentication Library, and as the name indicates it facilitates authentication to Azure AD. It replaces the older Azure AD Authentication Library (ADAL), and is honestly <em>much</em> nicer to use. The module needs to be installed first, though, and while I had previously installed it on the target system under PowerShell Core, Windows PowerShell is a completely separate entity with a separate space for modules. I remoted to the system and ran the following to handle the installation from an administrative Windows PowerShell session:</p>
+<p><code>Install-Module -Name MSAL.PS</code></p>
+<p>Instead of joy, I got the following error message:</p>
+<blockquote>
+<p>WARNING: The specified module &lsquo;MSAL.PS&rsquo; with PowerShellGetFormatVersion &lsquo;2.0&rsquo; is not supported by the current version of PowerShellGet. Get the latest version of the PowerShellGet module to install this module, &lsquo;MSAL.PS&rsquo;.</p>
+</blockquote>
+<p>Ick&hellip; some things were a bit old in the Windows PowerShell installation. This was one of the rare instances where the error message didn&rsquo;t tell me <em>exactly</em> how to fix the issue, though, so I did a few searches on this exact error. The trick is that updating <code>PowerShellGet</code> involves not one but two steps.</p>
+<p>While <code>PowerShellGet</code> is a module specific for discovering and installing PowerShell packages from the <a href="https://www.powershellgallery.com/">PowerShell Gallery</a>, it leverages Microsoft&rsquo;s much more generic <a href="https://www.nuget.org/">NuGet package manager</a>. To get the latest version of PowerShellGet, I <a href="https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-7">first had to make sure I was using the latest version of NuGet</a> by running:</p>
+<p><code>Install-PackageProvider Nuget -Force</code></p>
+<p>Once that completed, <em>then</em> I was able to successfully update PowerShellGet via:</p>
+<p><code>Install-Module -Name PowerShellGet -Force</code></p>
+<p>Once the update completes, the current PowerShell session will still be running the old version. I just closed PowerShell, re-launched a new administrator instance, and then successfully installed the module via the same cmdlet from earlier:</p>
+<p><code>Install-Module -Name MSAL.PS</code></p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/offsite-podcasting/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Offsite Podcasting</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/safari-14/">
+                <span class="button__text">Safari 14</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

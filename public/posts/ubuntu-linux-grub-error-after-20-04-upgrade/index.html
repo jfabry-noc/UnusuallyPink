@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Ubuntu Linux GRUB Error After 20.04 Upgrade :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="While I&amp;rsquo;ve nuked my personal VPS, I still have a VPS that I use for work; it comes in handy for things like running cron jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life." />
+<meta name="keywords" content="20-04, grub, linux, ubuntu" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/ubuntu-linux-grub-error-after-20-04-upgrade/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Ubuntu Linux GRUB Error After 20.04 Upgrade">
+<meta property="og:description" content="While I&amp;rsquo;ve nuked my personal VPS, I still have a VPS that I use for work; it comes in handy for things like running cron jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/ubuntu-linux-grub-error-after-20-04-upgrade/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-10-24 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/ubuntu-linux-grub-error-after-20-04-upgrade/">Ubuntu Linux GRUB Error After 20.04 Upgrade</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-10-24 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/20-04/">20-04</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/grub/">grub</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/linux/">linux</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/ubuntu/">ubuntu</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>While I&rsquo;ve <a href="https://unusually.pink/github-pages-hosting/">nuked my personal VPS</a>, I still have a VPS that I use for work; it comes in handy for things like running <code>cron</code> jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life. I <em>could</em> have kept using Ubuntu 18.04 with <a href="https://ubuntu.com/about/release-cycle">maintenance updates until 2023 and security maintenance until 2028</a>, but what&rsquo;s the fun in that?</p>
+<p>Upgrading a VPS is always a bit of a nerve-wracking situation just because I don&rsquo;t have local access to the host in case something goes extremely awry. Ubuntu tries to help alleviate this by opening a second SSH daemon on a different port just in case the primary daemon crashes during the upgrade, but if the machine ends up in a non-bootable state I&rsquo;m still more or less hosed. Fortunately for me, things almost went off without a hitch&hellip; almost.</p>
+<p>While the upgrade <em>did</em> complete, I received an error toward the end of the process that <a href="https://www.gnu.org/software/grub/">GRUB</a> failed to upgrade successfully. This was mildly terrifying since GRUB is the bootloader; if it&rsquo;s not working properly the system won&rsquo;t boot, and I can&rsquo;t access the host of the VPS to troubleshoot it. Luckily, GRUB continued to work in my case, and my system was able to reboot successfully after the 20.04 upgrade and beyond. GRUB just wasn&rsquo;t getting upgraded. I quickly noticed that I also received an error from GRUB every time I ran <code>sudo apt update &amp;&amp; sudo apt upgrade</code> to update my system. Again, the other packages would upgrade successfully, but GRUB would always complain:</p>
+<blockquote>
+<p>dpkg: error processing package grub-pc (&ndash;configure):</p>
+<p>installed grub-pc package post-installation script subprocess returned error exit</p>
+<p>status 1</p>
+<p>Errors were encountered while processing: grub-pc</p>
+<p>E: Sub-process /usr/bin/dpkg returned an error code (1)</p>
+</blockquote>
+<p>After spending some time just ignoring the problem since it wasn&rsquo;t exactly critical, I finally decided to do some digging. It turns out that problems like this have apparently plagued Ubuntu upgrades for a while, as I found a thread with the <a href="https://askubuntu.com/questions/636456/14-04-upgrade-triggers-grub-pc-failure/636523#636523">same problem all the way back with an upgrade to Ubuntu 14.04</a>. The solution in that case was to simply &ldquo;nuke and pave&rdquo; by removing GRUB and then re-installing it. It&rsquo;s once again a bit of a white-knuckle situation since if anything happens between removing and reinstalling GRUB the system will not have the ability to boot. The steps were very similar to the linked thread with some minor differences in the era of Ubuntu 20.04. The first step was still to purge GRUB:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get purge grub-pc grub-common
+</code></pre></div><p>Running this command in 2020 removes <code>/etc/grub.d/</code> already, so there&rsquo;s no reason to manually run the removal. Instead, I next moved straight to re-installing GRUB:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo apt-get install grub-pc grub-common
+</code></pre></div><p>The installation process kicks off an interactive wizard asking which disk(s) GRUB should be installed to. In my case, I only needed it on the main disk, which is <code>/dev/sda</code>. With that done, I updated GRUB and then rebooted:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo update-grub
+sudo reboot now
+</code></pre></div><p>This part kind of sucked as I was left running <code>nmap</code> against the SSH port for my VPS and hoping that GRUB was properly set up to allow the system to boot. After a nervous 15 seconds, though, the port started to respond again, and I could successfully SSH into the server. Re-checking for updates showed that everything was fine; the errors about GRUB having a needed upgrade that couldn&rsquo;t be installed were gone. Admittedly, it was probably unnecessary to go through this upgrade without any specific reason for it, but the beauty of Ubuntu is its popularity. Rarely will there be an issue someone else hasn&rsquo;t encountered, solved, and documented before, and this problem was no exception.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/ssids-everywhere/">
+                <span class="button__icon">←</span>
+                <span class="button__text">SSIDs Everywhere</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/offsite-podcasting/">
+                <span class="button__text">Offsite Podcasting</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

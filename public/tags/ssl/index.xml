@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssl on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/ssl/</link>
+    <description>Recent content in ssl on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Mon, 22 Jul 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/ssl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Fixing Let&#39;s Encrypt Certificates After You Delete Them Like An Idiot</title>
+      <link>https://hugo.unusually.pink/posts/fixing-lets-encrypt-certificates-after-you-delete-them-like-an-idiot/</link>
+      <pubDate>Mon, 22 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/fixing-lets-encrypt-certificates-after-you-delete-them-like-an-idiot/</guid>
+      <description>In Episode 11, I had discussed how I run a couple of my websites on a Linux server running Nginx as the web server and encrypting connections to them via Let’s Encrypt certificates. Shortly after recording that episode, though, I realized I had messed up my certificate configuration via certbot. If you don’t recall the episode, I had taken my web server which was only running laifu.moe and added awk.ninja to it so that I had both sites running on the same server.</description>
+      <content>&lt;p&gt;In &lt;a href=&#34;https://www.unusually.pink/podcast/episode-11-attach-all-the-storage&#34;&gt;Episode 11&lt;/a&gt;, I had discussed how I run a couple of my websites on a Linux server running &lt;a href=&#34;https://www.nginx.com/&#34;&gt;Nginx&lt;/a&gt; as the web server and encrypting connections to them via &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt; certificates. Shortly after recording that episode, though, I realized I had messed up my certificate configuration via &lt;a href=&#34;https://certbot.eff.org/&#34;&gt;certbot&lt;/a&gt;. If you don’t recall the episode, I had taken my web server which was only running &lt;a href=&#34;https://laifu.moe&#34;&gt;laifu.moe&lt;/a&gt; and added &lt;a href=&#34;https://awk.ninja&#34;&gt;awk.ninja&lt;/a&gt; to it so that I had both sites running on the same server. When I added awk.ninja, I had to re-run certbot and get a certificate for it along with the certificate I had for laifu.moe. That’s where I messed up; I got tipped off when I received the following email from Let’s Encrypt letting me know that my certificate for laifu.moe was about to expire.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“Your certificate (or certificates) for the names listed below will expire in 10 days (on 07 Jul 19 12:52 +0000). Please make sure to renew your certificate before then, or visitors to your website will encounter errors.&lt;/p&gt;
+&lt;p&gt;We recommend renewing certificates automatically when they have a third of their&lt;br&gt;
+total lifetime left. For Let’s Encrypt’s current 90-day certificates, that means&lt;br&gt;
+renewing 30 days before expiration. See&lt;br&gt;
+&lt;a href=&#34;https://letsencrypt.org/docs/integration-guide/&#34;&gt;https://letsencrypt.org/docs/integration-guide/&lt;/a&gt; for details.&lt;/p&gt;
+&lt;p&gt;laifu.moe&lt;br&gt;
+&lt;a href=&#34;http://www.laifu.moe&#34;&gt;www.laifu.moe&lt;/a&gt;”&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;That seemed odd to me since I knew I had a &lt;strong&gt;cron&lt;/strong&gt; job running to update the certificates. I checked the expiration for the certificate on laifu.moe and saw that it had nearly two months left on it. I checked the certificate applied to awk.ninja and saw the same thing. EXACTLY the same thing in fact. In double-checking the certificate on laifu.moe, I realized that the Common Name was for awk.ninja. I was using the awk.ninja certificate for &lt;em&gt;both&lt;/em&gt; of my sites. Oops. What happened was that when I added awk.ninja and re-ran &lt;strong&gt;certbot&lt;/strong&gt;, I got the following:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/FixingLetsEncryptCertificatesAfterYouDeleteThemLikeAnIdiot_certbot.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;My thought at the time was that I needed to select ALL of the sites. In reality, this overwrote the configuration I already had on laifu.moe and applied the awk.ninja certificate to both sites. This is where I decided to be really stupid. I decided that I would delete the existing certificates, re-run &lt;strong&gt;certbot&lt;/strong&gt; twice (one for laifu.moe and once for awk.ninja), and then be done. I started off by deleting the awk.ninja certificate that was applied to both sites:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo certbot delete --cert-name awk.ninja
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I did the same to delete the laifu.moe certificate. Then I tried to do a vanilla run of &lt;strong&gt;certbot&lt;/strong&gt; to get the menu in my screenshot above and individually configure each of my two sites. Instead of getting that menu, though, I received an error message that my sites were pointing to certificates that didn’t exist. &lt;strong&gt;certbot&lt;/strong&gt; then exited without giving me any further options. The problem is that my configuration files below still referenced the certificates that I just nuked. Oops.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/nginx/sites-available/awk.ninja
+/etc/nginx/sites-available/laifu.moe
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After thinking about it for a few seconds, it made sense; &lt;strong&gt;certbot&lt;/strong&gt; can’t know what’s going on and is expecting me to do some cleanup on the mess I made instead of making assumptions about whether or not I should still have certificates. To keep my life simple, I decided to go back to a clean slate on my &lt;strong&gt;sites-available&lt;/strong&gt; configurations since I knew that I could get &lt;strong&gt;certbot&lt;/strong&gt; to redo the configuration again as long as I could get it to successfully run. As a result, I just set the configurations for both laifu.moe and awk.ninja back to a super vanilla setup. Just &lt;strong&gt;%s/laifu.moe/awk.ninja/g&lt;/strong&gt; on the file below for what I configured on awk.ninja.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;server {
+        listen 80;
+        listen [::]:80;
+
+        root /var/www/laifu.moe/html;
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name laifu.moe www.laifu.moe;
+
+        location / {
+                try_files $uri $uri/ =404;
+        }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Once I had that done, I restarted nginx just to make sure it was working and I could hit port 80 for both sites.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo systemctl restart nginx
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With that working, I was able to re-run &lt;strong&gt;certbot&lt;/strong&gt; and finally get the menu from my initial screenshot. I first configured a certificate for awk.ninja and its www variant. Once that was done, I ran &lt;strong&gt;certbot&lt;/strong&gt; one more time and walked through getting a certificate for laifu.moe and its www-variant. In both instances, I opted to have &lt;strong&gt;certbot&lt;/strong&gt; reconfigure the files in &lt;strong&gt;sites-available&lt;/strong&gt; to redirect all HTTP traffic for HTTPS. I restarted Nginx one more time and &lt;em&gt;finally&lt;/em&gt; I had everything configured the way I wanted with each site using its &lt;em&gt;own&lt;/em&gt; certificate.&lt;/p&gt;
+&lt;p&gt;The moral of the story is to actually troubleshoot the problem instead of just starting off by deleting shit from your server. Also, try staying pink!&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

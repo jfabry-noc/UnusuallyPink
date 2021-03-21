@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>macOS Big Sur 11.2 Homebrew and Git Error :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
+ Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
+ When this happens, not only is Homebrew broken, but git itself is broken." />
+<meta name="keywords" content="big-sur, brew, git, homebrew, macos" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="macOS Big Sur 11.2 Homebrew and Git Error">
+<meta property="og:description" content="After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
+ Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
+ When this happens, not only is Homebrew broken, but git itself is broken." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-02-15 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/">macOS Big Sur 11.2 Homebrew and Git Error</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-02-15 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/big-sur/">big-sur</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/brew/">brew</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/git/">git</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/homebrew/">homebrew</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/macos/">macos</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running <code>brew update</code> to update all of the packages available in <a href="https://brew.sh/">Homebrew</a>, I got a wall of text regarding things going off the rails that ultimately culminated with this error:</p>
+<blockquote>
+<p>Error: Failure while executing; <code>git config --replace-all homebrew.analyticsmessage true</code> was terminated by uncaught signal KILL.</p>
+</blockquote>
+<p>When this happens, not only is Homebrew broken, but <code>git</code> itself is broken. Running a simple <code>git status</code> inside of an existing repository will similarly result in an error. I initially tweeted about it after I found a <a href="https://github.com/Homebrew/discussions/discussions/673">relevant thread on GitHub</a>.</p>
+<!-- raw HTML omitted -->
+<p>I did have to combine the steps from a few different support threads, though, so after I had to go through the same process again after upgrading from macOS 11.2 to 11.2.1, I figured I&rsquo;d throw together a quick post about what worked for me. From the input others are sharing on GitHub, it seems different combinations are working for different people, so your mileage may vary.</p>
+<p>The first thing that I needed to do is reinstall the Xcode CLI tools. This is <em>not</em> a full Xcode installation, so no need to worry about a massive download. If you get the warning about being on battery and the recommendation that you only do the installation while the device is plugged in, you can likely just ignore it and proceed on battery power; on my system the install takes about 2 minutes.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">xcode-select --install
+</code></pre></div><p>For some people, the second and final step is to reinstall <code>git</code>. This did <em>not</em> work for me, though. Following <a href="https://github.com/Homebrew/discussions/discussions/439#discussioncomment-261267">another thread</a>, I discovered that I needed to reinstall two dependencies of <code>git</code>: <code>gettext</code> and <code>pcre2</code>. I&rsquo;m assuming that you can likely reinstall both with one command without any issues, but both times I&rsquo;ve seen the problem thus far I&rsquo;ve run the commands individually:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew reinstall gettext
+brew reinstall pcre2
+</code></pre></div><p>The final step then is to <em>now</em> reinstall <code>git</code>.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">brew reinstall git
+</code></pre></div><p>Once that&rsquo;s done, now re-running <code>brew update</code> or <em>any</em> <code>git</code> command should be successful.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/online-reading-redux/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Online Reading Redux</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/switching-to-brave/">
+                <span class="button__text">Switching To Brave</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

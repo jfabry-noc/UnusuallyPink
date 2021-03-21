@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Switching To Squarespace :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="If you happened to see this site around the time when the first post went up, you might notice that:
+  The site looks very different now.
+  A lot of what’s in that first post no longer seems to be true.
+  For example, this is not the Rusty theme for Hugo. Those technically savvy would also notice that the site no longer has the same DNS record value as laifu." />
+<meta name="keywords" content="squarespace, web-development, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/switching-to-squarespace/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Switching To Squarespace">
+<meta property="og:description" content="If you happened to see this site around the time when the first post went up, you might notice that:
+  The site looks very different now.
+  A lot of what’s in that first post no longer seems to be true.
+  For example, this is not the Rusty theme for Hugo. Those technically savvy would also notice that the site no longer has the same DNS record value as laifu." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/switching-to-squarespace/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2019-04-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/switching-to-squarespace/">Switching To Squarespace</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2019-04-20 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/squarespace/">squarespace</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/web-development/">web-development</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>If you happened to see this site around the time when the <a href="https://www.unusually.pink/blog/its-all-about-being-unusually-pink">first post</a> went up, you might notice that:</p>
+<ol>
+<li>
+<p>The site looks very different now.</p>
+</li>
+<li>
+<p>A lot of what’s in that first post no longer seems to be true.</p>
+</li>
+</ol>
+<p>For example, this is <em>not</em> the <a href="https://themes.gohugo.io/hugo-theme-rusty/">Rusty</a> theme for Hugo. Those technically savvy would also notice that the site no longer has the same DNS record value as <a href="https://laifu.moe">laifu.moe</a> where things were originally hosted. That’s because the site is no longer running on my own web server and is not created using Hugo. There were a few reasons for this. The main was just that I’m <strong>really</strong> bad at web design. The Rusty theme in Hugo is pretty light on imagery, which I’m cool with. Once we decided to actually make <em>Unusually Pink</em> into a thing and do a podcast, though, we had our <strong>amazing</strong> logos made by the uber-talented <a href="https://www.jpfdesigns.com/">JPFDesigns</a>. Integrating those into the Rusty theme for Hugo was a bit more than I was up for; CSS is legitimately the final boss of my life, and my life is (apparently) an NES <em>Contra</em> game; I couldn’t do it.</p>
+<p>The other reason was just that it allows for <strong>much</strong> better reliability. The site isn’t beholden to my ability to not mess up my web server. Not that it’s particularly likely for me to do something to brick it (I’ve been using Linux and Nginx for my web servers for ages now), but it’s possible. I was also responsible for backups, which I’d prefer to take off of my own hands if possible.</p>
+<p>The last reason was that the site really needed to be divided from one main section (e.g. the blog I originally planned just to do <strong>something</strong> with the domain) to two sections: a blog and a list of podcast episodes. While I was able to just dump a <strong>/podcast</strong> directory into my <strong>static</strong> folder for Hugo, it meant that posting podcast episodes and summaries was now an entirely manual process rather than something assisted by a CMS-esque system like Hugo.</p>
+<p>Swapping to <a href="https://www.squarespace.com/">Squarespace</a> allowed me to let someone far smarter than me figure out all of that within a theme; all I had to do was upload some images (Squarespace is awesome at scaling images for me, even when it needed to make one tiny for the favicon) and then swap around a few of the colors in the theme to get something <em>unusually pink</em>. I was also able to simply add two blogs to the site; one is a normal blog and the other will have posts for each podcast episode. In this way, both sections of the site are managed by a CMS rather than being done manually. Doing it manually may not seem like <strong>too</strong> big of a deal at first, but once you start to get too many posts for a single page, creating and manually updating the pagination after each new post would be enough to drive someone insane.</p>
+<p>As for choosing Squarespace, it’s the one I’ve heard the most about through various avenues on the Internet. Their pricing was reasonable, and I figured it seemed like a safe bet since I know a few other people who have experience with them. The other recommendation I got was Wix, which I admittedly had never heard of previously. Looking at the <a href="https://www.wix.com/upgrade/website">pricing for Wix</a> compared to the <a href="https://www.squarespace.com/pricing">pricing for Squarespace</a>, though, I think it’s clear that Squarespace is a better deal. The Wix $11 USD per month package is pretty lackluster, especially when you look at 2 GB of bandwidth and 3 GB of storage. To get something more comparable to Squarespace’s $12 per month package that includes unlimited bandwidth and storage, you’d need the $14 per month plan from Wix… and that still doesn’t give you unlimited storage.</p>
+<p>Expect the site to still go through a few minor changes as we continue to tweak the layout, colors, and everything else. Feel free to drop any feedback to our <a href="https://twitter.com/UnusuallyPink">Twitter profile</a>!</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/the-unusually-pink-playlist/">
+                <span class="button__icon">←</span>
+                <span class="button__text">The Unusually Pink Playlist</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/2018-in-music-spotify-wrapped/">
+                <span class="button__text">2018 In Music: Spotify Wrapped</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>powershell on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/powershell/</link>
+    <description>Recent content in powershell on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 11 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Updating PowerShellGet</title>
+      <link>https://hugo.unusually.pink/posts/updating-powershellget/</link>
+      <pubDate>Sun, 11 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/updating-powershellget/</guid>
+      <description>It&amp;rsquo;s not too often these days that I find myself needing to update the underpinnings of PowerShell. The majority of the PowerShell work I do now is based on PowerShell Core, the current version of which is 7.0.3, and frequently just comes with newer versions of the supporting modules. PowerShell Core began with PowerShell 6 and is created with .NET Core, which is Microsoft&amp;rsquo;s open source and cross-platform flavor of .</description>
+      <content>&lt;p&gt;It&amp;rsquo;s not too often these days that I find myself needing to update the underpinnings of PowerShell. The majority of the PowerShell work I do now is based on &lt;a href=&#34;https://github.com/PowerShell/PowerShell&#34;&gt;PowerShell Core&lt;/a&gt;, the current version of which is 7.0.3, and frequently just comes with newer versions of the supporting modules. PowerShell Core began with PowerShell 6 and is created with .NET Core, which is Microsoft&amp;rsquo;s open source and cross-platform flavor of .NET. PowerShell version 5 and before, known as Windows PowerShell, is the original, Windows-specific variant of PowerShell. Microsoft doesn&amp;rsquo;t really do any new development work on Windows PowerShell, instead opting to work on PowerShell Core and slowly make the full set of functionality available on all platforms.&lt;/p&gt;
+&lt;p&gt;This is awesome, but some systems very specifically target Windows PowerShell. This can easily happen since the interpreter even has a different name; Windows PowerShell calls &lt;code&gt;powershell.exe&lt;/code&gt; while PowerShell Core calls &lt;code&gt;pwsh.exe&lt;/code&gt; in an effort to allow the two versions to co-exist on the same Windows host. As a result, systems which proxy PowerShell commands or scripts on your behalf down to a target machine that have not been updated to expect PowerShell Core will generally target Windows PowerShell instead. This was the situation I found myself in last week.&lt;/p&gt;
+&lt;p&gt;I was attempting to load a script that I had written into a monitoring platform which will then send my script down to any number of &amp;ldquo;collector&amp;rdquo; machines in order to for it to execute and do the actual data aggregation. In this case, my script failed because it was calling the &lt;code&gt;MSAL.PS&lt;/code&gt; module. &lt;a href=&#34;https://github.com/AzureAD/microsoft-authentication-library-for-dotnet&#34;&gt;MSAL&lt;/a&gt; is the Microsoft Authentication Library, and as the name indicates it facilitates authentication to Azure AD. It replaces the older Azure AD Authentication Library (ADAL), and is honestly &lt;em&gt;much&lt;/em&gt; nicer to use. The module needs to be installed first, though, and while I had previously installed it on the target system under PowerShell Core, Windows PowerShell is a completely separate entity with a separate space for modules. I remoted to the system and ran the following to handle the installation from an administrative Windows PowerShell session:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Install-Module -Name MSAL.PS&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Instead of joy, I got the following error message:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;WARNING: The specified module &amp;lsquo;MSAL.PS&amp;rsquo; with PowerShellGetFormatVersion &amp;lsquo;2.0&amp;rsquo; is not supported by the current version of PowerShellGet. Get the latest version of the PowerShellGet module to install this module, &amp;lsquo;MSAL.PS&amp;rsquo;.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Ick&amp;hellip; some things were a bit old in the Windows PowerShell installation. This was one of the rare instances where the error message didn&amp;rsquo;t tell me &lt;em&gt;exactly&lt;/em&gt; how to fix the issue, though, so I did a few searches on this exact error. The trick is that updating &lt;code&gt;PowerShellGet&lt;/code&gt; involves not one but two steps.&lt;/p&gt;
+&lt;p&gt;While &lt;code&gt;PowerShellGet&lt;/code&gt; is a module specific for discovering and installing PowerShell packages from the &lt;a href=&#34;https://www.powershellgallery.com/&#34;&gt;PowerShell Gallery&lt;/a&gt;, it leverages Microsoft&amp;rsquo;s much more generic &lt;a href=&#34;https://www.nuget.org/&#34;&gt;NuGet package manager&lt;/a&gt;. To get the latest version of PowerShellGet, I &lt;a href=&#34;https://docs.microsoft.com/en-us/powershell/scripting/gallery/installing-psget?view=powershell-7&#34;&gt;first had to make sure I was using the latest version of NuGet&lt;/a&gt; by running:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Install-PackageProvider Nuget -Force&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once that completed, &lt;em&gt;then&lt;/em&gt; I was able to successfully update PowerShellGet via:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Install-Module -Name PowerShellGet -Force&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Once the update completes, the current PowerShell session will still be running the old version. I just closed PowerShell, re-launched a new administrator instance, and then successfully installed the module via the same cmdlet from earlier:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Install-Module -Name MSAL.PS&lt;/code&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Salvaging Images From Squarespace</title>
+      <link>https://hugo.unusually.pink/posts/salvaging-images-from-squarespace/</link>
+      <pubDate>Sun, 13 Sep 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/salvaging-images-from-squarespace/</guid>
+      <description>I wrote previously about moving this blog from Squarespace to WordPress. One of my cited concerns with Squarespace was being locked into that particular platform without a lot of options for moving somewhere else. So how did I move my content to WordPress? I was able to export the written content for the posts themselves from within Squarespace, fortunately. Inside of Settings &amp;gt; Advanced is an Import / Export option. The only export offering is WordPress, so I guess it was lucky that&amp;rsquo;s where I was moving.</description>
+      <content>&lt;p&gt;I wrote previously about &lt;a href=&#34;https://unusually.pink/unusually-pink-migration/&#34;&gt;moving this blog from Squarespace to WordPress&lt;/a&gt;. One of my cited concerns with Squarespace was being locked into that particular platform without a lot of options for moving somewhere else. So how did I move my content to WordPress? I was able to export the &lt;em&gt;written&lt;/em&gt; content for the posts themselves from within Squarespace, fortunately. Inside of Settings &amp;gt; Advanced is an &lt;strong&gt;Import / Export&lt;/strong&gt; option. The &lt;em&gt;only&lt;/em&gt; export offering is WordPress, so I guess it was lucky that&amp;rsquo;s where I was moving. This gives an XML file with the written content and metadata for each post. Unfortunately, there is no option to export the &lt;em&gt;images&lt;/em&gt; that I&amp;rsquo;ve uploaded over the past year of creating content over at Squarespace; within the XML file the images show up as &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; tags with a link to the Squarespace CDN for the actual image. For example, this is what I see where the image is for the last post I authored over on Squarespace:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div style=&amp;quot;padding-bottom:45.903255462646484%;&amp;quot; class=&amp;quot; image-block-wrapper has-aspect-ratio &amp;quot; data-animation-role=&amp;quot;image&amp;quot; &amp;gt; &amp;lt;noscript&amp;gt;&amp;lt;img src=&amp;quot;https://images.squarespace-cdn.com/content/v1/5cabd40b755be258403ccb99/1595366630913-VD12AA9IHURXLT6CWQ66/ke17ZwdGBToddI8pDm48kKEtlFlv-8yggmb8KJA0a9wUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcpEap199WJ5tA07nqy9HB7RsfdGE2RUqSBzw535kCng92V_tkyiZ3FgjXcK6wugnz/html.png&amp;quot; alt=&amp;quot;html.png&amp;quot; /&amp;gt;&amp;lt;/noscript&amp;gt;&amp;lt;img class=&amp;quot;thumb-image&amp;quot; data-src=&amp;quot;https://images.squarespace-cdn.com/content/v1/5cabd40b755be258403ccb99/1595366630913-VD12AA9IHURXLT6CWQ66/ke17ZwdGBToddI8pDm48kKEtlFlv-8yggmb8KJA0a9wUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcpEap199WJ5tA07nqy9HB7RsfdGE2RUqSBzw535kCng92V_tkyiZ3FgjXcK6wugnz/html.png&amp;quot; data-image=&amp;quot;https://images.squarespace-cdn.com/content/v1/5cabd40b755be258403ccb99/1595366630913-VD12AA9IHURXLT6CWQ66/ke17ZwdGBToddI8pDm48kKEtlFlv-8yggmb8KJA0a9wUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcpEap199WJ5tA07nqy9HB7RsfdGE2RUqSBzw535kCng92V_tkyiZ3FgjXcK6wugnz/html.png&amp;quot; data-image-dimensions=&amp;quot;1013x465&amp;quot; data-image-focal-point=&amp;quot;0.5,0.5&amp;quot; alt=&amp;quot;html.png&amp;quot; data-load=&amp;quot;false&amp;quot; data-image-id=&amp;quot;5f175ce6cb20a366ea6f4d62&amp;quot; data-type=&amp;quot;image&amp;quot; /&amp;gt; &amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;If you think that looks disgusting, that&amp;rsquo;s because it is. When I imported the XML file into WordPress, I saw an option to download any attachments on each post. I checked that box, but since the images are linked to the Squarespace CDN they&amp;rsquo;re considered to be HTML content rather than attachments. As a result, WordPress simply embeds the &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; in each post as a custom HTML block that doesn&amp;rsquo;t actually render the image.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/cash_money.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Set on &lt;strong&gt;not&lt;/strong&gt; going through 50 posts to manually save the images out of them, I started looking at the XML to see if I could do anything useful with the image URLs. One thing that immediately concerned me was that, when I wasn&amp;rsquo;t sure what I was going to do with the &lt;code&gt;unusually.pink&lt;/code&gt; domain but knew that I didn&amp;rsquo;t want to keep it at Squarespace, I marked the Squarespace site as Private, meaning the only way to view the content was to log in. I &lt;em&gt;assumed&lt;/em&gt; this meant the image content on the Squarespace CDN would be inaccessible until I made the site public again. After copying an image URL from my XML file, though, I saw that it was still publicly available. Flagging a Squarespace site as private means you can&amp;rsquo;t load the site directly, but content on Squarespace&amp;rsquo;s CDN is still accessible. That in itself seems like a problem to me and a very good reason to leave the platform, but in this one case it was working to my benefit. I realized that I could parse all of the images files out of the XML file with a script and download them programmatically.&lt;/p&gt;
+&lt;p&gt;As you can see from the XML snippet above, images on the Squarespace CDN have URLs like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://images.squarespace-cdn.com/content/v1/5cabd40b755be258403ccb99/1595366630913-VD12AA9IHURXLT6CWQ66/ke17ZwdGBToddI8pDm48kKEtlFlv-8yggmb8KJA0a9wUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N\_N4V1vUb5AoIIIbLZhVYxCRW4BPu10St3TBAUQYVKcpEap199WJ5tA07nqy9HB7RsfdGE2RUqSBzw535kCng92V\_tkyiZ3FgjXcK6wugnz/html.png
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There&amp;rsquo;s a whole lot of CDN nonsense, followed by a forward slash and the original file name at the very end. While this would be handy for getting the original file name, I didn&amp;rsquo;t want to end up with dozens of images in a folder where I had no idea what post they belonged to, and I definitely didn&amp;rsquo;t want to manually correlate the file name with the CDN link in each of the HTML blocks in WordPress.&lt;/p&gt;
+&lt;p&gt;The XML, though, also includes the title of each post, and I realized that if I was scanning each line of the XML for image tags, I could also check for the title tag and keep a variable constantly updated with that. With this idea, I would just &lt;em&gt;start&lt;/em&gt; each file name with the post title so that they would be grouped together. Once the dots were connected, it was simple to come up with the following short PowerShell script:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;It downloads all of the images referenced in the XML file in the format of:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;postTitle_fileName.extension
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I added some extra checks to remove unsavory characters from the file names; while it&amp;rsquo;s a valid character in most modern filesystems, for example, have you ever tried to actually programmatically do things from a Bash shell with a file that has a &lt;code&gt;[&lt;/code&gt; in the name? It&amp;rsquo;s not pretty.&lt;/p&gt;
+&lt;p&gt;While this saved me from having to manually download each image from Squarespace, I still had to manually go through each post in WordPress, remove the custom HTML block where each image should have been, and then upload the appropriate image. With the way I downloaded the images, though, I just started at the top of the directory and worked my way through the images alphabetically since each post was grouped together. It sucked, but it could have been a &lt;em&gt;lot&lt;/em&gt; worse. If nothing else it made me glad that I moved forward with migrating the site now rather than waiting a few more months for the Squarespace subscription to lapse; I didn&amp;rsquo;t want to deal with this for any more posts than was strictly necessary.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Sorting IP Addresses With PowerShell</title>
+      <link>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</link>
+      <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</guid>
+      <description>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
+Get-Content -Path .\ipListFixed.txt | Sort-Object
+The results were, suffice to say, lackluster. I ended up with something like this:</description>
+      <content>&lt;p&gt;I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the &lt;strong&gt;Sort-Object&lt;/strong&gt; cmdlet:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Get-Content -Path .\ipListFixed.txt | Sort-Object&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The results were, suffice to say, lackluster. I ended up with something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10.1.69.1
+10.1.69.12
+10.1.69.148
+10.1.69.149
+10.1.69.17
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Gross, right? Obviously 10.1.69.17 shouldn’t be after 10.1.69.148 or .149. The issue is that the whole octet isn’t being considered. It’s being sorted like they’re just strings rather than IP addresses; 7 is bigger than 4 so they’re sorted accordingly. PowerShell isn’t really comparing the numbers of 17 to 148, for example, to realize that 17 is actually smaller.&lt;/p&gt;
+&lt;p&gt;It makes sense; PowerShell can’t assume that the value is an IP address so it’s treating the value like a string instead. This means that the key is to &lt;em&gt;tell&lt;/em&gt; PowerShell it’s an IP address so that PowerShell can adjust the way it does sorting. This is possible by casting the values as the &lt;a href=&#34;https://docs.microsoft.com/en-us/dotnet/api/system.version?view=netcore-2.2&#34;&gt;.NET Version class&lt;/a&gt;. Since I happened to be pulling the IPs from a file, I did the casting within the &lt;strong&gt;-Property&lt;/strong&gt; parameter that I added to the &lt;strong&gt;Sort-Object&lt;/strong&gt; cmdlet:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;Get-Content -Path .\ipListFixed.txt | Sort-Object -Property { [System.Version]$_ }&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;This yields &lt;em&gt;significantly&lt;/em&gt; better results:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10.1.69.1
+10.1.69.2
+10.1.69.12
+10.1.69.17
+10.1.69.29
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Stay pink!&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV</title>
+      <link>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
+      <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
+      <description>I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
+Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .</description>
+      <content>&lt;p&gt;I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.&lt;/p&gt;
+&lt;h2 id=&#34;exporting-non-standard-attributes-to-csv&#34;&gt;Exporting Non-standard Attributes To CSV&lt;/h2&gt;
+&lt;p&gt;My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .csv file. When I say “non-standard” I don’t mean that we’ve done a custom schema extension or anything like that. Instead, I simply mean that the AD PowerShell module only wants to include certain attributes when exporting AD objects to a .csv file. For example, if I run &lt;strong&gt;Get-ADObject&lt;/strong&gt; &lt;strong&gt;-Properties *&lt;/strong&gt; against a particular contact object and simply let the output dump to my shell, I see all of the attributes I expect including stuff like &lt;strong&gt;givenName&lt;/strong&gt; and &lt;strong&gt;sn&lt;/strong&gt;. However, if I run the exact same cmdlet but pipe the result to &lt;strong&gt;Export-Csv&lt;/strong&gt; rather than sending it to the shell I will not have all the same attributes; ones like &lt;strong&gt;givenName&lt;/strong&gt; and &lt;strong&gt;sn&lt;/strong&gt; will now be missing. That’s a problem.&lt;/p&gt;
+&lt;h2 id=&#34;storing-mutli-value-attributes-in-a-csv&#34;&gt;Storing Mutli-Value Attributes In a CSV&lt;/h2&gt;
+&lt;p&gt;The other problem was that one of the attributes I needed is &lt;strong&gt;proxyAddresses&lt;/strong&gt;. This is a multi-value attribute as contacts could very likely have multiple proxy addresses associated with a particular mailbox. They may have an alias, x500 addresses, etc. If you use PowerShell to pull this information from AD and dump it to the screen you’ll see the expected proxy address information. If you call &lt;strong&gt;GetType()&lt;/strong&gt; on the &lt;strong&gt;proxyAddresses&lt;/strong&gt; attribute you’ll see it listed as an array. That’s why if you export a contact to a .csv file and include &lt;strong&gt;proxyAddresses&lt;/strong&gt;, the value for each contact in that particular column will simply read:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Microsoft.ActiveDirectory.Management.ADPropertyValueCollection&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;PowerShell isn’t sure what to do with a multi-value attribute as far as the .csv file goes so it stores the data type. This is also a problem!&lt;/p&gt;
+&lt;h2 id=&#34;the-solution&#34;&gt;The Solution&lt;/h2&gt;
+&lt;p&gt;My solution to this was the following. Note that it’ll be easier to view &lt;a href=&#34;https://gist.github.com/JFFail/6dd9acb0020845a905eeda8fbc8de1a7&#34;&gt;the Gist for it&lt;/a&gt;.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Get the objects with the required attributes and storing proxyAddresses properly in the .csv file.
+Get-ADObject -Filter { objectClass -eq &amp;quot;contact&amp;quot; } -Server myserver.mydomain.net -SearchBase &amp;quot;OU=Contacts,DC=mydomain,DC=net&amp;quot; -SearchScope OneLevel -Properties name,givenName,sn,displayName,telephoneNumber,proxyAddresses,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title | Select-Object name,givenName,sn,displayName,telephoneNumber,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title,@{name=&amp;quot;proxyAddresses&amp;quot;; expression={$_.proxyAddresses -join &amp;quot;;&amp;quot;}} | Export-Csv -Path .\sample.csv -Encoding ASCII -Append -NoClobber -NoTypeInformation
+
+# Shows how to then use the proxyAddresses attribute in the future.
+$allContacts = Import-Csv -Path .\sample.csv
+foreach($singleContact in $allContacts) {
+    $proxyAddresses = $singleContact.proxyAddresses.Split(&amp;quot;;&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The first thing I needed was to get the properties I actually needed as opposed to just the ones PowerShell felt like including due to the object type. The solution was to:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Specify all of the attributes I wanted in &lt;strong&gt;-Properties&lt;/strong&gt; to ensure they would be available.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Pipe the AD object to &lt;strong&gt;Select-Object&lt;/strong&gt; and then re-specify each of the properties I wanted.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;This works because PowerShell is selecting the attributes to include in the .csv file based on the type of object. &lt;strong&gt;Select-Object&lt;/strong&gt; takes whatever comes through the pipeline, though, and makes a brand new, generic object from it. That object will include any properties from that original object that you specify, hence why I tell it the exact listing of properties that I need again.&lt;/p&gt;
+&lt;p&gt;This leads to the solution to the second problem which is what to do for &lt;strong&gt;proxyAddresses&lt;/strong&gt;. PowerShell allows for the use of an expression to parse together a new property. In this instance the expression is to take the existing &lt;strong&gt;proxyAddresses&lt;/strong&gt; array and &lt;strong&gt;-join&lt;/strong&gt; it into a string. Each of the items in the array are separated by a semicolon. If a contact has the following proxy addresses, for example:&lt;/p&gt;
+&lt;p&gt;SMTP:pretty@unusually.pink
+smtp:awesome@unusually.pink&lt;/p&gt;
+&lt;p&gt;Then the property in the .csv file will be stored as:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SMTP:pretty@unusually.pink;smtp:awesome@unusually.pink
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You could pick any character for the delimiter that you want as long as it isn’t used in other data that you’re storing.&lt;/p&gt;
+&lt;p&gt;In this instance my goal was to take the exported data, re-import it, and then create contacts in a different AD forest. When creating a new object AD is expecting an array for the &lt;strong&gt;proxyAddresses&lt;/strong&gt; attribute. A string with a random delimiter won’t do it. That’s where the second part of the example comes into play. If I’m looping through all of the data stored in the .csv file I can recreate the array of proxy addresses by splitting the string on my delimiter (in this case a semicolon) and assigning the result to a variable. That variable will be an array which can then be used to popular &lt;strong&gt;proxyAddresses&lt;/strong&gt; when running &lt;strong&gt;New-ADObject&lt;/strong&gt;&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

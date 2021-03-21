@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>json on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/json/</link>
+    <description>Recent content in json on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JSON-to-Go</title>
+      <link>https://hugo.unusually.pink/posts/json-to-go/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/json-to-go/</guid>
+      <description>Lately I&amp;rsquo;ve been working through the very arduous (for me) process of learning Go for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn Kotlin since I&amp;rsquo;ve been working with another JVM-based language in Groovy, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow.</description>
+      <content>&lt;p&gt;Lately I&amp;rsquo;ve been working through the &lt;em&gt;very&lt;/em&gt; arduous (for me) process of learning &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn &lt;a href=&#34;https://kotlinlang.org/&#34;&gt;Kotlin&lt;/a&gt; since I&amp;rsquo;ve been working with another JVM-based language in &lt;a href=&#34;https://failti.me/posts/groovy_prog/&#34;&gt;Groovy&lt;/a&gt;, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow. Go, on the other hand, has a handy package manager built into the same binary you use to compile your own code.&lt;/p&gt;
+&lt;p&gt;After going through a book to get the basics of Go down (I won&amp;rsquo;t link the book because I actually thought it was a pretty terrible source, and I wouldn&amp;rsquo;t recommend it) I jumped in to doing a little bit of API work since that&amp;rsquo;ll be important for some of the project ideas I&amp;rsquo;m kicking around. It was fairly simple to look up how to leverage the &lt;code&gt;io/ioutil&lt;/code&gt; and &lt;code&gt;net/http&lt;/code&gt; packages to make an unauthenticated call to a REST API endpoint. This gives the data back in a byte slice. I can cast that to a string to view it and verify that I got back the expected data, but obviously I can&amp;rsquo;t actually &lt;em&gt;do&lt;/em&gt; anything I want with the data in a byte slice. In many other languages this is where I would use some type of JSON library to parse the response into something like a map/hashtable/dictionary. I&amp;rsquo;m used to languages where the interpreter just kind of figures that out for you based on the syntax of the JSON.&lt;/p&gt;
+&lt;p&gt;Go isn&amp;rsquo;t like that, though. Instead, I need to define a &lt;code&gt;struct&lt;/code&gt; that matches the format of the API response. If I have that, I can use the &lt;code&gt;encoding/json&lt;/code&gt; package in Go to create a struct. That&amp;rsquo;s something I &lt;em&gt;could&lt;/em&gt; do manually, but that would be extremely tedious. For example, this is what I see when dumping the byte array I get back from querying my &lt;a href=&#34;https://mastodon.sdf.org/@failtime&#34;&gt;own Mastodon account&lt;/a&gt; as a string:&lt;/p&gt;
+&lt;p&gt;{
+[
+{
+&amp;ldquo;id&amp;rdquo;:&amp;ldquo;49&amp;rdquo;,
+&amp;ldquo;username&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;acct&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;display_name&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;locked&amp;rdquo;:false,
+&amp;ldquo;bot&amp;rdquo;:false,
+&amp;ldquo;discoverable&amp;rdquo;:false,
+&amp;ldquo;group&amp;rdquo;:false,
+&amp;ldquo;created_at&amp;rdquo;:&amp;ldquo;2017-04-24T15:48:10.334Z&amp;rdquo;,
+&amp;ldquo;note&amp;rdquo;:&amp;quot;\u003cp\u003eProfessional loser.\u003c/p\u003e&amp;quot;,
+&amp;ldquo;url&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/@failtime%22,&#34;&gt;https://mastodon.sdf.org/@failtime&amp;quot;,&lt;/a&gt;
+&amp;ldquo;avatar&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&amp;quot;,&lt;/a&gt;
+&amp;ldquo;avatar_static&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&amp;quot;,&lt;/a&gt;
+&amp;ldquo;header&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&amp;quot;,&lt;/a&gt;
+&amp;ldquo;header_static&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&amp;quot;,&lt;/a&gt;
+&amp;ldquo;followers_count&amp;rdquo;:99,
+&amp;ldquo;following_count&amp;rdquo;:69,
+&amp;ldquo;statuses_count&amp;rdquo;:1880,
+&amp;ldquo;last_status_at&amp;rdquo;:&amp;ldquo;2020-06-27&amp;rdquo;,
+&amp;ldquo;emojis&amp;rdquo;:[],
+&amp;ldquo;fields&amp;rdquo;:[
+{
+&amp;ldquo;name&amp;rdquo;:&amp;ldquo;Blog&amp;rdquo;,
+&amp;ldquo;value&amp;rdquo;:&amp;quot;\u003ca href=\&amp;ldquo;&lt;a href=&#34;https://failti.me&#34;&gt;https://failti.me&lt;/a&gt;\&amp;rdquo; rel=\&amp;ldquo;me nofollow noopener noreferrer\&amp;rdquo; target=\&amp;quot;_blank\&amp;quot;\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&amp;quot;\&amp;quot;\u003efailti.me\u003c/span\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003e\u003c/span\u003e\u003c/a\u003e&amp;rdquo;,
+&amp;ldquo;verified_at&amp;rdquo;:&amp;ldquo;2020-06-24T00:27:59.294+00:00&amp;rdquo;
+},
+{
+&amp;ldquo;name&amp;rdquo;:&amp;ldquo;Laifu&amp;rdquo;,
+&amp;ldquo;value&amp;rdquo;:&amp;quot;\u003ca href=\&amp;ldquo;&lt;a href=&#34;https://laifu.moe&#34;&gt;https://laifu.moe&lt;/a&gt;\&amp;rdquo; rel=\&amp;ldquo;me nofollow noopener noreferrer\&amp;rdquo; target=\&amp;quot;_blank\&amp;quot;\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&amp;quot;\&amp;quot;\u003elaifu.moe\u003c/span\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003e\u003c/span\u003e\u003c/a\u003e&amp;rdquo;,
+&amp;ldquo;verified_at&amp;rdquo;:&amp;ldquo;2020-06-15T00:37:19.734+00:00&amp;rdquo;
+}
+]
+}
+]
+}&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; don&amp;rsquo;t want to have to go through that to create a struct out of it. I started digging around to see if there was a better way and, as is usually the case when dealing with code, came across a &lt;a href=&#34;https://stackoverflow.com/questions/43624404/golang-how-to-parse-unmarshal-decode-a-json-array-api-response&#34;&gt;Stack Overflow post on the topic&lt;/a&gt;. Along with some other helpful information that I used to improve my code a little, one of the replies linked to &lt;a href=&#34;https://mholt.github.io/json-to-go/&#34;&gt;JSON-to-Go&lt;/a&gt;. The service allows me to paste in JSON output like what I included above in this post, and it will automatically generate the corresponding struct. I tried it out, and it nicely gave me the following:&lt;/p&gt;
+&lt;p&gt;type AutoGenerated struct {
+ID             string        `json:&amp;ldquo;id&amp;rdquo;`
+Username       string        `json:&amp;ldquo;username&amp;rdquo;`
+Acct           string        `json:&amp;ldquo;acct&amp;rdquo;`
+DisplayName    string        `json:&amp;ldquo;display_name&amp;rdquo;`
+Locked         bool          `json:&amp;ldquo;locked&amp;rdquo;`
+Bot            bool          `json:&amp;ldquo;bot&amp;rdquo;`
+Discoverable   bool          `json:&amp;ldquo;discoverable&amp;rdquo;`
+Group          bool          `json:&amp;ldquo;group&amp;rdquo;`
+CreatedAt      time.Time     `json:&amp;ldquo;created_at&amp;rdquo;`
+Note           string        `json:&amp;ldquo;note&amp;rdquo;`
+URL            string        `json:&amp;ldquo;url&amp;rdquo;`
+Avatar         string        `json:&amp;ldquo;avatar&amp;rdquo;`
+AvatarStatic   string        `json:&amp;ldquo;avatar_static&amp;rdquo;`
+Header         string        `json:&amp;ldquo;header&amp;rdquo;`
+HeaderStatic   string        `json:&amp;ldquo;header_static&amp;rdquo;`
+FollowersCount int           `json:&amp;ldquo;followers_count&amp;rdquo;`
+FollowingCount int           `json:&amp;ldquo;following_count&amp;rdquo;`
+StatusesCount  int           `json:&amp;ldquo;statuses_count&amp;rdquo;`
+LastStatusAt   string        `json:&amp;ldquo;last_status_at&amp;rdquo;`
+Emojis         []interface{} `json:&amp;ldquo;emojis&amp;rdquo;`
+Fields         []struct {
+Name       string    `json:&amp;ldquo;name&amp;rdquo;`
+Value      string    `json:&amp;ldquo;value&amp;rdquo;`
+VerifiedAt time.Time `json:&amp;ldquo;verified_at&amp;rdquo;`
+} `json:&amp;ldquo;fields&amp;rdquo;`
+}&lt;/p&gt;
+&lt;p&gt;I pasted it into my code, changed the name from &lt;code&gt;AutoGenerated&lt;/code&gt; to something a little more fitting, and sure enough I was now able to &lt;code&gt;Unmarshal&lt;/code&gt; my API response into a usable struct&amp;hellip; without having to go through the pain of creating the struct myself. Huge kudos to the creator for such an awesome and useful service.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

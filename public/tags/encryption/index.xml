@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>encryption on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/encryption/</link>
+    <description>Recent content in encryption on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/encryption/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PSA: Get Ready For New Let&#39;s Encrypt Validation</title>
+      <link>https://hugo.unusually.pink/posts/psa-get-ready-for-new-lets-encrypt-validation/</link>
+      <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/psa-get-ready-for-new-lets-encrypt-validation/</guid>
+      <description>If you’re using Let’s Encrypt, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted.</description>
+      <content>&lt;p&gt;If you’re using &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt;, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted. March 13th is the deadline for ACME TLS-SNI-01 to no longer function, so there’s still a lot of time to take a couple of minutes and verify you’re in good shape.&lt;/p&gt;
+&lt;p&gt;*Note: I’m using &lt;code&gt;certbot&lt;/code&gt;, which makes this whole thing super easy. If you’re &lt;strong&gt;not&lt;/strong&gt; using &lt;code&gt;certbot&lt;/code&gt; then your steps will be different.*&lt;/p&gt;
+&lt;p&gt;The &lt;a href=&#34;https://letsencrypt.org/docs/staging-environment/&#34;&gt;Let’s Encrypt staging environment&lt;/a&gt; already has disabled ACME TLS-SNI-01 validation, so checking against that is a good test. As a &lt;code&gt;certbot&lt;/code&gt; user, I also needed to validate that I was using at least version 0.28 of the application, which is simple enough to do via:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;certbot --version    
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;That appears to be the latest version offered by the PPA: &lt;code&gt;ppa:certbot/certbot&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Testing a &lt;code&gt;certbot&lt;/code&gt; run against the staging environment is toggled via the &lt;code&gt;--dry-run&lt;/code&gt; switch. If you do a dry run of your renewal against the staging environment and everything comes back successful, you should be in good shape:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo certbot renew --dry-run
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;My certs all validated successfully, so everything is ready to go for the change. I presume if there are any failures then the dry run will alert you to what needs to be fixed; I can’t say for sure since I was lucky enough to not see any of those. Full instructions from Let’s Encrypt are &lt;a href=&#34;https://community.letsencrypt.org/t/how-to-stop-using-tls-sni-01-with-certbot/83210&#34;&gt;available on their site&lt;/a&gt;, though.&lt;/p&gt;
+&lt;p&gt;Happy encrypting!&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

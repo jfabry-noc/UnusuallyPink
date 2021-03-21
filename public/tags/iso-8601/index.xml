@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>iso-8601 on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/iso-8601/</link>
+    <description>Recent content in iso-8601 on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/iso-8601/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Parse ISO 8601 String With Timezone Offset To Date Object In Groovy</title>
+      <link>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
+      <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
+      <description>My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online.</description>
+      <content>&lt;p&gt;My &lt;a href=&#34;https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/&#34;&gt;Groovy posts always have the absolute worst titles&lt;/a&gt;, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online. Any time I manage to figure out something that was difficult to find information on, it seems like a good opportunity to fill the gap a bit.&lt;/p&gt;
+&lt;p&gt;I do a lot of work with APIs, mostly making calls against cloud-based systems. In the cloud, no one generally cares about what timezone you happen to be in, so UTC is always used. I&amp;rsquo;ve recently been making calls against local software platform, though, and &lt;strong&gt;it&lt;/strong&gt; returns timestamps in the local time of the server running it. Ick. I ended up with string values like the following which I then needed to parse as a Date object in Groovy for the sake of comparison.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;2020-10-17T02:00:21.644-04:00&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;I&amp;rsquo;m quite familiar with converting something like this &lt;em&gt;without&lt;/em&gt; the timezone offset at the end; that one was new for me. My first struggle was exactly what to search for in order to dig up information on this; I eventually discovered that this is &lt;a href=&#34;https://www.iso.org/iso-8601-date-and-time-format.html&#34;&gt;an ISO 8601 date and time format&lt;/a&gt;. I first attempted to simply pass this value straight to &lt;code&gt;Date.parse()&lt;/code&gt; like I would with something in UTC:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-java&#34; data-lang=&#34;java&#34;&gt;def dateString &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;2020-10-17T02:00:21.644-04:00&amp;#34;&lt;/span&gt;
+def dateObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Date&lt;span style=&#34;color:#f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;parse&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;yyyy-MM-dd&amp;#39;T&amp;#39;HH:mm:ss.SSSZ&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#f92672&#34;&gt;,&lt;/span&gt; dateString&lt;span style=&#34;color:#f92672&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Attempting this gives a really nice error message:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Unparseable date: &amp;ldquo;2020-10-17T02:00:21.644-04:00&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;Groovy telling me to get bent&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After more digging than I care to admit, I finally got to the root of the problem: Groovy doesn&amp;rsquo;t like the colon in the timezone offset. Rather than &lt;code&gt;04:00&lt;/code&gt; it wants &lt;code&gt;0400&lt;/code&gt;. Given that I work in the western hemisphere, I &lt;em&gt;could&lt;/em&gt; have taken the easy route and simply removed the last 3 characters, replacing &lt;code&gt;:00&lt;/code&gt; with &lt;code&gt;00&lt;/code&gt;. It&amp;rsquo;s not the most elegant solution, though, and there are parts of the world with timezone offsets in fractions of an hour; assuming it&amp;rsquo;s always going to be a whole hour isn&amp;rsquo;t safe. My first take, written last week, was to be extremely complicated by splitting the string into a list at each colon. From there, I concatenated the list items back into a string, separating them with colons, until attaching the very last piece, which is added sans colon:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;It technically works but doesn&amp;rsquo;t look so good; no one would ever call the above solution &amp;ldquo;elegant&amp;rdquo; by any stretch. That was done late on a Friday, though, and over the weekend I had a better thought pop into my head. What if instead of spitting up the entire string I simply:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Verified first that the end of the string matched what was expected.&lt;/li&gt;
+&lt;li&gt;Took a substring that was everything up until the problematic part of the offset.&lt;/li&gt;
+&lt;li&gt;Took a substring for the numbers after the last colon.&lt;/li&gt;
+&lt;li&gt;Put the parts from 2 and 3 together.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;After shaking off a bit of regular expression rust, this is what I ended up using:&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;The partial regex match of &lt;code&gt;:\d{2}$&lt;/code&gt; validates that the string ends with a colon followed by any 2 digits. If so, I first create a substring from the first index (0) up to the index at the length of the string minus 3, meaning I omit the colon and last 2 numbers. Then I append to that a substring from the overall string&amp;rsquo;s length minus &lt;strong&gt;2&lt;/strong&gt; through the end of the string. Using the overall string&amp;rsquo;s length minus 2 rather than 3 means I just leave out the colon.&lt;/p&gt;
+&lt;p&gt;Is this the best solution? Probably not, but it&amp;rsquo;s getting the job done in my situation. If I ran into issues, my next attempt would be to get the index of every colon in the entire string and then replace the very last one with nothing.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

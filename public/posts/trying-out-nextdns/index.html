@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Trying Out NextDNS :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I recently decided to take a little bit of time to set up NextDNS. While on the surface it&amp;rsquo;s similar to the myriad other DNS resolvers out there you can opt to use instead of the likely horrible DNS servers provided by your ISP, NextDNS is essentially a cloud-based Pi-hole. You can use some of the built-in blacklists in the product to block things like advertising, trackers, malware domains, and more." />
+<meta name="keywords" content="adblocking, dns, nextdns, privacy" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/trying-out-nextdns/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Trying Out NextDNS">
+<meta property="og:description" content="I recently decided to take a little bit of time to set up NextDNS. While on the surface it&amp;rsquo;s similar to the myriad other DNS resolvers out there you can opt to use instead of the likely horrible DNS servers provided by your ISP, NextDNS is essentially a cloud-based Pi-hole. You can use some of the built-in blacklists in the product to block things like advertising, trackers, malware domains, and more." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/trying-out-nextdns/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-10-31 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/trying-out-nextdns/">Trying Out NextDNS</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-10-31 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/adblocking/">adblocking</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/dns/">dns</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/nextdns/">nextdns</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/privacy/">privacy</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I recently decided to take a little bit of time to set up <a href="https://nextdns.io/">NextDNS</a>. While on the surface it&rsquo;s similar to the myriad other DNS resolvers out there you can opt to use instead of the likely horrible DNS servers provided by your ISP, NextDNS is essentially a cloud-based <a href="https://pi-hole.net/">Pi-hole</a>. You can use some of the built-in blacklists in the product to block things like advertising, trackers, malware domains, and more. There are a few key benefits to blocking things at the DNS level rather than relying on something to do the blocking your web browser. First off, most mobile browsers don&rsquo;t offer the same robust extension ecosystems we&rsquo;re all used to with full computers; you might be able to toggle some settings to block trackers, for example, but advertising is often a different beast altogether (though the <em>really</em> bad advertisements typically also have egregious tackers, meaning that blocking the trackers will block the ads.) Additionally, there are some nefarious browser extension posing as ad-blockers, and there have been instances of <a href="https://arstechnica.com/information-technology/2020/10/popular-chromium-ad-blockers-caught-stealing-user-data-and-accessing-accounts/">legitimate extensions being sold and turned nefarious</a>. Google&rsquo;s <a href="https://9to5google.com/2019/01/22/google-chrome-break-ad-blockers/">extremely sleazy war on ad-blocking</a> also makes DNS-based filtering attractive, though I&rsquo;d still recommend people avoid Chromium-based browsers if at all possible. The other nice part is that you can easily configure DNS settings on a router, meaning the same degree of protection can apply to IoT devices with no accessible network settings of their own. This similarly applies to applications on your computer that connect to the network outside of a browser, as we&rsquo;ll see later.</p>
+<p>NextDNS handles this by allowing you to specify your public IP address in their portal, thus linking traffic from your home with your NextDNS profile and all of the configurations that are in place there. The only caveat to it is needing to configure DDNS in some way or simply remembering to go to the portal in order to update the IP address should it ever change. Additionally, they offer apps for basically every major platform for configuring your devices and pointing them to the appropriate account. While you <em>can</em> just update the DNS settings in your host operating system rather than using an app, the app is still required for linking your device to your profile so that it will leverage the appropriate block lists. What I found to be <em>really</em> nice was that the iOS and iPad apps are able to leverage the new iOS 14 DNS profiles, meaning that it <em>doesn&rsquo;t</em> need to create a shell VPN tunnel just for your DNS requests; that&rsquo;s a huge win.</p>
+<p>To really test it out, for about 2 weeks I disabled the ad-blockers in my common browsers and tried to let NextDNS handle the brunt of my filtering needs. Getting it configured everywhere was fairly simple. The web portal will tell you what your current public IP is and offers a simple button to update your account to leverage that IP address. This made it simple to get basically everything in my home network using it after I modified the DNS servers in my router. I still went ahead and configured the settings individually on my devices, too, for the rare instance during a global pandemic when I&rsquo;m on a network other than my home network. The iOS and iPad apps just need you to tap a button to add the new DNS profile to the device. Likewise, the macOS app simply adds a new icon to your tray at the top-right and offers a toggle for turning on your NextDNS settings. Unsurprisingly, there&rsquo;s no Manjaro Linux app, though the service offers a bevy of examples for configuring your DNS settings on Linux; you&rsquo;re just stuck in the position of not being able to link the device to your NextDNS account if you happen to leave the home network. The only real problem I ran into was that I had configured Firefox to use DNS over HTTPS and forgotten about it; once I realized I needed an additional change beyond the OS DNS settings, everything was fine.</p>
+<p>Operating this way, for the most part browsing the web was business as usual. Not <em>quite</em> as many advertisements were being blocked as I would have expected with a browser extension enabled (more on that later), but on the whole the experience was still positive. What really surprised me, though, was the degree to which IoT devices are just an absolute dumpster fire; checking the metrics NextDNS generates showed that anywhere from 10 - 20% of my total DNS requests were being blocked, but nearly all of the top 10 blocked domains were based on under-the-hood queries being made by my devices phoning home rather than from actual advertising or tracking on web pages. All of this is nicely showcased with graphs in the NextDNS portal:</p>
+<p><img src="images/next_dns_graphs-1024x403.png" alt=""></p>
+<p>While I expected the combined privacy invasion of my two Amazon Echo devices to be the worst offender, my single Roku device actually took the top spot by a significant margin. My top 10 blocked domains were:</p>
+<ul>
+<li>scribe.logs.roku.com - 17,226</li>
+<li>device-metrics-us-2.amazon.com - 1,327</li>
+<li>telemetry.dropbox.com - 1,121</li>
+<li>giga.logs.roku.com - 1,095</li>
+<li>device-metrics-us.amazon.com - 794</li>
+<li>mads.amazon-adsystem.com - 717</li>
+</ul>
+<p>The only non-device domain making the top 10 was from telemetry queries from Dropbox, the frequency of which was a bit disturbing. Roku really caught me off guard, though, with a single device making over 18,000 queries in just a couple of weeks. While using more domains, the two Echo devices made under 3,000 (which is still really bad!)</p>
+<p>As a bit of an aside, I was curious if the devices would simply give up on whatever they were phoning home about and drop the information or if they were storing it locally to upload in a bulk at the first opportunity. I ended up disabling NextDNS on my router around 9 AM and checked on the traffic of both my Echo and my Roku, neither of which were being actively used at the time. The Roku showed zero data use since the time I had been streaming with it the night before:</p>
+<p><img src="images/roku_wifi_small.jpg" alt=""></p>
+<p>The Echo, on the other hand, <em>immediately</em> spiked with network usage to transmit who-knows-what. That&rsquo;s nice and terrifying:</p>
+<p><img src="images/echo_wifi_small.jpg" alt=""></p>
+<p>The other insight I found particularly interesting was just how deeply some of the biggest players on the web have their claws embedded across the Internet. For example, I don&rsquo;t think any big Internet company is more evil than Facebook (though Google is trying hard), so I created a custom blocklist preventing <code>facebook.com</code> from resolving. This prevents not just Facebook from loading but also some of Facebook&rsquo;s other properties. For example, I hate and don&rsquo;t use Instagram, but some friends occasionally send me posts from there. Instagram straight up won&rsquo;t work if the main Facebook domain can&rsquo;t be resolved. How gross is that?</p>
+<p>NextDNS operates by giving you 300,000 customized DNS queries per month where your policies and blacklists will be applied. After 300k queries, the service will act like a normal DNS resolver; while your devices won&rsquo;t suddenly stop having functioning DNS, they won&rsquo;t be benefiting from any of the blocks you might be expecting. For just a couple of dollars a month, you can get access to unlimited DNS queries, and subscribing for a year gives a month for free. I found staying on top of my query usage to be a bit confusing, though. As is shown in the screenshot above, my total number of queries for the month is provided, along with how many were blocked. I was averaging around 30,000 queries per day on this graph. I realized after the first week, though, that going into my account settings in the NextDNS portal gave me a <em>different</em> metric on how many of my free queries had been used, and the data there was significantly lower. I ended my testing after using 280,000 queries according to the analytics graph, while my account settings showed that I had used just shy of 200,000 queries. I have no idea how those two numbers are different by 80,000 queries, especially when the two weeks of testing were done in the same month.</p>
+<p>While I liked NextDNS, it wasn&rsquo;t perfect. I had mentioned previously that the blocking wasn&rsquo;t quite as good as what I&rsquo;d expect from just relying on an extension when browsing the web. The main reason I could see for this is that some companies host trackers and advertising on the same domain they use for other, more legitimate purposes. For example, checking the <a href="https://unusually.pink/safari-14/">blocked tracking metrics within Safari 14</a> showed that <code>bing.com</code> was still high in the running. Naturally a service like NextDNS can&rsquo;t just block the entire Bing domain without breaking plenty of services people actually might want to use. If &ldquo;close enough&rdquo; satisfies your needs for blocking ads then I could see NextDNS being a good solution. If you&rsquo;re like me and want to block <em>everything</em>, though, then you&rsquo;re still going to need extensions in your browser, and that makes the value proposition for paying for something like NextDNS for unlimited queries a bit less tenable. What ultimately made the decision for me, though, was that I ended up running into a handful of issues with the app I used the most: the one on macOS. I&rsquo;m willing to own that the issue might stem from my setup or my device, as my MacBook has 4 different VPN clients on it that I use (and frequently switch between) for work, the network stack on the device crashes with semi-regular frequency, and my home network is <em>significantly</em> more convoluted than most. What I saw, though, was that my DNS queries would periodically just fail. Trying to <code>dig</code> from the CLI would give me a timeout error, like the NextDNS servers weren&rsquo;t responding. Pings to known IP addresses worked fine. If I turned off the NextDNS macOS application, then everything worked fine. Toggling it back on would result in broken queries again. Fixing this was a mixed back that ranged from completely closing and re-launching the app to disabling my wireless network in macOS all the way to rebooting my laptop. Between that problem and the fact that it wasn&rsquo;t a standalone blocking solution for me, I opted to not dive into paying for the service, even though it has a lot of promise and <em>does</em> keep my Roku from being the chattiest device possible.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/books-hands-on-hacking/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Books: Hands On Hacking</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/ssids-everywhere/">
+                <span class="button__text">SSIDs Everywhere</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
+Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a ." />
+<meta name="keywords" content="active-directory, ad, code, powershell, scripting" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV">
+<meta property="og:description" content="I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
+Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a ." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2019-06-01 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/">PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2019-06-01 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/active-directory/">active-directory</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/ad/">ad</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/code/">code</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/powershell/">powershell</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.</p>
+<h2 id="exporting-non-standard-attributes-to-csv">Exporting Non-standard Attributes To CSV<a href="#exporting-non-standard-attributes-to-csv" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .csv file. When I say “non-standard” I don’t mean that we’ve done a custom schema extension or anything like that. Instead, I simply mean that the AD PowerShell module only wants to include certain attributes when exporting AD objects to a .csv file. For example, if I run <strong>Get-ADObject</strong> <strong>-Properties *</strong> against a particular contact object and simply let the output dump to my shell, I see all of the attributes I expect including stuff like <strong>givenName</strong> and <strong>sn</strong>. However, if I run the exact same cmdlet but pipe the result to <strong>Export-Csv</strong> rather than sending it to the shell I will not have all the same attributes; ones like <strong>givenName</strong> and <strong>sn</strong> will now be missing. That’s a problem.</p>
+<h2 id="storing-mutli-value-attributes-in-a-csv">Storing Mutli-Value Attributes In a CSV<a href="#storing-mutli-value-attributes-in-a-csv" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The other problem was that one of the attributes I needed is <strong>proxyAddresses</strong>. This is a multi-value attribute as contacts could very likely have multiple proxy addresses associated with a particular mailbox. They may have an alias, x500 addresses, etc. If you use PowerShell to pull this information from AD and dump it to the screen you’ll see the expected proxy address information. If you call <strong>GetType()</strong> on the <strong>proxyAddresses</strong> attribute you’ll see it listed as an array. That’s why if you export a contact to a .csv file and include <strong>proxyAddresses</strong>, the value for each contact in that particular column will simply read:</p>
+<blockquote>
+<p>Microsoft.ActiveDirectory.Management.ADPropertyValueCollection</p>
+</blockquote>
+<p>PowerShell isn’t sure what to do with a multi-value attribute as far as the .csv file goes so it stores the data type. This is also a problem!</p>
+<h2 id="the-solution">The Solution<a href="#the-solution" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>My solution to this was the following. Note that it’ll be easier to view <a href="https://gist.github.com/JFFail/6dd9acb0020845a905eeda8fbc8de1a7">the Gist for it</a>.</p>
+<pre><code># Get the objects with the required attributes and storing proxyAddresses properly in the .csv file.
+Get-ADObject -Filter { objectClass -eq &quot;contact&quot; } -Server myserver.mydomain.net -SearchBase &quot;OU=Contacts,DC=mydomain,DC=net&quot; -SearchScope OneLevel -Properties name,givenName,sn,displayName,telephoneNumber,proxyAddresses,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title | Select-Object name,givenName,sn,displayName,telephoneNumber,targetAddress,mail,mailNickname,company,department,l,physicalDeliveryOfficeName,postalCode,st,streetAddress,title,@{name=&quot;proxyAddresses&quot;; expression={$_.proxyAddresses -join &quot;;&quot;}} | Export-Csv -Path .\sample.csv -Encoding ASCII -Append -NoClobber -NoTypeInformation
+
+# Shows how to then use the proxyAddresses attribute in the future.
+$allContacts = Import-Csv -Path .\sample.csv
+foreach($singleContact in $allContacts) {
+    $proxyAddresses = $singleContact.proxyAddresses.Split(&quot;;&quot;)
+}
+</code></pre><p>The first thing I needed was to get the properties I actually needed as opposed to just the ones PowerShell felt like including due to the object type. The solution was to:</p>
+<ol>
+<li>
+<p>Specify all of the attributes I wanted in <strong>-Properties</strong> to ensure they would be available.</p>
+</li>
+<li>
+<p>Pipe the AD object to <strong>Select-Object</strong> and then re-specify each of the properties I wanted.</p>
+</li>
+</ol>
+<p>This works because PowerShell is selecting the attributes to include in the .csv file based on the type of object. <strong>Select-Object</strong> takes whatever comes through the pipeline, though, and makes a brand new, generic object from it. That object will include any properties from that original object that you specify, hence why I tell it the exact listing of properties that I need again.</p>
+<p>This leads to the solution to the second problem which is what to do for <strong>proxyAddresses</strong>. PowerShell allows for the use of an expression to parse together a new property. In this instance the expression is to take the existing <strong>proxyAddresses</strong> array and <strong>-join</strong> it into a string. Each of the items in the array are separated by a semicolon. If a contact has the following proxy addresses, for example:</p>
+<p>SMTP:pretty@unusually.pink
+smtp:awesome@unusually.pink</p>
+<p>Then the property in the .csv file will be stored as:</p>
+<pre><code>SMTP:pretty@unusually.pink;smtp:awesome@unusually.pink
+</code></pre><p>You could pick any character for the delimiter that you want as long as it isn’t used in other data that you’re storing.</p>
+<p>In this instance my goal was to take the exported data, re-import it, and then create contacts in a different AD forest. When creating a new object AD is expecting an array for the <strong>proxyAddresses</strong> attribute. A string with a random delimiter won’t do it. That’s where the second part of the example comes into play. If I’m looping through all of the data stored in the .csv file I can recreate the array of proxy addresses by splitting the string on my delimiter (in this case a semicolon) and assigning the result to a variable. That variable will be an array which can then be used to popular <strong>proxyAddresses</strong> when running <strong>New-ADObject</strong></p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Unusually Pink Updates: Dropbox, Password Managers, and Ad Blocking</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/blizzcon-and-the-axs-of-evil/">
+                <span class="button__text">BlizzCon and the AXS of Evil</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

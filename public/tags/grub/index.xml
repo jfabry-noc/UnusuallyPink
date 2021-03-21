@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>grub on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/grub/</link>
+    <description>Recent content in grub on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sat, 24 Oct 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/grub/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ubuntu Linux GRUB Error After 20.04 Upgrade</title>
+      <link>https://hugo.unusually.pink/posts/ubuntu-linux-grub-error-after-20-04-upgrade/</link>
+      <pubDate>Sat, 24 Oct 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/ubuntu-linux-grub-error-after-20-04-upgrade/</guid>
+      <description>While I&amp;rsquo;ve nuked my personal VPS, I still have a VPS that I use for work; it comes in handy for things like running cron jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life.</description>
+      <content>&lt;p&gt;While I&amp;rsquo;ve &lt;a href=&#34;https://unusually.pink/github-pages-hosting/&#34;&gt;nuked my personal VPS&lt;/a&gt;, I still have a VPS that I use for work; it comes in handy for things like running &lt;code&gt;cron&lt;/code&gt; jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life. I &lt;em&gt;could&lt;/em&gt; have kept using Ubuntu 18.04 with &lt;a href=&#34;https://ubuntu.com/about/release-cycle&#34;&gt;maintenance updates until 2023 and security maintenance until 2028&lt;/a&gt;, but what&amp;rsquo;s the fun in that?&lt;/p&gt;
+&lt;p&gt;Upgrading a VPS is always a bit of a nerve-wracking situation just because I don&amp;rsquo;t have local access to the host in case something goes extremely awry. Ubuntu tries to help alleviate this by opening a second SSH daemon on a different port just in case the primary daemon crashes during the upgrade, but if the machine ends up in a non-bootable state I&amp;rsquo;m still more or less hosed. Fortunately for me, things almost went off without a hitch&amp;hellip; almost.&lt;/p&gt;
+&lt;p&gt;While the upgrade &lt;em&gt;did&lt;/em&gt; complete, I received an error toward the end of the process that &lt;a href=&#34;https://www.gnu.org/software/grub/&#34;&gt;GRUB&lt;/a&gt; failed to upgrade successfully. This was mildly terrifying since GRUB is the bootloader; if it&amp;rsquo;s not working properly the system won&amp;rsquo;t boot, and I can&amp;rsquo;t access the host of the VPS to troubleshoot it. Luckily, GRUB continued to work in my case, and my system was able to reboot successfully after the 20.04 upgrade and beyond. GRUB just wasn&amp;rsquo;t getting upgraded. I quickly noticed that I also received an error from GRUB every time I ran &lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt; to update my system. Again, the other packages would upgrade successfully, but GRUB would always complain:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;dpkg: error processing package grub-pc (&amp;ndash;configure):&lt;/p&gt;
+&lt;p&gt;installed grub-pc package post-installation script subprocess returned error exit&lt;/p&gt;
+&lt;p&gt;status 1&lt;/p&gt;
+&lt;p&gt;Errors were encountered while processing: grub-pc&lt;/p&gt;
+&lt;p&gt;E: Sub-process /usr/bin/dpkg returned an error code (1)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;After spending some time just ignoring the problem since it wasn&amp;rsquo;t exactly critical, I finally decided to do some digging. It turns out that problems like this have apparently plagued Ubuntu upgrades for a while, as I found a thread with the &lt;a href=&#34;https://askubuntu.com/questions/636456/14-04-upgrade-triggers-grub-pc-failure/636523#636523&#34;&gt;same problem all the way back with an upgrade to Ubuntu 14.04&lt;/a&gt;. The solution in that case was to simply &amp;ldquo;nuke and pave&amp;rdquo; by removing GRUB and then re-installing it. It&amp;rsquo;s once again a bit of a white-knuckle situation since if anything happens between removing and reinstalling GRUB the system will not have the ability to boot. The steps were very similar to the linked thread with some minor differences in the era of Ubuntu 20.04. The first step was still to purge GRUB:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get purge grub-pc grub-common
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Running this command in 2020 removes &lt;code&gt;/etc/grub.d/&lt;/code&gt; already, so there&amp;rsquo;s no reason to manually run the removal. Instead, I next moved straight to re-installing GRUB:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo apt-get install grub-pc grub-common
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The installation process kicks off an interactive wizard asking which disk(s) GRUB should be installed to. In my case, I only needed it on the main disk, which is &lt;code&gt;/dev/sda&lt;/code&gt;. With that done, I updated GRUB and then rebooted:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo update-grub
+sudo reboot now
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This part kind of sucked as I was left running &lt;code&gt;nmap&lt;/code&gt; against the SSH port for my VPS and hoping that GRUB was properly set up to allow the system to boot. After a nervous 15 seconds, though, the port started to respond again, and I could successfully SSH into the server. Re-checking for updates showed that everything was fine; the errors about GRUB having a needed upgrade that couldn&amp;rsquo;t be installed were gone. Admittedly, it was probably unnecessary to go through this upgrade without any specific reason for it, but the beauty of Ubuntu is its popularity. Rarely will there be an issue someone else hasn&amp;rsquo;t encountered, solved, and documented before, and this problem was no exception.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

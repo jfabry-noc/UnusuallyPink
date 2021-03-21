@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pip on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/pip/</link>
+    <description>Recent content in pip on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/pip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>macOS Big Sur pip Installation Error</title>
+      <link>https://hugo.unusually.pink/posts/macos-big-sur-pip-installation-error/</link>
+      <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/macos-big-sur-pip-installation-error/</guid>
+      <description>Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now.</description>
+      <content>&lt;p&gt;Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now. I encountered my first big error a few days ago, though, while helping a friend with some Python code. We needed to use the &lt;a href=&#34;https://www.paramiko.org&#34;&gt;&lt;code&gt;paramiko&lt;/code&gt;&lt;/a&gt; package, which I didn&amp;rsquo;t have installed. I tried to install it with the following command:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pip3 install paramiko
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This was the first time I tried to use &lt;code&gt;pip3&lt;/code&gt; to install a Python package since upgrading to Big Sur, and I was immediately rewarded with an entire screen&amp;rsquo;s worth of cascading error messages. I took a little time to parse through them before hitting on something that seemed fairly key:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;clang: error: invalid version number in &amp;lsquo;MACOSX_DEPLOYMENT_TARGET=11.0&amp;rsquo;&lt;/p&gt;
+&lt;p&gt;error: command &amp;lsquo;/usr/bin/clang&amp;rsquo; failed with exit code 1&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It seemed that the &lt;code&gt;clang&lt;/code&gt; compiler was unhappy with the fact that the targeted version of macOS was 11.0. This makes sense to me since all of the releases of macOS, back to when it was called OS X in 2001, were numbered 10.x.y. Big Sur was the first version of macOS in nearly two decades to bump the version from 10 to 11, and apparently my &lt;code&gt;clang&lt;/code&gt; configuration &lt;em&gt;really&lt;/em&gt; didn&amp;rsquo;t like that. Figuring that in 2 weeks since the release of Big Sur someone else had surely attempted to install some Python 3 packages, I started searching online. Plenty of responses recommended updating the Xcode CLI tools via:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo softwareupdate --all --install --force
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I gave this a shot, but I simply got a message stating there weren&amp;rsquo;t any updates available. I kept digging and finally hit upon a &lt;a href=&#34;https://stackoverflow.com/questions/63972113/big-sur-clang-invalid-version-error-due-to-macosx-deployment-target&#34;&gt;Stackoverflow thread&lt;/a&gt; with a solution that involved manually deleting the directory with the Xcode CLI tools and then reinstalling. I assumed that this wouldn&amp;rsquo;t do anything since the tooling didn&amp;rsquo;t see any needed updates in the first place, but on a whim I tried it. First I nuked the &lt;code&gt;/Library/Developer/CommandLineTools&lt;/code&gt; directory with:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo rm -rf /Library/Developer/CommandLineTools
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once that was done, I kicked off reinstalling the CLI tools via:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This initially estimated that it would take over 2 hours, followed by 20 minutes, followed by 2 minutes. Wildly inaccurate time estimates aside, after waiting a minute or two I had the tooling available once again. I tried to install &lt;code&gt;paramiko&lt;/code&gt;, and was happily greeted with the progress indicators as it compiled along with all of its dependencies. I tried some quick code calling the package, and sure enough everything worked successfully. It&amp;rsquo;s curious to me that checking for updates shows nothing, but reinstalling the Xcode CLI tools still resolves the issue. My guess is there is a configuration file somewhere that needs to be updated, and it gets both created and configured at the time of installation. This would mean I opted for the nuclear option when a bit more finesse would have sufficed, but with things working I didn&amp;rsquo;t feel like trying to dig through configuration files to verify when I had code to write.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

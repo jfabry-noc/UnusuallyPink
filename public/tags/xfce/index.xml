@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>xfce on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/xfce/</link>
+    <description>Recent content in xfce on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/xfce/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pinebook Pro Follow-up: Manjaro Linux</title>
+      <link>https://hugo.unusually.pink/posts/pinebook-pro-follow-up-manjaro-linux/</link>
+      <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/pinebook-pro-follow-up-manjaro-linux/</guid>
+      <description>I had written in early February about my Pinebook Pro laptop after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.
+The OS If you read my original post then you may recall that I was debating swapping the default Debian operating system for something different.</description>
+      <content>&lt;p&gt;I had &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;written in early February about my Pinebook Pro laptop&lt;/a&gt; after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.&lt;/p&gt;
+&lt;h2 id=&#34;the-os&#34;&gt;The OS&lt;/h2&gt;
+&lt;p&gt;If you read my original post then you may recall that I was debating swapping the default Debian operating system for something different. While I mentioned NetBSD in the post I ended up installing &lt;a href=&#34;https://manjaro.org/&#34;&gt;Manjaro Linux&lt;/a&gt; instead. Why? There are a few reasons to consider.&lt;/p&gt;
+&lt;p&gt;One of the biggest reasons why swapping the OS can be considered important is that there are some issues with the Debian build that came on my device. It&amp;rsquo;s a &lt;a href=&#34;https://github.com/mrfixit2001/debian_desktop&#34;&gt;custom setup put together by a community member&lt;/a&gt;. It looks incredible, but that comes at a cost; the highly customized environment means that many things in it &lt;em&gt;cannot&lt;/em&gt; be updated; this includes both Chromium and Firefox. Running outdated browsers isn&amp;rsquo;t exactly cool, and I wasn&amp;rsquo;t too keen on having to compile Firefox from source every time there was a new release.&lt;/p&gt;
+&lt;p&gt;On the other hand many of the community members seemed to really love Manjaro Linux, so I figured I&amp;rsquo;d gvie it a shot. Along with people in the Pinebook community raving about it, it&amp;rsquo;s also been hovering near the top of &lt;a href=&#34;https://distrowatch.com/&#34;&gt;Distrowatch&lt;/a&gt; for a while now. In fact it was &lt;a href=&#34;https://www.pine64.org/2020/03/15/march-update-manjaro-on-pinebook-pro-pinephone-software/&#34;&gt;announced in March&lt;/a&gt; that Manjaro was going to be the default OS for new Pinebook Pro devices, which is pretty slick! They&amp;rsquo;re shipping with the KDE variant, though, and while I&amp;rsquo;ve read about people having a good experience with that, I personaly prefer the more lightweight &lt;a href=&#34;https://www.xfce.org/&#34;&gt;XFCE desktop&lt;/a&gt;. It&amp;rsquo;s lighter, simpler, and overall I feel like it&amp;rsquo;s a better fit for the Pinebook Pro.&lt;/p&gt;
+&lt;h2 id=&#34;getting-the-os&#34;&gt;Getting The OS&lt;/h2&gt;
+&lt;p&gt;As something of a noob when it comes to working with open source SoC setups like a Rock64 or Raspberry Pi, I struggled a little with figuring out exactly how to install a new OS on the Pinebook Pro. The first thing I figured out is that, currently, you cannot boot the Pinebook Pro from USB. I made a few bootable flash drives like I would&amp;rsquo;ve historically used when installing Linux on a more traditional device without success. The &lt;a href=&#34;https://wiki.pine64.org/index.php/Pinebook_Pro&#34;&gt;Pinebook Pro wiki&lt;/a&gt; seems to contradict itself on this point, saying:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The Pinebook Pro is capable of booting from eMMC, USB 2.0, USB 3.0, or an SD card. It cannot boot from USB-C. The boot order of the hard-coded ROM of its RK3399 SoC is: SPI NOR, eMMC, SD, USB OTG.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Then in the very next paragraph it says:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;At this time, the Pinebook Pro ships with a Debian + MATE build with uboot on the eMMC. Its boot order is: SD, then eMMC. Booting off USB storage is not currently available, but will be in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;I wouldn&amp;rsquo;t put it past myself to just be misunderstanding something, though, so your mileage may vary. As you might be able to guess from the quotes shared above, I just ordred a cheap microSD card online and used that for the OS installation; everything worked great.&lt;/p&gt;
+&lt;p&gt;For Manjaro specifically, the best way to get the proper image is to go to the forum announcement for the latest version, like &lt;a href=&#34;https://forum.manjaro.org/t/manjaro-arm-20-04-released/133374&#34;&gt;this one for the 20.04 release&lt;/a&gt;. There you can select the appropriate link for your Pinebook Pro and for your preferred desktop environment. Once you select that, you&amp;rsquo;ll be taken to another page &lt;a href=&#34;https://osdn.net/projects/manjaro-arm/storage/pbpro/xfce/20.04/&#34;&gt;like this one listing all of the images files you can download for that version and desktop environment&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Be aware that if you want to install Manjaro &lt;strong&gt;directly on the laptop&lt;/strong&gt;, be sure to grab the image file with &amp;ldquo;emmc-installer&amp;rdquo; in the file name! This is the image designed to be flashed onto the internal eMMC storage of the Pinebook Pro! Grabbing the image without this will simply create a microSD card that will run the OS. This isn&amp;rsquo;t bad if you&amp;rsquo;d like to try out Manjaro while leaving the Debian installation on your eMMC, but I wanted to go all-in.&lt;/p&gt;
+&lt;h2 id=&#34;preparing-your-media&#34;&gt;Preparing Your Media&lt;/h2&gt;
+&lt;p&gt;To prepare the media, you can use basically any option that&amp;rsquo;ll allow you to flash the .img file you downloaded onto the microSD card. You can be old-school and use &lt;code&gt;dd&lt;/code&gt; from the command line, but I went easy mode and used &lt;a href=&#34;https://www.balena.io/etcher/&#34;&gt;balenaEtcher&lt;/a&gt; instead.&lt;/p&gt;
+&lt;h2 id=&#34;the-rest&#34;&gt;The Rest&lt;/h2&gt;
+&lt;p&gt;The boot order on the Pinebook Pro automatically has the microSD card slot above the eMMC, so once you have a microSD card prepared just insert it into the Pinebook Pro, boot the device, and follow the prompts; it&amp;rsquo;s honestly pretty simple to install. The only catch is a known bug with the 20.04 release where you have to hit &lt;code&gt;Esc&lt;/code&gt; while looking at the Manjaro logo after booting from the microSD card before it&amp;rsquo;ll move forward; as a known bug I would imagine this won&amp;rsquo;t be relevant for future releases.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;When the Manjaro logo has been present for about 15 seconds, press ESC (this is a bug, we know).&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Once it&amp;rsquo;s all done, you boot to this gorgeous view!&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;h2 id=&#34;caveats&#34;&gt;Caveats&lt;/h2&gt;
+&lt;p&gt;For the most part, Manjaro works like a complete dream, and I&amp;rsquo;ve been extremely happy with it. There are just a couple of caveats that might be worth mentioning, though.&lt;/p&gt;
+&lt;h3 id=&#34;initial-update&#34;&gt;Initial Update&lt;/h3&gt;
+&lt;p&gt;First, there was a bug when running the initial software update on the factory image. First I had to figure out &lt;em&gt;how&lt;/em&gt; to update it, but after some quick DuckDuckGo-fu (since I&amp;rsquo;ve really only used Debian-based flavors of Linux before) I figured I could update Manjaro via:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pacman -Syyu
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Note that you can aslo just click the little shield icon in the bottom-right corner of the screen. Regardless of method, though, immediately after booting my new OS I would get the following error when attempting to update:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Conflicting files: nss /usr/lib/p11-kit-trust.so already exists in filesystem&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Another benefit to choosing Manjaro is that it has an extremely active community, so it&amp;rsquo;s easy to search on errors like this and get solutions! I quickly found a &lt;a href=&#34;https://www.youtube.com/watch?v=NexyTfO0iuY&#34;&gt;YouTube video&lt;/a&gt; covering this error and providing the solution:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pacman -Syyu --overwrite /usr/lib*/p11-kit-trust.so
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After that initial update succeeded I&amp;rsquo;ve been able to perform subsequent updates without needing the &lt;code&gt;--overwrite&lt;/code&gt; parameter. Updating via the GUI also works.&lt;/p&gt;
+&lt;h3 id=&#34;swap&#34;&gt;Swap&lt;/h3&gt;
+&lt;p&gt;It&amp;rsquo;s entirely possible I just made a mistake in my installation, but I eventually realized that I didn&amp;rsquo;t have a swap partition or file. I realized this because I noticed that the battery drain while under suspend was a bit severe; I was losing roughly 6% of my battery per hour. This meant that leaving the device on suspend for a day would completely drain a full battery. I changed my XFCE setting so that when closing the lid of the device it would hibernate. This gave me an error, though, that I didn&amp;rsquo;t have enough swap space to hibernate.&lt;/p&gt;
+&lt;p&gt;I checked the output of &lt;code&gt;htop&lt;/code&gt; and realized that I didn&amp;rsquo;t have enough space because I didn&amp;rsquo;t have &lt;strong&gt;any&lt;/strong&gt; swap. Luckily for me, the Manjaro folks have a wiki page dedicated to exactly this; I ended up following the steps to &lt;a href=&#34;https://wiki.manjaro.org/index.php?title=Swap#Using_a_Swapfile&#34;&gt;create a swapfile rather than adjusting my partitions to have a swap partition&lt;/a&gt;. Since there are 4 GB of RAM in the Pinebook Pro, I ended up creating a 4 GB swap file. Once it&amp;rsquo;s created you can verify it by looking at &lt;code&gt;htop&lt;/code&gt; or running &lt;code&gt;swapon&lt;/code&gt;. If you&amp;rsquo;re concerned about the amount of storage on the eMMC, you can see how much you&amp;rsquo;re using via:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;df -H | grep /$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;typing-and-the-touchpad&#34;&gt;Typing and the Touchpad&lt;/h3&gt;
+&lt;p&gt;One thing I&amp;rsquo;ve noticed on occasion is that typing does not disable the touchpad on the laptop, meaning that it&amp;rsquo;s easy for your hand to accidentally brush it, clicking somewhere else and causing a bit of havoc on whatever it is you&amp;rsquo;re trying to do. I&amp;rsquo;ve accidentally done it once just while working on this article. I&amp;rsquo;ve not found a solution for this yet (I&amp;rsquo;ll update the post if I do), but it hasn&amp;rsquo;t been a big deal for me. It&amp;rsquo;s just something to be mindful about.&lt;/p&gt;
+&lt;h2 id=&#34;the-end&#34;&gt;The End&lt;/h2&gt;
+&lt;p&gt;On the whole, I&amp;rsquo;m &lt;em&gt;extremely&lt;/em&gt; pleased with my switch to Manjaro. If you&amp;rsquo;re running a Pinebook Pro with the original Debian build, I&amp;rsquo;d highly recommend giving Manjaro a shot; it honestly feels like a whole new device afterward.&lt;/p&gt;
+&lt;p&gt;Keep the &lt;a href=&#34;https://www.unusually.pink/blog/its-all-about-open-source&#34;&gt;open source love alive&lt;/a&gt;, and stay pink!&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

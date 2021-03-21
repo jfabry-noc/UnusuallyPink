@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tar on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/tar/</link>
+    <description>Recent content in tar on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Wed, 22 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/tar/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo and the Implausibly Old Timestamp</title>
+      <link>https://hugo.unusually.pink/posts/hugo-and-the-implausibly-old-timestamp/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/hugo-and-the-implausibly-old-timestamp/</guid>
+      <description>Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing hugo to rebuild the site and copy the output of the public directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses rsync to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.</description>
+      <content>&lt;p&gt;Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing &lt;code&gt;hugo&lt;/code&gt; to rebuild the site and copy the output of the &lt;code&gt;public&lt;/code&gt; directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses &lt;code&gt;rsync&lt;/code&gt; to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.&lt;/p&gt;
+&lt;p&gt;After composing &lt;a href=&#34;https://unusually.pink/making-a-hash-for-the-html-integrity-property/&#34;&gt;yesterday’s post&lt;/a&gt;, though, I ran into an error with the backup script. It basically runs the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf /home/fail/backups/failti_me.tar.gz blog
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This started throwing a warning:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;tar: blog/public: implausibly old time stamp 1754-08-30 16:53:05.128654848 -0550&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It claimed the &lt;strong&gt;public&lt;/strong&gt; directory where Hugo publishes the compiled site contents to was created in 1754… which is probably a bit older than seems plausible. My blog still published correctly; it was only &lt;code&gt;tar&lt;/code&gt; being salty about the weird timestamp. I used &lt;code&gt;stat&lt;/code&gt; to check the directory and confirmed that the timetsamp on when it was modified was completely borked:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;stat blog/public/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That told me:&lt;/p&gt;
+&lt;p&gt;File: blog/public/
+Size: 4096        Blocks: 8          IO Block: 4096   directory
+Device: fc01h/64513d    Inode: 512063      Links: 73
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/    john)   Gid: ( 1000/    john)
+Access: 2020-07-21 18:58:28.669384769 -0500
+Modify: 1754-08-30 16:53:05.128654848 -0550
+Change: 2020-07-21 18:58:28.189382080 -0500
+Birth: -&lt;/p&gt;
+&lt;p&gt;After some searches online I found the following &lt;a href=&#34;https://github.com/gohugoio/hugo/issues/6161&#34;&gt;GitHub issue thread&lt;/a&gt; confirming that plenty of people other than me were seeing the same problem and that it was still present in the current version of Hugo. While I had initially been confused as to why I suddenly started seeing this now since I hadn’t upgraded Hugo or anything like that, I saw a few comments indicating that placing items in Hugo’s static directory seemed to trigger the issue; I had placed an image there from my last post, and it was the first addition to that directory in quite a while. With some additional searching and testing, I verified I could do the following to simply ignore the warning from &lt;code&gt;tar&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf /home/fail/backups/failti_me.tar.gz blog --warning&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;no-timestamp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I didn’t like the idea of having such a wonky date on my filesystem; as a result, I started searching for how I could fix it by manually adjusting the “Modify” timestamp. &lt;code&gt;touch&lt;/code&gt; seemed like a likely candidate, and after reviewing the &lt;a href=&#34;http://manpages.ubuntu.com/manpages/trusty/man1/touch.1.html&#34;&gt;man page&lt;/a&gt; I saw that there was a &lt;code&gt;-t&lt;/code&gt; flag for it which would allow me to manually specify the timestamp. I basically just wanted to set it to the current time so I added the following to the my script which recompiles the site, placing it after the build and before &lt;code&gt;rsync&lt;/code&gt;ing the contents of the public directory to the Nginx directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;STUPID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;date &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;+%y%m%d%H%M&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+touch -t $STUPID /home/john/blog/public/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sure enough, after running this the resulting &lt;code&gt;tar&lt;/code&gt; command has no qualms. Likewise, re-running the &lt;code&gt;stat&lt;/code&gt; command from above shows the current date and time as the modified time on the directory. I really hope this bug gets fixed soon since it seems to have been around for a hot minute, but at least I have a workaround for the time being.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

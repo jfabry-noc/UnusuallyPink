@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hugo on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/hugo/</link>
+    <description>Recent content in hugo on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 23 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Full Content RSS Feeds With Hugo</title>
+      <link>https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/</link>
+      <pubDate>Sun, 23 Aug 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/</guid>
+      <description>Last week I made a test post on Mastodon linking to one of my blogs via curl. I was doing this to see how to best handle the formatting for a script I was working on to periodically check my blog and link to any new posts from Mastodon. My friend tomasino who I’ve known for quite a while through SDF reached out to ask if there was an RSS feed for it.</description>
+      <content>&lt;p&gt;Last week I made a test post on Mastodon linking to one of my blogs via &lt;code&gt;curl&lt;/code&gt;. I was doing this to see how to best handle the formatting for a script I was working on to periodically check my blog and link to any new posts from Mastodon. My friend &lt;a href=&#34;https://tilde.zone/@tomasino&#34;&gt;tomasino&lt;/a&gt; who I’ve known for quite a while through SDF reached out to ask if there was an RSS feed for it. (Note that I now link to the RSS feed from the menu!) After he subscribed, he noticed that the RSS feed is only showing part of each post. It turns out that &lt;a href=&#34;https://themes.gohugo.io/hugo-theme-terminal/&#34;&gt;my theme&lt;/a&gt;, like many others, is using the &lt;a href=&#34;https://gohugo.io/templates/rss/&#34;&gt;default RSS template&lt;/a&gt; in Hugo. This only publishes a portion of each post to the RSS feed, the idea undoubtedly being that people will navigate to the site to finish reading the content, allowing whatever trackers are in place to see this. Since I don’t have any trackers on my site and don’t care about hits, this just serves to be a pain in the butt for anyone trying to use RSS; I personally hate having to move out of my own RSS reader in order to finish reading something.&lt;/p&gt;
+&lt;p&gt;With a &lt;em&gt;lot&lt;/em&gt; of help from tomasino (who clearly knows a &lt;strong&gt;significantly&lt;/strong&gt; more about RSS than I do), I started trying to modify my RSS template to include the full content for each post. Since the Terminal theme is using the default template, I started by taking the &lt;a href=&#34;https://github.com/gohugoio/hugo/blob/master/tpl/tplimpl/embedded/templates/_default/rss.xml&#34;&gt;base template content&lt;/a&gt; and placing that in &lt;code&gt;/layouts/_defaults/&lt;/code&gt; as &lt;code&gt;index.xml&lt;/code&gt; so that I had something to modify. The first thing that I did was modify the &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt; tag so that it contained &lt;code&gt;.Content&lt;/code&gt; instead of &lt;code&gt;.Summary&lt;/code&gt;. This &lt;em&gt;did&lt;/em&gt; cause the full content to be displayed in the RSS feed but caused all sorts of HTML encoding problems. Next I tried modifying the &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt; block again so that instead of:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.Content | html
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;It was:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.Content | safeHTML
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;This was… slightly better. It fixed the HTML encoding problems, but it also caused the paragraph tags to disappear, meaning each post was a wall of text. tomasino’s thought was that I needed a &lt;code&gt;CDATA&lt;/code&gt; block, which I also saw &lt;a href=&#34;https://discourse.gohugo.io/t/full-text-rss-feed/8368/2&#34;&gt;mentioned in the Hugo support forum&lt;/a&gt;. The problem I quickly ran into was that the block, which I was now adding in addition to the &lt;code&gt;&amp;lt;description&amp;gt;&lt;/code&gt; block, needed to look something like this:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;content:encoded&amp;gt;&amp;lt;![CDATA[{{ .Content | safeHTML }}]]&amp;gt;&amp;lt;/content:encoded&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Adding that directly to to the layout file cause the leading &lt;code&gt;&amp;lt;&lt;/code&gt; get HTML encoded, thus breaking the entire thing. Back to hunting on DuckDuckGo, I found &lt;a href=&#34;https://github.com/gohugoio/hugo/issues/1740&#34;&gt;several people&lt;/a&gt; with the &lt;a href=&#34;https://github.com/gohugoio/hugo/issues/4242&#34;&gt;same issue&lt;/a&gt;. While a few people in those threads had offered some solutions for how to properly escape things, tomasino ultimately found the &lt;a href=&#34;https://github.com/ttys3/hugo-theme-terminal/commit/86c8d80e396b82f28927b659e0e0edd9d8959afe&#34;&gt;cleanest solution&lt;/a&gt;. After recompiling my site yet again, the encoding looked good, but the XML was still missing some metadata. Trying to open it in Firefox would give the following error:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;XML Parsing Error: prefix not bound to a namespace&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It’s worth noting, since I was missing this initially, that Firefox will &lt;em&gt;not&lt;/em&gt; render the XML when you’re using the &lt;code&gt;view-source:&lt;/code&gt; view. This makes complete sense, but I had overlooked it. You need to actually navigate to the file normally, e.g. &lt;a href=&#34;https://my.site/index.xml&#34;&gt;https://my.site/index.xml&lt;/a&gt;. What was going on here was that I needed to define the namespace, which I did by just copying the same line from tomasino’s own XML file for a site of his:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;rss version=&amp;quot;2.0&amp;quot; xmlns:atom=&amp;quot;http://www.w3.org/2005/Atom&amp;quot; xmlns:content=&amp;quot;http://purl.org/rss/1.0/modules/content/&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;After this addition and yet another recompile of the site, everything finally started to appear correctly in RSS readers. Suffice to say I would’ve preferred if I could simply toggle something in my &lt;code&gt;config.toml&lt;/code&gt; file to switch my RSS feed from a summary to the full text, but at least it’s possible to modify this on your own if you have to.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Hugo and the Implausibly Old Timestamp</title>
+      <link>https://hugo.unusually.pink/posts/hugo-and-the-implausibly-old-timestamp/</link>
+      <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/hugo-and-the-implausibly-old-timestamp/</guid>
+      <description>Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing hugo to rebuild the site and copy the output of the public directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses rsync to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.</description>
+      <content>&lt;p&gt;Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing &lt;code&gt;hugo&lt;/code&gt; to rebuild the site and copy the output of the &lt;code&gt;public&lt;/code&gt; directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses &lt;code&gt;rsync&lt;/code&gt; to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.&lt;/p&gt;
+&lt;p&gt;After composing &lt;a href=&#34;https://unusually.pink/making-a-hash-for-the-html-integrity-property/&#34;&gt;yesterday’s post&lt;/a&gt;, though, I ran into an error with the backup script. It basically runs the following:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf /home/fail/backups/failti_me.tar.gz blog
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;This started throwing a warning:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;tar: blog/public: implausibly old time stamp 1754-08-30 16:53:05.128654848 -0550&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;It claimed the &lt;strong&gt;public&lt;/strong&gt; directory where Hugo publishes the compiled site contents to was created in 1754… which is probably a bit older than seems plausible. My blog still published correctly; it was only &lt;code&gt;tar&lt;/code&gt; being salty about the weird timestamp. I used &lt;code&gt;stat&lt;/code&gt; to check the directory and confirmed that the timetsamp on when it was modified was completely borked:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;stat blog/public/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;That told me:&lt;/p&gt;
+&lt;p&gt;File: blog/public/
+Size: 4096        Blocks: 8          IO Block: 4096   directory
+Device: fc01h/64513d    Inode: 512063      Links: 73
+Access: (0755/drwxr-xr-x)  Uid: ( 1000/    john)   Gid: ( 1000/    john)
+Access: 2020-07-21 18:58:28.669384769 -0500
+Modify: 1754-08-30 16:53:05.128654848 -0550
+Change: 2020-07-21 18:58:28.189382080 -0500
+Birth: -&lt;/p&gt;
+&lt;p&gt;After some searches online I found the following &lt;a href=&#34;https://github.com/gohugoio/hugo/issues/6161&#34;&gt;GitHub issue thread&lt;/a&gt; confirming that plenty of people other than me were seeing the same problem and that it was still present in the current version of Hugo. While I had initially been confused as to why I suddenly started seeing this now since I hadn’t upgraded Hugo or anything like that, I saw a few comments indicating that placing items in Hugo’s static directory seemed to trigger the issue; I had placed an image there from my last post, and it was the first addition to that directory in quite a while. With some additional searching and testing, I verified I could do the following to simply ignore the warning from &lt;code&gt;tar&lt;/code&gt;:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf /home/fail/backups/failti_me.tar.gz blog --warning&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;no-timestamp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;I didn’t like the idea of having such a wonky date on my filesystem; as a result, I started searching for how I could fix it by manually adjusting the “Modify” timestamp. &lt;code&gt;touch&lt;/code&gt; seemed like a likely candidate, and after reviewing the &lt;a href=&#34;http://manpages.ubuntu.com/manpages/trusty/man1/touch.1.html&#34;&gt;man page&lt;/a&gt; I saw that there was a &lt;code&gt;-t&lt;/code&gt; flag for it which would allow me to manually specify the timestamp. I basically just wanted to set it to the current time so I added the following to the my script which recompiles the site, placing it after the build and before &lt;code&gt;rsync&lt;/code&gt;ing the contents of the public directory to the Nginx directory.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;STUPID&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;$(&lt;/span&gt;date &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;+%y%m%d%H%M&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#66d9ef&#34;&gt;)&lt;/span&gt;
+touch -t $STUPID /home/john/blog/public/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Sure enough, after running this the resulting &lt;code&gt;tar&lt;/code&gt; command has no qualms. Likewise, re-running the &lt;code&gt;stat&lt;/code&gt; command from above shows the current date and time as the modified time on the directory. I really hope this bug gets fixed soon since it seems to have been around for a hot minute, but at least I have a workaround for the time being.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>Self-Hosting A Static Website</title>
+      <link>https://hugo.unusually.pink/posts/self-hosting-a-static-website/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/self-hosting-a-static-website/</guid>
+      <description>Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.</description>
+      <content>&lt;p&gt;Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.&lt;/p&gt;
+&lt;p&gt;We first took some early steps gathering requirements. What did he want for the site? Literally just the privacy policy. Where did he want to host it? Wherever was the cheapest. Did he have a domain name already? Yes! This was fairly straightforward; he literally &lt;em&gt;just&lt;/em&gt; wanted the very basics. After a bit of discussion I convinced him to write up a quick &amp;ldquo;about me&amp;rdquo; type of page so that we could have more than just the privacy policy. From there I could get to work.&lt;/p&gt;
+&lt;h1 id=&#34;hosting&#34;&gt;Hosting&lt;/h1&gt;
+&lt;p&gt;The first thing I did was have him head over to &lt;a href=&#34;https://www.vultr.com/&#34;&gt;Vultr&lt;/a&gt; and spin up their cheapest instance. I think this is running him $5 USD per month. I had him pick &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt; as the server operating system given that it&amp;rsquo;s the one I&amp;rsquo;m most familiar with. My friend has some familiarity with Linux but not a lot of practical knowledge; when I asked him to shoot me some SSH credentials with &lt;code&gt;sudo&lt;/code&gt; access he literally sent me the root account from Vultr. Ick.&lt;/p&gt;
+&lt;h1 id=&#34;configuring-the-host&#34;&gt;Configuring The Host&lt;/h1&gt;
+&lt;h3 id=&#34;accounts&#34;&gt;Accounts&lt;/h3&gt;
+&lt;p&gt;My first goal was to configure the host. I started that off by creating user accounts for each of us:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;adduser username
+usermod -aG sudo username
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After switching users and verifying my new account worked, I disabled root&amp;rsquo;s ability to log in:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo passwd -l root
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;ports&#34;&gt;Ports&lt;/h3&gt;
+&lt;p&gt;Next I wanted to change the default SSH port since having 22 open means a million places from across the planet are going to throw garbage traffic at your server. I did this by modifying the SSH config at &lt;code&gt;/etc/ssh/sshd_config&lt;/code&gt;, finding the line with &lt;code&gt;#Port 22&lt;/code&gt;, uncommenting it, and changing the port to a high number of my friend&amp;rsquo;s choice. Then I restarted SSH:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo systemctl restart ssh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;firewall&#34;&gt;Firewall&lt;/h3&gt;
+&lt;p&gt;I wanted to enable the firewall as well, so I opened up with the new SSH port &lt;em&gt;and&lt;/em&gt; 80 and 443 for our eventual website:&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo ufw allow sshPortNumber/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;webserver&#34;&gt;Webserver&lt;/h3&gt;
+&lt;p&gt;I next needed a web server; &lt;a href=&#34;http://nginx.org/&#34;&gt;Nginx&lt;/a&gt; has been my go-to choice for a long time. Rather than re-hashing all of the steps, I&amp;rsquo;ll just recommend following the excellent documentation from &lt;a href=&#34;https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04&#34;&gt;DigitalOcean&lt;/a&gt; which nicely covers the Nginx configuration. That takes you to the point where you are hosting a website. Then you just need content on it.&lt;/p&gt;
+&lt;h3 id=&#34;certificate&#34;&gt;Certificate&lt;/h3&gt;
+&lt;p&gt;I&amp;rsquo;m an advocate of using HTTPS for everything, and with free certificates from &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/a&gt; there&amp;rsquo;s no reason not to. Given that we have shell access, using &lt;code&gt;certbot&lt;/code&gt; is the way to go. There&amp;rsquo;s also excellent &lt;a href=&#34;https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx&#34;&gt;documentation on that process on Ubuntu with Nginx&lt;/a&gt;. I highly recommend selecting the option to redirect any HTTP traffic to HTTPS.&lt;/p&gt;
+&lt;h1 id=&#34;website&#34;&gt;Website&lt;/h1&gt;
+&lt;p&gt;Now for the website itself. I&amp;rsquo;m not really much of a web developer, and I dislike making anything frontend; I don&amp;rsquo;t exactly have the best design sense. So I once again opted to leverage &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt; to take care of that for me. I&amp;rsquo;ve written about &lt;a href=&#34;https://failti.me/posts/hugo_setup_guide/&#34;&gt;the specifics of using Hugo in detail&lt;/a&gt;. Since we really just wanted a generic landing page with my friend&amp;rsquo;s socials and then links to the About and Privacy Policy pages, I ended up going with the &lt;a href=&#34;https://themes.gohugo.io/hermit/&#34;&gt;Hermit theme&lt;/a&gt;. It has a nice, simple look. My friend&amp;rsquo;s favorite color is mint green, so the default background also works nicely with that when I changed the accent color. The theme nicely includes an &lt;a href=&#34;https://github.com/Track3/hermit/tree/master/exampleSite&#34;&gt;exampleSite&lt;/a&gt; so that I can steal their &lt;code&gt;config.toml&lt;/code&gt; file and also their &amp;ldquo;About&amp;rdquo; page to make things even easier for myself.&lt;/p&gt;
+&lt;h1 id=&#34;backups&#34;&gt;Backups&lt;/h1&gt;
+&lt;p&gt;One of the nice things about Hugo is that, since everything is a simple text file, it&amp;rsquo;s very easy to compress your entire site and save a backup. Then if something terrible happens to your server, it&amp;rsquo;s extremely easy to get the site back up and running on a different machine. In this case, I made tarballs for both the finished, compiled site and the Hugo directory storing the configuration and Markdown.&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;tar -zvcf ~/temp/html_output.tar.gz /var/www/mySite.com/
+tar -zvcf ~/temp/hugo_directory.tar.gz /var/www/mySite.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With the tarballs created, I used an SFTP client to copy them off the server for safe keeping.&lt;/p&gt;
+&lt;h1 id=&#34;wrap-up&#34;&gt;Wrap Up&lt;/h1&gt;
+&lt;p&gt;In total it took me about an hour and a half to get everything up and running. Having gone through this process &lt;em&gt;many&lt;/em&gt; times for websites of my own, I&amp;rsquo;ve got a decent bit of experience with the process, but this shows it still doesn&amp;rsquo;t necessarily take a super long time to get a decent website up and running. The big benefits are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;The site is &lt;em&gt;cheap&lt;/em&gt; to run. Even the smallest instance at any VPS provider will be able to handle multiple sites with ease unless they start getting really popular, so if my friend wants to create any other sites in the future he won&amp;rsquo;t need additional hosting.&lt;/li&gt;
+&lt;li&gt;Backups are stupid simple. My friend isn&amp;rsquo;t beholden to a hosting provider or trying to work within the confines of something more expensive like Wordpress or Squarespace.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The downsides are present, though, so you have to be cool with them:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Setup takes more technical chops than clicking through a Squarespace template editor. While the documentation for everything in this post is extremely good, if working out a terminal freaks you out then this likely isn&amp;rsquo;t for you.&lt;/li&gt;
+&lt;li&gt;Content is authored in Markdown. This likely doesn&amp;rsquo;t matter for my friend at the moment since he&amp;rsquo;s not really posting anything new to the site, but it would be something to keep in mind if he decided to start a blog. In that scenario, I usually just SSH to the server and author my content in &lt;a href=&#34;https://www.vim.org/&#34;&gt;Vim&lt;/a&gt;. You could also author the Markdown elsewhere and copy it to the server, or use SFTP to open the Markdown file on the server from an editor on your local machine. It&amp;rsquo;s definitely &lt;em&gt;not&lt;/em&gt; as simple as a WYIWYG editor in your browser, though.&lt;/li&gt;
+&lt;li&gt;Maintenance is something that will need to be done at least periodically. The server will need to be patched. That&amp;rsquo;s easy enough to do with a simple &lt;code&gt;sudo apt update &amp;amp;&amp;amp; sudo apt upgrade&lt;/code&gt; and then reboot when necessary, but it&amp;rsquo;s just another step to keep in mind. Likewise, bouncing the server means that the website will be down, even if it&amp;rsquo;s typically only for a moment or two.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Being kind of pretentious, technical snob I personally find it &lt;em&gt;easier&lt;/em&gt; to author my comment in Markdown on Vim instead of using a WYSIWYG editor in a GUI, but your mileage will vary based on your own prefrences.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

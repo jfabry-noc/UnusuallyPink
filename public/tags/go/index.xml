@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>go on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/go/</link>
+    <description>Recent content in go on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/go/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GoToot CLI Mastodon Client</title>
+      <link>https://hugo.unusually.pink/posts/gotoot-cli-mastodon-client/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/gotoot-cli-mastodon-client/</guid>
+      <description>While I&amp;rsquo;m stuck at home for the foreseeable future, I&amp;rsquo;ve been trying to make the most of my time by using it for some learning instead of simply setting new personal records for how many hours of Netflix and YouTube I can watch in a single month. One of the things I decided to work on was creating a Mastodon client. If you aren&amp;rsquo;t familiar with Mastodon, it&amp;rsquo;s a social network most likened to Twitter.</description>
+      <content>&lt;p&gt;While I&amp;rsquo;m stuck at home for the foreseeable future, I&amp;rsquo;ve been trying to make the most of my time by using it for some learning instead of simply setting new personal records for how many hours of Netflix and YouTube I can watch in a single month. One of the things I decided to work on was creating a &lt;a href=&#34;https://joinmastodon.org/&#34;&gt;Mastodon&lt;/a&gt; client. If you aren&amp;rsquo;t familiar with Mastodon, it&amp;rsquo;s a social network most likened to Twitter. Instead of being centralized, though, Mastodon is federated, meaning different people can run their own &amp;ldquo;instance&amp;rdquo; of Mastodon, and through federation they can interact with other instances. This is cool for a few reasons, not the least of which is that if there&amp;rsquo;s an instance with terrible policies letting their users post all sorts of toxic garbage, an instance administrator can simply opt to not federate with that instance, meaning that users from the instances are effectively cut off from one another.&lt;/p&gt;
+&lt;p&gt;As I mentioned in my &lt;a href=&#34;https://www.unusually.pink/blog/self-hosting-a-static-website&#34;&gt;last post&lt;/a&gt;, I&amp;rsquo;m not much for making frontend interfaces so it only made sense that I&amp;rsquo;d make a CLI-based client. Note that this is by no means an original idea; I was actually inspired by the &lt;a href=&#34;https://github.com/magicalraccoon/tootstream&#34;&gt;tootstream&lt;/a&gt; client that I regularly use. tootstream is written in Python, and I thought about making my own client in Python as well given that it&amp;rsquo;s a super fun language. I also thought about writing it in PowerShell since I have a lot of experience with it. Ultimately, though, I did the exact opposite and started working on it in &lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; since it&amp;rsquo;s always &lt;em&gt;seemed&lt;/em&gt; like a really interesting language that people enjoy but that I&amp;rsquo;ve never had cause to use. I thought it would be a good learning experience to work with a compiled, statically typed language instead of the interpretted languages that I&amp;rsquo;m already (decently) experienced with. This is why I ended up stumbling across &lt;a href=&#34;https://www.unusually.pink/blog/json-to-go&#34;&gt;JSON-to-Go&lt;/a&gt;. It&amp;rsquo;s also been good experience with work with a slightly lower level language than whta I typically use; to say the least, getting back a byte array from my first HTTP GET request wasn&amp;rsquo;t something I expected.&lt;/p&gt;
+&lt;p&gt;I kicked off development of the client this weekend since, being a long weekend, I have even more free time than usual. It&amp;rsquo;s been quite the learning experience, and while I&amp;rsquo;ve felt frustrated at times it&amp;rsquo;s also been very rewarding. Luckily there&amp;rsquo;s a good bit of documentation and resources out there for Go so that I could look up what I needed without &lt;em&gt;too&lt;/em&gt; much pain. The &lt;em&gt;one&lt;/em&gt; thing I struggled with finding was how to create an HTTP client in Go that I could POST with that had both headers and form data; that might be a good post for another day.&lt;/p&gt;
+&lt;p&gt;For my own sanity, I spun up a &lt;a href=&#34;https://github.com/JFFail/GoToot&#34;&gt;GitHub repository for my project&lt;/a&gt;. It&amp;rsquo;s still &lt;em&gt;extremely&lt;/em&gt; early, and I wouldn&amp;rsquo;t recommend anyone else try using it yet. Right before firing up this post, I managed to get my &lt;a href=&#34;https://mastodon.sdf.org/@failtime/104457064244657710&#34;&gt;first toot posted with it&lt;/a&gt; followed shortly by &lt;a href=&#34;https://mastodon.sdf.org/@failtime/104457150393716358&#34;&gt;one with corrected formatting&lt;/a&gt;. I think next will be displaying the Home and Local timelines, followed by being able to favorite, boost, and reply to those statuses. Suffice to say, there&amp;rsquo;s a lot of work left to do.&lt;/p&gt;
+&lt;p&gt;I also think this has been a good experience so far with maybe tempering my expectations a little when learning new programming langauges (or learning &lt;em&gt;anything&lt;/em&gt; really.) I often endeavor to learn a new language only to not make the progress I &lt;strong&gt;think&lt;/strong&gt; that I should be making, get frustrated, and then give up since I&amp;rsquo;m doing it for myself rather than because I&amp;rsquo;m required to for my job or anything like that. In this case it&amp;rsquo;s been nice to just sit down for a little bit, work on a tiny piece of code, make some incremental progress, and take things at a leisurely paace. If I get stuck, I simply do something else for a little while. As I remembered being the case back in college when I was taking Computer Science classes, the best way to overcome a hurdle in programming often is to &lt;strong&gt;stop&lt;/strong&gt; looking at the problem; I&amp;rsquo;ve had ideas for solutions pop into my head at all sorts of random times.&lt;/p&gt;
+&lt;p&gt;Maybe by the time the quarantine is over I&amp;rsquo;ll have a fully function client!&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>JSON-to-Go</title>
+      <link>https://hugo.unusually.pink/posts/json-to-go/</link>
+      <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/json-to-go/</guid>
+      <description>Lately I&amp;rsquo;ve been working through the very arduous (for me) process of learning Go for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn Kotlin since I&amp;rsquo;ve been working with another JVM-based language in Groovy, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow.</description>
+      <content>&lt;p&gt;Lately I&amp;rsquo;ve been working through the &lt;em&gt;very&lt;/em&gt; arduous (for me) process of learning &lt;a href=&#34;https://golang.org/&#34;&gt;Go&lt;/a&gt; for some personal projects. I selected Go because I typically use interpretted, dynamically typed languages for work, so I thought it would be a good learning experience to work with a compiled, statically typed language. To me at least, Go seemed a bit more approachable than something like C or Rust. I started trying to learn &lt;a href=&#34;https://kotlinlang.org/&#34;&gt;Kotlin&lt;/a&gt; since I&amp;rsquo;ve been working with another JVM-based language in &lt;a href=&#34;https://failti.me/posts/groovy_prog/&#34;&gt;Groovy&lt;/a&gt;, but it&amp;rsquo;s extremely difficult to use Kotlin from just the command line without an IDE; when I couldn&amp;rsquo;t figure out how to add an external package to a project without an IDE I basically gave up on it since it didn&amp;rsquo;t fit at all into my workflow. Go, on the other hand, has a handy package manager built into the same binary you use to compile your own code.&lt;/p&gt;
+&lt;p&gt;After going through a book to get the basics of Go down (I won&amp;rsquo;t link the book because I actually thought it was a pretty terrible source, and I wouldn&amp;rsquo;t recommend it) I jumped in to doing a little bit of API work since that&amp;rsquo;ll be important for some of the project ideas I&amp;rsquo;m kicking around. It was fairly simple to look up how to leverage the &lt;code&gt;io/ioutil&lt;/code&gt; and &lt;code&gt;net/http&lt;/code&gt; packages to make an unauthenticated call to a REST API endpoint. This gives the data back in a byte slice. I can cast that to a string to view it and verify that I got back the expected data, but obviously I can&amp;rsquo;t actually &lt;em&gt;do&lt;/em&gt; anything I want with the data in a byte slice. In many other languages this is where I would use some type of JSON library to parse the response into something like a map/hashtable/dictionary. I&amp;rsquo;m used to languages where the interpreter just kind of figures that out for you based on the syntax of the JSON.&lt;/p&gt;
+&lt;p&gt;Go isn&amp;rsquo;t like that, though. Instead, I need to define a &lt;code&gt;struct&lt;/code&gt; that matches the format of the API response. If I have that, I can use the &lt;code&gt;encoding/json&lt;/code&gt; package in Go to create a struct. That&amp;rsquo;s something I &lt;em&gt;could&lt;/em&gt; do manually, but that would be extremely tedious. For example, this is what I see when dumping the byte array I get back from querying my &lt;a href=&#34;https://mastodon.sdf.org/@failtime&#34;&gt;own Mastodon account&lt;/a&gt; as a string:&lt;/p&gt;
+&lt;p&gt;{
+[
+{
+&amp;ldquo;id&amp;rdquo;:&amp;ldquo;49&amp;rdquo;,
+&amp;ldquo;username&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;acct&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;display_name&amp;rdquo;:&amp;ldquo;failtime&amp;rdquo;,
+&amp;ldquo;locked&amp;rdquo;:false,
+&amp;ldquo;bot&amp;rdquo;:false,
+&amp;ldquo;discoverable&amp;rdquo;:false,
+&amp;ldquo;group&amp;rdquo;:false,
+&amp;ldquo;created_at&amp;rdquo;:&amp;ldquo;2017-04-24T15:48:10.334Z&amp;rdquo;,
+&amp;ldquo;note&amp;rdquo;:&amp;quot;\u003cp\u003eProfessional loser.\u003c/p\u003e&amp;quot;,
+&amp;ldquo;url&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/@failtime%22,&#34;&gt;https://mastodon.sdf.org/@failtime&amp;quot;,&lt;/a&gt;
+&amp;ldquo;avatar&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&amp;quot;,&lt;/a&gt;
+&amp;ldquo;avatar_static&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/avatars/000/000/049/original/3fe810f812b83712.jpg?1567388103&amp;quot;,&lt;/a&gt;
+&amp;ldquo;header&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&amp;quot;,&lt;/a&gt;
+&amp;ldquo;header_static&amp;rdquo;:&amp;ldquo;&lt;a href=&#34;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165%22,&#34;&gt;https://mastodon.sdf.org/system/accounts/headers/000/000/049/original/45632b66add48db3.jpg?1592224165&amp;quot;,&lt;/a&gt;
+&amp;ldquo;followers_count&amp;rdquo;:99,
+&amp;ldquo;following_count&amp;rdquo;:69,
+&amp;ldquo;statuses_count&amp;rdquo;:1880,
+&amp;ldquo;last_status_at&amp;rdquo;:&amp;ldquo;2020-06-27&amp;rdquo;,
+&amp;ldquo;emojis&amp;rdquo;:[],
+&amp;ldquo;fields&amp;rdquo;:[
+{
+&amp;ldquo;name&amp;rdquo;:&amp;ldquo;Blog&amp;rdquo;,
+&amp;ldquo;value&amp;rdquo;:&amp;quot;\u003ca href=\&amp;ldquo;&lt;a href=&#34;https://failti.me&#34;&gt;https://failti.me&lt;/a&gt;\&amp;rdquo; rel=\&amp;ldquo;me nofollow noopener noreferrer\&amp;rdquo; target=\&amp;quot;_blank\&amp;quot;\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&amp;quot;\&amp;quot;\u003efailti.me\u003c/span\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003e\u003c/span\u003e\u003c/a\u003e&amp;rdquo;,
+&amp;ldquo;verified_at&amp;rdquo;:&amp;ldquo;2020-06-24T00:27:59.294+00:00&amp;rdquo;
+},
+{
+&amp;ldquo;name&amp;rdquo;:&amp;ldquo;Laifu&amp;rdquo;,
+&amp;ldquo;value&amp;rdquo;:&amp;quot;\u003ca href=\&amp;ldquo;&lt;a href=&#34;https://laifu.moe&#34;&gt;https://laifu.moe&lt;/a&gt;\&amp;rdquo; rel=\&amp;ldquo;me nofollow noopener noreferrer\&amp;rdquo; target=\&amp;quot;_blank\&amp;quot;\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003ehttps://\u003c/span\u003e\u003cspan class=\&amp;quot;\&amp;quot;\u003elaifu.moe\u003c/span\u003e\u003cspan class=\&amp;ldquo;invisible\&amp;quot;\u003e\u003c/span\u003e\u003c/a\u003e&amp;rdquo;,
+&amp;ldquo;verified_at&amp;rdquo;:&amp;ldquo;2020-06-15T00:37:19.734+00:00&amp;rdquo;
+}
+]
+}
+]
+}&lt;/p&gt;
+&lt;p&gt;I &lt;em&gt;really&lt;/em&gt; don&amp;rsquo;t want to have to go through that to create a struct out of it. I started digging around to see if there was a better way and, as is usually the case when dealing with code, came across a &lt;a href=&#34;https://stackoverflow.com/questions/43624404/golang-how-to-parse-unmarshal-decode-a-json-array-api-response&#34;&gt;Stack Overflow post on the topic&lt;/a&gt;. Along with some other helpful information that I used to improve my code a little, one of the replies linked to &lt;a href=&#34;https://mholt.github.io/json-to-go/&#34;&gt;JSON-to-Go&lt;/a&gt;. The service allows me to paste in JSON output like what I included above in this post, and it will automatically generate the corresponding struct. I tried it out, and it nicely gave me the following:&lt;/p&gt;
+&lt;p&gt;type AutoGenerated struct {
+ID             string        `json:&amp;ldquo;id&amp;rdquo;`
+Username       string        `json:&amp;ldquo;username&amp;rdquo;`
+Acct           string        `json:&amp;ldquo;acct&amp;rdquo;`
+DisplayName    string        `json:&amp;ldquo;display_name&amp;rdquo;`
+Locked         bool          `json:&amp;ldquo;locked&amp;rdquo;`
+Bot            bool          `json:&amp;ldquo;bot&amp;rdquo;`
+Discoverable   bool          `json:&amp;ldquo;discoverable&amp;rdquo;`
+Group          bool          `json:&amp;ldquo;group&amp;rdquo;`
+CreatedAt      time.Time     `json:&amp;ldquo;created_at&amp;rdquo;`
+Note           string        `json:&amp;ldquo;note&amp;rdquo;`
+URL            string        `json:&amp;ldquo;url&amp;rdquo;`
+Avatar         string        `json:&amp;ldquo;avatar&amp;rdquo;`
+AvatarStatic   string        `json:&amp;ldquo;avatar_static&amp;rdquo;`
+Header         string        `json:&amp;ldquo;header&amp;rdquo;`
+HeaderStatic   string        `json:&amp;ldquo;header_static&amp;rdquo;`
+FollowersCount int           `json:&amp;ldquo;followers_count&amp;rdquo;`
+FollowingCount int           `json:&amp;ldquo;following_count&amp;rdquo;`
+StatusesCount  int           `json:&amp;ldquo;statuses_count&amp;rdquo;`
+LastStatusAt   string        `json:&amp;ldquo;last_status_at&amp;rdquo;`
+Emojis         []interface{} `json:&amp;ldquo;emojis&amp;rdquo;`
+Fields         []struct {
+Name       string    `json:&amp;ldquo;name&amp;rdquo;`
+Value      string    `json:&amp;ldquo;value&amp;rdquo;`
+VerifiedAt time.Time `json:&amp;ldquo;verified_at&amp;rdquo;`
+} `json:&amp;ldquo;fields&amp;rdquo;`
+}&lt;/p&gt;
+&lt;p&gt;I pasted it into my code, changed the name from &lt;code&gt;AutoGenerated&lt;/code&gt; to something a little more fitting, and sure enough I was now able to &lt;code&gt;Unmarshal&lt;/code&gt; my API response into a usable struct&amp;hellip; without having to go through the pain of creating the struct myself. Huge kudos to the creator for such an awesome and useful service.&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

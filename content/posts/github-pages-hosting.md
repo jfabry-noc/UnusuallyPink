@@ -1,0 +1,39 @@
++++
+title = "GitHub Pages Hosting"
+date = "2020-09-20"
+author = "John Fabry"
+authorTwitter = "UnusuallyPink"
+showFullContent = false
+keywords = ["dns", "github-pages", "hosting", "lets-encrypt", "website"]
+tags = ["dns", "github-pages", "hosting", "lets-encrypt", "website"]
++++
+
+As I had mentioned in my [post about Dropbox Passwords](https://unusually.pink/dropbox-passwords/), I'm looking to cut down on the number of services that I pay for each month. One of the areas I've decided to cut down on are my domains; I'm letting a few domains that I never ended up finding much of a use for expire rather than having them automatically renew. Some have been renewing like this for years just because I didn't want to lose them for some reason despite never having any real use for them. With a decrease in my domains comes a decrease in websites, to the point where I started to wonder if I could get away with ditching my VPS. I had been using the same VPS for over 2 years, and it served me well. In a world with so many hosting options, though, it seemed overkill just to run 2 static websites, each of which were only a single page.
+
+One of my sites I placed on [Firebase](https://firebase.google.com/). I'm not a fan of using Google products, but I've used Firebase previously (moving my website to an existing, stale Firebase project will be the topic of another post), and the free [Spark plan](https://firebase.google.com/pricing) gives me more than enough for a simple site with 1 GB of storage and 10 GB of egress traffic each month.
+
+I wanted to check out some different options for [jfabhd.com](https://jfabhd.com), though. After recently reading one of [Kev Quirk's blog posts](https://kevq.uk/static-site-generators-revisited/), I thought I would give [Netlify](https://www.netlify.com/) a shot. Their [free Starter plan](https://www.netlify.com/pricing/) seems great for a simple hobby site and includes CI (continuous integration) from a git repository. I signed up for an account but quickly disliked the fact that leveraging my own domain meant I needed to move my nameservers for it to Netlify. While this isn't horrible, I _really_ prefer to keep managing my DNS in a single place as opposed to scattering nameservers around to wherever my content is hosted. Currently all of my personal domains have DNS hosted in the same place, and I'd like to keep it that way. As a result, I shelved the idea of Netlify and looked to [GitHub Pages](https://pages.github.com/) instead.
+
+I actually used GitHub Pages before, way back in the day when they were brand new and I set up my first [Jekyll](https://jekyllrb.com/)\-based blog. It wasn't bad by any stretch, but a lot of it was clunky. I remembered having to manually add some text files to the repository to configure my custom domain and to host content out of a folder that was named differently than what was expected. Likewise, there were no SSL options, so I ended up putting my GitHub Pages site behind [CloudFlare](https://blog.cloudflare.com/secure-and-fast-github-pages-with-cloudflare/) in order to secure it. I figured this would be a good opportunity to see what, if anything, had changed. If I hated it, I wouldn't be out anything and could continue to look at other options.
+
+The initial setup is still the same as I remember: just create a public repository with a name of:
+
+```
+github-account.github.io
+```
+
+I did this through the GitHub website in less than a minute. Next up I ran `git clone` in order to initialize the repository on my local laptop in the same directory where I keep all of my other GitHub repos. With my local environment ready, I just copied the handful of files that I had backed up from my VPS into the root directory for the repository; if I don't take any other action, GitHub will host content from the root of the repo. Since this is a static, single page site, I don't need to worry about compiling it with static site generators like Jekyll or [Hugo](https://gohugo.io/). I was able to `commit` the change for adding the files, navigate to [https://jfaby-noc.github.io](https://jfabry-noc.github.io), and see my site.
+
+With the content out of the way, I wanted to set up my custom domain. The GitHub side of the work can now be done through the **Settings** menu of the repository; it basically replaces the manual work that I previously had to do by adding files to my repository:
+
+![](images/gh_pages.png)
+
+The top allows me to change the branch and directory to host content from; in my case I could just leave the defaults. The **Custom domain** sections allows me to type in my domain of choice. This just adds a file named `CNAME` to my repo containing the domain information. Then I just had to follow [the directions](https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site) for setting up a custom domain in my DNS host's settings.
+
+**Note:** It's a little wonky from the directions, but to make GitHub redirect everything appropriately when using both an apex domain and a subdomain, you follow both sections of the instructions verbatim. For example, I wanted the domain to be `jfabhd.com`, but I also wanted `www.jfabhd.com` to still redirect to the site. I configured the apex domain via the instructions above, creating 4 A records pointing to different IP addresses. Then I configured a CNAME record for `www.jfabhd.com` pointing _not_ to `jfabhd.com`, but instead to `jfaby-noc.github.io`. If you do it this way, GitHub will work it all out under the hood.
+
+Immediately after setting up my DNS records, the option for **Enforce HTTPS** was not available, telling me that the site was not configured properly. I rightly assumed this just meant DNS needed time to propagate. I checked back 15 minutes later (which is the TTL of my DNS records), and it presented me with a new message that the certificate wasn't finished being created yet. I once again rightly assumed that they were spinning up these certificates through [Let's Encrypt](https://letsencrypt.org/), so I browsed [Hacker News](https://news.ycombinator.com/) for a few minutes until refreshing my repository's settings showed that the option to force HTTPS was now available. I simply checked the box, waited a few minutes, and then verified that going explicitly to `http://jfabhd.com` would redirect me successfully to `https://jfabhd.com`. If this doesn't work for you, chances are that you just didn't give it enough time. While the tooltip in the GibHub UI says it can take up to 24 hours, it took about 5 minutes for my site.
+
+The last thing to check was that the CI was working so that changes to the repo would be reflected on the site. A few things had changed since I took the backup of my site, meaning there were some needed tweaks with which I could test. For one I restarted this blog and I deleted my Twitter account since Twitter is a cesspool (that might be a good topic for another post...), so I wanted to swap the Twitter link on my site with one for this blog. I first did a `git pull` to get local copies of things like the `CNAME` file that had been made in the cloud, and then I quickly updated my HTML to share a link with the [Font Awesome RSS feed icon](https://fontawesome.com/icons/rss?style=solid) as the content. After committing and pushing the change, I refreshed the site to confirm it had also been updated.
+
+On the whole, there's really nothing for me to complain about with GitHub Pages. It's free, I can use the same GitHub account I'm already in every day, I can use a custom domain without moving my DNS, and I get a Let's Encrypt certificate out of the box. Obviously, though, my use case for it is very simple, and your mileage may vary. With options like this, though, I feel even better about my idea to stop running my own VPS just to host a couple of small, low-traffic websites.

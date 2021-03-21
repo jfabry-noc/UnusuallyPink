@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Sorting IP Addresses With PowerShell :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
+Get-Content -Path .\ipListFixed.txt | Sort-Object
+The results were, suffice to say, lackluster. I ended up with something like this:" />
+<meta name="keywords" content="ip-address, powershell, scripting, sorting" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Sorting IP Addresses With PowerShell">
+<meta property="og:description" content="I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
+Get-Content -Path .\ipListFixed.txt | Sort-Object
+The results were, suffice to say, lackluster. I ended up with something like this:" />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2019-06-15 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/">Sorting IP Addresses With PowerShell</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2019-06-15 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/ip-address/">ip-address</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/powershell/">powershell</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/sorting/">sorting</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the <strong>Sort-Object</strong> cmdlet:</p>
+<p><code>Get-Content -Path .\ipListFixed.txt | Sort-Object</code></p>
+<p>The results were, suffice to say, lackluster. I ended up with something like this:</p>
+<pre><code>10.1.69.1
+10.1.69.12
+10.1.69.148
+10.1.69.149
+10.1.69.17
+</code></pre><p>Gross, right? Obviously 10.1.69.17 shouldn’t be after 10.1.69.148 or .149. The issue is that the whole octet isn’t being considered. It’s being sorted like they’re just strings rather than IP addresses; 7 is bigger than 4 so they’re sorted accordingly. PowerShell isn’t really comparing the numbers of 17 to 148, for example, to realize that 17 is actually smaller.</p>
+<p>It makes sense; PowerShell can’t assume that the value is an IP address so it’s treating the value like a string instead. This means that the key is to <em>tell</em> PowerShell it’s an IP address so that PowerShell can adjust the way it does sorting. This is possible by casting the values as the <a href="https://docs.microsoft.com/en-us/dotnet/api/system.version?view=netcore-2.2">.NET Version class</a>. Since I happened to be pulling the IPs from a file, I did the casting within the <strong>-Property</strong> parameter that I added to the <strong>Sort-Object</strong> cmdlet:</p>
+<p><code>Get-Content -Path .\ipListFixed.txt | Sort-Object -Property { [System.Version]$_ }</code></p>
+<p>This yields <em>significantly</em> better results:</p>
+<pre><code>10.1.69.1
+10.1.69.2
+10.1.69.12
+10.1.69.17
+10.1.69.29
+</code></pre><p>Stay pink!</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/enabling-legacy-status-icons-in-popos/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Enabling Legacy Status Icons In Pop!_OS</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/">
+                <span class="button__text">Unusually Pink Updates: Dropbox, Password Managers, and Ad Blocking</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

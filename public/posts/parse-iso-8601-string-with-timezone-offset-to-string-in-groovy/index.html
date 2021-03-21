@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Parse ISO 8601 String With Timezone Offset To Date Object In Groovy :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online." />
+<meta name="keywords" content="date, datetime, groovy, groovy-programming, iso-8601, programming, scripting" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Parse ISO 8601 String With Timezone Offset To Date Object In Groovy">
+<meta property="og:description" content="My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-01-18 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/">Parse ISO 8601 String With Timezone Offset To Date Object In Groovy</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-01-18 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/date/">date</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/datetime/">datetime</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy/">groovy</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy-programming/">groovy-programming</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/iso-8601/">iso-8601</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/programming/">programming</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>My <a href="https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/">Groovy posts always have the absolute worst titles</a>, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online. Any time I manage to figure out something that was difficult to find information on, it seems like a good opportunity to fill the gap a bit.</p>
+<p>I do a lot of work with APIs, mostly making calls against cloud-based systems. In the cloud, no one generally cares about what timezone you happen to be in, so UTC is always used. I&rsquo;ve recently been making calls against local software platform, though, and <strong>it</strong> returns timestamps in the local time of the server running it. Ick. I ended up with string values like the following which I then needed to parse as a Date object in Groovy for the sake of comparison.</p>
+<pre><code>&quot;2020-10-17T02:00:21.644-04:00&quot;
+</code></pre><p>I&rsquo;m quite familiar with converting something like this <em>without</em> the timezone offset at the end; that one was new for me. My first struggle was exactly what to search for in order to dig up information on this; I eventually discovered that this is <a href="https://www.iso.org/iso-8601-date-and-time-format.html">an ISO 8601 date and time format</a>. I first attempted to simply pass this value straight to <code>Date.parse()</code> like I would with something in UTC:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def dateString <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;2020-10-17T02:00:21.644-04:00&#34;</span>
+def dateObject <span style="color:#f92672">=</span> Date<span style="color:#f92672">.</span><span style="color:#a6e22e">parse</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;yyyy-MM-dd&#39;T&#39;HH:mm:ss.SSSZ&#34;</span><span style="color:#f92672">,</span> dateString<span style="color:#f92672">)</span>
+</code></pre></div><p>Attempting this gives a really nice error message:</p>
+<blockquote>
+<p>Unparseable date: &ldquo;2020-10-17T02:00:21.644-04:00&rdquo;</p>
+<p>Groovy telling me to get bent</p>
+</blockquote>
+<p>After more digging than I care to admit, I finally got to the root of the problem: Groovy doesn&rsquo;t like the colon in the timezone offset. Rather than <code>04:00</code> it wants <code>0400</code>. Given that I work in the western hemisphere, I <em>could</em> have taken the easy route and simply removed the last 3 characters, replacing <code>:00</code> with <code>00</code>. It&rsquo;s not the most elegant solution, though, and there are parts of the world with timezone offsets in fractions of an hour; assuming it&rsquo;s always going to be a whole hour isn&rsquo;t safe. My first take, written last week, was to be extremely complicated by splitting the string into a list at each colon. From there, I concatenated the list items back into a string, separating them with colons, until attaching the very last piece, which is added sans colon:</p>
+<!-- raw HTML omitted -->
+<p>It technically works but doesn&rsquo;t look so good; no one would ever call the above solution &ldquo;elegant&rdquo; by any stretch. That was done late on a Friday, though, and over the weekend I had a better thought pop into my head. What if instead of spitting up the entire string I simply:</p>
+<ol>
+<li>Verified first that the end of the string matched what was expected.</li>
+<li>Took a substring that was everything up until the problematic part of the offset.</li>
+<li>Took a substring for the numbers after the last colon.</li>
+<li>Put the parts from 2 and 3 together.</li>
+</ol>
+<p>After shaking off a bit of regular expression rust, this is what I ended up using:</p>
+<!-- raw HTML omitted -->
+<p>The partial regex match of <code>:\d{2}$</code> validates that the string ends with a colon followed by any 2 digits. If so, I first create a substring from the first index (0) up to the index at the length of the string minus 3, meaning I omit the colon and last 2 numbers. Then I append to that a substring from the overall string&rsquo;s length minus <strong>2</strong> through the end of the string. Using the overall string&rsquo;s length minus 2 rather than 3 means I just leave out the colon.</p>
+<p>Is this the best solution? Probably not, but it&rsquo;s getting the job done in my situation. If I ran into issues, my next attempt would be to get the index of every colon in the entire string and then replace the very last one with nothing.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/msal4j-with-groovy/">
+                <span class="button__icon">←</span>
+                <span class="button__text">msal4j With Groovy</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/twenty-twenty-one-wordpress-theme/">
+                <span class="button__text">Twenty Twenty-One WordPress Theme</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

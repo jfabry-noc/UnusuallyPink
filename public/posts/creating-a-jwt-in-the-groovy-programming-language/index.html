@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Creating a JWT in the Groovy Programming Language :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, they can be used for nefarious purposes." />
+<meta name="keywords" content="groovy, groovy-programming, java, json-web-token, jwt, programming" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/creating-a-jwt-in-the-groovy-programming-language/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Creating a JWT in the Groovy Programming Language">
+<meta property="og:description" content="On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, they can be used for nefarious purposes." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/creating-a-jwt-in-the-groovy-programming-language/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-07-12 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/creating-a-jwt-in-the-groovy-programming-language/">Creating a JWT in the Groovy Programming Language</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-07-12 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy/">groovy</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy-programming/">groovy-programming</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/java/">java</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/json-web-token/">json-web-token</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/jwt/">jwt</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/programming/">programming</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, <a href="https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7">they can be used for nefarious purposes</a>. Enter the <a href="https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7">JSON Web Token</a> or JWT. You create a JWT by parsing together a bunch of information, like your application ID, the validity period, etc., sign it with a secret, and exchange it for an access token you can actually use to make your normal API calls.</p>
+<p>A JWT has a few advantages. First, it expires. The validity period varies based on the service; the one I was working with was 30 minutes. So if your access token is compromised, it can only work for however much time is left on the token. They can also be configured to leverage a UUID as a one-time <a href="https://en.wikipedia.org/wiki/Cryptographic_nonce">nonce</a> to prevent replay attacks.</p>
+<h1 id="background">Background<a href="#background" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>The new service I was working with used JWTs for authentication, so I had to figure out how to do that. The vendor provided sample code, but they were leveraging Python and using a library in Python to handle the JWT. That didn&rsquo;t help me too much because leveraging Python in my current setup would be difficult, and calling a library means the sample code didn&rsquo;t show me how to piece things together. I&rsquo;ve mentioned before that the best language for the platform I&rsquo;m dealing with at the moment is <a href="https://www.unusually.pink/blog/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc">Groovy</a>, but after some searches I found essentially no information on parsing together a JWT in Groovy. My other option for languages is PowerShell, so after some searches I found a <a href="https://www.reddit.com/r/PowerShell/comments/8bc3rb/generate_jwt_json_web_token_in_powershell/">hero on Reddit who posted the exact code to create a JWT</a>. I modified the code a little bit to account for the properties the service I was leveraging required in the payload; I managed to create a JWT, exchange it for an access token, and make successful requests from the API. Awesome!</p>
+<p>Yesterday, though, I found myself sitting at home during another quarantine weekend, and I decided to see if I could recreate that code in Groovy since the PowerShell code was extremely readable; I just had to figure out how to do the same thing in Grooovy.</p>
+<h1 id="high-level">High Level<a href="#high-level" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>At a high level, the process of creating a JWT looks like this.</p>
+<ol>
+<li>Find the current time and the expiration time for the token, both in <a href="https://en.wikipedia.org/wiki/Unix_time">Unix time</a>.</li>
+<li>Create a UUID to prevent replay attacks.</li>
+<li>Create maps for the header and payload.</li>
+<li>Convert those maps to JSON and then encode them as UTF-8 base64 strings.</li>
+<li>Combine the encoded header and payload. Then create a SHA256 signature for it based on the secret key of the application where I generated the application ID.</li>
+<li>Combine the header, payload, and signature together. Pass that to the service with HTTP POST, and receive back the authentication token.</li>
+</ol>
+<h1 id="the-code">The Code<a href="#the-code" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>I&rsquo;ll paste individual snippets here, but the full code is in a <a href="https://github.com/JFFail/GroovyJWT">Github repository</a>. For reference with this post, my function definition looks like this; you can see that I&rsquo;m passing a lot of information in for everything the payload will need:</p>
+<p>def createJWT(JsonSlurper slurper, Integer validSeconds, String appID, String tenantID, String appSecret, String iss)</p>
+<h3 id="unix-time">Unix Time<a href="#unix-time" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Getting Unix time was pretty straightforward given the <code>currentTimeMillis</code> function in Java&rsquo;s System library.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">TimeZone<span style="color:#f92672">.</span><span style="color:#a6e22e">setDefault</span><span style="color:#f92672">(</span>TimeZone<span style="color:#f92672">.</span><span style="color:#a6e22e">getTimeZone</span><span style="color:#f92672">(</span><span style="color:#960050;background-color:#1e0010">&#39;</span>UTC<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">))</span>
+def rightNowMilli <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span>
+def rightNowSec <span style="color:#f92672">=</span> Math<span style="color:#f92672">.</span><span style="color:#a6e22e">round</span><span style="color:#f92672">(</span>rightNowMilli <span style="color:#f92672">/</span> 1000<span style="color:#f92672">)</span>
+def expirationSec <span style="color:#f92672">=</span> rightNowSec <span style="color:#f92672">+</span> validSeconds
+</code></pre></div><p>The only hangup was that I need the time in seconds, not milliseconds, thus why I divided the value by 1000. After that, I just had to add on the number of seconds for the lifetime of the token to get the expiration time; in my case it was 1800 seconds (30 minutes.)</p>
+<h3 id="uuid">UUID<a href="#uuid" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Next up I needed to generate a UUID as a unique identifier so that no one can try to re-issue this exact same request. There&rsquo;s a UUID object type already, so I could generate a new, random UUID with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def jtiValue <span style="color:#f92672">=</span> UUID<span style="color:#f92672">.</span><span style="color:#a6e22e">randomUUID</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">()</span>
+</code></pre></div><h3 id="maps">Maps<a href="#maps" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>For ease of later conversion to JSON, I next created maps for both the header and the payload.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map header <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>alg<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;HS256&#34;</span><span style="color:#f92672">,</span> typ<span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;JWT&#34;</span><span style="color:#f92672">]</span>
+Map payload <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>exp<span style="color:#f92672">:</span> expirationSec<span style="color:#f92672">,</span> iat<span style="color:#f92672">:</span> rightNowSec<span style="color:#f92672">,</span> iss<span style="color:#f92672">:</span> iss<span style="color:#f92672">,</span> sub<span style="color:#f92672">:</span> appID<span style="color:#f92672">,</span> tid<span style="color:#f92672">:</span> tenantID<span style="color:#f92672">,</span> jti<span style="color:#f92672">:</span> jtiValue<span style="color:#f92672">]</span>
+</code></pre></div><p>I hard-coded the values in the header map, though it&rsquo;s worth mentioning SHA256 could be different. Likewise, the payload will depend heavily on the service from which a token is being requested; this is where you&rsquo;re most likely to need to make modifications specific to your use case.</p>
+<h3 id="json-conversion">JSON Conversion<a href="#json-conversion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Next the maps are converted to JSON strings. Groovy&rsquo;s <code>JsonOutput</code> library makes this easy with a single method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def headerJson <span style="color:#f92672">=</span> JsonOutput<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>header<span style="color:#f92672">)</span>
+def payloadJson <span style="color:#f92672">=</span> JsonOutput<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>payload<span style="color:#f92672">)</span>
+</code></pre></div><p>Note that I needed to import the library before calling it.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> groovy.json.JsonOutput
+</code></pre></div><h3 id="base64-conversion">Base64 Conversion<a href="#base64-conversion" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The JSON values for the header and payload both need to be converted to base64 strings. I initially started doing this in a <strong>far</strong> more difficult manner by creating a function that would convert the bytes and return a byte array before stumbling across the fact that Strings have a <code>getBytes</code> method. Note that Strings also have a <code>bytes</code> property I could call directly; in my testing this seemed to give me the same result, but I liked using <code>getBytes</code> instead because I could specify that they were UTF-8.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def headerBase64 <span style="color:#f92672">=</span> headerJson<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">encodeBase64</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;=&#34;</span><span style="color:#f92672">)[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\+&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;_&#34;</span><span style="color:#f92672">)</span>
+def payloadBase64 <span style="color:#f92672">=</span> payloadJson<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">encodeBase64</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;=&#34;</span><span style="color:#f92672">)</span><span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">[</span>0<span style="color:#960050;background-color:#1e0010">\</span><span style="color:#f92672">].</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\+&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;_&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p>I didn&rsquo;t see any cases where the <code>replaceAll</code> methods really did anything, but since they were in the original code I figured there must have been some use.</p>
+<h3 id="signature">Signature<a href="#signature" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>This part basically involved a <strong>lot</strong> of <a href="https://duckduckgo.com">DuckDuckGo</a> searches and piecing together things I found. Most of this is just Java code, and I&rsquo;m honestly a little surprised that it worked&hellip; <a href="https://github.com/JFFail/GroovyJWT/commit/c43d189d9bcab9ca81ca4d0df7820e4532ec3299#diff-d351cb51d1faad4d0047444e8ca114ac">this commit</a> shows how confident I was feeling. Note that once again I had to make some imports to leverage different crypto libraries:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> javax.crypto.spec.SecretKeySpec
+<span style="color:#f92672">import</span> javax.crypto.Mac
+</code></pre></div><p>Then the code for it is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def toBeSigned <span style="color:#f92672">=</span> headerBase64 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">+</span> payloadBase64
+SecretKeySpec secretKeySpec <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> SecretKeySpec<span style="color:#f92672">(</span>appSecret<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">),</span> <span style="color:#e6db74">&#34;HmacSHA256&#34;</span><span style="color:#f92672">)</span>
+Mac mac <span style="color:#f92672">=</span> Mac<span style="color:#f92672">.</span><span style="color:#a6e22e">getInstance</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;HmacSHA256&#34;</span><span style="color:#f92672">)</span>
+mac<span style="color:#f92672">.</span><span style="color:#a6e22e">init</span><span style="color:#f92672">(</span>secretKeySpec<span style="color:#f92672">)</span>
+<span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> digest <span style="color:#f92672">=</span> mac<span style="color:#f92672">.</span><span style="color:#a6e22e">doFinal</span><span style="color:#f92672">(</span>toBeSigned<span style="color:#f92672">.</span><span style="color:#a6e22e">getBytes</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;UTF-8&#34;</span><span style="color:#f92672">))</span>
+def signature <span style="color:#f92672">=</span> digest<span style="color:#f92672">.</span><span style="color:#a6e22e">encodeBase64</span><span style="color:#f92672">().</span><span style="color:#a6e22e">toString</span><span style="color:#f92672">().</span><span style="color:#a6e22e">split</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;=&#34;</span><span style="color:#f92672">)[</span>0<span style="color:#f92672">].</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;\\+&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">).</span><span style="color:#a6e22e">replaceAll</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;/&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;_&#34;</span><span style="color:#f92672">)</span>
+</code></pre></div><p>This is first concatenating together the header and payload, with a period separating the two base64 encoded values. Then I create a secret key specification using the secret key from my app. Next I instantiate a message authentication code using SHA256. That&rsquo;s used to create a signature against the aforementioned header/payload combination, the result of which is also a base64 encoded string.</p>
+<h3 id="combination">Combination<a href="#combination" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The final step is to simply concatenate together the header, payload, and signature, all separated by periods:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def token <span style="color:#f92672">=</span> headerBase64 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">+</span> payloadBase64 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;.&#34;</span> <span style="color:#f92672">+</span> signature
+</code></pre></div><p>This value is what I return to the caller. I won&rsquo;t go over the details here, but in the GitHub repository I have code where I actually make a POST against the API endpoint and receive an access token back in exchange for the JWT I created, so I know everything is working. I <em>might</em> update that code in the future to use a newer <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html">HttpClient</a> from Java 11+ based on some things I had done last night in Kotlin; if I end up doing that I think it would be a good item for another post in the future.</p>
+<p>Until next time, crypto on and stay pink!</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/groovy-programming-httpclient/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Groovy Programming HttpClient</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/gotoot-cli-mastodon-client/">
+                <span class="button__text">GoToot CLI Mastodon Client</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

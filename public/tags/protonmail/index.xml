@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>protonmail on Unusually Pink</title>
+    <link>https://hugo.unusually.pink/tags/protonmail/</link>
+    <description>Recent content in protonmail on Unusually Pink</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>2021</copyright>
+    <lastBuildDate>Sun, 08 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/protonmail/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Even More Storage: Yearly Bonuses For Paid ProtonMail Accounts</title>
+      <link>https://hugo.unusually.pink/posts/even-more-storage-yearly-bonuses-for-paid-protonmail-accounts/</link>
+      <pubDate>Sun, 08 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/even-more-storage-yearly-bonuses-for-paid-protonmail-accounts/</guid>
+      <description>It&amp;rsquo;s no secret around this blog or for anyone who listened to the Unusually Pink Podcast that I&amp;rsquo;m a fan of ProtonMail. While it&amp;rsquo;s unfortunate that privacy in the world of computing often comes with an associated monetary cost, the simple fact of the matter is that if you aren&amp;rsquo;t paying for your email account then chances are the provider is making money off of your data that happens to be stored in it.</description>
+      <content>&lt;p&gt;It&amp;rsquo;s no secret &lt;a href=&#34;https://unusually.pink/protonmail-bonus-storage/&#34;&gt;around this blog&lt;/a&gt; or for anyone who listened to the &lt;a href=&#34;https://www.dropbox.com/sh/v9yvrhsoahu2vlw/AAB_JaXv3isvQjVyIMdlPHm6a?dl=0&#34;&gt;Unusually Pink Podcast&lt;/a&gt; that I&amp;rsquo;m a fan of ProtonMail. While it&amp;rsquo;s unfortunate that privacy in the world of computing often comes with an associated monetary cost, the simple fact of the matter is that if you &lt;em&gt;aren&amp;rsquo;t&lt;/em&gt; paying for your email account then chances are the provider is making money off of your data that happens to be stored in it. Google, for example, is happy to give you free email so that they can scrape your data out of it and make a comprehensive profile about your life for advertising purposes. ProtonMail takes a firm stance against this practice, and they actually &lt;em&gt;do&lt;/em&gt; permit users to create completely free email accounts that are never scraped or monitored; their setup actually ensures that they couldn&amp;rsquo;t access the plaintext content of your email even if they wanted to. Doing this is only possible, though, because some users opt to pay for additional features and thus subsidize the free accounts. I happen to be one of those people who has been paying for a few years now both to help support the ProtonMail mission and to get access to a custom domain in my account.&lt;/p&gt;
+&lt;p&gt;ProtonMail occasionally likes to give special perks to their paid customers as a token of appreciation; I&amp;rsquo;ve written before about how they&amp;rsquo;ve &lt;a href=&#34;https://unusually.pink/protonmail-bonus-storage/&#34;&gt;given away a bonus 5 GB of storage for paid accounts&lt;/a&gt;. They&amp;rsquo;ve done the same thing another time since that post, giving me 10 GB of bonus storage on top of the 5 GB that comes with my paid plan. While I said at the time of my original post that I didn&amp;rsquo;t really need the storage at the moment but was happy to have the extra bits just in case, ProtonMail has subsequently stated that the storage can be shared with the upcoming ProtonDrive secure cloud storage offering once that&amp;rsquo;s available.&lt;/p&gt;
+&lt;p&gt;As another token of gratitude, ProtonMail has announced regular storage increases for paid accounts; each year that a paid account remains active, it receives 1 GB of bonus storage on the anniversary. Even better, this is retroactive. Since I&amp;rsquo;ve had a paid account for 3 years, when the initiative was implemented I immediately received 3 GB of bonus storage. I&amp;rsquo;ll get a 4th GB on my yearly anniversary coming up later this month:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The general principle is straightforward:&lt;/p&gt;
+&lt;p&gt;- When you sign up for any paid Proton plan, you are automatically eligible for Storage Bonuses.&lt;/p&gt;
+&lt;p&gt;- On the one year anniversary of your paid subscription, you will receive 1 GB of additional storage for free that can be used with your ProtonMail inbox. (In the future, your storage will be shared between your ProtonMail inbox and your ProtonDrive vault.)&lt;/p&gt;
+&lt;p&gt;- This will happen every year, and your Storage Bonuses will accumulate as long as you have a paid plan with Proton without interruption.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;While the current bonus value is 1 GB right now, they say this will increase in the future, though it&amp;rsquo;s unclear if the increase is also retroactive or if it will only apply to new bonus accumulations going forward:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The current Storage Bonus is 1 GB per year, but this will be increased in the future.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The full details are available, along with a FAQ, from &lt;a href=&#34;https://protonmail.com/support/knowledge-base/storage-bonus/?utm_campaign=ww-en-2c-mail-coms_email-storage_reward_email&amp;amp;utm_source=proton_users&amp;amp;utm_medium=email&amp;amp;utm_content=mail_paid%3E1yr&amp;amp;utm_term=learn_more_about_storage_here&#34;&gt;their support article&lt;/a&gt;. The tl;dr is basically that you get bonus storage every year on the anniversary of your paid account as long as you remain with a paid subscription on &lt;em&gt;any&lt;/em&gt; Proton product. This means that if you pay for ProtonVPN but not ProtonMail, you&amp;rsquo;re still eligible for the bonus storage. That eligibility and current storage accumulation continues to apply even if you stop paying for ProtonVPN and start paying for ProtonMail (or ProtonDrive when it comes out) as long as the two periods overlap. Having a lapse in paid subscription will reset the accumulation of bonus storage.&lt;/p&gt;
+&lt;p&gt;All told, I think it&amp;rsquo;s another nice perk from ProtonMail, and with the ability to leverage the storage for ProtonDrive, a product that I&amp;rsquo;m &lt;em&gt;highly&lt;/em&gt; looking forward to, the more storage that I can get my hands on the better.&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
+      <title>ProtonMail Bonus Storage</title>
+      <link>https://hugo.unusually.pink/posts/protonmail-bonus-storage/</link>
+      <pubDate>Tue, 26 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://hugo.unusually.pink/posts/protonmail-bonus-storage/</guid>
+      <description>Brandi and I both love ProtonMail; we like it so much that it got the honor of being a topic in our very first episode! The biggest draws for paying for a ProtonMail Plus account are:
+  Support for a custom domain (e.g. @unusually.pink)
+  5 GB of storage (up from 500 MB)
+  5 email aliases
+  The ability to send up to 1000 messages per day (up from 150)</description>
+      <content>&lt;p&gt;Brandi and I both love &lt;a href=&#34;https://protonmail.com/&#34;&gt;ProtonMail&lt;/a&gt;; we like it so much that it got the honor of being a topic in our &lt;a href=&#34;https://www.unusually.pink/podcast/episode-1-game-of-thrones-and-protonmail&#34;&gt;very first episode&lt;/a&gt;! The biggest draws for paying for a ProtonMail Plus account are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Support for a custom domain (e.g. @unusually.pink)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;5 GB of storage (up from 500 MB)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;5 email aliases&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;The ability to send up to 1000 messages per day (up from 150)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Some of those are really nice perks! I have 3 different email aliases, one of which comes from a custom domain I added to the account. I don’t &lt;em&gt;personally&lt;/em&gt; use a lot of storage… for now. I do my best to keep my inbox empty. Note that I said “inbox”, though, rather than “mailbox.” I do have an archive folder where I throw messages that contain something important that might be useful later… though I’ve been trying my best to stop storing things like that in email and storing them in &lt;a href=&#34;https://www.unusually.pink/podcast/episode-8-playlists-and-privacy&#34;&gt;1Password&lt;/a&gt; instead.&lt;/p&gt;
+&lt;p&gt;While I have plenty of real-estate left in my inbox, last week ProtonMail made it even more difficult for me to start bumping my head against the storage limit; they gave me additional storage for free! In an email with a subject of “We&amp;rsquo;re giving you extra storage to say thanks”, they described how they’ve added 10 &lt;strong&gt;million&lt;/strong&gt; users to the service over the past year, and how they’re working on a redesigned ProtonMail interface while also continuing to flesh out ProtonCalendar and ProtonDrive, none of which would have been possible without the support of paid accounts.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;As a way to say thanks for your early support, we are giving everyone with an existing paid plan 5GB of extra storage for free. […] Because the bonus is to thank our longtime supporters, it only applies to users who upgraded before Nov. 10, 2019. This bonus storage upgrade is permanent as long as you continue your subscription with us.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;To me, this is super awesome. I like being able to support a service like ProtonMail, a service that I’ve come to rely on for my personal email. I’m also eagerly awaiting the arrival of ProtonCalendar and (especially) ProtonDrive, so it’s nice to see that my payments are helping to facilitate the creation of those services, too. While I don’t particularly need the 5 GB of storage right now, it could certainly come in handy later on down the road, especially considering I have no plans on letting my service lapse. I checked out the billing on my account and verified that it was added as a line item to my subscription for a $0 charge.&lt;/p&gt;
+&lt;p&gt;Also, if you happen to be looking forward to the redesign of ProtonMail, I recently realized you can check it out over at: &lt;a href=&#34;https://beta.protonmail.com&#34;&gt;beta.protonmail.com&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The new interface is pretty slick, in my opinion, and I’m excited to see what other great things the future has in store for the service. Keep on encrypting, and stay pink!&lt;/p&gt;
+</content>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>It&#39;s Always DNS :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="There&amp;rsquo;s a saying among system administrators:
+ It&amp;rsquo;s always DNS.
+ Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.
+My home network is currently running off of a Cradlepoint router. Cradlepoint’s specialty is making routers that can leverage LTE, so my router is configured to use my home ISP as the primary WAN link, but it will fail over to a cellular connection if my home ISP is unavailable." />
+<meta name="keywords" content="cradlepoint, dns, router" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/posts/its-always-dns/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="It&#39;s Always DNS">
+<meta property="og:description" content="There&amp;rsquo;s a saying among system administrators:
+ It&amp;rsquo;s always DNS.
+ Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.
+My home network is currently running off of a Cradlepoint router. Cradlepoint’s specialty is making routers that can leverage LTE, so my router is configured to use my home ISP as the primary WAN link, but it will fail over to a cellular connection if my home ISP is unavailable." />
+<meta property="og:url" content="https://hugo.unusually.pink/posts/its-always-dns/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-08-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/posts/its-always-dns/">It&rsquo;s Always DNS</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-08-30 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/cradlepoint/">cradlepoint</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/dns/">dns</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/router/">router</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>There&rsquo;s a saying among system administrators:</p>
+<blockquote>
+<p>It&rsquo;s always DNS.</p>
+</blockquote>
+<p>Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.</p>
+<p>My home network is currently running off of a <a href="https://cradlepoint.com/">Cradlepoint</a> router. Cradlepoint’s specialty is making routers that can leverage LTE, so my router is configured to use my home ISP as the primary WAN link, but it will fail over to a cellular connection if my home ISP is unavailable. This is pretty handy, especially considering that I now work from home full-time. That being said, mobile data isn’t cheap here, and the data plan the Cradlepoint is using is paid for by my company. While it’s nice to fail over to LTE while I’m trying to work, I <em>don’t</em> want to be eating through LTE data while I’m just sitting on the couch watching Hulu. As a result, I’ve configured alerting from the router’s cloud management platform to notify me when a failover occurs so that I can troubleshoot the network and tailor my online activity accordingly if I’m going to be on LTE for a while.</p>
+<p>This morning was basically one of the worst starts to a weekend morning where I want to hang out with a cup of coffee and catch up on my RSS feeds. I woke up to an email alert from a few hours prior letting me know that my router had failed over to LTE. It happened once around 6 AM for a few minutes, failed back over to my ISP network, and then maintained that for roughly 40 minutes before failing over to LTE again a little before 7 AM. The first step, which I could easily do from bed with my phone, was to check for any outages from my ISP. Logging into my account there showed me that there weren’t any known outages, though.</p>
+<p>Finally being forced to shuffle out of bed and into the living room to get eyes on the situation, I saw that the lights on the modem looked normal. I logged into the router’s management interface and verified that everything looked correct. I rebooted the modem to be safe, and the Cradlepoint immediately reconnected to LTE rather than using my modem’s connection. I bounced the Cradlepoint, and the connection status persisted. I disabled LTE on the router, and it listed the Ethernet port as the current WAN link, which seemed good. I tried connecting to <a href="https://laifu.moe">Laifu.moe</a>, though, and it wouldn’t load up. I tried to ping one of the <a href="https://www.opendns.com/">OpenDNS</a> servers of <code>208.67.220.220</code> and also got no response. This was a critical mistake, though I didn’t know it yet at the time.</p>
+<p>Thinking now that maybe something was up with my Cradlepoint, I pulled a bin of miscellaneous tech stuff out of the closet and fished through it to find the router from my ISP that I never use. I plugged that in line after my modem, removing the Cradlepoint from the equation, and bounced the modem. The ISP-provided router came online right away with the characteristic blue light that indicates everything is fine. I connected my laptop to its WiFi network and tried to load a webpage… with no success. I once again tried to ping <code>208.67.220.220</code> also without any response.</p>
+<p>This was when I finally realized the flaw in my troubleshooting. Both the Cradlepoint and my ISP-provided router had been configured by me to use the OpenDNS servers as what they hand out with DHCP leases. Literally all of my devices are using <code>208.67.220.220</code> and <code>208.67.222.222</code> as their DNS servers. Likewise, the Cradlepoint needs something it can test to determine if a WAN link is up or down so that it can fail over to LTE and fail back to the Ethernet WAN link. I had <em>that</em> set as <code>208.67.220.220</code> as well. So what if <strong>that</strong> was the problem? While still connected to my ISP router’s WiFi network, I tried to ping <code>8.8.8.8</code> and immediately got a response. OpenDNS is what was unreachable.</p>
+<p>Ripping the ISP router out of the network, I linked the Cradlepoint back up. I reconfigured it to use <a href="http://1.1.1.1/">1.1.1.1</a> as the DNS servers it hands out, and to leverage that for the state of the WAN link. As soon as I did that, everything began working and the Cradlepoint failed back to the Ethernet WAN link on the next check. I should probably rethink this setup where I’m using the same IP address for DNS as I am for the state of the WAN, but I should also remember that it’s always DNS and check that a little earlier in the process.</p>
+
+      </div></div>
+
+  
+  
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Read other posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="https://hugo.unusually.pink/posts/note-taking-with-notable/">
+                <span class="button__icon">←</span>
+                <span class="button__text">Note-Taking With Notable</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="https://hugo.unusually.pink/posts/full-content-rss-feeds-with-hugo/">
+                <span class="button__text">Full Content RSS Feeds With Hugo</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
