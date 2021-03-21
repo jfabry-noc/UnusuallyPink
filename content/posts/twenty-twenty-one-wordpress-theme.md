@@ -12,7 +12,7 @@ While I made the change a few weeks ago, it seems fitting that my first post of 
 
 While I've typically enjoyed the yearly WordPress theme releases, the previous iteration of this blog was actually back on the Twenty Sixteen theme since the yearly releases after that one didn't feel like they were a particularly good fit for a blog. I still liked the look of the Twenty Sixteen theme, especially after I switched the colors around to match the [Dracula Theme](https://unusually.pink/all-dracula-everything/), but the fact remains that 2016 is more or less ancient history in the world of web design. As a result, parts of the site just felt a bit... antiquated. For example, while the banner at the top allowed me to show off the Unusually Pink graphics that we originally commissioned for the podcast, it left the site feeling just a bit old.
 
-![](images/cropped-cropped-Unusually-Pink-Facebook-Cover-Photo.png)
+![](/images/cropped-cropped-Unusually-Pink-Facebook-Cover-Photo.png)
 
 The artwork is still amazing, though.
 

@@ -46,7 +46,7 @@ The boot order on the Pinebook Pro automatically has the microSD card slot above
 
 Once it's all done, you boot to this gorgeous view!
 
-![](images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg)
+![](/images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg)
 
 ## Caveats
 

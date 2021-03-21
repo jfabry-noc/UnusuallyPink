@@ -16,7 +16,7 @@ To really test it out, for about 2 weeks I disabled the ad-blockers in my common
 
 Operating this way, for the most part browsing the web was business as usual. Not _quite_ as many advertisements were being blocked as I would have expected with a browser extension enabled (more on that later), but on the whole the experience was still positive. What really surprised me, though, was the degree to which IoT devices are just an absolute dumpster fire; checking the metrics NextDNS generates showed that anywhere from 10 - 20% of my total DNS requests were being blocked, but nearly all of the top 10 blocked domains were based on under-the-hood queries being made by my devices phoning home rather than from actual advertising or tracking on web pages. All of this is nicely showcased with graphs in the NextDNS portal:
 
-![](images/next_dns_graphs-1024x403.png)
+![](/images/next_dns_graphs-1024x403.png)
 
 While I expected the combined privacy invasion of my two Amazon Echo devices to be the worst offender, my single Roku device actually took the top spot by a significant margin. My top 10 blocked domains were:
 
@@ -31,11 +31,11 @@ The only non-device domain making the top 10 was from telemetry queries from Dro
 
 As a bit of an aside, I was curious if the devices would simply give up on whatever they were phoning home about and drop the information or if they were storing it locally to upload in a bulk at the first opportunity. I ended up disabling NextDNS on my router around 9 AM and checked on the traffic of both my Echo and my Roku, neither of which were being actively used at the time. The Roku showed zero data use since the time I had been streaming with it the night before:
 
-![](images/roku_wifi_small.jpg)
+![](/images/roku_wifi_small.jpg)
 
 The Echo, on the other hand, _immediately_ spiked with network usage to transmit who-knows-what. That's nice and terrifying:
 
-![](images/echo_wifi_small.jpg)
+![](/images/echo_wifi_small.jpg)
 
 The other insight I found particularly interesting was just how deeply some of the biggest players on the web have their claws embedded across the Internet. For example, I don't think any big Internet company is more evil than Facebook (though Google is trying hard), so I created a custom blocklist preventing `facebook.com` from resolving. This prevents not just Facebook from loading but also some of Facebook's other properties. For example, I hate and don't use Instagram, but some friends occasionally send me posts from there. Instagram straight up won't work if the main Facebook domain can't be resolved. How gross is that?
 

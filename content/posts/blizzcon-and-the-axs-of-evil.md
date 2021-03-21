@@ -16,13 +16,13 @@ We mentioned a few of our issues with AXS in [Episode 5](https://www.unusually.p
 
 The problem is that **it didn’t fucking work at all**. Instead of getting tickets when I submitted the purchase after getting lucky RNG, I got this error. Over and over and over.
 
-![](images/BlizzConandtheAXSofEvil_axs_is_trash.png)
+![](/images/BlizzConandtheAXSofEvil_axs_is_trash.png)
 
 I immediately opened support cases with both Blizzard and AXS. Blizzard was insanely unhelpful. They first asserted it must’ve been an issue with my card. I told them I tried 3 different cards with the same results, and that I saw pending transactions for each of them. They then told me it would have to be handled through AXS. This isn’t surprising, but I was hoping they would be a bit more accommodating considering it was an error on the side of the partner they were ignorant enough to select. So I then waited to hear something on my support case with AXS. And waited. And waited. And **waited**.
 
 Days went by without hearing anything, so I hit them up on Twitter where they asked me to DM them. I sent them my case number and they responded with the following lovely exchange:
 
-![](images/BlizzConandtheAXSofEvil_axs_dms_edit.png)
+![](/images/BlizzConandtheAXSofEvil_axs_dms_edit.png)
 
 Essentially they just admitted that their service didn’t do the **one thing it’s supposed to do**. On top of that, they didn’t even bother to read my reply, let alone respond to it. As I point out with the arrows I drew in the screenshot above, the blue check next to my original message means that it was “Seen”. The grey check next to my follow-up questions simply means that it was “Sent”. If that isn’t garbage-tier customer service, I don’t know what is.
 
@@ -34,7 +34,7 @@ Despite this setback, we were still planning to go. Brandi had been in touch wit
 
 If you’ve ever been to BlizzCon before, then you know the Anaheim Hilton is **the** place to be. Along with being right next to the Anaheim Convention Center for easy access to BlizzCon, it’s also the after-hours social hub of the convention with parties breaking out each night. The Hilton embraces this and last year had a bunch of pop-up bars in the lobby selling Bottle Logic’s special StarCraft 20th Anniversary beer. It was awesome.
 
-![](images/BlizzConandtheAXSofEvil_sc_beer.jpg)
+![](/images/BlizzConandtheAXSofEvil_sc_beer.jpg)
 
 Last year we didn’t stay at the Hilton because, on top of just being a Hilton, event prices are pretty insane. Staying for just 4 days, for example, easily pushes over $2,000 USD. I have family who works for Hilton which means I can often get a “friends and family” discount, but events are always blacked out. Brandi and I just happened to check this year, though, and sure enough discounted rooms were available. Suffice to say we pounced on one, booking 5 days for half the price most people were paying for 4 days. Even if something fell through without our BlizzCon tickets, being in the area and in the epicenter for the happenings of the convention still seemed super fun. Unfortunately, a week later I got the following email:
 

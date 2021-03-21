@@ -22,11 +22,11 @@ I can only assume this is where I made the first of many mistakes that I'll take
 
 At this point, I open the app on my phone. It does a quick search, confirms for me that it **sees** the AP, and then starts trying to connect. For the next 15 minutes I stare at this:
 
-![](images/GoogleWifiAndTheCurseOfSimplication_PhotoMar092C54634PM.png)
+![](/images/GoogleWifiAndTheCurseOfSimplication_PhotoMar092C54634PM.png)
 
 Umm... not great. At this point, I figure something must be amiss in the app. The instructions in step #4 say I should be prompted to scan the QR code on the bottom of the device... a prompt that I never receive. I kill the app and re-launch. I get the exact same experience and end up stuck at the same screen as above.
 
-![](images/GoogleWifiAndTheCurseOfSimplication_buller.gif)
+![](/images/GoogleWifiAndTheCurseOfSimplication_buller.gif)
 
 This is what we in the IT industry call a problem. At this point I'm mumbling "stupid fucking app" to myself, so I grab my laptop and an Ethernet cable. I connect my laptop to the one LAN port on the AP; sure enough, I get a DHCP address and can reach the Internet. So the AP is making a WAN connection. The mobile app just won't connect to the AP for some reason. I can check the network settings on my laptop, though, to see the local IP of the AP. While being salty at Google for designing this for the less technically inclined, I do a quick `nmap` to see if ports 80 and/or 443 are open on the AP, indicating HTTP and HTTPS, respectively.
 
@@ -38,7 +38,7 @@ https://192.168.x.y
 
 Sure enough, this loads a web page on the device. In most consumer routers this is where you'd normally do all of your configuration. In Google Wifi it politely recommends that I get bent and use the mobile app:
 
-![](images/GoogleWifiAndTheCurseOfSimplication_ScreenShot2020-03-09at55533PM.png)
+![](/images/GoogleWifiAndTheCurseOfSimplication_ScreenShot2020-03-09at55533PM.png)
 
 Shit. With the app being my **only** option, I hop back over to the setup instructions online to see what I may have missed. At this point I notice a chat pop-up at the bottom right corner of the screen for Google support. I click on it and get connected to a support agent. After I describe the situation, she instructs me to:
 
@@ -51,13 +51,13 @@ At this point, it actually connects and gets past the screen I was stuck on so t
 
 Regardless, with the Wifi network running, I connect a second AP to build the mesh network. I even clarified with the support agent in chat that for **this** AP, I don't connect to the setup network... I should be able to be connected to my new Wifi network, tap the option to add another AP in the app, and have it connect. Unfortunately for me, the _exact_ same thing happens as before. The AP is found, but I again sit endlessly at the "Connecting to Wifi point" screen. The support agent has me reset the AP again to no avail. Next she has me use an Ethernet cable to physically connect the mesh AP to the first AP and then repeat the setup:
 
-![](images/GoogleWifiAndTheCurseOfSimplication_PhotoMar092C71516PM.jpg)
+![](/images/GoogleWifiAndTheCurseOfSimplication_PhotoMar092C71516PM.jpg)
 
 Unsurprisingly, this makes no difference. On a whim, I grab my iPad, install the Google Wifi app (which doesn't actually have an iPad variant and looks like garbage), and repeat the process. The app on my iPad immediately connects and prompts me to scan the QR code on the bottom of the AP. Within two minutes the AP is connected and working.
 
 I then head back to my bedroom where I had already plugged in the third AP during one of the instances of watching the app on my iPhone refuse to connect. It also immediately completes the setup when using my iPad.
 
-![](images/GoogleWifiAndTheCurseOfSimplication_dbz_rage.gif)
+![](/images/GoogleWifiAndTheCurseOfSimplication_dbz_rage.gif)
 
 At this point I'm just shy of 3 hours in to something that I assumed would take me 30 minutes at most, and I _still_ have to go through the painful process of connecting my smart speakers to the new network. I'm glad it's all working, but I've got so many points of confusion.
 

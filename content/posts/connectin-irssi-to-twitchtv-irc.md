@@ -8,7 +8,7 @@ keywords = ["chat", "irc", "irssi", "twitch", "twitchtv"]
 tags = ["chat", "irc", "irssi", "twitch", "twitchtv"]
 +++
 
-![](images/ConnectingIrssiToTwitchtvIRC_twitch_irc_photo.jpg)
+![](/images/ConnectingIrssiToTwitchtvIRC_twitch_irc_photo.jpg)
 
 A couple of days ago Brandi decided to try streaming her latest obsession, _Animal Crossing: New Horizons_ on [Twitch](https://twitch.tv). As the unofficial game of the coronavirus quarantine, it seemed like a good idea. When she told me, I decided to do the comfortable thing and turn on her stream from the Twitch app on my Amazon Fire TV Stick so I could watch it on my TV. This works well for most of the streams I might happen to watch because I never actually care about interacting with the chat. While the app on my Fire TV Stick does allow me to view the chat, trying to type anything via a remote's D-pad and an on-screen keyboard on my TV would be painful to say the least.
 
@@ -46,13 +46,13 @@ This should show you a message letting you know that you've successfully connect
 
 That's all there is to it! You can now happily chat with a stream from Irssi while watching the actual video feed on another device. I assume the steps above could be pretty easily translated into a different IRC client if you prefer something other than Irssi.
 
-![](images/ConnectingIrssiToTwitchtvIRC_irssi.png)
+![](/images/ConnectingIrssiToTwitchtvIRC_irssi.png)
 
 There are, however, just a couple of caveats to keep in mind. As you might imagine, there is no support for Twitch emotes within IRC. When someone else in the chat uses an emote, for example, you will simply see the plaintext rendition of it. So if someone uses the BibleThump emote, you will see that text rather than the character from [The Binding of Isaac](https://bindingofisaac.com).
 
 The other main caveat is that as a guest in the channel you cannot see the other participants of the chat from IRC if you check who is in the channel. You can, however, still see whatever messages they send, and Irssi will still auto-complete their names if you want to mention them. For example, when running Irssi's `/names` command to see a list of channel members, I see only myself:
 
-![](images/ConnectingIrssiToTwitchtvIRC_irssi_names.png)
+![](/images/ConnectingIrssiToTwitchtvIRC_irssi_names.png)
 
 As you can see in the screenshot above, a friend of ours is also actively using Twitch chat, but I am the only member listed in the channel. This isn't a big ordeal once you realize it (unless you're really jonesing to see everyone's name for some reason), but it did trip me up initially since I had assumed that I was not connecting to the proper channel. I eventually left both IRC and Twitch chat open in a browser until someone else typed something so that I could verify the same message appeared in both places.
 

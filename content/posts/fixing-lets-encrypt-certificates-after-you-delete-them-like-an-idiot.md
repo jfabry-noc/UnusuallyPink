@@ -22,7 +22,7 @@ In [Episode 11](https://www.unusually.pink/podcast/episode-11-attach-all-the-sto
 
 That seemed odd to me since I knew I had a **cron** job running to update the certificates. I checked the expiration for the certificate on laifu.moe and saw that it had nearly two months left on it. I checked the certificate applied to awk.ninja and saw the same thing. EXACTLY the same thing in fact. In double-checking the certificate on laifu.moe, I realized that the Common Name was for awk.ninja. I was using the awk.ninja certificate for _both_ of my sites. Oops. What happened was that when I added awk.ninja and re-ran **certbot**, I got the following:
 
-![](images/FixingLetsEncryptCertificatesAfterYouDeleteThemLikeAnIdiot_certbot.png)
+![](/images/FixingLetsEncryptCertificatesAfterYouDeleteThemLikeAnIdiot_certbot.png)
 
 My thought at the time was that I needed to select ALL of the sites. In reality, this overwrote the configuration I already had on laifu.moe and applied the awk.ninja certificate to both sites. This is where I decided to be really stupid. I decided that I would delete the existing certificates, re-run **certbot** twice (one for laifu.moe and once for awk.ninja), and then be done. I started off by deleting the awk.ninja certificate that was applied to both sites:
 

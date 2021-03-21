@@ -14,6 +14,6 @@ The final push, though, came a few weeks ago when I got an email from Spotify ab
 
 My friend graciously agreed to go with me, so yesterday we got to experience The Accidentals live. The show was nothing short of incredible; I feel like I should’ve paid more for the tickets given how amazing the experience was. All three members of the band are such talented and passionate people, playing an insane variety of instruments and doing songs in a swath of different styles.
 
-![](images/TheAccidentalsShow_signal-2019-04-07-102809-1.jpg)
+![](/images/TheAccidentalsShow_signal-2019-04-07-102809-1.jpg)
 
 While they didn’t perform _Earthbound_, I was stoked for them to play both _Heavy Flag_ and _Crow’s Feet_, along with a _completely_ acoustic version of _Sixth Street_ at the front of the stage. I also got to experience some brand new songs they’re trying out in preparation for the _TWO_ (!) albums they’re planning to release this year. The first will be a live album coming out in a few months, and the second later in the year will be a fully produced studio album. The show was definitely the high point of my 2019 thus far. Any music fans who happen to get the chance to see The Accidentals live should definitely jump at the opportunity and support some amazing live music.

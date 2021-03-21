@@ -54,11 +54,11 @@ You might wonder why I talked about desktop and mobile clients, switched gears t
 
 The reason why wrapper browser extensions are noteworthy for me is that there are **no** standalone extensions or even direct web access. If Dropbox Passwords doesn't have a client on your platform of choice, you're simply out of luck. For example, I can't access my passwords when using Manjaro Linux on my Pinebook Pro. I verified this by installing the browser extension; clicking on it will bring me to a lovely message that the application isn't available for my platform.
 
-![](images/dbp_linux-1024x464.png)
+![](/images/dbp_linux-1024x464.png)
 
 Where this seems _really_ insane to me is that if I log into my Dropbox account on the web I can _see_ the vault for Dropbox Passwords! But clicking on it gives me the same screen as shown in the image above.
 
-![](images/dropbox.png)
+![](/images/dropbox.png)
 
 I can't actually do anything to access it. Even _just_ some kind of web portal like I can access with [Bitwarden](https://bitwarden.com/), [LastPass](https://www.lastpass.com/), or [1Password](https://1password.com/) would be better than **nothing**. I can definitely understand not making a native Linux app a priority, but not having a browser extension or web access in 2020 blows my mind more than a little.
 

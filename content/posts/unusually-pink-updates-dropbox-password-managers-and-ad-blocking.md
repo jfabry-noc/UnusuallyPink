@@ -20,7 +20,7 @@ On June 1st, Dropbox added more features to their [Plus plan](https://www.dropbo
 
 The extra storage is nice, though suffice to say it’s not exactly something I **need**.
 
-![](images/UnusuallyPinkUpdatesDropboxPasswordManagersandAdBlocking_dropbox_space.png)
+![](/images/UnusuallyPinkUpdatesDropboxPasswordManagersandAdBlocking_dropbox_space.png)
 
 Rewind seems **really** nice, though. I store a lot of PowerShell scripts in Dropbox, so I could see rewind being useful if I accidentally break one or need to snag an older version for some reason. While I’ve recently been making an effort to check in my bigger, more important scripts with [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/) for version control, smaller ones that I’m the only person likely to use still just go into Dropbox.
 

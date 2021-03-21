@@ -12,7 +12,7 @@ _[Attack Surface](https://craphound.com/category/attacksurface/)_ is the latest 
 
 _Attack Surface_ is the 3rd novel in the series. Set a few years after the events of _Homeland_, it switches things up a little bit by focusing on one of the supporting characters from the first two novels, Masha. In the first two novels, Masha has been on the inside of extremely invasive government surveillance programs and also has had some whistleblower run-ins. _Attack Surface_ zeroes in on her perspective.
 
-![](images/attack_surface_cover.jpg)
+![](/images/attack_surface_cover.jpg)
 
 In a vacuum, I feel like _Attack Surface_ is an **extremely** good book, and I would highly recommend that everyone give it a read. It provides a very real and very terrifying look into the type of surveillance that's possible in the world of state-sponsored threat actors. Operational security guidelines are almost always prefaced with the idea that not everyone has the same opsec requirements. _Attack Surface_ showcases the absolute worst case scenario of state-sponsored ATPs and what they're capable of doing in terms that aren't very far-fetched. I also enjoyed the change of Masha becoming the main character. In my opinion, at least for the first two thirds of the novel, she provided a nice dose of realistic pragmatism that contrasts sharply with the almost wistful naïveté provided by Marcus in the first two books. That being said, I'm a bit more critical of the writing in _Attack Surface_ than I was with _Little Brother_ and _Homeland_ for reasons that I'll get into a little later on. Likewise, I feel like the novel had an excellent opportunity to really set itself apart from the first two books in the series, but in the end it kind of fizzled out into more of the same.
 

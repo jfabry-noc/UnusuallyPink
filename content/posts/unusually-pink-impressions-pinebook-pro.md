@@ -18,7 +18,7 @@ I didn't want to have to deal with Windows, nor was I wanting to go through a lo
 
 The hardware is absurdly nice for a $199 device. The Magnesium alloy body just feels solid and sturdy. It has enough heft to make the laptop feel more expensive than it is without being a pain to carry around. It also just looks sleek given that there's literally nothing on the top, not even branding. It's a spotless, black surface.
 
-![](images/UnusuallyPinkImpressionsPinebookPro_IMG_0051.jpeg)
+![](/images/UnusuallyPinkImpressionsPinebookPro_IMG_0051.jpeg)
 
 I don't normally leave my laptops completely unemblazoned, so I just ordered some stickers for it earlier today. I'll share pictures on the socials once those are on.
 
@@ -26,11 +26,11 @@ Under the hood is the a screen that you almost feel has no business being on a $
 
 The keyboard is also surprisingly nice. It's spacious, and the keys have an impressive amount of travel to them. Given that these days I rarely use my personal laptop unless I'm doing a lot of typing where I need a physical keyboard, the keys on the Pinebook Pro really deliver. Rarely do I even bother to sit at a desk and connect an external keyboard; the default experience is just fine. The keys have good tactile feedback to go along with that travel distance, so you're never left doubting if you pressed a particular key or not.
 
-![](images/UnusuallyPinkImpressionsPinebookPro_IMG_0052.jpeg)
+![](/images/UnusuallyPinkImpressionsPinebookPro_IMG_0052.jpeg)
 
 You may notice that the keyboard also features literally the only external branding other than the sticker on the bottom of the device. The super key has a Pine 64 logo on it, which is a nice, subtle touch.
 
-![](images/UnusuallyPinkImpressionsPinebookPro_IMG_0050.jpeg)
+![](/images/UnusuallyPinkImpressionsPinebookPro_IMG_0050.jpeg)
 
 The trackpad is unfortunately not quite as solid as the keyboard. It doesn't feel particular sensitive and the pointer come across as "floaty". Hitting big buttons is fine, but it can be annoying to make more precise movements like grabbing the corner of an application to resize it. If I'm using the device for something that's mouse-intensive, I'll typically reach for my [Logitech MX Ergo trackball](https://www.logitech.com/en-us/product/mx-ergo-wireless-trackball-mouse), but the trackpad is still workable in a pinch.
 
@@ -49,11 +49,11 @@ Codename:    stretch
 
 Being that it's Debian Linux, you can do pretty much anything else that you'd expect with Debian Linux... and that's **awesome**. There are some limitations in the packages simply regarding what software supports ARM and which software does not, but everything I've tried to do so far has worked fine. That being said, I'm mainly still using the device very similar to a Chromebook; I want a web browser and a Terminal.
 
-![](images/UnusuallyPinkImpressionsPinebookPro_Screenshotat2020-02-0915-17-28.png)
+![](/images/UnusuallyPinkImpressionsPinebookPro_Screenshotat2020-02-0915-17-28.png)
 
 The ARM processor and included 4 GB of RAM do an excellent job of keeping everything snappy. It'll occasionally take a little bit longer to launch a heavier application, but otherwise it's often easy to forget that I'm on a $200 Linux laptop and not my $2000 MacBook Pro for work. The 64 GB of local storage is a nice change from most Chromebooks as well. Rarely is my system ever bumping its head against the hardware, even when I'm streaming music and have a bunch of browser tabs open.
 
-![](images/UnusuallyPinkImpressionsPinebookPro_image-asset.png)
+![](/images/UnusuallyPinkImpressionsPinebookPro_image-asset.png)
 
 Need to install something new? Just `sudo apt install package-name` and you're good to go! That being said, just like normal with Debian you get a wide array of software out of the box... all of which still only amounts to a 5 GB footprint in what comes from the factory.
 

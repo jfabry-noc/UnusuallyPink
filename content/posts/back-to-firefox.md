@@ -14,7 +14,7 @@ Over the past decade, however, Firefox has undergone a slow yet steady transform
 
 Recently, though, the tables have begun to turn yet again. After achieving dominance in the browser market, Google has started to act like a GOP senator; they’re willing to sacrifice the good of their constituents (users) in favor of their own interests. For example, Google recognizes the impact of adblocking on its own business. As a result, they’ve [proposed changes which would cripple adblockers](https://9to5google.com/2019/01/22/google-chrome-break-ad-blockers/). While they’ve bounced back and forth on this particular change since they first proposed it in January, they’ve continued to flirt with the idea; clearly Google doesn’t see blocking advertisements as a good thing. [Chrome’s resource utilization continues to grow](http://www.commitstrip.com/en/2015/09/28/scumbag-chrome/).
 
-![](images/BackToFirefox_commit_chrome.jpg)
+![](/images/BackToFirefox_commit_chrome.jpg)
 
 At the same time, [Firefox began a re-architecture of their browser which allowed for separate processes per tab](https://blog.mozilla.org/blog/2017/11/14/introducing-firefox-quantum/). Since then, Mozilla has continued to refine their experience.
 

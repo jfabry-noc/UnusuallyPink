@@ -28,6 +28,6 @@ gnome-shell-extension-prefs
 
 Then turn on **KStatusNotifierItem/AppIndicator Support**. Boom. Okay, not boom. I had to log out and back in first, as noted in the documentation. After _that_, though, I was able to see my Dropbox icon in all its glory.
 
-![](images/EnablingLegacyStatusIconsInPop_OS_window_view.png)
+![](/images/EnablingLegacyStatusIconsInPop_OS_window_view.png)
 
 Worth it. Stay pink!

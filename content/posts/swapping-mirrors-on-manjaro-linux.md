@@ -30,8 +30,8 @@ This picked a different mirror, and everything worked as expected. The problem w
 
 For the sake of comparison, I opened `/etc/pacman.d/mirrorlist` back up and searched for another mirror in the US. **mirror.dacentec.com** was the first hit. I repeated the same process and confirmed that I _could_ reach it on both ports 80 and 443.
 
-![](images/nmap_mirrors_full.png)
+![](/images/nmap_mirrors_full.png)
 
 It seems like 443 is the key. It was only after doing this, though, that I realized a project like Manjaro likely has a status page for their mirrors. [I wasn't disappointed.](https://repo.manjaro.org/) Checking this did appear to indicate that my original mirror is experiencing issues. Incidentally, the baseline mirror I tested is included in the same screenshot, and it's shown to be up.
 
-![](images/mirror_status-1024x139.png)
+![](/images/mirror_status-1024x139.png)

@@ -20,7 +20,7 @@ While I listened to far less music in 2020 while driving simply because I didn't
 
 ## Artists
 
-![](images/phem.png)
+![](/images/phem.png)
 
 phem
 
@@ -43,7 +43,7 @@ From this list, I want to give the nod to phem for absolutely crushing it in 202
 
 ## Albums
 
-![](images/jinka.jpeg)
+![](/images/jinka.jpeg)
 
 Jinka
 

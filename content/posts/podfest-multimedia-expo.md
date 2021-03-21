@@ -18,18 +18,18 @@ The third day felt like what should have been the _first_ day; the entire mornin
 
 Overall it was a fun experience, even with the looming specter of COVID-19 hanging over everything. I learned a few things I was able to use to help in my own podcasts, with good timing considering how we've switched to remote recording for both the [Unusually Pink Podcast](https://unusually.pink/podcast) and the [Same Shade of Difference Podcast](https://sameshadeofdifference.com) while everyone is self-quarantining.
 
-![](images/PodfestMultimediaExpo_podfest_art.jpg)
+![](/images/PodfestMultimediaExpo_podfest_art.jpg)
 
 One of the big benefits of the event was that it was held in Orlando, which has plenty of things to do. I can only hope future events pick a venue with **much** more space (a complaint the organizers made known they were already well aware of by the time of the keynote.) Craft Brew Geek and I spent our first day patrolling the area for cool street art. While some of my favorites we came across are above, be sure to follow his [Instagram account](https://instagram.com/craftbrewgeek) so see _everything_ we saw on this trip and more.
 
-![](images/PodfestMultimediaExpo_podfest_rockpit.jpg)
+![](/images/PodfestMultimediaExpo_podfest_rockpit.jpg)
 
 Being the professionals that we are, Craft Brew Geek and I selected our hotel not for proximity to the conference (we had about a 30 minutes drive to get there each day), but for proximity to breweries in the area. It's important to have priorities. We visited many cool places, including [Dead Lizard](https://www.deadlizardbrewing.com), [RockPit](https://rockpitbrewing.com), [Hourglass](https://hourglassbrewing.com), [Crooked Can](https://crookedcan.com), and [Ten10](https://www.ten10brewingcompany.com). They were all terrific places, though RockPit was my favorite of the trip. They had amazing beer, terrific service, great WiFi, and excellent food from the barbeque joint next door. We spent about 6 hours sitting there drinking, eating, and working on the day we arrived in Orlando. We were able to put up stickers both there and at Dead Lizard. Ten10 is worthy of note for not only having excellent beer and food, but for being the first brewery I've ever seen to block VPN access on their WiFi. I even got to satisfy my taste for liquor by enjoying [Delaney's Tavern's](https://eatdt.com) take on the Old Fashioned: a New Fashioned.
 
-![](images/PodfestMultimediaExpo_podfest_newfashioned.jpg)
+![](/images/PodfestMultimediaExpo_podfest_newfashioned.jpg)
 
 One of the coolest experiences of the trip happened at Dead Lizard, though, where we took over a table and set up all of our equipment to record a podcast on-location. It was a fun time, and it showed us that our travel podcast setup works pretty nicely... even if the microphone stands are **entirely** too heavy. The TSA apparently agreed since they had to open my bag and see what the hell I had in it.
 
-![](images/PodfestMultimediaExpo_podfest_recording.jpg)
+![](/images/PodfestMultimediaExpo_podfest_recording.jpg)
 
 On the whole, I definitely had an enjoyable trip. I learned plenty of new things at the event, got to see the sights in Orlando, had an opportunity to catch up with some family I rarely see, and (of course) drink a **LOT** of great beer. I'm also glad I was able to go on a trip immediately preceding the current lockdown as a means of holding off the cabin fever we're all currently experiencing.

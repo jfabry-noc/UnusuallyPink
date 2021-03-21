@@ -10,7 +10,7 @@ tags = ["basilisk", "huntsman", "quartz", "razer"]
 
 Given the name of this site and what I said in the [first post](https://unusually.pink/post/new-domain/), you can probably guess that I’m a fan of things which are unusually pink. That’s why last year when gaming peripheral maker [Razer](https://www.razer.com/) announced a line of pink products under their new Quartz branding, I was stoked. I immediately ordered both their keyboard and their mouse. The Quartz products generally aren’t brand new; they’re a pink take on existing products. The first keyboard was a [Razer Blackwidow Tournament Edition](https://www.razer.com/gaming-keyboards-keypads/razer-blackwidow-tournament-edition-chroma-v2) with Razer Green switches (their equivalent of Cherry’s MX Blue line of clicky, tactile switches.) It’s great, and I still use it daily:
 
-![](images/UnusuallyPinkPeripheralsRazerQuartz2019_2019-02-07170324.jpg)
+![](/images/UnusuallyPinkPeripheralsRazerQuartz2019_2019-02-07170324.jpg)
 
 The mouse was a bit less exciting as it was a [pink variant of the Razer Lancehead](https://www.razer.com/gaming-mice/razer-lancehead-tournament-edition). The Lancehead isn’t a bad mouse, but it’s not what I’m really looking for as far as gaming goes. It’s a relatively flat mouse with small, squishy side buttons. I used it for a while but eventually switched to a different mouse.
 
@@ -20,7 +20,7 @@ I was happy with my purchaes, but just last week [Razer announced updates across
 
 This keyboard was exciting because, along with being pink, it’s based on the Huntsman. That’s Razer’s first keyboard with their new optomechanical switches. Rather than being completely mechanical, these switches use the same mechanical feel to allow a beam of light to pass through it and be detected by a sensor on the opposite of where it is generated. That light hitting the sensor triggers the actuation of the switch rather than a metal contact. I’m not pro gamer, so I can’t honestly say if I feel any difference in the speed or accuracy of actuation, but I **do** have to admit that the whole thing is cool as hell. On top of that, every single switch has a metal stabilizer to ensure each key gives a solid, consistent press. That’s normally something you only see on larger keys like the spacebar, Shift, Enter, etc.
 
-![](images/UnusuallyPinkPeripheralsRazerQuartz2019_2019-03-27085607.jpg)
+![](/images/UnusuallyPinkPeripheralsRazerQuartz2019_2019-03-27085607.jpg)
 
 The keys aren’t embedded into a base for the Huntsman; they sit flat on the board. I really like this style, and it looks great. The keys all have a beautiful, smooth, soft pink finish that looks great. The board itself has the same finish, which is a welcome improvement from the Quartz version of the Blackwidow Tournament Edition. That board had the same key finish but something that felt like a soft-touch powder coating on the board itself. While it had a decent texture, it also seemed like something that could scratch off in an accident. My board actually came with a tiny nick in that coating above the function keys.
 

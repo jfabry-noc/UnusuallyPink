@@ -28,7 +28,7 @@ The cause of this behavior ended up being a new “feature” referred to as [Ta
 
 If you aren’t familiar with swap, it’s good to think about what computers do when they run out of memory. Since just crashing isn’t exactly an option, for the past few **decades** computers have utilized what’s referred to as swap space. In most flavors of Linux, swap is an actual partition on the disk. In Windows you’ll have a **pagefile.sys** file. The point of both is the same; when the operating system runs out of memory, it’ll take some data currently stored in memory that hasn’t been used in a little while and write that to the disk in either the swap partition or the pagefile. Then that memory becomes available for some new, active process to utilize. Should the content that was swapped be required again, something _else_ will be transferred from memory to disk, and then the previously swapped content can be moved from the disk back to memory. Most systems will give you insight into how much swap you’re using. For example, we can see from running **htop** on this Linux laptop that I’m not currently leveraging swap:
 
-![](images/RIPChromeOS_htop_swap.png)
+![](/images/RIPChromeOS_htop_swap.png)
 
 This matters because reading and writing from/to the disk is slower than just working in memory… though it’s not nearly as slow in the world of SSDs than it was in the world of spinning platter hard drives. The less swap you can use, the snappier things go… though I question if waiting for SSD swap is actually slower than waiting a few seconds for a web page to reload. Regardless, not using swap can be a matter of both adding more physical memory to the system and optimizing the software for it. Okay, back to the main point.
 

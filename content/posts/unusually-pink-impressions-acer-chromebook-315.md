@@ -24,7 +24,7 @@ The device itself is all plastic, as you’d expect for a laptop that’s only $
 
 The lid features a textured pattern, which concerned me a little bit since I wasn’t able to find any detailed photos or videos of it. I had been worried that, like the Toshiba Chromebook 2, the texture would actually keep me from applying stickers to it. Fortunately, that wasn’t the case at all. My sticker game remains _firmly_ on point. Also, most of my stickers came from Brandi so don’t give me credit for my taste. Did I mention she’s awesome?
 
-![](images/UnusuallyPinkImpressionsAcerChromebook315_cb_closed.jpg)
+![](/images/UnusuallyPinkImpressionsAcerChromebook315_cb_closed.jpg)
 
 # Battery
 
@@ -36,7 +36,7 @@ Why does the brightness need to be turned up all the time? Because the display i
 
 The problem is just that the display is horribly washed out. It’s literally incapable of making a color that isn’t pastel. Gray text on an off-white background on a webpage is all but impossible to read with the brightness below 75%. Even when watching videos, the colors are all a lighter hue than you’d expect. While the hardware will _easily_ push the pixels on a display of this low resolution, I’d recommend against this for a device aimed at video. At least the viewing angles are pretty good?
 
-![](images/UnusuallyPinkImpressionsAcerChromebook315_cb_open.jpg)
+![](/images/UnusuallyPinkImpressionsAcerChromebook315_cb_open.jpg)
 
 # Speakers
 
@@ -67,7 +67,7 @@ This is where things get interesting for me. I could very easily find from doing
 
 As you can see here, the VM you get is (at the time of this writing) running Debian 9. You can treat it basically like any other Debian install, including installing the packages you need from the repository. Is the repo missing something you really need? Just download and run the .deb file. Linux aficionados like myself will immediately feel at home.
 
-![](images/UnusuallyPinkImpressionsAcerChromebook315_Screenshot2019-08-29at83157PM.png)
+![](/images/UnusuallyPinkImpressionsAcerChromebook315_Screenshot2019-08-29at83157PM.png)
 
 I was able to quickly configure Vim and Python3 along with using the lovely [rustup toolchain](https://www.rust-lang.org/tools/install) to install the latest version of Rust. All of them work perfectly. This was huge for me because it means I can do some scripting and development on my Chromebook directly. This without having to use which I’d previously do, which was either sit at my loud, furnace of a desktop or use my Chromebook to SSH into a development server.
 

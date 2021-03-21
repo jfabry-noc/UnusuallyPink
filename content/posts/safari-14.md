@@ -16,15 +16,15 @@ The pleasant part about switching to Safari is that, for the most part, it's bee
 
 The big change, though, is how Safari communicates with the user about how it has helped protect against invasive tracking. This feature is _extremely_ similar to the Protections Dashboard in Firefox. There's an icon to the left of the address bar that can be clicked at any given time to see a breakdown of trackers on the current page. Clicking will also allow me to see the specifics of what trackers are being blocked:
 
-![](images/safari_icon.png)
+![](/images/safari_icon.png)
 
 For a bigger picture, I can also get an overall view of what's been blocked in the past 30 days. I can see which sites were attempting to be the most invasive, and similar to the per-site rendering, each can be expanded to show which trackers they had embedded:
 
-![](images/safari_websites.png)
+![](/images/safari_websites.png)
 
 Similarly, I can click on the **Trackers** heading in order to see a list of which trackers appear the most frequently across the sites I'm visiting. I can expand those listings to see which specific sites are hosting that tracker:
 
-![](images/safari_trackers.png)
+![](/images/safari_trackers.png)
 
 I don't think it should come as a surprise to anyone that Google, Bing, and Facebook appear the most frequently after just a short period of testing. It's also interesting to see trackers from both Facebook and Snapchat when I don't use either of those "services". It really shows you how pervasive they are across the Internet.
 

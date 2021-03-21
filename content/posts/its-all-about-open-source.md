@@ -51,13 +51,13 @@ filetype plugin indent on
 
 htop is a _super_ handy, interactive utility for seeing what the heck is happening in a Linux system. Think of it like the terminal version of the Windows Task Manager. It gives you a nice breakdown of CPU, RAM, and swap usage along with a listing of processes and what each is doing. It also offers and easy way to adjust the nice level of particularly important or greedy processes. It’s an enhancement over the older **top** utility.
 
-![](images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0617-32-51.png)
+![](/images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0617-32-51.png)
 
 ### [tmux](https://github.com/tmux/tmux)
 
 tmux is terminal multiplexer, hence the name. If you have no clue what that means, it allows you to take a single terminal and divide it up into multiple virtual terminals. This lets easily have multiple terminals on the screen at the same time with different information on them without having to flip between tabs. Here’s a sample:
 
-![](images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0618-16-41.png)
+![](/images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0618-16-41.png)
 
 In a single terminal window I’ve got Vim open with some simple Go code on the left pane. The right side has two panes; the top pane has Cowsay running while the bottom pane I just used to install Cowsay. While not exact useful in the scenario I set up for this screenshot, it can be really handy for doing something like writing a script in one pane and having a second, smaller pane to the side or top of running it periodically without ever needing to close the file.
 
@@ -79,7 +79,7 @@ There are plenty of other static site generators out there ([Jekyll](https://jek
 
 To end the post on a fun note, NetHack is an incredible video game. It’s easy to look at it and assume that it’s a simplistic, basic game. It runs in a terminal (though variants with tiles and graphics do exist), and everything in the game is represented as an ASCII symbol. Your character? The @ symbol. A kobold? The letter k. The game is also crazy old… it was released in 1987. Here’s what it looks like:
 
-![](images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0618-38-44.png)
+![](/images/ItsAllAboutOpenSource_Screenshotfrom2019-05-0618-38-44.png)
 
 It’s a fantasy game so the whole point is to hack-and-slash your way through a procedurally generated dungeon, meaning no two games are the same since each level is random; on top of this is the fact that there are more classes, races, and mechanics than most modern games have.
 

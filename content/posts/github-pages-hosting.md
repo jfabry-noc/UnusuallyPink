@@ -26,7 +26,7 @@ I did this through the GitHub website in less than a minute. Next up I ran `git 
 
 With the content out of the way, I wanted to set up my custom domain. The GitHub side of the work can now be done through the **Settings** menu of the repository; it basically replaces the manual work that I previously had to do by adding files to my repository:
 
-![](images/gh_pages.png)
+![](/images/gh_pages.png)
 
 The top allows me to change the branch and directory to host content from; in my case I could just leave the defaults. The **Custom domain** sections allows me to type in my domain of choice. This just adds a file named `CNAME` to my repo containing the domain information. Then I just had to follow [the directions](https://docs.github.com/en/github/working-with-github-pages/managing-a-custom-domain-for-your-github-pages-site) for setting up a custom domain in my DNS host's settings.
 

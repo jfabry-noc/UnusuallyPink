@@ -12,7 +12,7 @@ I caused a little bit of chaos for myself the other night when I updated one of 
 
 After making that change, I refreshed the page to be greeted by this:
 
-![](images/MakingAHashForTheHTMLIntegrityProperty_html-e1599494214431.png)
+![](/images/MakingAHashForTheHTMLIntegrityProperty_html-e1599494214431.png)
 
 Of course, originally I didn’t think to open the developer console. Instead, I just noticed that after making the change, _none_ of my CSS was loading. Cool. Checking the source HTML file, I quickly noticed that the `link` tag in the header where I tell it which CSS file to use had an `integrity` property. Following that property was a straight that started with:
 

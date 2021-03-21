@@ -41,7 +41,7 @@ With everything set on the client side, I now had to tell GitHub to use my publi
 
 To test things out, I tried to clone one of my private repositories via the SSH link, which you can select from the tabs when trying to clone anything from GitHub.
 
-![](images/github_ssh.png)
+![](/images/github_ssh.png)
 
 That worked successfully and verified that my keys were properly identifying me. The last step was to update the local repository for GitCommit to use a new URL for the remote repository. Regardless of whether I'm using HTTPS or SSH, I still run `git push origin main` in order to sync it to the remote; the configuration of the local repository is what specifies which URL is used. In order to flip mine from HTTPS to SSH, I simply ran the following from my local directory for GitCommit:
 

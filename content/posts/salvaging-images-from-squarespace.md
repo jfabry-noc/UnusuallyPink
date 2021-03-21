@@ -16,7 +16,7 @@ I wrote previously about [moving this blog from Squarespace to WordPress](https:
 
 If you think that looks disgusting, that's because it is. When I imported the XML file into WordPress, I saw an option to download any attachments on each post. I checked that box, but since the images are linked to the Squarespace CDN they're considered to be HTML content rather than attachments. As a result, WordPress simply embeds the `<div>` in each post as a custom HTML block that doesn't actually render the image.
 
-![](images/cash_money.png)
+![](/images/cash_money.png)
 
 Set on **not** going through 50 posts to manually save the images out of them, I started looking at the XML to see if I could do anything useful with the image URLs. One thing that immediately concerned me was that, when I wasn't sure what I was going to do with the `unusually.pink` domain but knew that I didn't want to keep it at Squarespace, I marked the Squarespace site as Private, meaning the only way to view the content was to log in. I _assumed_ this meant the image content on the Squarespace CDN would be inaccessible until I made the site public again. After copying an image URL from my XML file, though, I saw that it was still publicly available. Flagging a Squarespace site as private means you can't load the site directly, but content on Squarespace's CDN is still accessible. That in itself seems like a problem to me and a very good reason to leave the platform, but in this one case it was working to my benefit. I realized that I could parse all of the images files out of the XML file with a script and download them programmatically.
 

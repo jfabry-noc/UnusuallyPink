@@ -31,7 +31,7 @@ This simply downloads the file to my local machine. Nothing is actually executin
 
 Diving back into the `index.html` file, a quick search showed me that there were nearly 60 `.js` files for JavaScript. Ick. JavaScript can be written to be fairly easy to consume if you've got a passing familiarity with computer programming, but _most_ JavaScript on the web is designed to be 1.) minified and 2.) obfuscated to make this nearly impossible. Seriously, this is what a typical JavaScript file looks like. Note how my editor is showcasing the fact that it's all **one line**:
 
-![](images/IdiotsGuideToFiguringOutHowAWebsiteWasHacked_gross.png)
+![](/images/IdiotsGuideToFiguringOutHowAWebsiteWasHacked_gross.png)
 
 Clearly trying to read through 60 files of that isn't going to happen; this isn't my job, I'm doing it for fun. However, I still had some options for trying to quickly look for something flagrant. I saved down local copies of all 60 JavaScript files in the same directory, and then navigated to that directory from my terminal. I then used `grep -R` to recursively search through every JavaScript file at the same time.
 

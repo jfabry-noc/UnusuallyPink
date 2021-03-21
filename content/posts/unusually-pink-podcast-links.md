@@ -10,7 +10,7 @@ tags = ["google-play", "google-podcasts", "itunes", "podbean", "podcast", "spoti
 
 As we mentioned in our [last episode](https://www.unusually.pink/podcast/episode-3-jams-amp-japan), we recently got our podcast **all** over the Internet so you can listen to it regardless of which service(s) you happen to prefer.
 
-![](images/UnusuallyPinkPodcastLinks_up_everywhere.png)
+![](/images/UnusuallyPinkPodcastLinks_up_everywhere.png)
 
 Our host for the podcast is [Podbean](https://www.podbean.com/). The posts on the [podcast page](https://www.unusually.pink/podcast) for each episode will always link to our [Unusually Pink Podcast profile](https://unusuallypinkpodcast.podbean.com/) there. (Related: we are **crushing** it on the alliteration front.) We figured most people _wouldn’t_ be listening to it directly from there, though. So if you happen to use any of the following services, feel free to give the podcast a follow and stay on top of the latest episodes. Posts from the website for new episodes, of course, will also be posted to our [Twitter](https://twitter.com/unusuallypink) and [Facebook](https://www.facebook.com/unusuallypinkpodcast) profiles.
 

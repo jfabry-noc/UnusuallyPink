@@ -14,7 +14,7 @@ Dracula is a beautiful dark theme with a focus on pink, green, red, and white to
 
 ## [Terminal.app](https://draculatheme.com/terminal)
 
-![](images/AllDraculaThemeEverything_terminal.png)
+![](/images/AllDraculaThemeEverything_terminal.png)
 
 I spend a **large** portion of my day working out of Terminal.app on my MacBook Pro, and the Dracula theme fits with it perfectly. While you end up with a lot more white text here than in most text editors, the smooth color scheme still makes for something a bit more pleasing to look at than the stock green text on a blackbackground that I've used in my terminal emulators for decades.
 
@@ -24,7 +24,7 @@ If you aren't using [zsh](https://www.zsh.org/) as your shell already, you shoul
 
 ## [Vim](https://draculatheme.com/vim)
 
-![](images/AllDraculaThemeEverything_vim.png)
+![](/images/AllDraculaThemeEverything_vim.png)
 
 Vim has been my text editor of choice for years now. While the learning curve is steep compared to a lot of other text editors, it's honestly not too difficult to get started with the basics. Once you've got those covered, it's easy to simply look up what you need when the need arises to expand your skills with it. After a little time, you can quickly become much more productive; I'm now significantly _slower_ when navigting plaintext with a combination of arrow keys with Ctrl, Home, and End.
 
@@ -67,7 +67,7 @@ This one is more Brandi's thing than mine, but Visual Studio Code is another ter
 
 ## [Firefox](https://draculatheme.com/firefox)
 
-![](images/AllDraculaThemeEverything_image-asset.png)
+![](/images/AllDraculaThemeEverything_image-asset.png)
 
 Hugo kudos to Brandi for discovering this one, but there's even a Dracula theme for Firefox! As a privacy-focused individual, Firefox is my browser of choice on all of my laptops. I've spent years using and being happy with the default dark theme in Firefox, but Dracula just takes it to the next level. I really appreciate how subtle the theme is with just hints of pink you see around active menus or the currently active tab.
 

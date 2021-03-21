@@ -14,18 +14,18 @@ What we've been experimenting with lately, though, are offsite recordings. It gi
 
 With how cool the experience was at Dead Lizard, Mark and I have been trying to basically emulate that experience now from places that allow us to sit outdoors, away from everyone else. We're racing against time a bit as the weather continues to get colder, but it's mostly been a great experience thus far. We first recorded at the [West Sixth Farm](https://www.westsixth.com/westsixthfarm) for the "[How We Work in the COVID-19 Era](https://sameshadeofdifference.com/episodes/how-we-work-in-the-covid-19-era)" episode. The Farm is a _terrific_ location, with a covered pavilion area that has picnic tables, accessible WiFi, and outdoor power we can use. Barley the farm dog came to hang out with us for a little while, and it's a _very_ difficult view to top while recording.
 
-- ![](images/edit_farm_dog-rotated.jpg)
+- ![](/images/edit_farm_dog-rotated.jpg)
     
-- ![](images/edit_farm_field.jpg)
+- ![](/images/edit_farm_field.jpg)
     
 
 The one downside of this setup is that, with things being relatively out in the open, we do end up at the mercy of the wind. We attempted to record a second Same Shade Of Difference episode there maybe about a month ago, but we had to scrap the idea because the windscreens for our microphones couldn't quite keep up with the wind that would have caused a constant disruption to the episode.
 
 More recently, we recorded at [Idlewild Park](https://www.boonecountyky.org/departments/parks/england_idlewild_park_and_dog_park.aspx) in northern Kentucky. This was also a cool experience where we were able to take a quick look around, find a pavilion with no one else at it, and post up to record without having to worry about being too close to anyone. We _were_ fairly close to Cincinnati/Northern Kentucky International Airport, but even that sound barely came through the microphones.
 
-- ![](images/edit_park_plane.jpg)
+- ![](/images/edit_park_plane.jpg)
     
-- ![](images/edit_park_setup.jpg)
+- ![](/images/edit_park_setup.jpg)
     
 
 If you look closely, you can see a plane coming in for a landing in the first photo.

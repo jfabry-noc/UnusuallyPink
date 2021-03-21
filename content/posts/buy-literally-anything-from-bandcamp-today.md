@@ -26,12 +26,12 @@ Music has had such a profound impact on my life, and I can't imagine where I'd b
 
 That's why today is such a great day to support indie music. Today [Bandcamp is waiving their revenue share on all purchases through the site](https://daily.bandcamp.com/features/bandcamp-covid-19-fundraiser). This means that 100% of the revenue is going to support artists who need it now more than ever. Dozens of artists I listen to regularly, and some of whom were mentioned in our [music stats episode](https://www.unusually.pink/podcast/episode-18-end-of-year-music-stats) have Bandcamp profiles. Even if you don't need a digital album because you always use Spotify or Apple Music, consider buying an album anyway just to help out and show some love for the people who have made such a difference in your life.
 
-![](images/BuyLiterallyAnythingFromBandcampToday_music.jpeg)
+![](/images/BuyLiterallyAnythingFromBandcampToday_music.jpeg)
 
 Pre-orders count as well, so you can show some support for artists with upcoming albums. Also note that most albums have a minimum price but offer you the ability to throw a little extra on top if you want. Please help out if you have the means.
 
 If you don't have the means, you can still help out! The payouts are garbage, but stream as much music from indie artists as you possibly can. Check out the Twitter profiles for artists you love; many have started doing online shows. For example, on her [YouTube channel](https://www.youtube.com/channel/UCOw4v1j3QnzH7X4krQAS7fg), [Tessa Violet](https://twitter.com/TessaViolet) has been streaming what she's coined "The Something To Look Forward To Tour". There are still 3 shows left. Tune in for those and look for other artists who are doing the same!
 
-![](images/BuyLiterallyAnythingFromBandcampToday_stlftt-768x1024.jpeg)
+![](/images/BuyLiterallyAnythingFromBandcampToday_stlftt-768x1024.jpeg)
 
 Do whatever you can to support artists and musicians now because every little bit helps. It's time that we take care of the people who take care of us.

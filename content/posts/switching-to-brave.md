@@ -28,7 +28,7 @@ Instead, I decided to give Brave a shot. Brave [added M1 support at the very end
 
 Like most Chromium forks, all of the Google junk that gets added to Chrome is absent. In fact, Brave's main mission is to be a privacy-focused browser. It features a robust advertising and tracking blocker built-in, with tons of options for configuring exceptions, disabling it entirely for certain sites, and more. What really surprised me was the aggression of blocking that it was capable of. I used the tracking blocker in Safari, for example, and the typical reporting from it would block somewhere around 200 trackers per week. After using Brave for a week, my metrics look like this:
 
-![](images/brave_blocker.png)
+![](/images/brave_blocker.png)
 
 To be clear, this is in no way an apples-to-apples (no pun intended) comparison since I have Brave blocking both trackers and ads while Safari can only do trackers. The numbers are still staggering after just a week, though, and I was particularly interested in seeing metrics like how much bandwidth was saved by not loading that content. There are also baseline levels of blocking that can be configured, and I initially attempted to go with the Strict option. I quickly found that too many sites flat out broke, so I switched it to Standard with much better results. Additionally, options exist for allowing things like buttons on sites for Twitter, Facebook, LinkedIn, etc. The other bonus is that such robust blocking built in means I didn't need the array of security extensions I may be inclined to install with other browsers. After a week, the only extension I've added to Brave is one for my password manager.
 

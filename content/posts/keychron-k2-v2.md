@@ -12,7 +12,7 @@ I recently ran into a problem with my keyboard at home, a [Logitech K350](https:
 
 The first thing worth noting is that this is **Version 2**. That's important because you can find the first version floating around on the cheap. It's important to not mix them up, though; the initial offering of the K2 was fraught with problems that V2 tackles nicely. V2 comes in a few different variants based on the lighting and body style that you want, along with how much you want to pay. I went for the variant with RGB lighting (cool but not that important) and an aluminum frame (extremely important.) I had read online that the keyboard sans frame was light to a detriment without enough weight to properly hold it down on the desk. I did pay more for the frame, but with the build and the features, this is still relatively cheap in the world of mechanical keyboards.
 
-![](images/keychron_1.jpeg)
+![](/images/keychron_1.jpeg)
 
 The K2 is a TKL (tenkeyless) keyboard, meaning that it doesn't have a number pad. Unlike many other TKL models, though, it has 84 keys because it still features dedicated arrow keys _and_ dedicated Home, End, Page Up, and Page Down keys. Memorizing another function layer for keyboards that don't feature dedicated keys like this isn't the end of the world, but I view having them as a significant quality of life bonus.
 
@@ -20,7 +20,7 @@ The bigger quality of life bonus, though, falls to the keycaps. The K2 features 
 
 On top of all of this, Keychron also provides orange keycaps that you can opt to use on Escape and on the key which controls the backlighting. I thought they looked snazzy and decided to use them, though you can swap to more standard keys if you wish. I was also a pleasant surprised that a wire keycap puller was included rather than one of the cheaper plastic ones that's all but guaranteed to scratch up your keycaps. While there are plenty of dedicated keys, there's even more functionality of the K2 tucked behind key combinations in conjunction with the Function key. The included instruction booklet clearly highlights all of these, and it was a matter of minutes to get everything configured the way I wanted it.
 
-![](images/keychron_2.jpeg)
+![](/images/keychron_2.jpeg)
 
 The lighting in my photo isn't great, but rest assured that you can eschew RGB in favor of locking the lights in to a nice shade of pink.
 
@@ -32,6 +32,6 @@ The K2 can connect to devices either via Bluetooth or USB-C. I'll likely never u
 
 The other issue I have with the K2 V2 I hesitate to even really call an "issue"; it's more something I need to adjust to a little bit as a touch-typist. The right Shift key is a little bit shorter than it would be on a standard ANSI QWERTY keyboard. This is done to allow for the dedicated arrow keys. I would say that 98% of the time (yes, I'm completely making up this number), it's not an issue. The other 2% of the time, I accidentally extend my pinky just a bit too far and hit the up arrow or awkwardly catch the edge of the Shift key. It's not a huge ordeal, and as someone who has periodically dealt with using ISO keyboards before I know I'll adjust quickly; it feels worth mentioning, though. It's also good practice for me since my [Starlabs Lite Mark III](https://starlabs.systems/pages/lite-mk-iii) that's currently sitting in customs in the UK has a much shorter right Shift key for the exact same reason.
 
-![](images/starlabs_lite_mk3.png)
+![](/images/starlabs_lite_mk3.png)
 
 On the whole, I've been _extremely_ pleased with the K2 V2 so far. I've used it for a little over a week, generally spending 9 - 14 hours a day on it between work, training, and personal projects. It's a treat to type on, the functionality is nice without being overkill, and I think the size really hits the sweet spot between not taking over my desk and not forcing me to re-adjust it every 5 lines of code because it's constantly moving; the aluminum frame that I opted for undoubtedly helps it in that regard. I really do think that for $90 USD you could do significantly worse, and the K2 V2 has features and a build quality I'd be expecting from a mechanical keyboard in the $120 - $150 USD price range. I think this is a great keyboard for anyone, but especially if you're a macOS user in the market for a mechanical keyboard, the Keychron K2 V2 would be a smart place to start.

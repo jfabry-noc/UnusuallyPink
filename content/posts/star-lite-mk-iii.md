@@ -20,13 +20,13 @@ I don't say any of this to knock Star Labs or the device; it's just the nature o
 
 While it was about double the cost of the Pinebook Pro (my Lite Mk III was just over $400 USD when I ordered it), the device itself still feels premium to an order of magnitude higher than what I would've expected for the price. It came packaged up in a sleek box with a nice, blue microfiber bag around the laptop in the packaging. Another sat between the closed screen and the keyboard.
 
-![](images/IMG_0317.png)
+![](/images/IMG_0317.png)
 
 The body of the device is plastic (I'm pretty sure), but it feels **very** high quality and sturdy. The hinge for the screen will almost catch me off guard with how strongly it wants to close the last few degrees, but it manages to do this in a way that doesn't make it difficult to open, which is often a problem for such small, light laptops.
 
 The trackpad is the antithesis of what the Pinebook Pro uses. It's glass rather than plastic, and it's incredibly snappy. Whereas the Pinebook Pro trackpad feels clunky and inaccurate, the Like Mk III feels precise. I've been extremely impressed with it. The keyboard, unfortunately, it's quite as glowing. I mean, it's _literally_ glowing in that it's backlit, and generally it feels good to type on with a decent bit of travel on the keys. The keys don't always feel responsive, though, and hitting them in slightly the wrong way will often result in the keys failing to register the keystroke. I notice this most commonly in the way that I hit the L and Spacebar keys, though the problem occurs on others as well. It's not a deal breaker, but it can be frustrating at times given that I type quickly and often have to go back and fix myriad errors. For the most part, I'm impressed with the amount of space they managed to give the keyboard on such a small device, though as I mentioned in my post about the [Keychron K2 V2](https://unusually.pink/keychron-k2-v2/), the dedicated arrow keys resulted in a _tiny_ right Shift key; whereas the Shift keys are normally at least double the width of the standard letter keys, the right Shift is actually **smaller** than the letter keys. Originally this resulted in my accidentally hitting the Up arrow key when I wanted to hit Shift, but after a couple of weeks I began to adjust. I'm still not perfect with it, but it's not as problematic as I had been worried that it might be. It's also a nice touch that, since the laptop is designed for Linux, it actually features Ctrl, Fn, Super, and Alt keys.
 
-![](images/IMG_0319.png)
+![](/images/IMG_0319.png)
 
 The display is a rather nice 1080p IPS, which has all of the benefits and drawbacks one might expect on an 11" device. While everything looks extremely crisp, I have to adjust the text size in basically every application in order to be able to read anything. My eyesight is rather poor, so your mileage may vary, but for anyone with vision problems the zoom functionality and adjustable font sizes will be essential. The speakers aren't groundbreaking, but they certainly get the job done and can be surprisingly loud.
 
@@ -42,7 +42,7 @@ I won't touch too much on this since the experience really comes down to which f
 
 ## Wrap-Up
 
-![](images/IMG_0318.png)
+![](/images/IMG_0318.png)
 
 On the whole, I'm fairly pleased with the Lite Mk III. The unreliability of the keyboard is my only major issue that gives me some headaches. Otherwise, it's exactly what I was looking for in a small, inexpensive Linux laptop. I really hope more Linux-focused OEMs consider making an entrance into this particular market for people who want something basically on the order of a Chromebook but without any Google nonsense.
 

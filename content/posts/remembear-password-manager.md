@@ -14,7 +14,7 @@ The RememBear apps for macOS, iOS, and iPadOS are all very slick. They feature t
 
 The apps on all 3 platforms also do well with auto-filling passwords for me, including with the browser extension for Safari on macOS. Likewise, the iPadOS app is, mercifully, an iPad application rather than the expanded iOS app. I did run into a few random bugs on macOS where the application would be blank after unlocking it, showing as if I didn't have any logins stored. I saw another issue where my logins were all listed, but using the search feature wouldn't return any results even if there were matches. In both cases, closing out of the application and re-opening it fixed the problem, and I only encountered each bug once.
 
-![](images/remembear.png)
+![](/images/remembear.png)
 
 Adding new devices or recovering your account is streamlined with a QR code mechanism that leverages another device which already has RememBear configured on it. This makes the setup quick and easy, though it remains unclear what recourse there is if the master password itself is lost and no other devices are configured. They don't give you anything like the secret word list for Dropbox Passwords or the secret key from 1Password.
 
