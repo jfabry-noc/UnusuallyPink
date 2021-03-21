@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>gohugo on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/gohugo/</link>
+    <link>https://unusually.pink/tags/gohugo/</link>
     <description>Recent content in gohugo on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/gohugo/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/gohugo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Self-Hosting A Static Website</title>
-      <link>https://hugo.unusually.pink/self-hosting-a-static-website/</link>
+      <link>https://unusually.pink/self-hosting-a-static-website/</link>
       <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/self-hosting-a-static-website/</guid>
+      <guid>https://unusually.pink/self-hosting-a-static-website/</guid>
       <description>Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.</description>
       <content>&lt;p&gt;Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.&lt;/p&gt;
 &lt;p&gt;We first took some early steps gathering requirements. What did he want for the site? Literally just the privacy policy. Where did he want to host it? Wherever was the cheapest. Did he have a domain name already? Yes! This was fairly straightforward; he literally &lt;em&gt;just&lt;/em&gt; wanted the very basics. After a bit of discussion I convinced him to write up a quick &amp;ldquo;about me&amp;rdquo; type of page so that we could have more than just the privacy policy. From there I could get to work.&lt;/p&gt;

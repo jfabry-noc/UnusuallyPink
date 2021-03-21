@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>pinebook-pro on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/pinebook-pro/</link>
+    <link>https://unusually.pink/tags/pinebook-pro/</link>
     <description>Recent content in pinebook-pro on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sat, 13 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/pinebook-pro/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sat, 13 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/pinebook-pro/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Swapfile Fix on Manjaro Linux Pinebook Pro</title>
-      <link>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</link>
+      <link>https://unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</link>
       <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</guid>
+      <guid>https://unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</guid>
       <description>I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
 Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life.</description>
       <content>&lt;p&gt;I wrote about a month ago of an update &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;on my Pinebook Pro&lt;/a&gt; after &lt;a href=&#34;https://www.unusually.pink/blog/pinebook-pro-follow-up-manjaro-linux&#34;&gt;switching to Manjaro Linux&lt;/a&gt;. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.&lt;/p&gt;
@@ -41,10 +41,10 @@ sudo chmod u=rw,go= /swapfile
     
     <item>
       <title>Pinebook Pro Follow-up: Manjaro Linux</title>
-      <link>https://hugo.unusually.pink/pinebook-pro-follow-up-manjaro-linux/</link>
+      <link>https://unusually.pink/pinebook-pro-follow-up-manjaro-linux/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/pinebook-pro-follow-up-manjaro-linux/</guid>
+      <guid>https://unusually.pink/pinebook-pro-follow-up-manjaro-linux/</guid>
       <description>I had written in early February about my Pinebook Pro laptop after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.
 The OS If you read my original post then you may recall that I was debating swapping the default Debian operating system for something different.</description>
       <content>&lt;p&gt;I had &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;written in early February about my Pinebook Pro laptop&lt;/a&gt; after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.&lt;/p&gt;
@@ -72,7 +72,7 @@ The OS If you read my original post then you may recall that I was debating swap
 &lt;p&gt;When the Manjaro logo has been present for about 15 seconds, press ESC (this is a bug, we know).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Once it&amp;rsquo;s all done, you boot to this gorgeous view!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;caveats&#34;&gt;Caveats&lt;/h2&gt;
 &lt;p&gt;For the most part, Manjaro works like a complete dream, and I&amp;rsquo;ve been extremely happy with it. There are just a couple of caveats that might be worth mentioning, though.&lt;/p&gt;
 &lt;h3 id=&#34;initial-update&#34;&gt;Initial Update&lt;/h3&gt;
@@ -99,10 +99,10 @@ The OS If you read my original post then you may recall that I was debating swap
     
     <item>
       <title>Unusually Pink Impressions: Pinebook Pro</title>
-      <link>https://hugo.unusually.pink/unusually-pink-impressions-pinebook-pro/</link>
+      <link>https://unusually.pink/unusually-pink-impressions-pinebook-pro/</link>
       <pubDate>Sun, 09 Feb 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/unusually-pink-impressions-pinebook-pro/</guid>
+      <guid>https://unusually.pink/unusually-pink-impressions-pinebook-pro/</guid>
       <description>In my last post about not using Chrome OS, I neglected to get into what I was replacing my Chromebooks with since that seemed like a lengthy post in its own right. As the title gave away, my switch went to the Pinebook Pro from Pine 64. I had been interested in the original $99 USD Pinebook when that came out a couple of years ago, but it seemed a bit too basic for what I wnanted.</description>
       <content>&lt;p&gt;In my &lt;a href=&#34;https://www.unusually.pink/blog/rip-chrome-os&#34;&gt;last post about not using Chrome OS&lt;/a&gt;, I neglected to get into &lt;em&gt;what&lt;/em&gt; I was replacing my Chromebooks with since that seemed like a lengthy post in its own right. As the title gave away, my switch went to the &lt;a href=&#34;https://www.pine64.org/pinebook-pro/&#34;&gt;Pinebook Pro&lt;/a&gt; from Pine 64. I had been interested in the original $99 USD Pinebook when that came out a couple of years ago, but it seemed a bit &lt;strong&gt;too&lt;/strong&gt; basic for what I wnanted. The Pinebook Pro seemed to offer a more compelling experience for $199. The description on the site even seemed to match exactly what I was wanting.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -111,13 +111,13 @@ The OS If you read my original post then you may recall that I was debating swap
 &lt;p&gt;I didn&amp;rsquo;t want to have to deal with Windows, nor was I wanting to go through a lot of research to find a Windows laptop or Chromebook that I could then convert to a Linux laptop. The Pinebook Pro seemed to take care of this for me while also giving me an outlet to support a great company doing some awesome things for the open source community. I was a little leery on what kind of performance I would get out of an ARM processor and if I would hit any compatibility issues, but so far everything has been buttery smooth.&lt;/p&gt;
 &lt;h1 id=&#34;hardware&#34;&gt;Hardware&lt;/h1&gt;
 &lt;p&gt;The hardware is absurdly nice for a $199 device. The Magnesium alloy body just feels solid and sturdy. It has enough heft to make the laptop feel more expensive than it is without being a pain to carry around. It also just looks sleek given that there&amp;rsquo;s literally nothing on the top, not even branding. It&amp;rsquo;s a spotless, black surface.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0051.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0051.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I don&amp;rsquo;t normally leave my laptops completely unemblazoned, so I just ordered some stickers for it earlier today. I&amp;rsquo;ll share pictures on the socials once those are on.&lt;/p&gt;
 &lt;p&gt;Under the hood is the a screen that you almost feel has no business being on a $200 machine. It&amp;rsquo;s a 14&amp;quot; 1080p IPS display that looks absolutely gorgeous. Everything from typing away in a Terminal or blog post to watching videos looks terrific on it.&lt;/p&gt;
 &lt;p&gt;The keyboard is also surprisingly nice. It&amp;rsquo;s spacious, and the keys have an impressive amount of travel to them. Given that these days I rarely use my personal laptop unless I&amp;rsquo;m doing a lot of typing where I need a physical keyboard, the keys on the Pinebook Pro really deliver. Rarely do I even bother to sit at a desk and connect an external keyboard; the default experience is just fine. The keys have good tactile feedback to go along with that travel distance, so you&amp;rsquo;re never left doubting if you pressed a particular key or not.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0052.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0052.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;You may notice that the keyboard also features literally the only external branding other than the sticker on the bottom of the device. The super key has a Pine 64 logo on it, which is a nice, subtle touch.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0050.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_IMG_0050.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The trackpad is unfortunately not quite as solid as the keyboard. It doesn&amp;rsquo;t feel particular sensitive and the pointer come across as &amp;ldquo;floaty&amp;rdquo;. Hitting big buttons is fine, but it can be annoying to make more precise movements like grabbing the corner of an application to resize it. If I&amp;rsquo;m using the device for something that&amp;rsquo;s mouse-intensive, I&amp;rsquo;ll typically reach for my &lt;a href=&#34;https://www.logitech.com/en-us/product/mx-ergo-wireless-trackball-mouse&#34;&gt;Logitech MX Ergo trackball&lt;/a&gt;, but the trackpad is still workable in a pinch.&lt;/p&gt;
 &lt;p&gt;The speakers aren&amp;rsquo;t bad, but they&amp;rsquo;re about what you expect from laptop speakers. Only Apple seems to posess the voodoo required to make great sounding laptop speakers.&lt;/p&gt;
 &lt;p&gt;The device comes with a barrel jack charger. You can also charge it via the USB-C port as well, which is what I much more commonly do with the charger which came with my Acer Chromebook 315.&lt;/p&gt;
@@ -128,9 +128,9 @@ Description:    Debian GNU/Linux 9.12 (stretch)
 Release:    9.12
 Codename:    stretch&lt;/p&gt;
 &lt;p&gt;Being that it&amp;rsquo;s Debian Linux, you can do pretty much anything else that you&amp;rsquo;d expect with Debian Linux&amp;hellip; and that&amp;rsquo;s &lt;strong&gt;awesome&lt;/strong&gt;. There are some limitations in the packages simply regarding what software supports ARM and which software does not, but everything I&amp;rsquo;ve tried to do so far has worked fine. That being said, I&amp;rsquo;m mainly still using the device very similar to a Chromebook; I want a web browser and a Terminal.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_Screenshotat2020-02-0915-17-28.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_Screenshotat2020-02-0915-17-28.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The ARM processor and included 4 GB of RAM do an excellent job of keeping everything snappy. It&amp;rsquo;ll occasionally take a little bit longer to launch a heavier application, but otherwise it&amp;rsquo;s often easy to forget that I&amp;rsquo;m on a $200 Linux laptop and not my $2000 MacBook Pro for work. The 64 GB of local storage is a nice change from most Chromebooks as well. Rarely is my system ever bumping its head against the hardware, even when I&amp;rsquo;m streaming music and have a bunch of browser tabs open.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_image-asset.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkImpressionsPinebookPro_image-asset.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Need to install something new? Just &lt;code&gt;sudo apt install package-name&lt;/code&gt; and you&amp;rsquo;re good to go! That being said, just like normal with Debian you get a wide array of software out of the box&amp;hellip; all of which still only amounts to a 5 GB footprint in what comes from the factory.&lt;/p&gt;
 &lt;h1 id=&#34;to-do&#34;&gt;To Do&lt;/h1&gt;
 &lt;p&gt;There are a few things to do out of the box when you get a Pinebook Pro; I would &lt;strong&gt;highly&lt;/strong&gt; recommend reading &lt;a href=&#34;https://wiki.pine64.org/index.php/Pinebook_Pro&#34;&gt;the wiki page&lt;/a&gt; about the device so you know what those are instead of trying to do things on your own. For example, there&amp;rsquo;s no traditional &amp;ldquo;first run&amp;rdquo; experience to set things up given that this is a highly customized Debian image. Instead, you log in with the default credentials &lt;code&gt;rock/rock&lt;/code&gt; to get things started. It&amp;rsquo;s highly recommended you &lt;a href=&#34;https://wiki.pine64.org/index.php/Pinebook_Pro#Initial_user_changes.2C_password.2C_name.2C_etc&#34;&gt;rename the &lt;code&gt;rock&lt;/code&gt; account&lt;/a&gt; if you want to keep all of the customizations. If you make a brand new account, which is totally an option if you want to go that route, you&amp;rsquo;ll end up in a session that looks much more like a traditional Debian installation.&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>arm on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/arm/</link>
+    <link>https://unusually.pink/tags/arm/</link>
     <description>Recent content in arm on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/arm/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 17 May 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/arm/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Pinebook Pro Follow-up: Manjaro Linux</title>
-      <link>https://hugo.unusually.pink/pinebook-pro-follow-up-manjaro-linux/</link>
+      <link>https://unusually.pink/pinebook-pro-follow-up-manjaro-linux/</link>
       <pubDate>Sun, 17 May 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/pinebook-pro-follow-up-manjaro-linux/</guid>
+      <guid>https://unusually.pink/pinebook-pro-follow-up-manjaro-linux/</guid>
       <description>I had written in early February about my Pinebook Pro laptop after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.
 The OS If you read my original post then you may recall that I was debating swapping the default Debian operating system for something different.</description>
       <content>&lt;p&gt;I had &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;written in early February about my Pinebook Pro laptop&lt;/a&gt; after roughly a month of using it. Now that significantly more time has passed, time which I&amp;rsquo;ve almost exclusively spent at home due to nationwide stay-at-home orders and social distancing, I figure I&amp;rsquo;d share some of my thoughts on the laptop I raved about initially, and more specifically what I&amp;rsquo;ve done with the operating system.&lt;/p&gt;
@@ -41,7 +41,7 @@ The OS If you read my original post then you may recall that I was debating swap
 &lt;p&gt;When the Manjaro logo has been present for about 15 seconds, press ESC (this is a bug, we know).&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;Once it&amp;rsquo;s all done, you boot to this gorgeous view!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/PinebookProFollow-upManjaroLinux_manjaro_pbp_xfce.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h2 id=&#34;caveats&#34;&gt;Caveats&lt;/h2&gt;
 &lt;p&gt;For the most part, Manjaro works like a complete dream, and I&amp;rsquo;ve been extremely happy with it. There are just a couple of caveats that might be worth mentioning, though.&lt;/p&gt;
 &lt;h3 id=&#34;initial-update&#34;&gt;Initial Update&lt;/h3&gt;

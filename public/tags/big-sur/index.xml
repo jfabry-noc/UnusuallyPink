@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>big-sur on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/big-sur/</link>
+    <link>https://unusually.pink/tags/big-sur/</link>
     <description>Recent content in big-sur on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/big-sur/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/big-sur/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
+      <link>https://unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
+      <guid>https://unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
       <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
  Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
  When this happens, not only is Homebrew broken, but git itself is broken.</description>
@@ -37,10 +37,10 @@ brew reinstall pcre2
     
     <item>
       <title>macOS Big Sur pip Installation Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</link>
+      <link>https://unusually.pink/macos-big-sur-pip-installation-error/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</guid>
+      <guid>https://unusually.pink/macos-big-sur-pip-installation-error/</guid>
       <description>Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now.</description>
       <content>&lt;p&gt;Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now. I encountered my first big error a few days ago, though, while helping a friend with some Python code. We needed to use the &lt;a href=&#34;https://www.paramiko.org&#34;&gt;&lt;code&gt;paramiko&lt;/code&gt;&lt;/a&gt; package, which I didn&amp;rsquo;t have installed. I tried to install it with the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pip3 install paramiko

@@ -2,23 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mozilla on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/mozilla/</link>
+    <link>https://unusually.pink/tags/mozilla/</link>
     <description>Recent content in mozilla on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/mozilla/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Fri, 29 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/mozilla/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Back To Firefox</title>
-      <link>https://hugo.unusually.pink/back-to-firefox/</link>
+      <link>https://unusually.pink/back-to-firefox/</link>
       <pubDate>Fri, 29 Nov 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/back-to-firefox/</guid>
+      <guid>https://unusually.pink/back-to-firefox/</guid>
       <description>Back in 2002, Firefox was the new hotness in the world of web browsers. Rising from the ashes of Netscape Navigator, the browser emerged as a true competitor to the horror of Internet Explorer. It offered competition with superior rendering and web compliance without the plethora of security issues plaguing Internet Explorer. While Firefox grew in popularity against Internet Explorer through the mid-2000’s, it eventually started to decline in the face of Google’s Chrome browser which took the browser market by storm with its release in the latter half of 2008.</description>
       <content>&lt;p&gt;Back in 2002, &lt;a href=&#34;https://www.mozilla.org/en-US/firefox/new/&#34;&gt;Firefox&lt;/a&gt; was the new hotness in the world of web browsers. Rising from the ashes of Netscape Navigator, the browser emerged as a true competitor to the horror of Internet Explorer. It offered competition with superior rendering and web compliance without the plethora of security issues plaguing Internet Explorer. While Firefox grew in popularity against Internet Explorer through the mid-2000’s, it eventually started to decline in the face of Google’s Chrome browser which took the browser market by storm with its release in the latter half of 2008. People appreciated the speed and efficiency of Google’s new browser, leaving Firefox to languish.&lt;/p&gt;
 &lt;p&gt;Over the past decade, however, Firefox has undergone a slow yet steady transformation. Prior to the arrival of Chrome, Firefox was fixed on becoming the browser that could do &lt;em&gt;everything&lt;/em&gt;, for better or for worse. At the peak of its decline, Firefox was trying to be your web browser, your RSS reader (for the minority of users who had any clue what RSS was), and your IRC client (for the significantly smaller minority of users who had any clue what the hell IRC was), which overall made the browser require more resources for features that most users didn’t need or want, all the while the browser existed inside of a single, monolithic binary. By comparison, the Chrome browser broke each tab into a separate process so that complications with one tab wouldn’t impact the operation of the others.&lt;/p&gt;
 &lt;p&gt;Recently, though, the tables have begun to turn yet again. After achieving dominance in the browser market, Google has started to act like a GOP senator; they’re willing to sacrifice the good of their constituents (users) in favor of their own interests. For example, Google recognizes the impact of adblocking on its own business. As a result, they’ve &lt;a href=&#34;https://9to5google.com/2019/01/22/google-chrome-break-ad-blockers/&#34;&gt;proposed changes which would cripple adblockers&lt;/a&gt;. While they’ve bounced back and forth on this particular change since they first proposed it in January, they’ve continued to flirt with the idea; clearly Google doesn’t see blocking advertisements as a good thing. &lt;a href=&#34;http://www.commitstrip.com/en/2015/09/28/scumbag-chrome/&#34;&gt;Chrome’s resource utilization continues to grow&lt;/a&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/BackToFirefox_commit_chrome.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/BackToFirefox_commit_chrome.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;At the same time, &lt;a href=&#34;https://blog.mozilla.org/blog/2017/11/14/introducing-firefox-quantum/&#34;&gt;Firefox began a re-architecture of their browser which allowed for separate processes per tab&lt;/a&gt;. Since then, Mozilla has continued to refine their experience.&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;

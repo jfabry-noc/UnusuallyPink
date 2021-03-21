@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sed on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/sed/</link>
+    <link>https://unusually.pink/tags/sed/</link>
     <description>Recent content in sed on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/sed/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/sed/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Grep and Sed to Modify All Files in a Directory</title>
-      <link>https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</link>
+      <link>https://unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</link>
       <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</guid>
+      <guid>https://unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</guid>
       <description>I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like Hugo; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the author attribute in each post to a different name to match my new Mastodon profile.</description>
       <content>&lt;p&gt;I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the &lt;code&gt;author&lt;/code&gt; attribute in each post to a different name to match my &lt;a href=&#34;https://fosstodon.org/@consoleaccess&#34;&gt;new Mastodon profile&lt;/a&gt;. In this particular &lt;a href=&#34;https://themes.gohugo.io/hugo-theme-terminal/&#34;&gt;Hugo theme&lt;/a&gt; the author is specified in each post rather than in the central &lt;code&gt;config.toml&lt;/code&gt; file so that I can have different authors in a single site. This meant I needed to mass modify all of my posts to change the author (at least for the ones that have it since I previously used a theme where the author wasn’t specified.) I knew that this should be possible with &lt;code&gt;sed&lt;/code&gt; but couldn’t remember the exact syntax. Since Hugo stores all of the Markdown files for my posts in a single directory, though, I knew it shouldn’t be too complicated.&lt;/p&gt;
 &lt;p&gt;The syntax &lt;code&gt;sed&lt;/code&gt; uses to do find-and-replace is &lt;em&gt;very&lt;/em&gt; familiar to me since I use the same syntax in &lt;code&gt;vim&lt;/code&gt; all the time. It’s great for those moments when I realize I’ve given a particular variable or function an extremely poor name and need to change every instance in a particular file. So what I really needed in this case was to recall how to use the CLI to change the value in multiple files; specifically I needed to change every file in a particular directory. It didn’t take many searches for me to confirm that this would require another utility to discover each file so that &lt;code&gt;sed&lt;/code&gt; could then update them. Ultimately I got up and running with the following commands thanks to &lt;a href=&#34;https://isaacsukin.com/news/2013/06/command-line-tip-replace-word-all-files-directory&#34;&gt;what I found on this site&lt;/a&gt;:&lt;/p&gt;

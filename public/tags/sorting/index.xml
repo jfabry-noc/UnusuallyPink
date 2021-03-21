@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sorting on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/sorting/</link>
+    <link>https://unusually.pink/tags/sorting/</link>
     <description>Recent content in sorting on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/sorting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sorting IP Addresses With PowerShell</title>
-      <link>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</link>
+      <link>https://unusually.pink/sorting-ip-addresses-with-powershell/</link>
       <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</guid>
+      <guid>https://unusually.pink/sorting-ip-addresses-with-powershell/</guid>
       <description>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
 Get-Content -Path .\ipListFixed.txt | Sort-Object
 The results were, suffice to say, lackluster. I ended up with something like this:</description>

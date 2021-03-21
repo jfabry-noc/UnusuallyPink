@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>rest on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/rest/</link>
+    <link>https://unusually.pink/tags/rest/</link>
     <description>Recent content in rest on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/rest/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/rest/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Twitter Development Impressions</title>
-      <link>https://hugo.unusually.pink/twitter-development-impressions/</link>
+      <link>https://unusually.pink/twitter-development-impressions/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/twitter-development-impressions/</guid>
+      <guid>https://unusually.pink/twitter-development-impressions/</guid>
       <description>I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.</description>
       <content>&lt;p&gt;I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.&lt;/p&gt;
 &lt;h2 id=&#34;developer-account&#34;&gt;Developer Account&lt;/h2&gt;
@@ -33,10 +33,10 @@
     
     <item>
       <title>Groovy Programming HttpClient</title>
-      <link>https://hugo.unusually.pink/groovy-programming-httpclient/</link>
+      <link>https://unusually.pink/groovy-programming-httpclient/</link>
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/groovy-programming-httpclient/</guid>
+      <guid>https://unusually.pink/groovy-programming-httpclient/</guid>
       <description>As a follow-up to my post on creating a JWT in Groovy, I did manage to figure out how to make an HttpClient in Groovy as opposed to making raw connections. You can see this implemented in the GitHub repository I used for the previously linked post. It was honestly pretty easy to do, and there are tons of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy.</description>
       <content>&lt;p&gt;As a follow-up to my &lt;a href=&#34;https://www.unusually.pink/blog/creating-a-jwt-in-the-groovy-programming-language&#34;&gt;post on creating a JWT in Groovy&lt;/a&gt;, I &lt;em&gt;did&lt;/em&gt; manage to figure out how to make an &lt;a href=&#34;https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html&#34;&gt;HttpClient&lt;/a&gt; in Groovy as opposed to making raw connections. You can see this implemented in the &lt;a href=&#34;https://github.com/JFFail/GroovyJWT/blob/master/jwt.groovy&#34;&gt;GitHub repository&lt;/a&gt; I used for the previously linked post. It was honestly pretty easy to do, and there are &lt;strong&gt;tons&lt;/strong&gt; of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy. Similar to the last time, it&amp;rsquo;ll be easier to look at all of the code in the GitHub repo, but I&amp;rsquo;ll call out the specific snippets I&amp;rsquo;m referencing throughout the post.&lt;/p&gt;
 &lt;h3 id=&#34;imports&#34;&gt;Imports&lt;/h3&gt;

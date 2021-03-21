@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>macos on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/macos/</link>
+    <link>https://unusually.pink/tags/macos/</link>
     <description>Recent content in macos on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/macos/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/macos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
+      <link>https://unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
+      <guid>https://unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
       <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
  Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
  When this happens, not only is Homebrew broken, but git itself is broken.</description>
@@ -37,10 +37,10 @@ brew reinstall pcre2
     
     <item>
       <title>Switching To Brave</title>
-      <link>https://hugo.unusually.pink/switching-to-brave/</link>
+      <link>https://unusually.pink/switching-to-brave/</link>
       <pubDate>Sun, 14 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/switching-to-brave/</guid>
+      <guid>https://unusually.pink/switching-to-brave/</guid>
       <description>I spend the majority of my computing time on the MacBook Pro that I use for work. For a very long time, I&amp;rsquo;ve used Safari as my main browser on it. Unsurprisingly, Safari integrates very nicely with the rest of macOS, and I honestly just really like it as a browser. Lately, though, I&amp;rsquo;ve been experiencing increased frustration with Safari and the web as a whole that has had me looking for alternatives.</description>
       <content>&lt;p&gt;I spend the majority of my computing time on the MacBook Pro that I use for work. For a very long time, I&amp;rsquo;ve used Safari as my main browser on it. Unsurprisingly, Safari integrates very nicely with the rest of macOS, and I honestly just really like it as a browser. Lately, though, I&amp;rsquo;ve been experiencing increased frustration with Safari and the web as a whole that has had me looking for alternatives. I&amp;rsquo;ll preface this entire post by saying that I could easily work around most of my problems by doing what I&amp;rsquo;ve historically done and using Safari for most things and a different browser for the remainder that don&amp;rsquo;t work well in Safari, but I really dislike having multiple browsers open. While I&amp;rsquo;m not nearly as guilty as most of my colleagues about having an egregious number of tabs open, it&amp;rsquo;s still a pain to deal with swapping between browser windows and finding what site is open where.&lt;/p&gt;
 &lt;h2 id=&#34;issues&#34;&gt;Issues&lt;/h2&gt;
@@ -52,7 +52,7 @@ brew reinstall pcre2
 &lt;p&gt;My primary concern with alternative browsers was simply native support. I have a MacBook Pro running an M1 chip, and while translating x86 applications to ARM via Rosetta 2 has been seamless with plenty of applications, I wanted my browsing experience to be as snappy as possible. Tons of applications feature ARM support under Linux, which I&amp;rsquo;ve seen firsthand with my &lt;a href=&#34;https://unusually.pink/unusually-pink-impressions-pinebook-pro/&#34;&gt;Pinebook Pro&lt;/a&gt;. I figured it would only be a matter of time before developers made the necessary tweaks for M1 support. Firefox was &lt;a href=&#34;https://www.macrumors.com/2020/12/15/firefox-now-natively-supports-m1-macs/&#34;&gt;one of the first browsers I knew of to support M1 chips&lt;/a&gt;, but I wasn&amp;rsquo;t sure if that was the direction I wanted to go. I love Firefox, and I still use it on all of my Linux systems; I&amp;rsquo;m using it to write this post on my &lt;a href=&#34;https://unusually.pink/star-lite-mk-iii/&#34;&gt;Star Lite Mk III&lt;/a&gt; right now. There have been a lot of concerns surrounding the direction of Firefox after &lt;a href=&#34;https://arstechnica.com/information-technology/2020/08/firefox-maker-mozilla-lays-off-250-workers-says-covid-19-lowered-revenue/&#34;&gt;Mozilla laid off a large number of staff in 2020&lt;/a&gt;, a group that allegedly included most &amp;ndash; if not all &amp;ndash; of their incident response team. Additionally, I experience many of the same issues with Firefox and the Gecko engine as I do with Safari and WebKit in today&amp;rsquo;s Chrome-centric web.&lt;/p&gt;
 &lt;p&gt;Instead, I decided to give Brave a shot. Brave &lt;a href=&#34;https://www.engadget.com/apple-silicon-brave-browser-132047721.html&#34;&gt;added M1 support at the very end of 2020&lt;/a&gt;, and I already had it installed on my machine to use whenever Safari wasn&amp;rsquo;t an option for all of the aforementioned reasons. I simply swapped it to my default browser and spent the past week using it. Brave is a Chromium fork, meaning it renders pages like Chrome and will experience the same high degree of compatibility across sites. It also can install all of the same extensions as Chrome, though that&amp;rsquo;s far less important than one might think as I&amp;rsquo;ll discuss shortly.&lt;/p&gt;
 &lt;p&gt;Like most Chromium forks, all of the Google junk that gets added to Chrome is absent. In fact, Brave&amp;rsquo;s main mission is to be a privacy-focused browser. It features a robust advertising and tracking blocker built-in, with tons of options for configuring exceptions, disabling it entirely for certain sites, and more. What really surprised me was the aggression of blocking that it was capable of. I used the tracking blocker in Safari, for example, and the typical reporting from it would block somewhere around 200 trackers per week. After using Brave for a week, my metrics look like this:&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/brave_blocker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/brave_blocker.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;To be clear, this is in no way an apples-to-apples (no pun intended) comparison since I have Brave blocking both trackers and ads while Safari can only do trackers. The numbers are still staggering after just a week, though, and I was particularly interested in seeing metrics like how much bandwidth was saved by not loading that content. There are also baseline levels of blocking that can be configured, and I initially attempted to go with the Strict option. I quickly found that too many sites flat out broke, so I switched it to Standard with much better results. Additionally, options exist for allowing things like buttons on sites for Twitter, Facebook, LinkedIn, etc. The other bonus is that such robust blocking built in means I didn&amp;rsquo;t need the array of security extensions I may be inclined to install with other browsers. After a week, the only extension I&amp;rsquo;ve added to Brave is one for my password manager.&lt;/p&gt;
 &lt;p&gt;Another nice security feature with Brave is that it offers two different takes on Incognito mode. The first is the traditional Incognito mode where it won&amp;rsquo;t load any cookies from your main browsing session, and any cookies gathered during that Incognito session are removed once it ends. The other option does the exact same as the first, but it also &lt;a href=&#34;https://www.torproject.org/&#34;&gt;routes your traffic through Tor&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Brave has seemingly endless customization, and everything discussed thus far can be toggled off and on in the settings. Don&amp;rsquo;t need Tor with Incognito? You can turn it off so that it doesn&amp;rsquo;t even show up as an option. In fact, going through the settings to configure Brave is the only real hurdle to using it, and it probably took me about 30 minutes to look through everything and get it set up the way that I wanted. That being said, I found the default configuration to be &lt;em&gt;very&lt;/em&gt; good, and for most people who may not care to go through the settings it&amp;rsquo;ll be more than fine.&lt;/p&gt;
@@ -63,10 +63,10 @@ brew reinstall pcre2
     
     <item>
       <title>macOS Big Sur pip Installation Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</link>
+      <link>https://unusually.pink/macos-big-sur-pip-installation-error/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</guid>
+      <guid>https://unusually.pink/macos-big-sur-pip-installation-error/</guid>
       <description>Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now.</description>
       <content>&lt;p&gt;Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now. I encountered my first big error a few days ago, though, while helping a friend with some Python code. We needed to use the &lt;a href=&#34;https://www.paramiko.org&#34;&gt;&lt;code&gt;paramiko&lt;/code&gt;&lt;/a&gt; package, which I didn&amp;rsquo;t have installed. I tried to install it with the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pip3 install paramiko
@@ -87,10 +87,10 @@ brew reinstall pcre2
     
     <item>
       <title>SSHFS On macOS</title>
-      <link>https://hugo.unusually.pink/sshfs-on-macos/</link>
+      <link>https://unusually.pink/sshfs-on-macos/</link>
       <pubDate>Sun, 08 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/sshfs-on-macos/</guid>
+      <guid>https://unusually.pink/sshfs-on-macos/</guid>
       <description>Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for years at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows.</description>
       <content>&lt;p&gt;Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for &lt;strong&gt;years&lt;/strong&gt; at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows.&lt;/p&gt;
 &lt;p&gt;I recently found myself needing to copy some files from a cloud VPS running on &lt;a href=&#34;https://www.linode.com/&#34;&gt;Linode&lt;/a&gt;. The reverse had been simple enough; copying files from my local machine to the VPS was as simple as running one &lt;code&gt;rsync&lt;/code&gt; command. Note that I swap the SSH port on all of my VPS instances to something non-standard so that I don&amp;rsquo;t get so many random &lt;strong&gt;root&lt;/strong&gt; authentication attempts when nefarious people see that port 22 is open. Even though I disable root login I still want to discourage the attempts for anything that has SSH open to the Internet. If you think I&amp;rsquo;m overreacting and you have a server in the same position, just do this and see how you feel after:&lt;/p&gt;

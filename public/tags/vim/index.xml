@@ -2,27 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>vim on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/vim/</link>
+    <link>https://unusually.pink/tags/vim/</link>
     <description>Recent content in vim on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright><atom:link href="https://hugo.unusually.pink/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright><atom:link href="https://unusually.pink/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>All Dracula (Theme) Everything</title>
-      <link>https://hugo.unusually.pink/all-dracula-theme-everything/</link>
+      <link>https://unusually.pink/all-dracula-theme-everything/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/all-dracula-theme-everything/</guid>
+      <guid>https://unusually.pink/all-dracula-theme-everything/</guid>
       <description>When you spend a significant portion of each and every day staring at a computer screen, it&amp;rsquo;s important for things to look nice. Aside from just aesthetics, it can help reduce eye strain and improve productivity. With that in mind, we wanted to help spread the word about one of the best themes ever created: Dracula. I believe I first learned about the Dracula theme from someone I follow on Twitter, though enough time is passed that I&amp;rsquo;m not 100% positive on who or if that&amp;rsquo;s even where I really found it.</description>
       <content>&lt;p&gt;When you spend a significant portion of each and every day staring at a computer screen, it&amp;rsquo;s important for things to look nice. Aside from just aesthetics, it can help reduce eye strain and improve productivity. With that in mind, we wanted to help spread the word about one of the best themes ever created: &lt;a href=&#34;https://draculatheme.com/&#34;&gt;Dracula&lt;/a&gt;. I &lt;em&gt;believe&lt;/em&gt; I first learned about the Dracula theme from someone I follow on Twitter, though enough time is passed that I&amp;rsquo;m not 100% positive on who or if that&amp;rsquo;s even where I really found it.&lt;/p&gt;
 &lt;p&gt;Dracula is a beautiful dark theme with a focus on pink, green, red, and white to give it a striking visual style that&amp;rsquo;s also easy on the eyes; it&amp;rsquo;s nice when working with code to see things stand out so clearly. One of the strengths of Dracula is also that it feels like it exists for &lt;em&gt;everything&lt;/em&gt;.&lt;/p&gt;
 &lt;h2 id=&#34;terminalapphttpsdraculathemecomterminal&#34;&gt;&lt;a href=&#34;https://draculatheme.com/terminal&#34;&gt;Terminal.app&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/AllDraculaThemeEverything_terminal.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/AllDraculaThemeEverything_terminal.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I spend a &lt;strong&gt;large&lt;/strong&gt; portion of my day working out of Terminal.app on my MacBook Pro, and the Dracula theme fits with it perfectly. While you end up with a lot more white text here than in most text editors, the smooth color scheme still makes for something a bit more pleasing to look at than the stock green text on a blackbackground that I&amp;rsquo;ve used in my terminal emulators for decades.&lt;/p&gt;
 &lt;h4 id=&#34;bonus&#34;&gt;Bonus&lt;/h4&gt;
 &lt;p&gt;If you aren&amp;rsquo;t using &lt;a href=&#34;https://www.zsh.org/&#34;&gt;zsh&lt;/a&gt; as your shell already, you should definitely consider switching to it!&lt;/p&gt;
 &lt;h2 id=&#34;vimhttpsdraculathemecomvim&#34;&gt;&lt;a href=&#34;https://draculatheme.com/vim&#34;&gt;Vim&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/AllDraculaThemeEverything_vim.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/AllDraculaThemeEverything_vim.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Vim has been my text editor of choice for years now. While the learning curve is steep compared to a lot of other text editors, it&amp;rsquo;s honestly not too difficult to get started with the basics. Once you&amp;rsquo;ve got those covered, it&amp;rsquo;s easy to simply look up what you need when the need arises to expand your skills with it. After a little time, you can quickly become much more productive; I&amp;rsquo;m now significantly &lt;em&gt;slower&lt;/em&gt; when navigting plaintext with a combination of arrow keys with Ctrl, Home, and End.&lt;/p&gt;
 &lt;h3 id=&#34;caveat&#34;&gt;Caveat&lt;/h3&gt;
 &lt;p&gt;The directions on the Dracula site for installing the theme with my favorite Vim plugin manager, &lt;a href=&#34;https://github.com/tpope/vim-pathogen&#34;&gt;Pathogen&lt;/a&gt; aren&amp;rsquo;t quite correct and assume you&amp;rsquo;ve done a few steps that many people will not have done. The directions instruct you to do this:&lt;/p&gt;
@@ -44,7 +44,7 @@ fatal: Could not read from remote repository.&lt;/p&gt;
 &lt;h2 id=&#34;visual-studio-codehttpsdraculathemecomvisual-studio-code&#34;&gt;&lt;a href=&#34;https://draculatheme.com/visual-studio-code&#34;&gt;Visual Studio Code&lt;/a&gt;&lt;/h2&gt;
 &lt;p&gt;This one is more Brandi&amp;rsquo;s thing than mine, but Visual Studio Code is another terrific GUI text editor. It also has the best &lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=ms-vscode.PowerShell&#34;&gt;PowerShell plugin&lt;/a&gt; of any text editor, making it the de facto PowerShell editor if that&amp;rsquo;s what you work in (even though I still use Vim with &lt;a href=&#34;https://github.com/PProvost/vim-ps1&#34;&gt;vim-ps1&lt;/a&gt;.) Both Visual Studio Code and Atom are &lt;a href=&#34;https://www.electronjs.org/&#34;&gt;Electron&lt;/a&gt; applications, so you get a similar footprint and responsiveness with either of them. I say that as a warning since Electron apps can be a little on the slow side when launching them. More on that later.&lt;/p&gt;
 &lt;h2 id=&#34;firefoxhttpsdraculathemecomfirefox&#34;&gt;&lt;a href=&#34;https://draculatheme.com/firefox&#34;&gt;Firefox&lt;/a&gt;&lt;/h2&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/AllDraculaThemeEverything_image-asset.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/AllDraculaThemeEverything_image-asset.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Hugo kudos to Brandi for discovering this one, but there&amp;rsquo;s even a Dracula theme for Firefox! As a privacy-focused individual, Firefox is my browser of choice on all of my laptops. I&amp;rsquo;ve spent years using and being happy with the default dark theme in Firefox, but Dracula just takes it to the next level. I really appreciate how subtle the theme is with just hints of pink you see around active menus or the currently active tab.&lt;/p&gt;
 &lt;h2 id=&#34;honorable-mentions&#34;&gt;Honorable Mentions&lt;/h2&gt;
 &lt;h4 id=&#34;notepadhttpsdraculathemecomnotepad-plus-plus&#34;&gt;&lt;a href=&#34;https://draculatheme.com/notepad-plus-plus&#34;&gt;Notepad++&lt;/a&gt;&lt;/h4&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ad on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/ad/</link>
+    <link>https://unusually.pink/tags/ad/</link>
     <description>Recent content in ad on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/ad/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sat, 01 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/ad/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV</title>
-      <link>https://hugo.unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
+      <link>https://unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
+      <guid>https://unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
       <description>I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
 Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .</description>
       <content>&lt;p&gt;I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.&lt;/p&gt;

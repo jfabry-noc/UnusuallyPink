@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>markdown on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/markdown/</link>
+    <link>https://unusually.pink/tags/markdown/</link>
     <description>Recent content in markdown on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 06 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 06 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Note-Taking With Notable</title>
-      <link>https://hugo.unusually.pink/note-taking-with-notable/</link>
+      <link>https://unusually.pink/note-taking-with-notable/</link>
       <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/note-taking-with-notable/</guid>
+      <guid>https://unusually.pink/note-taking-with-notable/</guid>
       <description>The Others I’ve struggled for years with finding a good, reliable, and simple note-taking application that fit my needs and didn’t lock me in to a particular platform. When I started my career, I was using Evernote for handling my notes at work. At the time, the free version of Evernote was pretty solid which was good because I didn’t have the money to be spending on notes. After a few years, however, Evernote apparently decided that not enough people were paying for the premium version of the product; as a result they crippled the free version.</description>
       <content>&lt;h2 id=&#34;the-others&#34;&gt;The Others&lt;/h2&gt;
 &lt;p&gt;I’ve struggled for years with finding a good, reliable, and simple note-taking application that fit my needs and &lt;em&gt;didn’t&lt;/em&gt; lock me in to a particular platform. When I started my career, I was using &lt;a href=&#34;https://evernote.com/&#34;&gt;Evernote&lt;/a&gt; for handling my notes at work. At the time, the free version of Evernote was pretty solid which was good because I didn’t have the money to be spending on notes. After a few years, however, Evernote apparently decided that not enough people were paying for the premium version of the product; as a result they crippled the free version. The free version had previously been limited to the amount of data you could sync in a month, and that alone seemed reasonable. They added on to this by limiting the number of &lt;em&gt;devices&lt;/em&gt; which could connect to an account. Since having my work laptop, personal laptop, and phone all connect was no longer an option, I decided to look for something else.&lt;/p&gt;

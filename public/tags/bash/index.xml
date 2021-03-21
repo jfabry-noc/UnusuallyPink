@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>bash on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/bash/</link>
+    <link>https://unusually.pink/tags/bash/</link>
     <description>Recent content in bash on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/bash/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 02 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/bash/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Grep and Sed to Modify All Files in a Directory</title>
-      <link>https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</link>
+      <link>https://unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</link>
       <pubDate>Sun, 02 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</guid>
+      <guid>https://unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/</guid>
       <description>I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like Hugo; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the author attribute in each post to a different name to match my new Mastodon profile.</description>
       <content>&lt;p&gt;I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like &lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo&lt;/a&gt;; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the &lt;code&gt;author&lt;/code&gt; attribute in each post to a different name to match my &lt;a href=&#34;https://fosstodon.org/@consoleaccess&#34;&gt;new Mastodon profile&lt;/a&gt;. In this particular &lt;a href=&#34;https://themes.gohugo.io/hugo-theme-terminal/&#34;&gt;Hugo theme&lt;/a&gt; the author is specified in each post rather than in the central &lt;code&gt;config.toml&lt;/code&gt; file so that I can have different authors in a single site. This meant I needed to mass modify all of my posts to change the author (at least for the ones that have it since I previously used a theme where the author wasn’t specified.) I knew that this should be possible with &lt;code&gt;sed&lt;/code&gt; but couldn’t remember the exact syntax. Since Hugo stores all of the Markdown files for my posts in a single directory, though, I knew it shouldn’t be too complicated.&lt;/p&gt;
 &lt;p&gt;The syntax &lt;code&gt;sed&lt;/code&gt; uses to do find-and-replace is &lt;em&gt;very&lt;/em&gt; familiar to me since I use the same syntax in &lt;code&gt;vim&lt;/code&gt; all the time. It’s great for those moments when I realize I’ve given a particular variable or function an extremely poor name and need to change every instance in a particular file. So what I really needed in this case was to recall how to use the CLI to change the value in multiple files; specifically I needed to change every file in a particular directory. It didn’t take many searches for me to confirm that this would require another utility to discover each file so that &lt;code&gt;sed&lt;/code&gt; could then update them. Ultimately I got up and running with the following commands thanks to &lt;a href=&#34;https://isaacsukin.com/news/2013/06/command-line-tip-replace-word-all-files-directory&#34;&gt;what I found on this site&lt;/a&gt;:&lt;/p&gt;
@@ -24,10 +24,10 @@
     
     <item>
       <title>Quarantine Time Script</title>
-      <link>https://hugo.unusually.pink/quarantine-time-script/</link>
+      <link>https://unusually.pink/quarantine-time-script/</link>
       <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/quarantine-time-script/</guid>
+      <guid>https://unusually.pink/quarantine-time-script/</guid>
       <description>Are you tired of sitting at home wondering how many days you’ve been choosing to quarantine like a responsible adult? Me too! The number of times I’ve been in conversations or working on posts for blogs or social media and thought, “Wait, how long have I been at home now?” followed by wasting time doing rough calendar math in my head was enough that I finally burned some time this weekend putting together a script for it.</description>
       <content>&lt;p&gt;Are you tired of sitting at home wondering how many days you’ve been choosing to quarantine like a responsible adult? Me too! The number of times I’ve been in conversations or working on posts for blogs or social media and thought, “Wait, how long have I been at home now?” followed by wasting time doing rough calendar math in my head was enough that I finally burned some time this weekend putting together a script for it.&lt;/p&gt;
 &lt;p&gt;In the interest of full disclosure, every time this has come up before I’ve done some very simple PowerShell to actually calculate this, at least once I passed the point where I couldn’t just think of it off the top of my head:&lt;/p&gt;
@@ -55,10 +55,10 @@ $then = Get-Date -Date &amp;quot;2020/03/11&amp;quot;
     
     <item>
       <title>Hugo and the Implausibly Old Timestamp</title>
-      <link>https://hugo.unusually.pink/hugo-and-the-implausibly-old-timestamp/</link>
+      <link>https://unusually.pink/hugo-and-the-implausibly-old-timestamp/</link>
       <pubDate>Wed, 22 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/hugo-and-the-implausibly-old-timestamp/</guid>
+      <guid>https://unusually.pink/hugo-and-the-implausibly-old-timestamp/</guid>
       <description>Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing hugo to rebuild the site and copy the output of the public directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses rsync to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.</description>
       <content>&lt;p&gt;Management of one of my blogs is handled through a variety of shell scripts. I have a script for executing &lt;code&gt;hugo&lt;/code&gt; to rebuild the site and copy the output of the &lt;code&gt;public&lt;/code&gt; directory to the folder where Nginx hosts it, for example. One of my scripts creates a tarball of the site and uses &lt;code&gt;rsync&lt;/code&gt; to copy it to another server so that, if my VPS blows up, I can easily retrieve the backup.&lt;/p&gt;
 &lt;p&gt;After composing &lt;a href=&#34;https://unusually.pink/making-a-hash-for-the-html-integrity-property/&#34;&gt;yesterday’s post&lt;/a&gt;, though, I ran into an error with the backup script. It basically runs the following:&lt;/p&gt;

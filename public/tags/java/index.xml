@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>java on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/java/</link>
+    <link>https://unusually.pink/tags/java/</link>
     <description>Recent content in java on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/java/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sat, 23 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/java/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>msal4j With Groovy</title>
-      <link>https://hugo.unusually.pink/msal4j-with-groovy/</link>
+      <link>https://unusually.pink/msal4j-with-groovy/</link>
       <pubDate>Sat, 23 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/msal4j-with-groovy/</guid>
+      <guid>https://unusually.pink/msal4j-with-groovy/</guid>
       <description>I&amp;rsquo;ve written before about the fact that I use Groovy heavily in my current role since the platform I work the most frequently with is able to treat it as a first class citizen, whereas using something like PowerShell or Python adds a few more hurdles. The other thing I work with heavily is Office 365; this got me wondering if I might be able to combine the two by using Groovy to query Microsoft&amp;rsquo;s Graph API.</description>
       <content>&lt;p&gt;I&amp;rsquo;ve written before about the fact that I &lt;a href=&#34;https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/&#34;&gt;use Groovy heavily&lt;/a&gt; in my current role since the platform I work the most frequently with is able to treat it as a first class citizen, whereas using something like PowerShell or Python adds a few more hurdles. The other thing I work with heavily is Office 365; this got me wondering if I might be able to combine the two by using Groovy to query &lt;a href=&#34;https://developer.microsoft.com/en-us/graph/&#34;&gt;Microsoft&amp;rsquo;s Graph API&lt;/a&gt;. Microsoft&amp;rsquo;s current standard for interacting with the Graph API, replacing the old Active Directory Authentication Library (ADAL), is the Microsoft Authentication Library (MSAL.) &lt;a href=&#34;https://github.com/AzureAD&#34;&gt;Microsoft provides MSAL packages for a &lt;em&gt;ton&lt;/em&gt; of popular languages&lt;/a&gt;, and considering that Groovy is a superset of Java, I figured that I should be able to leverage the &lt;a href=&#34;https://github.com/AzureAD/microsoft-authentication-library-for-java&#34;&gt;msal4j version&lt;/a&gt; within Groovy.&lt;/p&gt;
 &lt;p&gt;In my particular case, the code that I write is typically used as &amp;ldquo;glue&amp;rdquo; to link disparate systems together. As such, I based my work off of the Microsoft sample code for &lt;a href=&#34;https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/ClientCredentialGrant.java&#34;&gt;authenticating as a daemon with a client secret&lt;/a&gt;. This is the method I&amp;rsquo;ve always used with my PowerShell and Python code. tl;dr, I was able to get this working with almost no difference from the Java sample, and you can see the end code that successfully authenticates and queries for the users in an AAD instance &lt;a href=&#34;https://github.com/jfabry-noc/GroovyMSAL/blob/main/graphToken.groovy&#34;&gt;on my GitHub account&lt;/a&gt;.&lt;/p&gt;
@@ -60,10 +60,10 @@
     
     <item>
       <title>Groovy Programming HttpClient</title>
-      <link>https://hugo.unusually.pink/groovy-programming-httpclient/</link>
+      <link>https://unusually.pink/groovy-programming-httpclient/</link>
       <pubDate>Fri, 17 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/groovy-programming-httpclient/</guid>
+      <guid>https://unusually.pink/groovy-programming-httpclient/</guid>
       <description>As a follow-up to my post on creating a JWT in Groovy, I did manage to figure out how to make an HttpClient in Groovy as opposed to making raw connections. You can see this implemented in the GitHub repository I used for the previously linked post. It was honestly pretty easy to do, and there are tons of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy.</description>
       <content>&lt;p&gt;As a follow-up to my &lt;a href=&#34;https://www.unusually.pink/blog/creating-a-jwt-in-the-groovy-programming-language&#34;&gt;post on creating a JWT in Groovy&lt;/a&gt;, I &lt;em&gt;did&lt;/em&gt; manage to figure out how to make an &lt;a href=&#34;https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html&#34;&gt;HttpClient&lt;/a&gt; in Groovy as opposed to making raw connections. You can see this implemented in the &lt;a href=&#34;https://github.com/JFFail/GroovyJWT/blob/master/jwt.groovy&#34;&gt;GitHub repository&lt;/a&gt; I used for the previously linked post. It was honestly pretty easy to do, and there are &lt;strong&gt;tons&lt;/strong&gt; of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy. Similar to the last time, it&amp;rsquo;ll be easier to look at all of the code in the GitHub repo, but I&amp;rsquo;ll call out the specific snippets I&amp;rsquo;m referencing throughout the post.&lt;/p&gt;
 &lt;h3 id=&#34;imports&#34;&gt;Imports&lt;/h3&gt;
@@ -119,10 +119,10 @@ def payloadJson &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; JsonOut
     
     <item>
       <title>Creating a JWT in the Groovy Programming Language</title>
-      <link>https://hugo.unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</link>
+      <link>https://unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</link>
       <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</guid>
+      <guid>https://unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</guid>
       <description>On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, they can be used for nefarious purposes.</description>
       <content>&lt;p&gt;On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, &lt;a href=&#34;https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7&#34;&gt;they can be used for nefarious purposes&lt;/a&gt;. Enter the &lt;a href=&#34;https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7&#34;&gt;JSON Web Token&lt;/a&gt; or JWT. You create a JWT by parsing together a bunch of information, like your application ID, the validity period, etc., sign it with a secret, and exchange it for an access token you can actually use to make your normal API calls.&lt;/p&gt;
 &lt;p&gt;A JWT has a few advantages. First, it expires. The validity period varies based on the service; the one I was working with was 30 minutes. So if your access token is compromised, it can only work for however much time is left on the token. They can also be configured to leverage a UUID as a one-time &lt;a href=&#34;https://en.wikipedia.org/wiki/Cryptographic_nonce&#34;&gt;nonce&lt;/a&gt; to prevent replay attacks.&lt;/p&gt;

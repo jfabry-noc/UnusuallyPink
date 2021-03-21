@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>jwt on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/jwt/</link>
+    <link>https://unusually.pink/tags/jwt/</link>
     <description>Recent content in jwt on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 12 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/jwt/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Creating a JWT in the Groovy Programming Language</title>
-      <link>https://hugo.unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</link>
+      <link>https://unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</link>
       <pubDate>Sun, 12 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</guid>
+      <guid>https://unusually.pink/creating-a-jwt-in-the-groovy-programming-language/</guid>
       <description>On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, they can be used for nefarious purposes.</description>
       <content>&lt;p&gt;On Friday I found myself in a new situation. I was working with APIs for a new service my company has started using, but their setup was a bit more involved than what I&amp;rsquo;ve typically experienced. Accessing many services via their REST API requires you to follow a few steps to generate an application ID and an API key, you pass those with your request, and you&amp;rsquo;re done. The downside to this is that it can open up security vulnerabilities; if something happens to your API keys, for example, &lt;a href=&#34;https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7&#34;&gt;they can be used for nefarious purposes&lt;/a&gt;. Enter the &lt;a href=&#34;https://medium.com/@selvaganesh93/what-happens-if-you-accidentally-commit-your-aws-access-token-to-public-github-be50d378b4c7&#34;&gt;JSON Web Token&lt;/a&gt; or JWT. You create a JWT by parsing together a bunch of information, like your application ID, the validity period, etc., sign it with a secret, and exchange it for an access token you can actually use to make your normal API calls.&lt;/p&gt;
 &lt;p&gt;A JWT has a few advantages. First, it expires. The validity period varies based on the service; the one I was working with was 30 minutes. So if your access token is compromised, it can only work for however much time is left on the token. They can also be configured to leverage a UUID as a one-time &lt;a href=&#34;https://en.wikipedia.org/wiki/Cryptographic_nonce&#34;&gt;nonce&lt;/a&gt; to prevent replay attacks.&lt;/p&gt;

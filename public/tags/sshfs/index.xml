@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>sshfs on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/sshfs/</link>
+    <link>https://unusually.pink/tags/sshfs/</link>
     <description>Recent content in sshfs on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 08 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/sshfs/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 08 Mar 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/sshfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>SSHFS On macOS</title>
-      <link>https://hugo.unusually.pink/sshfs-on-macos/</link>
+      <link>https://unusually.pink/sshfs-on-macos/</link>
       <pubDate>Sun, 08 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/sshfs-on-macos/</guid>
+      <guid>https://unusually.pink/sshfs-on-macos/</guid>
       <description>Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for years at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows.</description>
       <content>&lt;p&gt;Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for &lt;strong&gt;years&lt;/strong&gt; at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows.&lt;/p&gt;
 &lt;p&gt;I recently found myself needing to copy some files from a cloud VPS running on &lt;a href=&#34;https://www.linode.com/&#34;&gt;Linode&lt;/a&gt;. The reverse had been simple enough; copying files from my local machine to the VPS was as simple as running one &lt;code&gt;rsync&lt;/code&gt; command. Note that I swap the SSH port on all of my VPS instances to something non-standard so that I don&amp;rsquo;t get so many random &lt;strong&gt;root&lt;/strong&gt; authentication attempts when nefarious people see that port 22 is open. Even though I disable root login I still want to discourage the attempts for anything that has SSH open to the Internet. If you think I&amp;rsquo;m overreacting and you have a server in the same position, just do this and see how you feel after:&lt;/p&gt;

@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>blogging on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/blogging/</link>
+    <link>https://unusually.pink/tags/blogging/</link>
     <description>Recent content in blogging on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Tue, 08 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/blogging/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Unusually Pink Migration</title>
-      <link>https://hugo.unusually.pink/unusually-pink-migration/</link>
+      <link>https://unusually.pink/unusually-pink-migration/</link>
       <pubDate>Tue, 08 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/unusually-pink-migration/</guid>
+      <guid>https://unusually.pink/unusually-pink-migration/</guid>
       <description>So Long, Squarespace! If anyone stumbles across this site who was previously an Unusually Pink reader, then you might notice that the site looks a bit different after a few months of hiatus. In the short, just under 2 year lifespan of the site it has now moved to its 3rd host. Originally it was hosted on a Vultr VPS that I had been hosting a few other things on, back when I originally bought the domain because I loved the name but had no idea what to do with it.</description>
       <content>&lt;h2 id=&#34;so-long-squarespace&#34;&gt;So Long, Squarespace!&lt;/h2&gt;
 &lt;p&gt;If anyone stumbles across this site who was previously an Unusually Pink reader, then you might notice that the site looks a bit different after a few months of hiatus. In the short, just under 2 year lifespan of the site it has now moved to its 3rd host. Originally it was hosted on a &lt;a href=&#34;https://www.vultr.com/&#34;&gt;Vultr VPS&lt;/a&gt; that I had been hosting a few other things on, back when I &lt;a href=&#34;https://unusually.pink/its-all-about-being-unusually-pink/&#34;&gt;originally bought the domain because I loved the name but had no idea what to do with it&lt;/a&gt;. Then Brandi, my former co-host, and I decided to &lt;a href=&#34;https://www.dropbox.com/sh/v9yvrhsoahu2vlw/AAB_JaXv3isvQjVyIMdlPHm6a?dl=0&#34;&gt;start a podcast&lt;/a&gt;; it quickly became apparent that my web development skills weren&amp;rsquo;t exactly up to par with what we wanted to accomplish. As a result, we moved the site over to &lt;a href=&#34;https://www.squarespace.com/&#34;&gt;Squarespace&lt;/a&gt;.&lt;/p&gt;
@@ -41,10 +41,10 @@
     
     <item>
       <title>It&#39;s all about being Unusually Pink.</title>
-      <link>https://hugo.unusually.pink/its-all-about-being-unusually-pink./</link>
+      <link>https://unusually.pink/its-all-about-being-unusually-pink./</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/its-all-about-being-unusually-pink./</guid>
+      <guid>https://unusually.pink/its-all-about-being-unusually-pink./</guid>
       <description>This domain was a completely random purchase. Earlier today while taking a break from work (which was sorely needed… I had 3 weeks off over the holidays, and coming back today was not easy), I decided to hop on Mastodon for the first time in quite a while. A friend of mine who was previously on the same instance as me had apparently swapped to a different instance during the month or so that I was gone.</description>
       <content>&lt;p&gt;This domain was a completely random purchase. Earlier today while taking a break from work (which was sorely needed… I had 3 weeks off over the holidays, and coming back today was &lt;em&gt;not&lt;/em&gt; easy), I decided to hop on Mastodon for the first time in quite a while. A friend of mine who was previously on the same instance as me had apparently swapped to a different instance during the month or so that I was gone. I just happened to get lucky enough that another individual I follow happened to boost a toot from him; this friend was using the same avatar on his new instance that he used on the previous instance, so I immediately knew it was him. In seeing what instance he was on, I was a bit surprised. It had a &lt;code&gt;.pink&lt;/code&gt; TLD. I had no idea &lt;code&gt;.$COLORS&lt;/code&gt; was a thing now.&lt;/p&gt;
 &lt;p&gt;I hopped over to my registrar of choice (&lt;a href=&#34;https://namecheap.com&#34;&gt;Namecheap&lt;/a&gt;) and saw that I could snag a domain for just $2.88 USD. It was a no-brainer. This was especially true because another friend of mine has a saying about the color pink. She doesn’t normally enjoy pink things, but she likes things which are (to quote her) “unusually pink.” A pink heart? Boring. A pink &lt;a href=&#34;https://www.razer.com/quartz&#34;&gt;Razer keyboard and mouse combo&lt;/a&gt;? Unusually pink and therefore extremely cool. (If you happen to be curious, I own both that keyboard and mouse. They match wonderfully with the pink LEDs in my gaming desktop. Bonus points to me if I’m using them to play Overwatch while wearing my pink Mercy t-shirt.) Hopefully she wasn’t too mad that I snagged this domain. If you’re reading this, I’m sorry. But I did offer up a sub-domain of her choice should she want one!&lt;/p&gt;

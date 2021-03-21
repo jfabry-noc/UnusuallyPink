@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>indie on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/indie/</link>
+    <link>https://unusually.pink/tags/indie/</link>
     <description>Recent content in indie on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/indie/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/indie/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Apple Music: Back in the Saddle</title>
-      <link>https://hugo.unusually.pink/apple-music-back-in-the-saddle/</link>
+      <link>https://unusually.pink/apple-music-back-in-the-saddle/</link>
       <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/apple-music-back-in-the-saddle/</guid>
+      <guid>https://unusually.pink/apple-music-back-in-the-saddle/</guid>
       <description>For anyone who listens to the Same Shade of Difference podcast, you may have heard a brief discussion between Mark and I about how I had switched from Apple Music to Amazon Music. I&amp;rsquo;ve previously been a fan of Spotify, though I became increasingly irritated with the focus they started giving podcasts rather than music. I know it&amp;rsquo;s weird coming from someone who has spent the past couple of years creating podcasts, but I don&amp;rsquo;t listen to them.</description>
       <content>&lt;p&gt;For anyone who listens to the &lt;a href=&#34;https://sameshadeofdifference.com&#34;&gt;Same Shade of Difference&lt;/a&gt; podcast, you may have heard a brief discussion between Mark and I about how I had switched from Apple Music to Amazon Music. I&amp;rsquo;ve previously been a fan of &lt;a href=&#34;https://unusually.pink/2018-in-music-spotify-wrapped/&#34;&gt;Spotify&lt;/a&gt;, though I became increasingly irritated with the focus they started giving podcasts rather than music. I know it&amp;rsquo;s weird coming from someone who has spent the past couple of years creating podcasts, but I don&amp;rsquo;t listen to them. Additionally, I don&amp;rsquo;t really want them being advertised to me when I&amp;rsquo;m trying to look for music. When I swapped to an iPhone about a year ago, I decided to try out Apple Music since I could get a few months of it for free. After my free 3 months, I decided to stick with it. Recently, though, I swapped away from it and decided to give Amazon Music a shake. After about a month and a half, though, I quickly abandoned ship back to Apple Music.&lt;/p&gt;
 &lt;p&gt;First, let&amp;rsquo;s start with why I left Apple Music in the first place. After all, I use a MacBook Pro, an iPhone, and an iPad. Shouldn&amp;rsquo;t Apple Music be my best choice? The main issue is that the Apple Music application on macOS is, to be blunt, a dumpster fire. The application has a plethora of issues when it comes to responsiveness and playback. &amp;ldquo;Did I accidentally &lt;em&gt;miss&lt;/em&gt; clicking on that button or is the application just being super slow?&amp;rdquo; is a question I find myself asking on the regular. The biggest issue, though, is when it just randomly decides to either 1.) not load or 2.) skip every song as though playback is unavailable. It&amp;rsquo;s not at all uncommon, for example, for me to click the &lt;strong&gt;Browse&lt;/strong&gt; option from the menu only to be presented with a completely blank UI. No buttons, no albums, no genres. All I can do is quit the application, re-launch it, and hope for the best. In other instances, Apple Music will rapid-fire skip through tracks as though they&amp;rsquo;re unavailable. It&amp;rsquo;ll select a track from whatever album or playlist I&amp;rsquo;m trying to listen to, pause for a second or two, immediately skip to the next track, and just repeat this endlessly. Searching online shows plenty of people experiencing the same issues. Usually some secret handshake combination of signing out and back in, de-authorizing and re-authorizing the device, and switching networks (yes, really) will sometimes take care of the problem. It&amp;rsquo;s frustrating to the extreme.&lt;/p&gt;
@@ -28,10 +28,10 @@
     
     <item>
       <title>Buy Literally Anything From Bandcamp Today</title>
-      <link>https://hugo.unusually.pink/buy-literally-anything-from-bandcamp-today/</link>
+      <link>https://unusually.pink/buy-literally-anything-from-bandcamp-today/</link>
       <pubDate>Fri, 20 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/buy-literally-anything-from-bandcamp-today/</guid>
+      <guid>https://unusually.pink/buy-literally-anything-from-bandcamp-today/</guid>
       <description>The coronavirus has been causing havoc for industries across the globe, including the music industry. Especially for small, indie artists, the revenue they make from doing live shows is vital for their ability to continue doing what they love. In the case of a global pandemic, though, all of those shows have been canceled, leaving artists struggling to make it by.
 Having been social distancing/self quarantining for about two weeks now, I&amp;rsquo;ve been doing my best to live by the very wise, meaningful words of Craft Brew Geek when he told a group of us:</description>
       <content>&lt;p&gt;The coronavirus has been causing havoc for industries across the globe, including the music industry. Especially for small, indie artists, the revenue they make from doing live shows is vital for their ability to continue doing what they love. In the case of a global pandemic, though, all of those shows have been canceled, leaving artists struggling to make it by.&lt;/p&gt;
@@ -47,10 +47,10 @@ Having been social distancing/self quarantining for about two weeks now, I&amp;r
 &lt;p&gt;I tried searching for the post, but it was so long ago that I&amp;rsquo;ll never find it. The sentiment is certainly true though. Everyone has had that song that has made an event, be it a party, a roadtrip, or just a special moment with friends, unforgettable. Everyone has felt sorrow and heartache and didn&amp;rsquo;t know how they would&amp;rsquo;ve been able to get through if it wasn&amp;rsquo;t for that &lt;strong&gt;one&lt;/strong&gt; song that knew exactly how you felt.&lt;/p&gt;
 &lt;p&gt;Music has had such a profound impact on my life, and I can&amp;rsquo;t imagine where I&amp;rsquo;d be without it. It pains me to see so many small artists having to cancel their shows, knowing they&amp;rsquo;re upset at having to let down their fans and worried about how they&amp;rsquo;re going to continue making ends meet and create the art we all love so much.&lt;/p&gt;
 &lt;p&gt;That&amp;rsquo;s why today is such a great day to support indie music. Today &lt;a href=&#34;https://daily.bandcamp.com/features/bandcamp-covid-19-fundraiser&#34;&gt;Bandcamp is waiving their revenue share on all purchases through the site&lt;/a&gt;. This means that 100% of the revenue is going to support artists who need it now more than ever. Dozens of artists I listen to regularly, and some of whom were mentioned in our &lt;a href=&#34;https://www.unusually.pink/podcast/episode-18-end-of-year-music-stats&#34;&gt;music stats episode&lt;/a&gt; have Bandcamp profiles. Even if you don&amp;rsquo;t need a digital album because you always use Spotify or Apple Music, consider buying an album anyway just to help out and show some love for the people who have made such a difference in your life.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/BuyLiterallyAnythingFromBandcampToday_music.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/BuyLiterallyAnythingFromBandcampToday_music.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Pre-orders count as well, so you can show some support for artists with upcoming albums. Also note that most albums have a minimum price but offer you the ability to throw a little extra on top if you want. Please help out if you have the means.&lt;/p&gt;
 &lt;p&gt;If you don&amp;rsquo;t have the means, you can still help out! The payouts are garbage, but stream as much music from indie artists as you possibly can. Check out the Twitter profiles for artists you love; many have started doing online shows. For example, on her &lt;a href=&#34;https://www.youtube.com/channel/UCOw4v1j3QnzH7X4krQAS7fg&#34;&gt;YouTube channel&lt;/a&gt;, &lt;a href=&#34;https://twitter.com/TessaViolet&#34;&gt;Tessa Violet&lt;/a&gt; has been streaming what she&amp;rsquo;s coined &amp;ldquo;The Something To Look Forward To Tour&amp;rdquo;. There are still 3 shows left. Tune in for those and look for other artists who are doing the same!&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/BuyLiterallyAnythingFromBandcampToday_stlftt-768x1024.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/BuyLiterallyAnythingFromBandcampToday_stlftt-768x1024.jpeg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Do whatever you can to support artists and musicians now because every little bit helps. It&amp;rsquo;s time that we take care of the people who take care of us.&lt;/p&gt;
 </content>
     </item>

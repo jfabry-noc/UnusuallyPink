@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>autoindex on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/autoindex/</link>
+    <link>https://unusually.pink/tags/autoindex/</link>
     <description>Recent content in autoindex on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/autoindex/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/autoindex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable Directory Listing On Specific Directory With Nginx</title>
-      <link>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</link>
+      <link>https://unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</guid>
+      <guid>https://unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</guid>
       <description>Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
 Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site.</description>
       <content>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.&lt;/p&gt;

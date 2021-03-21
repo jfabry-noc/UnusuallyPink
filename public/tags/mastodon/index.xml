@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>mastodon on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/mastodon/</link>
+    <link>https://unusually.pink/tags/mastodon/</link>
     <description>Recent content in mastodon on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/mastodon/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Thu, 09 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/mastodon/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>GoToot CLI Mastodon Client</title>
-      <link>https://hugo.unusually.pink/gotoot-cli-mastodon-client/</link>
+      <link>https://unusually.pink/gotoot-cli-mastodon-client/</link>
       <pubDate>Thu, 09 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/gotoot-cli-mastodon-client/</guid>
+      <guid>https://unusually.pink/gotoot-cli-mastodon-client/</guid>
       <description>While I&amp;rsquo;m stuck at home for the foreseeable future, I&amp;rsquo;ve been trying to make the most of my time by using it for some learning instead of simply setting new personal records for how many hours of Netflix and YouTube I can watch in a single month. One of the things I decided to work on was creating a Mastodon client. If you aren&amp;rsquo;t familiar with Mastodon, it&amp;rsquo;s a social network most likened to Twitter.</description>
       <content>&lt;p&gt;While I&amp;rsquo;m stuck at home for the foreseeable future, I&amp;rsquo;ve been trying to make the most of my time by using it for some learning instead of simply setting new personal records for how many hours of Netflix and YouTube I can watch in a single month. One of the things I decided to work on was creating a &lt;a href=&#34;https://joinmastodon.org/&#34;&gt;Mastodon&lt;/a&gt; client. If you aren&amp;rsquo;t familiar with Mastodon, it&amp;rsquo;s a social network most likened to Twitter. Instead of being centralized, though, Mastodon is federated, meaning different people can run their own &amp;ldquo;instance&amp;rdquo; of Mastodon, and through federation they can interact with other instances. This is cool for a few reasons, not the least of which is that if there&amp;rsquo;s an instance with terrible policies letting their users post all sorts of toxic garbage, an instance administrator can simply opt to not federate with that instance, meaning that users from the instances are effectively cut off from one another.&lt;/p&gt;
 &lt;p&gt;As I mentioned in my &lt;a href=&#34;https://www.unusually.pink/blog/self-hosting-a-static-website&#34;&gt;last post&lt;/a&gt;, I&amp;rsquo;m not much for making frontend interfaces so it only made sense that I&amp;rsquo;d make a CLI-based client. Note that this is by no means an original idea; I was actually inspired by the &lt;a href=&#34;https://github.com/magicalraccoon/tootstream&#34;&gt;tootstream&lt;/a&gt; client that I regularly use. tootstream is written in Python, and I thought about making my own client in Python as well given that it&amp;rsquo;s a super fun language. I also thought about writing it in PowerShell since I have a lot of experience with it. Ultimately, though, I did the exact opposite and started working on it in &lt;a href=&#34;https://golang.org&#34;&gt;Go&lt;/a&gt; since it&amp;rsquo;s always &lt;em&gt;seemed&lt;/em&gt; like a really interesting language that people enjoy but that I&amp;rsquo;ve never had cause to use. I thought it would be a good learning experience to work with a compiled, statically typed language instead of the interpretted languages that I&amp;rsquo;m already (decently) experienced with. This is why I ended up stumbling across &lt;a href=&#34;https://www.unusually.pink/blog/json-to-go&#34;&gt;JSON-to-Go&lt;/a&gt;. It&amp;rsquo;s also been good experience with work with a slightly lower level language than whta I typically use; to say the least, getting back a byte array from my first HTTP GET request wasn&amp;rsquo;t something I expected.&lt;/p&gt;

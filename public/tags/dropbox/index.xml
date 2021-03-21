@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>dropbox on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/dropbox/</link>
+    <link>https://unusually.pink/tags/dropbox/</link>
     <description>Recent content in dropbox on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/dropbox/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Wed, 09 Sep 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/dropbox/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Dropbox Passwords</title>
-      <link>https://hugo.unusually.pink/dropbox-passwords/</link>
+      <link>https://unusually.pink/dropbox-passwords/</link>
       <pubDate>Wed, 09 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/dropbox-passwords/</guid>
+      <guid>https://unusually.pink/dropbox-passwords/</guid>
       <description>I tend to pay for a lot of subscription services. In fact, my friend Mark and I have enough of them between us that we needed not one but two episodes of our podcast just to talk about all of our subscriptions. Since the pandemic means I have nothing better to do with my time than sit around and think about things like how much money I spend on subscriptions, though, I&amp;rsquo;ve been thinking about which ones I might be able to do without, which ones I could swap for cheaper services, etc.</description>
       <content>&lt;p&gt;I tend to pay for a &lt;em&gt;lot&lt;/em&gt; of subscription services. In fact, my friend Mark and I have enough of them between us that we needed not &lt;a href=&#34;https://sameshadeofdifference.com/episodes/mo-money-mo-money&#34;&gt;one&lt;/a&gt; but &lt;a href=&#34;https://sameshadeofdifference.com/episodes/even-mo-money&#34;&gt;two&lt;/a&gt; episodes of our podcast just to talk about all of our subscriptions. Since the pandemic means I have nothing better to do with my time than sit around and think about things like how much money I spend on subscriptions, though, I&amp;rsquo;ve been thinking about which ones I might be able to do without, which ones I could swap for cheaper services, etc. to save myself a little bit of money each year. It often feels trivial to tack on yet another thing that costs $5 - $10 a month, but over the course of the year it adds up.&lt;/p&gt;
 &lt;p&gt;Enter &lt;a href=&#34;https://www.dropbox.com/features/security/passwords&#34;&gt;Dropbox Passwords&lt;/a&gt;, a password manager built into Dropbox. In the past I&amp;rsquo;ve used Dropbox to sync passwords in conjunction with &lt;a href=&#34;https://www.keepassx.org/&#34;&gt;KeePassX&lt;/a&gt;, so having the same functionality built directly into the platform seemed nice. The fact that it&amp;rsquo;s a feature included with my Dropbox Plus plan and would save me from paying $80 a year for my current password manager is also a nice bonus. First I just had to put it through its paces.&lt;/p&gt;
@@ -44,9 +44,9 @@
 &lt;h2 id=&#34;browser-extensions&#34;&gt;Browser Extensions&lt;/h2&gt;
 &lt;p&gt;You might wonder why I talked about desktop and mobile clients, switched gears to authentication, and then came back to a &amp;ldquo;client.&amp;rdquo; The reason is that the browser extensions are literally just a wrapper that provides integration with the desktop app for things like autofilling credentials. For example, clicking on the Dropbox Passwords extension icon in Safari on macOS doesn&amp;rsquo;t even open a UI for the extension&amp;hellip; it pops open the full Dropbox Passwords client. I see this frequently when nothing autofills in my browser, I click on the icon for the browser extension, and then it opens the full app where I see it requesting my PIN to unlock it.&lt;/p&gt;
 &lt;p&gt;The reason why wrapper browser extensions are noteworthy for me is that there are &lt;strong&gt;no&lt;/strong&gt; standalone extensions or even direct web access. If Dropbox Passwords doesn&amp;rsquo;t have a client on your platform of choice, you&amp;rsquo;re simply out of luck. For example, I can&amp;rsquo;t access my passwords when using Manjaro Linux on my Pinebook Pro. I verified this by installing the browser extension; clicking on it will bring me to a lovely message that the application isn&amp;rsquo;t available for my platform.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/dbp_linux-1024x464.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/dbp_linux-1024x464.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Where this seems &lt;em&gt;really&lt;/em&gt; insane to me is that if I log into my Dropbox account on the web I can &lt;em&gt;see&lt;/em&gt; the vault for Dropbox Passwords! But clicking on it gives me the same screen as shown in the image above.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/dropbox.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/dropbox.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;I can&amp;rsquo;t actually do anything to access it. Even &lt;em&gt;just&lt;/em&gt; some kind of web portal like I can access with &lt;a href=&#34;https://bitwarden.com/&#34;&gt;Bitwarden&lt;/a&gt;, &lt;a href=&#34;https://www.lastpass.com/&#34;&gt;LastPass&lt;/a&gt;, or &lt;a href=&#34;https://1password.com/&#34;&gt;1Password&lt;/a&gt; would be better than &lt;strong&gt;nothing&lt;/strong&gt;. I can definitely understand not making a native Linux app a priority, but not having a browser extension or web access in 2020 blows my mind more than a little.&lt;/p&gt;
 &lt;p&gt;I &lt;strong&gt;really&lt;/strong&gt; hope this is something the Dropbox Passwords team is actively working on. While the overall service isn&amp;rsquo;t quite as slick or polished as some of its competitors, the fact that it comes included with paid Dropbox Plans is a huge boon; people like myself will have to think twice about paying extra money for a service they already have included with their existing Dropbox subscription. There are some hurdles to overcome for Dropbox Passwords to reach parity with its competitors, but for many people it&amp;rsquo;ll be good enough as-is.&lt;/p&gt;
 </content>
@@ -54,10 +54,10 @@
     
     <item>
       <title>Note-Taking With Notable</title>
-      <link>https://hugo.unusually.pink/note-taking-with-notable/</link>
+      <link>https://unusually.pink/note-taking-with-notable/</link>
       <pubDate>Sun, 06 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/note-taking-with-notable/</guid>
+      <guid>https://unusually.pink/note-taking-with-notable/</guid>
       <description>The Others I’ve struggled for years with finding a good, reliable, and simple note-taking application that fit my needs and didn’t lock me in to a particular platform. When I started my career, I was using Evernote for handling my notes at work. At the time, the free version of Evernote was pretty solid which was good because I didn’t have the money to be spending on notes. After a few years, however, Evernote apparently decided that not enough people were paying for the premium version of the product; as a result they crippled the free version.</description>
       <content>&lt;h2 id=&#34;the-others&#34;&gt;The Others&lt;/h2&gt;
 &lt;p&gt;I’ve struggled for years with finding a good, reliable, and simple note-taking application that fit my needs and &lt;em&gt;didn’t&lt;/em&gt; lock me in to a particular platform. When I started my career, I was using &lt;a href=&#34;https://evernote.com/&#34;&gt;Evernote&lt;/a&gt; for handling my notes at work. At the time, the free version of Evernote was pretty solid which was good because I didn’t have the money to be spending on notes. After a few years, however, Evernote apparently decided that not enough people were paying for the premium version of the product; as a result they crippled the free version. The free version had previously been limited to the amount of data you could sync in a month, and that alone seemed reasonable. They added on to this by limiting the number of &lt;em&gt;devices&lt;/em&gt; which could connect to an account. Since having my work laptop, personal laptop, and phone all connect was no longer an option, I decided to look for something else.&lt;/p&gt;
@@ -81,10 +81,10 @@
     
     <item>
       <title>Enabling Legacy Status Icons In Pop!_OS</title>
-      <link>https://hugo.unusually.pink/enabling-legacy-status-icons-in-pop_os/</link>
+      <link>https://unusually.pink/enabling-legacy-status-icons-in-pop_os/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/enabling-legacy-status-icons-in-pop_os/</guid>
+      <guid>https://unusually.pink/enabling-legacy-status-icons-in-pop_os/</guid>
       <description>As we mentioned back in Episode 6, I had installed Pop!OS on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I want distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like Dropbox and Discord will drop a small icon somewhere in your OS to let you know the applications are running.</description>
       <content>&lt;p&gt;As we mentioned back in &lt;a href=&#34;https://www.unusually.pink/podcast/episode-6-huzzah-hobbies&#34;&gt;Episode 6&lt;/a&gt;, I had installed &lt;a href=&#34;https://system76.com/pop&#34;&gt;Pop!OS&lt;/a&gt; on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I &lt;em&gt;want&lt;/em&gt; distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like &lt;a href=&#34;https://www.dropbox.com/&#34;&gt;Dropbox&lt;/a&gt; and &lt;a href=&#34;https://discordapp.com/&#34;&gt;Discord&lt;/a&gt; will drop a small icon somewhere in your OS to let you know the applications are running. For example, by default they’ll appear in the bottom right corner of the screen in Windows and at the upper right corner in macOS which is right next to the clock. In &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;, which Pop!_OS is based on, they’ll also show up next to the clock in the upper-right corner of the screen.&lt;/p&gt;
 &lt;p&gt;I could live without a Discord icon, but I really wanted one for Dropbox; it’s useful to see the icon change based on the sync status of the service. I did a little bit of digging, and the most challenging part was honestly what search terms to use in order to find the information for which I was hunting. Luckily, it didn’t take long for me to find the &lt;a href=&#34;https://pop.system76.com/docs/status-icons/&#34;&gt;official documentation&lt;/a&gt; on the matter.&lt;/p&gt;
@@ -96,17 +96,17 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once it’s installed, launch it with:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;gnome-shell-extension-prefs
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then turn on &lt;strong&gt;KStatusNotifierItem/AppIndicator Support&lt;/strong&gt;. Boom. Okay, not boom. I had to log out and back in first, as noted in the documentation. After &lt;em&gt;that&lt;/em&gt;, though, I was able to see my Dropbox icon in all its glory.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/EnablingLegacyStatusIconsInPop_OS_window_view.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/EnablingLegacyStatusIconsInPop_OS_window_view.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Worth it. Stay pink!&lt;/p&gt;
 </content>
     </item>
     
     <item>
       <title>Unusually Pink Updates: Dropbox, Password Managers, and Ad Blocking</title>
-      <link>https://hugo.unusually.pink/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/</link>
+      <link>https://unusually.pink/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/</link>
       <pubDate>Thu, 06 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/</guid>
+      <guid>https://unusually.pink/unusually-pink-updates-dropbox-password-managers-and-ad-blocking/</guid>
       <description>This will be one of those weird amalgam posts featuring multiple only mildly-related topics but which are too short to be a post in their own right. I though it would be helpful to provide some updates on a few things that Brandi and I have talked about in some of our past episodes. They’re all tech-related… but you already know that from reading the title.
 Dropbox Upgrades and Price Increases On June 1st, Dropbox added more features to their Plus plan.</description>
       <content>&lt;p&gt;This will be one of those weird amalgam posts featuring multiple only mildly-related topics but which are too short to be a post in their own right. I though it would be helpful to provide some updates on a few things that Brandi and I have talked about in some of our &lt;a href=&#34;https://www.unusually.pink/podcast&#34;&gt;past episodes&lt;/a&gt;. They’re all tech-related… but you already know that from reading the title.&lt;/p&gt;
@@ -118,7 +118,7 @@ World-class sync technology—move out-of-date files off your computer’s hard 
 Dropbox Rewind—roll back accidental changes to any folder, or your entire account, up to 30 days.”&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;The extra storage is nice, though suffice to say it’s not exactly something I &lt;strong&gt;need&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/UnusuallyPinkUpdatesDropboxPasswordManagersandAdBlocking_dropbox_space.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/UnusuallyPinkUpdatesDropboxPasswordManagersandAdBlocking_dropbox_space.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Rewind seems &lt;strong&gt;really&lt;/strong&gt; nice, though. I store a lot of PowerShell scripts in Dropbox, so I could see rewind being useful if I accidentally break one or need to snag an older version for some reason. While I’ve recently been making an effort to check in my bigger, more important scripts with &lt;a href=&#34;https://azure.microsoft.com/en-us/services/devops/&#34;&gt;Azure DevOps&lt;/a&gt; for version control, smaller ones that I’m the only person likely to use still just go into Dropbox.&lt;/p&gt;
 &lt;p&gt;Things aren’t all roses and unicorns, though, as the added storage and features come at a cost: $2 USD more per month. This bumps the monthly price up to $12 USD. The good part is that if you go with yearly pricing, you save that $2 a month and pay $120 for the year. I’m actually still on monthly pricing despite having used the Plus service for a few years so I’ll need to move over for sure. While the bonus storage is available now the new pricing isn’t happening for me until July. So before early July I need to swap to yearly billing to avoid paying the extra couple of bucks.&lt;/p&gt;
 &lt;h2 id=&#34;wired-password-manager-recommendations&#34;&gt;Wired Password Manager Recommendations&lt;/h2&gt;

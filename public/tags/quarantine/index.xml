@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>quarantine on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/quarantine/</link>
+    <link>https://unusually.pink/tags/quarantine/</link>
     <description>Recent content in quarantine on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Mon, 27 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/quarantine/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Mon, 27 Jul 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/quarantine/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Quarantine Time Script</title>
-      <link>https://hugo.unusually.pink/quarantine-time-script/</link>
+      <link>https://unusually.pink/quarantine-time-script/</link>
       <pubDate>Mon, 27 Jul 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/quarantine-time-script/</guid>
+      <guid>https://unusually.pink/quarantine-time-script/</guid>
       <description>Are you tired of sitting at home wondering how many days you’ve been choosing to quarantine like a responsible adult? Me too! The number of times I’ve been in conversations or working on posts for blogs or social media and thought, “Wait, how long have I been at home now?” followed by wasting time doing rough calendar math in my head was enough that I finally burned some time this weekend putting together a script for it.</description>
       <content>&lt;p&gt;Are you tired of sitting at home wondering how many days you’ve been choosing to quarantine like a responsible adult? Me too! The number of times I’ve been in conversations or working on posts for blogs or social media and thought, “Wait, how long have I been at home now?” followed by wasting time doing rough calendar math in my head was enough that I finally burned some time this weekend putting together a script for it.&lt;/p&gt;
 &lt;p&gt;In the interest of full disclosure, every time this has come up before I’ve done some very simple PowerShell to actually calculate this, at least once I passed the point where I couldn’t just think of it off the top of my head:&lt;/p&gt;

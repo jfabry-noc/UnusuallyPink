@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>api on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/api/</link>
+    <link>https://unusually.pink/tags/api/</link>
     <description>Recent content in api on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/api/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Mon, 10 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/api/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Twitter Development Impressions</title>
-      <link>https://hugo.unusually.pink/twitter-development-impressions/</link>
+      <link>https://unusually.pink/twitter-development-impressions/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/twitter-development-impressions/</guid>
+      <guid>https://unusually.pink/twitter-development-impressions/</guid>
       <description>I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.</description>
       <content>&lt;p&gt;I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.&lt;/p&gt;
 &lt;h2 id=&#34;developer-account&#34;&gt;Developer Account&lt;/h2&gt;

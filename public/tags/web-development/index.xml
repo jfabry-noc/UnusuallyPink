@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>web-development on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/web-development/</link>
+    <link>https://unusually.pink/tags/web-development/</link>
     <description>Recent content in web-development on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/web-development/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable Directory Listing On Specific Directory With Nginx</title>
-      <link>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</link>
+      <link>https://unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</guid>
+      <guid>https://unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</guid>
       <description>Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
 Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site.</description>
       <content>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.&lt;/p&gt;
@@ -55,14 +55,14 @@ autoindex_exact_size off;
     
     <item>
       <title>Twenty Twenty-One WordPress Theme</title>
-      <link>https://hugo.unusually.pink/twenty-twenty-one-wordpress-theme/</link>
+      <link>https://unusually.pink/twenty-twenty-one-wordpress-theme/</link>
       <pubDate>Mon, 11 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/twenty-twenty-one-wordpress-theme/</guid>
+      <guid>https://unusually.pink/twenty-twenty-one-wordpress-theme/</guid>
       <description>While I made the change a few weeks ago, it seems fitting that my first post of 2021 should be about my swap to the Twenty Twenty-One WordPress theme. For anyone who isn&amp;rsquo;t aware, each year WordPress releases a new &amp;ldquo;official&amp;rdquo; theme for the platform. While theme-elitists out there may scoff at them in favor of paid, premium themes, I&amp;rsquo;ve always found the yearly offerings to be elegant and well-designed. I had originally planned on putting this post together on January 1st, but what can I say&amp;hellip; movies on HBO Now aren&amp;rsquo;t going to binge-watch themselves.</description>
       <content>&lt;p&gt;While I made the change a few weeks ago, it seems fitting that my first post of 2021 should be about my swap to the Twenty Twenty-One WordPress theme. For anyone who isn&amp;rsquo;t aware, each year WordPress releases a new &amp;ldquo;official&amp;rdquo; theme for the platform. While theme-elitists out there may scoff at them in favor of paid, premium themes, I&amp;rsquo;ve always found the yearly offerings to be elegant and well-designed. I had &lt;em&gt;originally&lt;/em&gt; planned on putting this post together on January 1st, but what can I say&amp;hellip; movies on HBO Now aren&amp;rsquo;t going to binge-watch themselves.&lt;/p&gt;
 &lt;p&gt;While I&amp;rsquo;ve typically enjoyed the yearly WordPress theme releases, the previous iteration of this blog was actually back on the Twenty Sixteen theme since the yearly releases after that one didn&amp;rsquo;t feel like they were a particularly good fit for a blog. I still liked the look of the Twenty Sixteen theme, especially after I switched the colors around to match the &lt;a href=&#34;https://unusually.pink/all-dracula-everything/&#34;&gt;Dracula Theme&lt;/a&gt;, but the fact remains that 2016 is more or less ancient history in the world of web design. As a result, parts of the site just felt a bit&amp;hellip; antiquated. For example, while the banner at the top allowed me to show off the Unusually Pink graphics that we originally commissioned for the podcast, it left the site feeling just a bit old.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/cropped-cropped-Unusually-Pink-Facebook-Cover-Photo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://unusually.pink/images/cropped-cropped-Unusually-Pink-Facebook-Cover-Photo.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;The artwork is still amazing, though.&lt;/p&gt;
 &lt;p&gt;While I spent a decent bit of time tweaking the Twenty Sixteen theme to suit my needs, once I saw the &lt;a href=&#34;https://make.wordpress.org/core/2020/09/23/introducing-twenty-twenty-one/&#34;&gt;Twenty Twenty-One theme announcement in September I decided to stop further tweaking and try being patient&lt;/a&gt;. I also followed a bit &lt;a href=&#34;https://github.com/wordpress/twentytwentyone&#34;&gt;of the progress on the GitHub repository&lt;/a&gt;, but not being a web developer meant that it didn&amp;rsquo;t really give me a good vibe for how the theme would feel in practice.&lt;/p&gt;
 &lt;p&gt;Once the theme released, though, I immediately found myself drawn to how minimalist and streamlined it is. I feel like it provides me with the bare necessities, and then I can expand upon it from there to fit my needs without a lot of unnecessary overhead. One look at the current layout at the time of this writing probably clues you in to the fact that these aren&amp;rsquo;t the default colors; I once again opted to update the design to feel like the Dracula theme. While Twenty Twenty-One offers less in the customization UI for modifying the colors, it can still easily be done via CSS (a level of access that I sorely missed when &lt;a href=&#34;https://unusually.pink/unusually-pink-migration/&#34;&gt;the site was hosted on Squarespace&lt;/a&gt;.) I&amp;rsquo;m not sure if there&amp;rsquo;s a better way to do it than just opening the published site in my browser&amp;rsquo;s developer tools and using the inspection feature to get the classes of the objects I want to change, but that ended up getting me to the end result I wanted.&lt;/p&gt;
@@ -75,10 +75,10 @@ autoindex_exact_size off;
     
     <item>
       <title>Connecting An Existing Firebase Hosting Project To A New Site</title>
-      <link>https://hugo.unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/</link>
+      <link>https://unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/</link>
       <pubDate>Sun, 27 Sep 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/</guid>
+      <guid>https://unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/</guid>
       <description>As a follow-up to my last post on GitHub Pages, I mentioned that I moved one of my websites to Firebase. Firebase is a platform from Google for creating web and mobile applications. As a PaaS offering, there are a lot of different parts to the service, but as a platform for web applications hosting is naturally one of them. The free Spark plan offers 10 GB of storage, 360 MB of data transfer per day (which works out to 10 GB of bandwidth per month), and support for custom domains and SSL.</description>
       <content>&lt;p&gt;As a follow-up to my &lt;a href=&#34;https://unusually.pink/github-pages-hosting/&#34;&gt;last post on GitHub Pages&lt;/a&gt;, I mentioned that I moved one of my websites to &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt;. Firebase is a platform from Google for creating web and mobile applications. As a PaaS offering, there are a &lt;strong&gt;lot&lt;/strong&gt; of different parts to the service, but as a platform for web applications hosting is naturally one of them. The &lt;a href=&#34;https://firebase.google.com/pricing/&#34;&gt;free Spark plan&lt;/a&gt; offers 10 GB of storage, 360 MB of data transfer per day (which works out to 10 GB of bandwidth per month), and support for custom domains and SSL. That&amp;rsquo;s more than enough for me to host a simple, single page website that&amp;rsquo;s only made up of static HTML, CSS, and a single image. If anyone is curious, my site is using just 1.8 MB of storage and 15 MB of bandwidth. Note that bandwidth used divided by storage used will not be indicative of total hits due to caching, compression, etc.&lt;/p&gt;
 &lt;p&gt;I&amp;rsquo;ve used Firebase before, so I already had my Google account linked up to Firebase, and I even had a project still technically &amp;ldquo;live&amp;rdquo; there, though the domain had long since been shifted somewhere else. To be honest, it had been so long since I used Firebase that I almost forgot about it until I just happened to start receiving some well-timed emails from the service informing me that I needed to re-verify ownership of the domain I was using for my defunct project. I had no interest in re-verifying anything, but I did want to start hosting something new there.&lt;/p&gt;
@@ -112,10 +112,10 @@ cp -r ~/temp/html ~/laifu
     
     <item>
       <title>Switching To Squarespace</title>
-      <link>https://hugo.unusually.pink/switching-to-squarespace/</link>
+      <link>https://unusually.pink/switching-to-squarespace/</link>
       <pubDate>Sat, 20 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/switching-to-squarespace/</guid>
+      <guid>https://unusually.pink/switching-to-squarespace/</guid>
       <description>If you happened to see this site around the time when the first post went up, you might notice that:
   The site looks very different now.
   A lot of what’s in that first post no longer seems to be true.
@@ -140,10 +140,10 @@ cp -r ~/temp/html ~/laifu
     
     <item>
       <title>Firebase Update Control Error</title>
-      <link>https://hugo.unusually.pink/firebase-update-control-error/</link>
+      <link>https://unusually.pink/firebase-update-control-error/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/firebase-update-control-error/</guid>
+      <guid>https://unusually.pink/firebase-update-control-error/</guid>
       <description>One of my websites (not this one) is hosted via Firebase. It’s a largely static site that I rarely need to touch. I manage it from their CLI running on a VPS that I do some coding on so that I can access it regardless of which of my numerous devices I happen to be using. Since I don’t touch the site regularly, though, the Firebase tools tend to get a bit out of date.</description>
       <content>&lt;p&gt;One of my websites (not this one) is hosted via &lt;a href=&#34;https://firebase.google.com/&#34;&gt;Firebase&lt;/a&gt;. It’s a largely static site that I rarely need to touch. I manage it from &lt;a href=&#34;https://firebase.google.com/docs/cli/&#34;&gt;their CLI&lt;/a&gt; running on a VPS that I do some coding on so that I can access it regardless of which of my numerous devices I happen to be using. Since I don’t touch the site regularly, though, the Firebase tools tend to get a bit out of date. I needed to push a minor change the other day and figured I’d check for an update:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;sudo npm install -g firebase-tools
@@ -170,10 +170,10 @@ Move it away, and try again.
     
     <item>
       <title>PSA: Get Ready For New Let&#39;s Encrypt Validation</title>
-      <link>https://hugo.unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</link>
+      <link>https://unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</guid>
+      <guid>https://unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</guid>
       <description>If you’re using Let’s Encrypt, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted.</description>
       <content>&lt;p&gt;If you’re using &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt;, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted. March 13th is the deadline for ACME TLS-SNI-01 to no longer function, so there’s still a lot of time to take a couple of minutes and verify you’re in good shape.&lt;/p&gt;
 &lt;p&gt;*Note: I’m using &lt;code&gt;certbot&lt;/code&gt;, which makes this whole thing super easy. If you’re &lt;strong&gt;not&lt;/strong&gt; using &lt;code&gt;certbot&lt;/code&gt; then your steps will be different.*&lt;/p&gt;

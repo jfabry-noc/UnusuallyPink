@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>router on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/router/</link>
+    <link>https://unusually.pink/tags/router/</link>
     <description>Recent content in router on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/router/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/router/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>It&#39;s Always DNS</title>
-      <link>https://hugo.unusually.pink/its-always-dns/</link>
+      <link>https://unusually.pink/its-always-dns/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/its-always-dns/</guid>
+      <guid>https://unusually.pink/its-always-dns/</guid>
       <description>There&amp;rsquo;s a saying among system administrators:
  It&amp;rsquo;s always DNS.
  Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.

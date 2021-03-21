@@ -2,18 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>python on Unusually Pink</title>
-    <link>https://hugo.unusually.pink/tags/python/</link>
+    <link>https://unusually.pink/tags/python/</link>
     <description>Recent content in python on Unusually Pink</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>2021</copyright>
-    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/python/index.xml" rel="self" type="application/rss+xml" />
+    <copyright>2021 - John Fabry</copyright>
+    <lastBuildDate>Sat, 05 Dec 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://unusually.pink/tags/python/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS Big Sur pip Installation Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</link>
+      <link>https://unusually.pink/macos-big-sur-pip-installation-error/</link>
       <pubDate>Sat, 05 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-pip-installation-error/</guid>
+      <guid>https://unusually.pink/macos-big-sur-pip-installation-error/</guid>
       <description>Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now.</description>
       <content>&lt;p&gt;Given that I have technological FOMO while also being a technology masochist, I upgraded my 2018 MacBook Pro to macOS 11 &amp;ldquo;Big Sur&amp;rdquo; as soon as it was available. Common sense dictates that I should have waited a while to let others encounter and fix some of the kinks prior to upgrading myself, but what&amp;rsquo;s the fun in that? I admittedly had a very smooth experience without many issues, and I&amp;rsquo;ve been happily on Big Sur for a few weeks now. I encountered my first big error a few days ago, though, while helping a friend with some Python code. We needed to use the &lt;a href=&#34;https://www.paramiko.org&#34;&gt;&lt;code&gt;paramiko&lt;/code&gt;&lt;/a&gt; package, which I didn&amp;rsquo;t have installed. I tried to install it with the following command:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;sudo pip3 install paramiko
@@ -34,10 +34,10 @@
     
     <item>
       <title>Python&#39;s Beautiful Soup</title>
-      <link>https://hugo.unusually.pink/pythons-beautiful-soup/</link>
+      <link>https://unusually.pink/pythons-beautiful-soup/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/pythons-beautiful-soup/</guid>
+      <guid>https://unusually.pink/pythons-beautiful-soup/</guid>
       <description>In my last post, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about what I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain.</description>
       <content>&lt;p&gt;In my &lt;a href=&#34;https://unusually.pink/twitter-development-impressions/&#34;&gt;last post&lt;/a&gt;, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about &lt;em&gt;what&lt;/em&gt; I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain.&lt;/p&gt;
 &lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
@@ -67,10 +67,10 @@
     
     <item>
       <title>Deciphering the Office 365 PSTN Usage Report</title>
-      <link>https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/</link>
+      <link>https://unusually.pink/deciphering-the-office-365-pstn-usage-report/</link>
       <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/</guid>
+      <guid>https://unusually.pink/deciphering-the-office-365-pstn-usage-report/</guid>
       <description>Background Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there was a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings.</description>
       <content>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
 &lt;p&gt;Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there &lt;em&gt;was&lt;/em&gt; a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings. Any meeting we create has a dial-in number so that anyone who has a poor data connection can still dial a telephone and at least join the audio portion of the meeting.&lt;/p&gt;
