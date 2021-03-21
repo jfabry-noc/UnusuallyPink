@@ -10,10 +10,10 @@
     <lastBuildDate>Sat, 13 Jun 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/swap/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Swapfile Fix on Manjaro Linux Pinebook Pro</title>
-      <link>https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/</link>
+      <link>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</link>
       <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/</guid>
+      <guid>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</guid>
       <description>I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
 Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life.</description>
       <content>&lt;p&gt;I wrote about a month ago of an update &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;on my Pinebook Pro&lt;/a&gt; after &lt;a href=&#34;https://www.unusually.pink/blog/pinebook-pro-follow-up-manjaro-linux&#34;&gt;switching to Manjaro Linux&lt;/a&gt;. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.&lt;/p&gt;

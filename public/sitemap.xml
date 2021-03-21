@@ -11,6 +11,9 @@
     <loc>https://hugo.unusually.pink/tags/mirror/</loc>
     <lastmod>2021-03-12T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://hugo.unusually.pink/posts/</loc>
+    <lastmod>2021-03-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://hugo.unusually.pink/tags/software/</loc>
     <lastmod>2021-03-12T00:00:00+00:00</lastmod>
   </url><url>
@@ -80,7 +83,7 @@
     <loc>https://hugo.unusually.pink/tags/macos/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</loc>
+    <loc>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</loc>
     <lastmod>2021-02-15T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/brave/</loc>
@@ -146,7 +149,7 @@
     <loc>https://hugo.unusually.pink/tags/iso-8601/</loc>
     <lastmod>2021-01-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</loc>
+    <loc>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-date-object-in-groovy/</loc>
     <lastmod>2021-01-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/programming/</loc>
@@ -383,7 +386,7 @@
     <loc>https://hugo.unusually.pink/tags/ubuntu/</loc>
     <lastmod>2020-10-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20-04-upgrade/</loc>
+    <loc>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20.04-upgrade/</loc>
     <lastmod>2020-10-24T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/h4n/</loc>
@@ -629,7 +632,7 @@
     <loc>https://hugo.unusually.pink/tags/swapfile/</loc>
     <lastmod>2020-06-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/</loc>
+    <loc>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</loc>
     <lastmod>2020-06-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/</loc>
@@ -716,7 +719,7 @@
     <loc>https://hugo.unusually.pink/tags/chat/</loc>
     <lastmod>2020-03-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/connectin-irssi-to-twitchtv-irc/</loc>
+    <loc>https://hugo.unusually.pink/connecting-irssi-to-twitch.tv-irc/</loc>
     <lastmod>2020-03-29T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/irc/</loc>
@@ -872,7 +875,7 @@
     <loc>https://hugo.unusually.pink/tags/discord/</loc>
     <lastmod>2019-06-20T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/enabling-legacy-status-icons-in-popos/</loc>
+    <loc>https://hugo.unusually.pink/enabling-legacy-status-icons-in-pop_os/</loc>
     <lastmod>2019-06-20T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/popos/</loc>
@@ -986,7 +989,7 @@
     <loc>https://hugo.unusually.pink/illness-movie-binge/</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/its-all-about-being-unusually-pink/</loc>
+    <loc>https://hugo.unusually.pink/its-all-about-being-unusually-pink./</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://hugo.unusually.pink/categories/music/</loc>
@@ -1016,7 +1019,7 @@
     <loc>https://hugo.unusually.pink/unusually-pink-peripherals-razer-quartz-2019/</loc>
     <lastmod>2019-04-08T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://hugo.unusually.pink/all-dracula-everything/</loc>
+    <loc>https://hugo.unusually.pink/all-dracula-theme-everything/</loc>
   </url><url>
     <loc>https://hugo.unusually.pink/tags/atom/</loc>
   </url><url>

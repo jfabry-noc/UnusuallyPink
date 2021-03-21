@@ -125,10 +125,10 @@ autoindex_exact_size off;
     
     <item>
       <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</link>
+      <link>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</guid>
+      <guid>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
       <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
  Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
  When this happens, not only is Homebrew broken, but git itself is broken.</description>
@@ -249,10 +249,10 @@ brew reinstall pcre2
     
     <item>
       <title>Parse ISO 8601 String With Timezone Offset To Date Object In Groovy</title>
-      <link>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
+      <link>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-date-object-in-groovy/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
+      <guid>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-date-object-in-groovy/</guid>
       <description>My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online.</description>
       <content>&lt;p&gt;My &lt;a href=&#34;https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/&#34;&gt;Groovy posts always have the absolute worst titles&lt;/a&gt;, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online. Any time I manage to figure out something that was difficult to find information on, it seems like a good opportunity to fill the gap a bit.&lt;/p&gt;
 &lt;p&gt;I do a lot of work with APIs, mostly making calls against cloud-based systems. In the cloud, no one generally cares about what timezone you happen to be in, so UTC is always used. I&amp;rsquo;ve recently been making calls against local software platform, though, and &lt;strong&gt;it&lt;/strong&gt; returns timestamps in the local time of the server running it. Ick. I ended up with string values like the following which I then needed to parse as a Date object in Groovy for the sake of comparison.&lt;/p&gt;
@@ -656,10 +656,10 @@ ssh-add ~/.ssh/id&lt;span style=&#34;color:#ae81ff&#34;&gt;\_&lt;/span&gt;ed2551
     
     <item>
       <title>Ubuntu Linux GRUB Error After 20.04 Upgrade</title>
-      <link>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20-04-upgrade/</link>
+      <link>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20.04-upgrade/</link>
       <pubDate>Sat, 24 Oct 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20-04-upgrade/</guid>
+      <guid>https://hugo.unusually.pink/ubuntu-linux-grub-error-after-20.04-upgrade/</guid>
       <description>While I&amp;rsquo;ve nuked my personal VPS, I still have a VPS that I use for work; it comes in handy for things like running cron jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life.</description>
       <content>&lt;p&gt;While I&amp;rsquo;ve &lt;a href=&#34;https://unusually.pink/github-pages-hosting/&#34;&gt;nuked my personal VPS&lt;/a&gt;, I still have a VPS that I use for work; it comes in handy for things like running &lt;code&gt;cron&lt;/code&gt; jobs, maintaining persistent shells, and generally handling things where a Linux shell seems better than a macOS shell (I&amp;rsquo;m looking at you, remote PowerShell sessions connecting to Microsoft Exchange.) This week I decided to upgrade it from Ubuntu 18.04 to Ubuntu 20.04. I like to stick on the LTS (long term support) releases for my servers, but I do typically prefer to keep even the LTS releases upgraded rather than waiting for them to go end of life. I &lt;em&gt;could&lt;/em&gt; have kept using Ubuntu 18.04 with &lt;a href=&#34;https://ubuntu.com/about/release-cycle&#34;&gt;maintenance updates until 2023 and security maintenance until 2028&lt;/a&gt;, but what&amp;rsquo;s the fun in that?&lt;/p&gt;
 &lt;p&gt;Upgrading a VPS is always a bit of a nerve-wracking situation just because I don&amp;rsquo;t have local access to the host in case something goes extremely awry. Ubuntu tries to help alleviate this by opening a second SSH daemon on a different port just in case the primary daemon crashes during the upgrade, but if the machine ends up in a non-bootable state I&amp;rsquo;m still more or less hosed. Fortunately for me, things almost went off without a hitch&amp;hellip; almost.&lt;/p&gt;
@@ -1476,10 +1476,10 @@ tar -zvcf ~/temp/hugo_directory.tar.gz /var/www/mySite.com/
     
     <item>
       <title>Swapfile Fix on Manjaro Linux Pinebook Pro</title>
-      <link>https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/</link>
+      <link>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</link>
       <pubDate>Sat, 13 Jun 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/</guid>
+      <guid>https://hugo.unusually.pink/swapfile-fix-on-manjaro-linux-pinebook-pro/</guid>
       <description>I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
 Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life.</description>
       <content>&lt;p&gt;I wrote about a month ago of an update &lt;a href=&#34;https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro&#34;&gt;on my Pinebook Pro&lt;/a&gt; after &lt;a href=&#34;https://www.unusually.pink/blog/pinebook-pro-follow-up-manjaro-linux&#34;&gt;switching to Manjaro Linux&lt;/a&gt;. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.&lt;/p&gt;
@@ -1706,10 +1706,10 @@ Switching to a remote recording setup has been trying since, to be completely ho
     
     <item>
       <title>Connecting Irssi To Twitch.tv IRC</title>
-      <link>https://hugo.unusually.pink/connectin-irssi-to-twitchtv-irc/</link>
+      <link>https://hugo.unusually.pink/connecting-irssi-to-twitch.tv-irc/</link>
       <pubDate>Sun, 29 Mar 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/connectin-irssi-to-twitchtv-irc/</guid>
+      <guid>https://hugo.unusually.pink/connecting-irssi-to-twitch.tv-irc/</guid>
       <description>A couple of days ago Brandi decided to try streaming her latest obsession, Animal Crossing: New Horizons on Twitch. As the unofficial game of the coronavirus quarantine, it seemed like a good idea. When she told me, I decided to do the comfortable thing and turn on her stream from the Twitch app on my Amazon Fire TV Stick so I could watch it on my TV. This works well for most of the streams I might happen to watch because I never actually care about interacting with the chat.</description>
       <content>&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/ConnectingIrssiToTwitchtvIRC_twitch_irc_photo.jpg&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;A couple of days ago Brandi decided to try streaming her latest obsession, &lt;em&gt;Animal Crossing: New Horizons&lt;/em&gt; on &lt;a href=&#34;https://twitch.tv&#34;&gt;Twitch&lt;/a&gt;. As the unofficial game of the coronavirus quarantine, it seemed like a good idea. When she told me, I decided to do the comfortable thing and turn on her stream from the Twitch app on my Amazon Fire TV Stick so I could watch it on my TV. This works well for most of the streams I might happen to watch because I never actually care about interacting with the chat. While the app on my Fire TV Stick does allow me to view the chat, trying to type anything via a remote&amp;rsquo;s D-pad and an on-screen keyboard on my TV would be painful to say the least.&lt;/p&gt;
@@ -2278,10 +2278,10 @@ renewing 30 days before expiration. See&lt;br&gt;
     
     <item>
       <title>Enabling Legacy Status Icons In Pop!_OS</title>
-      <link>https://hugo.unusually.pink/enabling-legacy-status-icons-in-popos/</link>
+      <link>https://hugo.unusually.pink/enabling-legacy-status-icons-in-pop_os/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/enabling-legacy-status-icons-in-popos/</guid>
+      <guid>https://hugo.unusually.pink/enabling-legacy-status-icons-in-pop_os/</guid>
       <description>As we mentioned back in Episode 6, I had installed Pop!OS on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I want distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like Dropbox and Discord will drop a small icon somewhere in your OS to let you know the applications are running.</description>
       <content>&lt;p&gt;As we mentioned back in &lt;a href=&#34;https://www.unusually.pink/podcast/episode-6-huzzah-hobbies&#34;&gt;Episode 6&lt;/a&gt;, I had installed &lt;a href=&#34;https://system76.com/pop&#34;&gt;Pop!OS&lt;/a&gt; on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I &lt;em&gt;want&lt;/em&gt; distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like &lt;a href=&#34;https://www.dropbox.com/&#34;&gt;Dropbox&lt;/a&gt; and &lt;a href=&#34;https://discordapp.com/&#34;&gt;Discord&lt;/a&gt; will drop a small icon somewhere in your OS to let you know the applications are running. For example, by default they’ll appear in the bottom right corner of the screen in Windows and at the upper right corner in macOS which is right next to the clock. In &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;, which Pop!_OS is based on, they’ll also show up next to the clock in the upper-right corner of the screen.&lt;/p&gt;
 &lt;p&gt;I could live without a Discord icon, but I really wanted one for Dropbox; it’s useful to see the icon change based on the sync status of the service. I did a little bit of digging, and the most challenging part was honestly what search terms to use in order to find the information for which I was hunting. Luckily, it didn’t take long for me to find the &lt;a href=&#34;https://pop.system76.com/docs/status-icons/&#34;&gt;official documentation&lt;/a&gt; on the matter.&lt;/p&gt;
@@ -2782,10 +2782,10 @@ Move it away, and try again.
     
     <item>
       <title>It&#39;s all about being Unusually Pink.</title>
-      <link>https://hugo.unusually.pink/its-all-about-being-unusually-pink/</link>
+      <link>https://hugo.unusually.pink/its-all-about-being-unusually-pink./</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/its-all-about-being-unusually-pink/</guid>
+      <guid>https://hugo.unusually.pink/its-all-about-being-unusually-pink./</guid>
       <description>This domain was a completely random purchase. Earlier today while taking a break from work (which was sorely needed… I had 3 weeks off over the holidays, and coming back today was not easy), I decided to hop on Mastodon for the first time in quite a while. A friend of mine who was previously on the same instance as me had apparently swapped to a different instance during the month or so that I was gone.</description>
       <content>&lt;p&gt;This domain was a completely random purchase. Earlier today while taking a break from work (which was sorely needed… I had 3 weeks off over the holidays, and coming back today was &lt;em&gt;not&lt;/em&gt; easy), I decided to hop on Mastodon for the first time in quite a while. A friend of mine who was previously on the same instance as me had apparently swapped to a different instance during the month or so that I was gone. I just happened to get lucky enough that another individual I follow happened to boost a toot from him; this friend was using the same avatar on his new instance that he used on the previous instance, so I immediately knew it was him. In seeing what instance he was on, I was a bit surprised. It had a &lt;code&gt;.pink&lt;/code&gt; TLD. I had no idea &lt;code&gt;.$COLORS&lt;/code&gt; was a thing now.&lt;/p&gt;
 &lt;p&gt;I hopped over to my registrar of choice (&lt;a href=&#34;https://namecheap.com&#34;&gt;Namecheap&lt;/a&gt;) and saw that I could snag a domain for just $2.88 USD. It was a no-brainer. This was especially true because another friend of mine has a saying about the color pink. She doesn’t normally enjoy pink things, but she likes things which are (to quote her) “unusually pink.” A pink heart? Boring. A pink &lt;a href=&#34;https://www.razer.com/quartz&#34;&gt;Razer keyboard and mouse combo&lt;/a&gt;? Unusually pink and therefore extremely cool. (If you happen to be curious, I own both that keyboard and mouse. They match wonderfully with the pink LEDs in my gaming desktop. Bonus points to me if I’m using them to play Overwatch while wearing my pink Mercy t-shirt.) Hopefully she wasn’t too mad that I snagged this domain. If you’re reading this, I’m sorry. But I did offer up a sub-domain of her choice should she want one!&lt;/p&gt;
@@ -2854,10 +2854,10 @@ Move it away, and try again.
     
     <item>
       <title>All Dracula (Theme) Everything</title>
-      <link>https://hugo.unusually.pink/all-dracula-everything/</link>
+      <link>https://hugo.unusually.pink/all-dracula-theme-everything/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/all-dracula-everything/</guid>
+      <guid>https://hugo.unusually.pink/all-dracula-theme-everything/</guid>
       <description>When you spend a significant portion of each and every day staring at a computer screen, it&amp;rsquo;s important for things to look nice. Aside from just aesthetics, it can help reduce eye strain and improve productivity. With that in mind, we wanted to help spread the word about one of the best themes ever created: Dracula. I believe I first learned about the Dracula theme from someone I follow on Twitter, though enough time is passed that I&amp;rsquo;m not 100% positive on who or if that&amp;rsquo;s even where I really found it.</description>
       <content>&lt;p&gt;When you spend a significant portion of each and every day staring at a computer screen, it&amp;rsquo;s important for things to look nice. Aside from just aesthetics, it can help reduce eye strain and improve productivity. With that in mind, we wanted to help spread the word about one of the best themes ever created: &lt;a href=&#34;https://draculatheme.com/&#34;&gt;Dracula&lt;/a&gt;. I &lt;em&gt;believe&lt;/em&gt; I first learned about the Dracula theme from someone I follow on Twitter, though enough time is passed that I&amp;rsquo;m not 100% positive on who or if that&amp;rsquo;s even where I really found it.&lt;/p&gt;
 &lt;p&gt;Dracula is a beautiful dark theme with a focus on pink, green, red, and white to give it a striking visual style that&amp;rsquo;s also easy on the eyes; it&amp;rsquo;s nice when working with code to see things stand out so clearly. One of the strengths of Dracula is also that it feels like it exists for &lt;em&gt;everything&lt;/em&gt;.&lt;/p&gt;

@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
-      <link>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</link>
+      <link>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</guid>
+      <guid>https://hugo.unusually.pink/macos-big-sur-11.2-homebrew-and-git-error/</guid>
       <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
  Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
  When this happens, not only is Homebrew broken, but git itself is broken.</description>
