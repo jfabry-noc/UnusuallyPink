@@ -1,1 +1,1 @@
-Git repository for my personal blog.
+Git repository for my personal blog, visible at [Unusually Pink](https://unusually.pink).
