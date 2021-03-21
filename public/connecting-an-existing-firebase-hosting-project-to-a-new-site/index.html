@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Connecting An Existing Firebase Hosting Project To A New Site :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="As a follow-up to my last post on GitHub Pages, I mentioned that I moved one of my websites to Firebase. Firebase is a platform from Google for creating web and mobile applications. As a PaaS offering, there are a lot of different parts to the service, but as a platform for web applications hosting is naturally one of them. The free Spark plan offers 10 GB of storage, 360 MB of data transfer per day (which works out to 10 GB of bandwidth per month), and support for custom domains and SSL." />
+<meta name="keywords" content="firebase, google, hosting, web-development, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Connecting An Existing Firebase Hosting Project To A New Site">
+<meta property="og:description" content="As a follow-up to my last post on GitHub Pages, I mentioned that I moved one of my websites to Firebase. Firebase is a platform from Google for creating web and mobile applications. As a PaaS offering, there are a lot of different parts to the service, but as a platform for web applications hosting is naturally one of them. The free Spark plan offers 10 GB of storage, 360 MB of data transfer per day (which works out to 10 GB of bandwidth per month), and support for custom domains and SSL." />
+<meta property="og:url" content="https://hugo.unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-09-27 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/connecting-an-existing-firebase-hosting-project-to-a-new-site/">Connecting An Existing Firebase Hosting Project To A New Site</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-09-27 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/firebase/">firebase</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/google/">google</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/hosting/">hosting</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/web-development/">web-development</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>As a follow-up to my <a href="https://unusually.pink/github-pages-hosting/">last post on GitHub Pages</a>, I mentioned that I moved one of my websites to <a href="https://firebase.google.com/">Firebase</a>. Firebase is a platform from Google for creating web and mobile applications. As a PaaS offering, there are a <strong>lot</strong> of different parts to the service, but as a platform for web applications hosting is naturally one of them. The <a href="https://firebase.google.com/pricing/">free Spark plan</a> offers 10 GB of storage, 360 MB of data transfer per day (which works out to 10 GB of bandwidth per month), and support for custom domains and SSL. That&rsquo;s more than enough for me to host a simple, single page website that&rsquo;s only made up of static HTML, CSS, and a single image. If anyone is curious, my site is using just 1.8 MB of storage and 15 MB of bandwidth. Note that bandwidth used divided by storage used will not be indicative of total hits due to caching, compression, etc.</p>
+<p>I&rsquo;ve used Firebase before, so I already had my Google account linked up to Firebase, and I even had a project still technically &ldquo;live&rdquo; there, though the domain had long since been shifted somewhere else. To be honest, it had been so long since I used Firebase that I almost forgot about it until I just happened to start receiving some well-timed emails from the service informing me that I needed to re-verify ownership of the domain I was using for my defunct project. I had no interest in re-verifying anything, but I did want to start hosting something new there.</p>
+<p>The first step for hosting new content was to log in to the <a href="https://console.firebase.google.com/">Firebase Console</a>. Since I had already used the service, this gave me tiles of my existing projects; in my scenario, I just had a single project for my hosting. I clicked on that tile, and I was taken to a Project Overview screen. This gives me a high-level look at my project. To get to the hosting-specific functionality, though, I just had to click the <strong>Hosting</strong> option under the <strong>Develop</strong> menu to the left.</p>
+<p>On the hosting dashboard, the first item listed contains all of the domains associated with the project. Clicking the 3 dots &hellip; next to a domain allowed me to delete it; I removed the two entries (apex domain and www) for the domain I used previously. Then I clicked the button for <strong>Add a custom domain</strong>. I followed the instructions on the screen to add a custom domain; I won&rsquo;t document the steps here since they&rsquo;re directly covered through the <a href="https://firebase.google.com/docs/hosting/custom-domain">Firebase custom domain documentation</a>.</p>
+<p>With everything configured on the Firebase side, I next needed to crack into the Firebase CLI to link up my local project. I opted to <a href="https://firebase.google.com/docs/cli/#mac-linux-standalone-binary">install the standalone CLI</a>, though you can still get it through <code>npm</code> if you prefer to roll that way. The first thing I had to do was link the CLI to my Firebase account. This is different based on whether you&rsquo;re going to be using the CLI from a system with a GUI or if you&rsquo;re doing it from a headless system you&rsquo;re accessing via SSH. I was using it from a headless system where I cannot pop a browser to follow the normal authentication process; as a result I ran:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">firebase login --no-localhost
+</code></pre></div><p>If you&rsquo;re running this from a system with a GUI, I believe you just omit the <code>--no-localhost</code> parameter. In the headless setup, though, this gives a Firebase URL to navigate to on another system. I copied it out of my terminal and pasted it into the browser in my laptop. This gives me an authentication code for the CLI. I copied that from my browser, pasted it into my terminal, and that linked the CLI to my account in the Firebase platform.</p>
+<p>Since I was just moving my content from my old VPS to Firebase, I didn&rsquo;t have to worry about actually <em>creating</em> a website; I already had one that was backed up in a tarball. I simply had to expand my tarball on the same system where I was using the Firebase CLI. I did this by creating a new directory for the project, expanding my tarball that had all of my site&rsquo;s content, and then copying that content to the project directory:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mkdir ~/laifu
+tar -zxvf ~/temp/laifu.tar.gz
+cp -r ~/temp/html ~/laifu
+</code></pre></div><p><strong>Note:</strong> If you look closely at the commands above, you&rsquo;ll see that after I expand the tarball I&rsquo;m recursively copying not the entire directory but the <code>html</code> folder from it. This is due to the fact that my tarball is of the entire <code>/var/www/laifu.moe/</code> directory that Nginx was previously hosting on my VPS, and the <code>html</code> directory is what contains the content of the site. If your backup is storing the content directly (e.g. it&rsquo;s not in a subfolder) that&rsquo;s fine. However, you&rsquo;ll want to make a new folder inside of your project directory that you copy the content to because you do <em>not</em> want the content of the site to be in the root of the Firebase project&rsquo;s directory. For example, your <code>mkdir</code> command would look something like: <code>~/myproject/html</code></p>
+<p>One I had the files situated accordingly, I needed to tell Firebase that my directory was a Firebase project. Similar to using <code>git</code>, I do this by navigating to my project directory and running:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">firebase init
+</code></pre></div><p>This gets the ball rolling by asking some questions interactively through the CLI. One question will ask what service the project should be connected to; be sure to pick &ldquo;Hosting.&rdquo; After that there should be a prompt for which existing hosting project you&rsquo;d like to use. The existing project should be listed as an option to be selected. If it&rsquo;s not there, you can cancel out of the process and ensure everything worked correctly with your authentication by running the following and verifying that you see the project. If it&rsquo;s missing, you may need to redo the authentication (e.g. maybe you were in the wrong Google account when pasting into your browser.)</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">firebase project:list
+</code></pre></div><p>After selecting the project, the CLI will ask what to use as the &ldquo;public directory.&rdquo; This is essentially asking what directory <em>inside</em> of the project directory contains the web content to be hosted. In my case I picked <code>html</code> since that&rsquo;s what I named the folder.</p>
+<p>Be wary of the next couple of prompts, which will trigger regardless of whether or not there&rsquo;s something in your public directory matching them. When prompted about your <code>404.html</code> page, opt not to overwrite it unless you really hate your existing one. When prompted about <code>index.html</code>, <strong>definitely</strong> don&rsquo;t overwrite it or you&rsquo;ll lose the first page of your site.</p>
+<p>Once that&rsquo;s all done, you should get a message:</p>
+<blockquote>
+<p>“Firebase initialization complete!”</p>
+</blockquote>
+<p>This means that the directory has been initialized successfully as a Firebase project, but the local content still hasn&rsquo;t been pushed to the cloud. So the last step is to run the following:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">firebase deploy
+</code></pre></div><p>This will give a &ldquo;Deploy complete!&rdquo; message along with a Firebase-specific URL in the format of:</p>
+<p><a href="https://project-name-GUID.web.app">https://project-name-GUID.web.app</a></p>
+<p>Copying this URL and pasting it into a browser should allow you to verify that the content you expect is now being hosted, even if you&rsquo;re currently waiting for DNS TTLs to expire before you can navigate to the custom DNS. The Hosting Dashboard of the Firebase console will also show the update in the &ldquo;Release History&rdquo; section.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

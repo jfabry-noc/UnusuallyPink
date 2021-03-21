@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Upgrading Star Labs Firmware On Manjaro Linux :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="As you may recall, I purchased a new Linux laptop from Star Labs a while back. It’s a solid little device, though I admittedly haven’t been using it as much as I anticipated due to my increased reliance on my iPads. For more information on that, look for the new Same Shade Of Difference podcast episode that should be dropping very soon. That being said, because I don’t have the worst operational security ever, I do update my laptop every time I happen to see that something is pending." />
+<meta name="keywords" content="firmware, linux, manjaro, star-labs, star-lite" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/upgrading-star-labs-firmware-on-manjaro-linux/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Upgrading Star Labs Firmware On Manjaro Linux">
+<meta property="og:description" content="As you may recall, I purchased a new Linux laptop from Star Labs a while back. It’s a solid little device, though I admittedly haven’t been using it as much as I anticipated due to my increased reliance on my iPads. For more information on that, look for the new Same Shade Of Difference podcast episode that should be dropping very soon. That being said, because I don’t have the worst operational security ever, I do update my laptop every time I happen to see that something is pending." />
+<meta property="og:url" content="https://hugo.unusually.pink/upgrading-star-labs-firmware-on-manjaro-linux/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-03-10 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/upgrading-star-labs-firmware-on-manjaro-linux/">Upgrading Star Labs Firmware On Manjaro Linux</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-03-10 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/firmware/">firmware</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/linux/">linux</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/manjaro/">manjaro</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/star-labs/">star-labs</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/star-lite/">star-lite</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>As you may recall, I <a href="https://unusually.pink/star-lite-mk-iii/">purchased a new Linux laptop from Star Labs</a> a while back. It’s a solid little device, though I admittedly haven’t been using it as much as I anticipated due to my increased reliance on my iPads. For more information on that, look for the new <a href="https://sameshadeofdifference.com">Same Shade Of Difference</a> podcast episode that should be dropping <em>very</em> soon. That being said, because I don’t have the worst operational security ever, I do update my laptop every time I happen to see that something is pending. Given that I run <a href="https://manjaro.org">Manjaro Linux</a>, that tends to happen frequently. Manjaro is what’s known as an evergreen Linux distribution. It uses a rolling release cycle, meaning that there are no new “major” releases of the OS. For example, there’s no equivalent in Manjaro of moving from Ubuntu 20.04 to Ubuntu 20.10. Occasionally the maintainers spin off a new .iso with updated packages, but that’s just to save users from having to upgrade an insane number of packages when they do a fresh installation.</p>
+<p>While I’ve been diligent about upgrading my OS and my Linux kernels (which Manjaro also provides a nice manager for), I’ve neglected to upgrade my firmware. Fortunately, Star Labs makes this process extremely simple. All of their firmware is published to <a href="https://github.com/StarLabsLtd/firmware?utm_campaign=9th%20March%202020%20coreboot%20MK%20III%20%28TQpHxp%29&amp;utm_medium=email&amp;utm_source=Newsletter&amp;_ke=eyJrbF9jb21wYW55X2lkIjogIlBjaGtVQyIsICJrbF9lbWFpbCI6ICJqamZhYnJ5QHByb3Rvbm1haWwuY29tIn0%3D">their GitHub account</a>. There’s no need to actually keep tabs on that if you don’t want to, though, because Star Labs also sends periodic emails announcing firmware updates for their devices. I obviously can’t speak to how deep into the lifecycle of each device these may go, but at least for the time being it’s extremely helpful.</p>
+<p>Even better, when it comes to installing firmware there’s a dedicated utility for it. They cover the <a href="https://support.starlabs.systems/articles/installing-updates-from-the-lvfs?utm_campaign=9th%20March%202020%20coreboot%20MK%20III%20%28TQpHxp%29&amp;utm_medium=email&amp;utm_source=Newsletter&amp;_ke=eyJrbF9jb21wYW55X2lkIjogIlBjaGtVQyIsICJrbF9lbWFpbCI6ICJqamZhYnJ5QHByb3Rvbm1haWwuY29tIn0%3D">gamut of options on their support site</a> since they support a large number of Linux variants, but for Manjaro you just need to start by installing a couple of additional packages:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo pacman -Sy fwupd gnome-firmware
+</code></pre></div><p>I realized after the fact that I probably <em>didn’t</em> need <strong>gnome-firmware</strong> since I’m unlikely to ever use the GUI for this, but it’s not as though the application takes up a large degree of space. Once the packages are installed, the next step is to check for any new firmware.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo fwupdmgr refresh
+</code></pre></div><p>This should report back if there are new firmware updates. In my case, it reported firmware updates for 2 items, one of which was 3 revisions out of date. Yikes! I kicked off the firmware upgrade via:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo fwupdmgr update
+</code></pre></div><p>It’s worth mentioning that the system will complain if you run the above command without having a power source connected since, generally, upgrading firmware and losing power in the middle of the process is a recipe for bricking your device. If power isn’t connected, though, it’ll very smartly prompt you to connect power and retry.</p>
+<p>After the installation kicks off, the device will need to reboot. After the reboot, you’ll land in the firmware itself and be prompted to confirm the upgrades you’re about to apply. Use the arrow keys to move to the bottom and apply the pending changes (they’ll be pending by default.) This may take some time, and in my case the firmware application would move from 0% to 100% multiple times without any indication it was at different stages or anything like that. I recommend getting some coffee and letting your device do its thing. Once the upgrades are fully completed, you’ll be prompted to hit literally any key to kick off another reboot. This reboot will take noticeably longer than a normal reboot, and you’ll spend a decent amount of time staring at a black screen before you even see the Star Labs logo appear like you normally would during the boot cycle. Patience is a virtue, so just let the device do its thing. Eventually you should see the login screen you know and love.</p>
+<p>At that point, just log back in and everything should be running as expected with the new firmware. If you want to be certain, running&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">fwupdmgr refresh
+</code></pre></div><p>&hellip; again should confirm there are no longer any pending firmware upgrades. It’s also worth mentioning that, during the upgrade process, many peripherals may end up being disconnected if the device is docked or anything like that. In my case the laptop was running standalone with nothing but AC power connected. The upgrade utility also very kindly warns you of this ahead of time, so just be on the lookout for the messages it gives you as you go through the upgrade process. The tl;dr is that if you read the output given to you by <strong>fwupdmgr</strong>, everything should go smoothly.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

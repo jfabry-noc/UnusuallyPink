@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>SSHFS On macOS :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for years at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows." />
+<meta name="keywords" content="fuse, macos, sshfs" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/sshfs-on-macos/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="SSHFS On macOS">
+<meta property="og:description" content="Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&amp;rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&amp;rsquo;ve used Linux for years at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&amp;rsquo;s only when I&amp;rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows." />
+<meta property="og:url" content="https://hugo.unusually.pink/sshfs-on-macos/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-03-08 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/sshfs-on-macos/">SSHFS On macOS</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-03-08 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/fuse/">fuse</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/macos/">macos</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/sshfs/">sshfs</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Having switched to a MacBook Pro for work when I started a new job about 6 months ago, I&rsquo;ve been on an interesting journey in finding new software to fit my workflow after over a decade of operating primarily on Windows for my professional computing. Given that I&rsquo;ve used Linux for <strong>years</strong> at a personal level, I can typically do anything I need on macOS by opening a Terminal; it&rsquo;s only when I&rsquo;ve got to operate at the graphical level that I can get a little tripped up by the differences between macOS and Windows.</p>
+<p>I recently found myself needing to copy some files from a cloud VPS running on <a href="https://www.linode.com/">Linode</a>. The reverse had been simple enough; copying files from my local machine to the VPS was as simple as running one <code>rsync</code> command. Note that I swap the SSH port on all of my VPS instances to something non-standard so that I don&rsquo;t get so many random <strong>root</strong> authentication attempts when nefarious people see that port 22 is open. Even though I disable root login I still want to discourage the attempts for anything that has SSH open to the Internet. If you think I&rsquo;m overreacting and you have a server in the same position, just do this and see how you feel after:</p>
+<pre><code>sudo tail /var/log/auth.log
+</code></pre><p>It&rsquo;s low-key terrifying. That being said, it was still easy enough to <code>rsync</code> anything from my MacBook Pro to the VPS (usually a script I had been working on that I figured would take hours to run and thus would be better suited to running on my VPS) via:</p>
+<pre><code>rsync --delete -azP -e &quot;ssh -p #####&quot; LocalFolder/ usere@server.domain:/local/file/path/
+</code></pre><p>Note that the <code>#####</code> should be replaced by the SSH port number on your server if you&rsquo;re using something other than the default of port 22. You can verify the SSH port in use by checking <code>/etc/ssh/sshd_config</code> on your server and looking for the <code>Port</code> entry.</p>
+<p>For me, though, this typically <em>only</em> works in the direction of going from my local laptop to my VPS. After finishing one particularly log-running script, though, I had a file on my VPS that I needed to copy back to my MacBook. In that case, <code>rsync</code> wouldn&rsquo;t work because my laptop doesn&rsquo;t have a public IP address, and I <em>really</em> didn&rsquo;t want to bother with trying to do port-forwarding for it. In the Windows world, I would&rsquo;ve typically used something like <a href="https://winscp.net/eng/index.php">WinSCP</a> to copy the files. <a href="https://filezilla-project.org/">FileZilla</a> also works but, in my previous experience, has been super buggy. I tried looking in the macOS app store, and I was almost immediately disappointed. Most of the offerings either 1.) looked super shady with bad reviews or 2.) were aubscription-based applications. Don&rsquo;t get me wrong&hellip; I&rsquo;m not particularly opposed to subscription services. In fact, <a href="https://sameshadeofdifference.com/">I have a podcast episode waiting to be published on this very topic</a>. But for something like a simple <em>file transfer</em>? I refuse to pay a subscription for something so basic.</p>
+<p>As a result, I ended up looking for open-source alternatives. After just a little hunting I stumbled across <a href="https://github.com/libfuse/sshfs">sshfs</a>. I installed the <code>sshfs</code> base from <a href="https://www.unusually.pink/podcast/episode-16-abandonment-and-homebrew">Homebrew</a>:</p>
+<pre><code>brew install sshfs
+</code></pre><p>Before <code>sshfs</code> will work, though, you also need to install <a href="https://osxfuse.github.io/">FUSE</a>, which I just did from their website. Note that after upgrading my device from Mojave to Catalina I needed a new version of FUSE; luckily the system is good about letting you know that your version is out of date if that&rsquo;s a problem.</p>
+<p>What <code>sshfs</code> allows me to do is to mount a remote filesystem like a local filesystem that I can then use to copy files back and forth. To be extra basic, I created my mount point in my <code>~/Downloads</code> folder:</p>
+<pre><code>mkdir ~/Downloads/sftp
+</code></pre><p>It took me some messing around to figure out the exact syntax I needed to successfully mount the filesystem for my VPS, but I eventually ended up with a shell script that just included this line:</p>
+<pre><code>sudo sshfs -o allow_other,defer_permissions -p ##### user@server.domain:/local/file/path /Full/Path/ToLocal/MountPoint/
+</code></pre><p>Just like before, change the port number, server, and file path information to match your actual setup. After running this, you can then open Finder in macOS and easily copy files to and from the server without worry about port forwarding. The only caveat I&rsquo;ve noticed is that sometimes macOS becomes extremely unhappy if the remote filesystem is left mounted and the local client loses connectivity to the remote system, for example because the laptop fell asleep and disconnected from WiFi. As a result, I only leave the connection up when I&rsquo;m actively working with it. When I need to disconnect the mounted remote filesyste, I can either click the &ldquo;eject&rdquo; icon next to it in Finder or I can run:</p>
+<pre><code>sudo unmount /Full/Path/ToLocal/MountPoint
+</code></pre><p>In this case the mount point is <code>~/Downloads/sftp</code>. I now use this setup on a nearly daily basis, and I&rsquo;ve not run into any issues. The free, open-source solution is working great without forcing me to try out random shady-looking apps or coughing up money for a subscription just to move files between devices.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

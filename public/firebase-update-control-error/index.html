@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Firebase Update Control Error :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="One of my websites (not this one) is hosted via Firebase. It’s a largely static site that I rarely need to touch. I manage it from their CLI running on a VPS that I do some coding on so that I can access it regardless of which of my numerous devices I happen to be using. Since I don’t touch the site regularly, though, the Firebase tools tend to get a bit out of date." />
+<meta name="keywords" content="firebase, web-development" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/firebase-update-control-error/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Firebase Update Control Error">
+<meta property="og:description" content="One of my websites (not this one) is hosted via Firebase. It’s a largely static site that I rarely need to touch. I manage it from their CLI running on a VPS that I do some coding on so that I can access it regardless of which of my numerous devices I happen to be using. Since I don’t touch the site regularly, though, the Firebase tools tend to get a bit out of date." />
+<meta property="og:url" content="https://hugo.unusually.pink/firebase-update-control-error/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2019-04-08 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/firebase-update-control-error/">Firebase Update Control Error</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2019-04-08 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/firebase/">firebase</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/web-development/">web-development</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>One of my websites (not this one) is hosted via <a href="https://firebase.google.com/">Firebase</a>. It’s a largely static site that I rarely need to touch. I manage it from <a href="https://firebase.google.com/docs/cli/">their CLI</a> running on a VPS that I do some coding on so that I can access it regardless of which of my numerous devices I happen to be using. Since I don’t touch the site regularly, though, the Firebase tools tend to get a bit out of date. I needed to push a minor change the other day and figured I’d check for an update:</p>
+<pre><code>sudo npm install -g firebase-tools
+</code></pre><p>Instead of completing happily, though, I got the following:</p>
+<pre><code>npm ERR! path /usr/local/bin/firebase
+npm ERR! code EEXIST
+npm ERR! Refusing to delete /usr/local/bin/firebase: ../lib/node_modules/firebase-tools/bin/firebase symlink target is not controlled by npm /usr/local/bin
+npm ERR! File exists: /usr/local/bin/firebase
+npm ERR! Move it away, and try again.
+</code></pre><p>I’m a bit embarrassed that I did a bunch of super unnecessary troubleshooting at first instead of just <em>reading</em> the error. When I finally got to that point because things like clearing the <code>npm</code> cache didn’t work, I saw noticed this:</p>
+<pre><code>File exists: /usr/local/bin/firebase
+Move it away, and try again.
+</code></pre><p>Okay, seems sensible enough. I first just renamed it in the same directory.</p>
+<pre><code>sudo mv /usr/local/bin/firebase /usr/local/bin/firebaseBKP
+</code></pre><p>I re-ran the <code>npm</code> installation command, and sure enough it worked without any issues. I verified I could actually see <code>firebase</code> in my <code>$PATH</code>:</p>
+<pre><code>which firebase
+</code></pre><p>And that it was the newer version:</p>
+<pre><code>firebase --version
+</code></pre><p>With that out of the way, I simply deleted the file I renamed:</p>
+<pre><code>sudo rm /usr/local/bin/firebaseBKP
+</code></pre><p>Then I could push the update to my site without any issues. To be honest I’m not entirely sure why or how that file wouldn’t be controlled by <code>firebase</code> or it couldn’t be removed by running the command under <code>sudo</code>, but I’m happy that it had a clear error message that allowed me to fix things easily enough… once I actually, you know, <em>read</em> the error message.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

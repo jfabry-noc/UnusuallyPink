@@ -10,10 +10,10 @@
     <lastBuildDate>Sat, 15 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/ip-address/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Sorting IP Addresses With PowerShell</title>
-      <link>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</link>
+      <link>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</link>
       <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</guid>
+      <guid>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</guid>
       <description>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
 Get-Content -Path .\ipListFixed.txt | Sort-Object
 The results were, suffice to say, lackluster. I ended up with something like this:</description>

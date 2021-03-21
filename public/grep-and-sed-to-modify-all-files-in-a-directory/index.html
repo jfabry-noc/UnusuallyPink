@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Grep and Sed to Modify All Files in a Directory :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like Hugo; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the author attribute in each post to a different name to match my new Mastodon profile." />
+<meta name="keywords" content="bash, grep, sed, shell" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Grep and Sed to Modify All Files in a Directory">
+<meta property="og:description" content="I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like Hugo; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the author attribute in each post to a different name to match my new Mastodon profile." />
+<meta property="og:url" content="https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-08-02 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/grep-and-sed-to-modify-all-files-in-a-directory/">Grep and Sed to Modify All Files in a Directory</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-08-02 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/bash/">bash</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/grep/">grep</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/sed/">sed</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/shell/">shell</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I recently decided to rebrand one of my websites, complete with a different domain, title, and author (that’s me!) This is part of the beauty of using a static site generator like <a href="https://gohugo.io/">Hugo</a>; I updated the domain in my configuration file, and everything else just magically changed when the site was recompiled. The caveat is that I wanted to change the <code>author</code> attribute in each post to a different name to match my <a href="https://fosstodon.org/@consoleaccess">new Mastodon profile</a>. In this particular <a href="https://themes.gohugo.io/hugo-theme-terminal/">Hugo theme</a> the author is specified in each post rather than in the central <code>config.toml</code> file so that I can have different authors in a single site. This meant I needed to mass modify all of my posts to change the author (at least for the ones that have it since I previously used a theme where the author wasn’t specified.) I knew that this should be possible with <code>sed</code> but couldn’t remember the exact syntax. Since Hugo stores all of the Markdown files for my posts in a single directory, though, I knew it shouldn’t be too complicated.</p>
+<p>The syntax <code>sed</code> uses to do find-and-replace is <em>very</em> familiar to me since I use the same syntax in <code>vim</code> all the time. It’s great for those moments when I realize I’ve given a particular variable or function an extremely poor name and need to change every instance in a particular file. So what I really needed in this case was to recall how to use the CLI to change the value in multiple files; specifically I needed to change every file in a particular directory. It didn’t take many searches for me to confirm that this would require another utility to discover each file so that <code>sed</code> could then update them. Ultimately I got up and running with the following commands thanks to <a href="https://isaacsukin.com/news/2013/06/command-line-tip-replace-word-all-files-directory">what I found on this site</a>:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">grep -lr -e <span style="color:#e6db74">&#34;author = \&#34;oldName\&#34;&#34;</span> . | xargs sed -i <span style="color:#e6db74">&#39;&#39;</span> -e <span style="color:#e6db74">&#34;s/author = \&#34;oldName\&#34;/author = \&#34;consoleaccess\&#34;/g&#34;</span>
+</code></pre></div><p>In this case, <code>grep</code> is discovering the files and then I’m using <code>xargs</code> to redirect the output from <code>grep</code> to the arguments for <code>sed</code>. I won’t rehash the specific parameters of each command, as the original site I linked to above does a terrific job of that. However, it’s worth mentioning that I was able to swap out <em>just</em> the instances of my old account name for the Markdown file’s <strong>author</strong> property by specifying the full line instead of just the account name; all I had to do was use the <code>\</code> to escape things like the double-quotes that I needed to include. This way everything runs as efficiently as possible since <code>grep</code> is only returning the files that contain the old name in the author property, and then <code>sed</code> is only changing that single line of each file passed to it.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/scripting/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parse ISO 8601 String With Timezone Offset To Date Object In Groovy</title>
-      <link>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
+      <link>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
+      <guid>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
       <description>My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online.</description>
       <content>&lt;p&gt;My &lt;a href=&#34;https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/&#34;&gt;Groovy posts always have the absolute worst titles&lt;/a&gt;, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online. Any time I manage to figure out something that was difficult to find information on, it seems like a good opportunity to fill the gap a bit.&lt;/p&gt;
 &lt;p&gt;I do a lot of work with APIs, mostly making calls against cloud-based systems. In the cloud, no one generally cares about what timezone you happen to be in, so UTC is always used. I&amp;rsquo;ve recently been making calls against local software platform, though, and &lt;strong&gt;it&lt;/strong&gt; returns timestamps in the local time of the server running it. Ick. I ended up with string values like the following which I then needed to parse as a Date object in Groovy for the sake of comparison.&lt;/p&gt;
@@ -44,10 +44,10 @@ def dateObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Date&lt;
     
     <item>
       <title>Python&#39;s Beautiful Soup</title>
-      <link>https://hugo.unusually.pink/posts/pythons-beautiful-soup/</link>
+      <link>https://hugo.unusually.pink/pythons-beautiful-soup/</link>
       <pubDate>Tue, 18 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/pythons-beautiful-soup/</guid>
+      <guid>https://hugo.unusually.pink/pythons-beautiful-soup/</guid>
       <description>In my last post, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about what I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain.</description>
       <content>&lt;p&gt;In my &lt;a href=&#34;https://unusually.pink/twitter-development-impressions/&#34;&gt;last post&lt;/a&gt;, I more or less just complained about what a dumpster fire developing anything for Twitter is. Originally, though, the post was intended to be about &lt;em&gt;what&lt;/em&gt; I was developing for Twitter. It’s nothing amazing or even complicated, but it was a fun learning experience… Twitter itself not withstanding. I made a Twitter bot tweeting different shades of pink each day. Since that’ll most likely seem nonsensical to most people, let me explain.&lt;/p&gt;
 &lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
@@ -77,10 +77,10 @@ def dateObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Date&lt;
     
     <item>
       <title>Twitter Development Impressions</title>
-      <link>https://hugo.unusually.pink/posts/twitter-development-impressions/</link>
+      <link>https://hugo.unusually.pink/twitter-development-impressions/</link>
       <pubDate>Mon, 10 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/twitter-development-impressions/</guid>
+      <guid>https://hugo.unusually.pink/twitter-development-impressions/</guid>
       <description>I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.</description>
       <content>&lt;p&gt;I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.&lt;/p&gt;
 &lt;h2 id=&#34;developer-account&#34;&gt;Developer Account&lt;/h2&gt;
@@ -100,10 +100,10 @@ def dateObject &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; Date&lt;
     
     <item>
       <title>Deciphering the Office 365 PSTN Usage Report</title>
-      <link>https://hugo.unusually.pink/posts/deciphering-the-office-365-pstn-usage-report/</link>
+      <link>https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/</link>
       <pubDate>Tue, 28 Apr 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/deciphering-the-office-365-pstn-usage-report/</guid>
+      <guid>https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/</guid>
       <description>Background Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there was a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings.</description>
       <content>&lt;h2 id=&#34;background&#34;&gt;Background&lt;/h2&gt;
 &lt;p&gt;Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there &lt;em&gt;was&lt;/em&gt; a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings. Any meeting we create has a dial-in number so that anyone who has a poor data connection can still dial a telephone and at least join the audio portion of the meeting.&lt;/p&gt;
@@ -159,10 +159,10 @@ print(total\_minutes)
     
     <item>
       <title>Sorting IP Addresses With PowerShell</title>
-      <link>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</link>
+      <link>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</link>
       <pubDate>Sat, 15 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/sorting-ip-addresses-with-powershell/</guid>
+      <guid>https://hugo.unusually.pink/sorting-ip-addresses-with-powershell/</guid>
       <description>I was recently attempting to sort a list of IP addresses that I had in a text file. PowerShell is awesome at sorting, so I figured I would use it given that I had nearly 2000 of them. I initially just tried to pipe the contents of the file to the Sort-Object cmdlet:
 Get-Content -Path .\ipListFixed.txt | Sort-Object
 The results were, suffice to say, lackluster. I ended up with something like this:</description>
@@ -189,10 +189,10 @@ The results were, suffice to say, lackluster. I ended up with something like thi
     
     <item>
       <title>PowerShell: Export Non-Standard and Multi-Value AD Attributes to CSV</title>
-      <link>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
+      <link>https://hugo.unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</link>
       <pubDate>Sat, 01 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
+      <guid>https://hugo.unusually.pink/powershell-export-non-standard-and-multi-value-ad-attributes-to-csv/</guid>
       <description>I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.
 Exporting Non-standard Attributes To CSV My first issue was that I needed to export some non-standard attributes from contact objects in AD to a .</description>
       <content>&lt;p&gt;I’ve recently been spending a lot of my time at work doing PowerShell scripting for a project that’s currently underway. While working on a bit of code late last week I ran into two interesting problems that I had yet to really stumble across despite doing heavy PowerShell scripting against Active Directory for nearly a decade now.&lt;/p&gt;

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Groovy Programming HttpClient :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="As a follow-up to my post on creating a JWT in Groovy, I did manage to figure out how to make an HttpClient in Groovy as opposed to making raw connections. You can see this implemented in the GitHub repository I used for the previously linked post. It was honestly pretty easy to do, and there are tons of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy." />
+<meta name="keywords" content="groovy, httpclient, httprequest, java, programming, rest" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/groovy-programming-httpclient/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Groovy Programming HttpClient">
+<meta property="og:description" content="As a follow-up to my post on creating a JWT in Groovy, I did manage to figure out how to make an HttpClient in Groovy as opposed to making raw connections. You can see this implemented in the GitHub repository I used for the previously linked post. It was honestly pretty easy to do, and there are tons of tutorials out there; the code is essentially the same regardless of whether you&amp;rsquo;re doing it in Java, Kotlin, or Groovy." />
+<meta property="og:url" content="https://hugo.unusually.pink/groovy-programming-httpclient/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-07-17 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/groovy-programming-httpclient/">Groovy Programming HttpClient</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-07-17 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy/">groovy</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/httpclient/">httpclient</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/httprequest/">httprequest</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/java/">java</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/programming/">programming</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/rest/">rest</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>As a follow-up to my <a href="https://www.unusually.pink/blog/creating-a-jwt-in-the-groovy-programming-language">post on creating a JWT in Groovy</a>, I <em>did</em> manage to figure out how to make an <a href="https://docs.oracle.com/en/java/javase/11/docs/api/java.net.http/java/net/http/HttpClient.html">HttpClient</a> in Groovy as opposed to making raw connections. You can see this implemented in the <a href="https://github.com/JFFail/GroovyJWT/blob/master/jwt.groovy">GitHub repository</a> I used for the previously linked post. It was honestly pretty easy to do, and there are <strong>tons</strong> of tutorials out there; the code is essentially the same regardless of whether you&rsquo;re doing it in Java, Kotlin, or Groovy. Similar to the last time, it&rsquo;ll be easier to look at all of the code in the GitHub repo, but I&rsquo;ll call out the specific snippets I&rsquo;m referencing throughout the post.</p>
+<h3 id="imports">Imports<a href="#imports" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>I do need a handful of imports to get up and running with this:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> java.net.http.HttpClient
+<span style="color:#f92672">import</span> java.net.http.HttpRequest
+<span style="color:#f92672">import</span> java.net.http.HttpRequest.BodyPublishers
+<span style="color:#f92672">import</span> java.net.http.HttpResponse
+<span style="color:#f92672">import</span> java.net.http.HttpResponse.BodyHandlers
+</code></pre></div><p>If these fail to import when you try to execute the code, you are likely <em>not</em> operating at Java 11 or above. More on why I know that later&hellip;</p>
+<h3 id="payload">Payload<a href="#payload" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>In the last post I created a JWT. Now I need to take it and parse it into JSON to send it to the API endpoint so that I can get an access token. The simplest way to do this is to place it in a Map and then convert the Map to JSON.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">Map payloadMap <span style="color:#f92672">=</span> <span style="color:#f92672">[</span>auth_token<span style="color:#f92672">:</span> jwt<span style="color:#f92672">]</span>
+def payloadJson <span style="color:#f92672">=</span> JsonOutput<span style="color:#f92672">.</span><span style="color:#a6e22e">toJson</span><span style="color:#f92672">(</span>payloadMap<span style="color:#f92672">)</span>
+</code></pre></div><h3 id="create-the-client">Create The Client<a href="#create-the-client" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The process of making requests in this method involves 3 steps. The first is to create the HttpClient object.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def httpClient <span style="color:#f92672">=</span> HttpClient<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">connectTimeout</span><span style="color:#f92672">(</span>Duration<span style="color:#f92672">.</span><span style="color:#a6e22e">ofSeconds</span><span style="color:#f92672">(</span>5<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">followRedirects</span><span style="color:#f92672">(</span>HttpClient<span style="color:#f92672">.</span><span style="color:#a6e22e">Redirect</span><span style="color:#f92672">.</span><span style="color:#a6e22e">NORMAL</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+</code></pre></div><p>You can set any number that fits with your use case for the timeout duration; 5 seconds was safe for me. There are a <em>lot</em> of other options for the client so be sure to check out the documentation if you need more.</p>
+<h3 id="create-the-request">Create The Request<a href="#create-the-request" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>The request object is where the specifics of the connection are identified, like the URL and the method.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def request <span style="color:#f92672">=</span> HttpRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">POST</span><span style="color:#f92672">(</span>HttpRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">BodyPublishers</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ofString</span><span style="color:#f92672">(</span>payloadJson<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">uri</span><span style="color:#f92672">(</span>URI<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>url<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">headers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;application/json; charset=utf-8&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Accept&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;\*/\*&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+</code></pre></div><p>In the second line, I&rsquo;m specifying POST since I need to send data. I&rsquo;ll cover a GET example later on. In the same line, I need to specify the format of my payload as being JSON; just throwing a JSON string at the endpoint will <strong>not</strong> work. If you only have a single header you can use <code>.header</code> instead of <code>.headers</code>. What caught me off guard with the headers is that you specify multiple of them not as key-value pairs like a Map but as a simple list, with each value just following its corresponding key.</p>
+<h3 id="send-the-request">Send The Request<a href="#send-the-request" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>With the client and request both created, now it&rsquo;s time to send the request.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def response <span style="color:#f92672">=</span> httpClient<span style="color:#f92672">.</span><span style="color:#a6e22e">send</span><span style="color:#f92672">(</span>request<span style="color:#f92672">,</span> HttpResponse<span style="color:#f92672">.</span><span style="color:#a6e22e">BodyHandlers</span><span style="color:#f92672">.</span><span style="color:#a6e22e">ofString</span><span style="color:#f92672">())</span>
+</code></pre></div><p>This is also pretty straightforward; it&rsquo;s just worth mentioning that I&rsquo;m specifying I want the response to be parsed into a string.</p>
+<h3 id="error-checking">Error Checking<a href="#error-checking" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>I can check the <code>statusCode()</code> method to verify my request was successful and then take action upon the reply.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">if</span><span style="color:#f92672">(</span> response<span style="color:#f92672">.</span><span style="color:#a6e22e">statusCode</span><span style="color:#f92672">()</span> <span style="color:#f92672">==</span> 200 <span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+    println <span style="color:#e6db74">&#34;${response.body()}&#34;</span>
+<span style="color:#f92672">}</span> <span style="color:#66d9ef">else</span> <span style="color:#f92672">{</span>
+    println <span style="color:#e6db74">&#34;ERROR: Status code: ${response.statusCode()}&#34;</span>
+<span style="color:#f92672">}</span>
+</code></pre></div><p>From here I can parse the results to a Map and do my normal thing.</p>
+<h3 id="get-example">GET Example<a href="#get-example" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Using GET is the same as POST except for some details in the request. Obviously POST is replaced with GET, and then I have additional headers to specify.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def request <span style="color:#f92672">=</span> HttpRequest<span style="color:#f92672">.</span><span style="color:#a6e22e">newBuilder</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">GET</span><span style="color:#f92672">()</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">uri</span><span style="color:#f92672">(</span>URI<span style="color:#f92672">.</span><span style="color:#a6e22e">create</span><span style="color:#f92672">(</span>currentUrl<span style="color:#f92672">))</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">headers</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;application/json; charset=utf-8&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Accept&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;\*/\*&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Authorization&#34;</span><span style="color:#f92672">,</span> <span style="color:#e6db74">&#34;Bearer $token&#34;</span><span style="color:#f92672">)</span>
+    <span style="color:#f92672">.</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+</code></pre></div><p>Naturally the exact headers you need will depend on the API you&rsquo;re calling. Other than that, though, the process is the exact same as it was with POST, including the way you execute the request.</p>
+<p>Of course, after I implemented all of this I discovered that the back-end in my environment that was actually executing the code was <em>not</em> running Java 11 or better, so I couldn&rsquo;t even use this setup. It&rsquo;s good to know for the future, though!</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

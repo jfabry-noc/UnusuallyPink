@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 08 Apr 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/certificates/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>PSA: Get Ready For New Let&#39;s Encrypt Validation</title>
-      <link>https://hugo.unusually.pink/posts/psa-get-ready-for-new-lets-encrypt-validation/</link>
+      <link>https://hugo.unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</link>
       <pubDate>Mon, 08 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/psa-get-ready-for-new-lets-encrypt-validation/</guid>
+      <guid>https://hugo.unusually.pink/psa-get-ready-for-new-lets-encrypt-validation/</guid>
       <description>If you’re using Let’s Encrypt, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted.</description>
       <content>&lt;p&gt;If you’re using &lt;a href=&#34;https://letsencrypt.org/&#34;&gt;Let’s Encrypt&lt;/a&gt;, now would be a really great time to make sure that you’re ready for them to stop supporting ACME TLS-SNI-01 domain validation. I got an email a couple of days ago (as I assume everyone using Let’s Encrypt did) letting me know this change was coming. I had nothing to actually do, but going through the validation was super easy and is likely worth the time to ensure your site(s) aren’t impacted. March 13th is the deadline for ACME TLS-SNI-01 to no longer function, so there’s still a lot of time to take a couple of minutes and verify you’re in good shape.&lt;/p&gt;
 &lt;p&gt;*Note: I’m using &lt;code&gt;certbot&lt;/code&gt;, which makes this whole thing super easy. If you’re &lt;strong&gt;not&lt;/strong&gt; using &lt;code&gt;certbot&lt;/code&gt; then your steps will be different.*&lt;/p&gt;

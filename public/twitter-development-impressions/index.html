@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Twitter Development Impressions :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected." />
+<meta name="keywords" content="scripting, twitter, rest, api" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/twitter-development-impressions/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Twitter Development Impressions">
+<meta property="og:description" content="I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected." />
+<meta property="og:url" content="https://hugo.unusually.pink/twitter-development-impressions/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-08-10 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/twitter-development-impressions/">Twitter Development Impressions</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-08-10 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/twitter/">twitter</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/rest/">rest</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/api/">api</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I recently had an idea to turn the Twitter account for my defunct podcast into a Twitter bot posting a new shade of pink every day; it makes sense because the podcast and Twitter account were centered around the color pink. I didn’t really think anyone would care about this particular bot, but it seemed like a fun project idea to work on. It ended up being an interesting learning experience, but not at all for the reasons I actually expected.</p>
+<h2 id="developer-account">Developer Account<a href="#developer-account" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Getting a Twitter developer account can be either really simple or really irritating, and there’s no discernable difference that dictates what experience you’ll get. I went to the <a href="https://developer.twitter.com/en">Developer portal</a> and registered for a developer account with my normal Twitter account. This account is clearly me IRL; my name is in it, I have a photo of myself on the account, it links to my personal website, and the post history clearly indicates that the account is a person rather than a bot. As part of registering for the account, I had to describe what I was going to create. I honestly stated that I was just going to create a bot that would tweet a shade of pink each day. Twitter asks questions such as if you plan to export data out of the service, if you plan to display information posted to Twitter outside of Twitter, etc. I answered “no” to all of these questions since I wasn’t pulling any data out of the service. I just needed to post.</p>
+<p>After I completed the registration form, I received a message that my account was under review and I would receive a notification when that review was completed. I was a little bummed since it happened to be a long weekend for me, and I was hoping that this project would give me something to fill the time. I was hopeful maybe the review would be completed quickly. I was wrong. It took just shy of 2 weeks before the review was completed. I had almost forgotten about the whole thing since I’ve been trying to stay off of Twitter as of late, but then I got an email telling me I was allowed in. Wild.</p>
+<h2 id="authentication">Authentication<a href="#authentication" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Handling <a href="https://docs.joinmastodon.org/methods/apps/oauth/">authentication with Mastodon</a> is a relatively simple, straightforward process if you’ve done this sort of thing with… pretty much any API. It’s a little different than the type of things I do for work since creating a client means people <em>other</em> than the person writing the code can be authenticating, but it still makes sense and is well documented. On the other hand, <a href="https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a">authenticating through Twitter</a> is a complete nightmare. Outside of the specifics of authentication, everything in Twitter’s documentation seems aimed at keeping each individual page as short as possible. As a result, every page links to numerous other pages, and you end up having dozens of browser tabs open just to have some clue as to what your complete workflow looks like. For the OAuth 1.0a option, which is <em>the</em> option to use if you need an account other than the registered developer account to leverage an application, they recommend strongly against making the <a href="https://awk.ninja/posts/groovy_jwt/">JWT</a> yourself in favor of leveraging a library… but they don’t actually share any of the particulars about their JWT setup… or even <em>call</em> it a JWT. You very clearly get the impression that Twitter doesn’t want anyone actually using their API. Crazy.</p>
+<p>After seeing the poor documentation, I abandoned my ideas of making my bot in Rust or maybe Bash, and instead just decided to use Python with the <a href="https://github.com/ryanmcgrath/twython">twython library</a>. I’ve manually parsed together enough JWTs that I didn’t think I cared enough to do it again for this. Seeing the workflow for twython showcased the next bit of crazy, though, which is that the <a href="https://developer.twitter.com/en/docs/basics/authentication/oauth-1-0a/obtaining-user-access-tokens">authentication workflow sends the OAuth token to the callback URL</a>. I basically needed to set up something completely different with an HTTP listener for the OAuth token so that I could move forwad with authentication. That was <em>entirely</em> more than I wanted to put into this simple bot.</p>
+<p><strong>Note:</strong> <em>The craziness of this makes me still think I’m not actually understanding the setup properly. I did verify, though, that the response received from where I was running the code included just the HTTP status, so the information is not coming back to the sender by default. Likewise, I couldn’t open my application up to other users without giving a callback URL, so omitting that wasn’t an option, either. Hit me up on Mastodon if I’m just dumb and there’s a reasonable way to handle this that I’m misunderstanding.</em></p>
+<h2 id="registering-another-developer-account">Registering Another Developer Account<a href="#registering-another-developer-account" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>At this point I realized that I really should have just registered for a developer account with the account I was planning to use with the bot. I started that process again fully expecting to wait another two weeks. I filled out all of the same information during the registration process, but this time when I completed the form I was immediately kicked over to the developer portal to start working on whatever I needed.</p>
+<p>I’m still amazed that while the registration for my actual account that I use as a human being, I had to wait two weeks to get developer access. When I registered witht the account that had been used for my podcast, though, I was allowed access sans review. The podcast Twitter account generally had nothing posted to it other than the automatic posts from <a href="https://www.squarespace.com/">Squarespace</a>, had the podcast logo as the profile picture, had no website linked, and quite clearly was not a person… yet that’s the account that got in right away. Okie dokie!</p>
+<h2 id="wrap-up">Wrap-Up<a href="#wrap-up" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Since I now had the account I was planning to post from in the developer portal, I could spin up my OAuth token directly from there in my browser as opposed to having to leverage 3-legged OAuth to a callback URL. As I started working on the code, though, I quickly realized that the script for the bot to post was going to be insanely easy. Instead, the much more interesting part of the code was the script I wrote to make a little local repository of information on shades of pink that was completely unrelated to Twitter. I had originally planned to cover that in this post, but since this ended up being longer than I expected that’s what I’ll cover next time around.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>msal4j With Groovy :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I&amp;rsquo;ve written before about the fact that I use Groovy heavily in my current role since the platform I work the most frequently with is able to treat it as a first class citizen, whereas using something like PowerShell or Python adds a few more hurdles. The other thing I work with heavily is Office 365; this got me wondering if I might be able to combine the two by using Groovy to query Microsoft&amp;rsquo;s Graph API." />
+<meta name="keywords" content="graph-api, groovy, groovy-programming, java, microsoft, msal, msal4j" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/msal4j-with-groovy/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="msal4j With Groovy">
+<meta property="og:description" content="I&amp;rsquo;ve written before about the fact that I use Groovy heavily in my current role since the platform I work the most frequently with is able to treat it as a first class citizen, whereas using something like PowerShell or Python adds a few more hurdles. The other thing I work with heavily is Office 365; this got me wondering if I might be able to combine the two by using Groovy to query Microsoft&amp;rsquo;s Graph API." />
+<meta property="og:url" content="https://hugo.unusually.pink/msal4j-with-groovy/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-01-23 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/msal4j-with-groovy/">msal4j With Groovy</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-01-23 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/graph-api/">graph-api</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy/">groovy</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/groovy-programming/">groovy-programming</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/java/">java</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/microsoft/">microsoft</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/msal/">msal</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/msal4j/">msal4j</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I&rsquo;ve written before about the fact that I <a href="https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/">use Groovy heavily</a> in my current role since the platform I work the most frequently with is able to treat it as a first class citizen, whereas using something like PowerShell or Python adds a few more hurdles. The other thing I work with heavily is Office 365; this got me wondering if I might be able to combine the two by using Groovy to query <a href="https://developer.microsoft.com/en-us/graph/">Microsoft&rsquo;s Graph API</a>. Microsoft&rsquo;s current standard for interacting with the Graph API, replacing the old Active Directory Authentication Library (ADAL), is the Microsoft Authentication Library (MSAL.) <a href="https://github.com/AzureAD">Microsoft provides MSAL packages for a <em>ton</em> of popular languages</a>, and considering that Groovy is a superset of Java, I figured that I should be able to leverage the <a href="https://github.com/AzureAD/microsoft-authentication-library-for-java">msal4j version</a> within Groovy.</p>
+<p>In my particular case, the code that I write is typically used as &ldquo;glue&rdquo; to link disparate systems together. As such, I based my work off of the Microsoft sample code for <a href="https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/ClientCredentialGrant.java">authenticating as a daemon with a client secret</a>. This is the method I&rsquo;ve always used with my PowerShell and Python code. tl;dr, I was able to get this working with almost no difference from the Java sample, and you can see the end code that successfully authenticates and queries for the users in an AAD instance <a href="https://github.com/jfabry-noc/GroovyMSAL/blob/main/graphToken.groovy">on my GitHub account</a>.</p>
+<p>As you can see if you check out the code, I first used <a href="https://docs.groovy-lang.org/latest/html/documentation/grape.html">Grape for my dependency management</a>. I&rsquo;m admittedly not much of a Java developer, but I found Grape to be a very handy way to add additional libraries with very little overhead. It&rsquo;s a much more Python-esque experience than trying to add <code>.jar</code> files to a project in an IDE. There were a few dependencies I needed for this project, but the main one, msal4j, was added via:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// https://mvnrepository.com/artifact/com.microsoft.azure/msal4j       
+</span><span style="color:#75715e"></span>                
+<span style="color:#a6e22e">@Grapes</span><span style="color:#f92672">(</span>                     
+    <span style="color:#a6e22e">@Grab</span><span style="color:#f92672">(</span>group<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">&#39;</span>com<span style="color:#f92672">.</span><span style="color:#a6e22e">microsoft</span><span style="color:#f92672">.</span><span style="color:#a6e22e">azure</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span> module<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">&#39;</span>msal4j<span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">,</span> version<span style="color:#f92672">=</span><span style="color:#960050;background-color:#1e0010">&#39;</span>1<span style="color:#f92672">.</span><span style="color:#a6e22e">8</span><span style="color:#f92672">.</span><span style="color:#a6e22e">1</span><span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#f92672">)</span>       
+        <span style="color:#f92672">)</span>
+</code></pre></div><p>To figure out what the heck to enter to import the library via Grape, I used the <a href="https://mvnrepository.com/">Maven Repository</a>, which gives you the additions required to use Grape &ndash; or other dependency management tools like Maven or Gradle. Just be sure you&rsquo;re using the <a href="https://mvnrepository.com/artifact/com.microsoft.azure/msal4j/1.8.1">msal4j library</a>, which is designed for vanilla Java. The <a href="https://mvnrepository.com/artifact/com.microsoft.identity.client/msal">library just named msal</a> is the one designed for Android. This was my first experience using Grape, and the only issue I ran into was a failure to realize that I needed to immediately include <code>import</code> statements after all of my Grape calls; adding the library doesn&rsquo;t magically add the functions and classes you may need, hence all of the msal-specific imports like:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#f92672">import</span> com.microsoft.aad.msal4j.ClientCredentialFactory<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.ClientCredentialParameters<span style="color:#f92672">;</span>          
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.ConfidentialClientApplication<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.IAuthenticationResult<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.IClientCredential<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.MsalException<span style="color:#f92672">;</span>
+<span style="color:#f92672">import</span> com.microsoft.aad.msal4j.SilentParameters<span style="color:#f92672">;</span>
+</code></pre></div><p>Once I verified I could execute my baseline code making the imports without any issues, I started converting the function for getting an access token. Since this was completely new territory for me, I was running it against my free developer tenant. Anyone is free to sign up for the <a href="https://developer.microsoft.com/en-us/microsoft-365/dev-program">Microsoft 365 Developer Program</a>, which gets you a free tenant, 25 Office 365 E5 licenses, and plenty of other fun Azure goodies to test with. Be mindful that this is <em>not</em> something for production purposes, and every 90 days Microsoft performs an evaluation on the tenant to verify that you&rsquo;re using it for development purposes and not for free access into Office 365. Admittedly, mine has gone neglected for many 90 day cycles without any active development work, but I also wasn&rsquo;t actively using the O365 accounts for anything, which has been cool in Microsoft&rsquo;s book so far. My tenant has always been renewed, and I was happy to have it around for testing this out. I <a href="https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-register-app">registered a new application in Azure AD</a>, and then I tested the details from it that are typically needed for getting a token (the tenant ID, the client ID, and the client secret) in some existing Python code to verify that everything was working as expected.</p>
+<p>With the foundation out of the way, I worked to <a href="https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/confidential-client/ClientCredentialGrant.java">modify Microsoft&rsquo;s acquireToken() function</a> to be a bit more Groovy-esque:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">// Function to get an access token.
+</span><span style="color:#75715e"></span> def <span style="color:#a6e22e">GetAccessToken</span><span style="color:#f92672">(</span>String clientId<span style="color:#f92672">,</span> String authority<span style="color:#f92672">,</span> String secret<span style="color:#f92672">,</span> String scope<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+     <span style="color:#75715e">// Create the app.
+</span><span style="color:#75715e"></span>     ConfidentialClientApplication app <span style="color:#f92672">=</span> ConfidentialClientApplication<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span>clientId<span style="color:#f92672">,</span> ClientCredentialFactory<span style="color:#f92672">.</span><span style="color:#a6e22e">createFromSecret</span><span style="color:#f92672">(</span>secret<span style="color:#f92672">)).</span><span style="color:#a6e22e">authority</span><span style="color:#f92672">(</span>authority<span style="color:#f92672">).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+     ClientCredentialParameters clientCredentialParam <span style="color:#f92672">=</span> ClientCredentialParameters<span style="color:#f92672">.</span><span style="color:#a6e22e">builder</span><span style="color:#f92672">(</span>Collections<span style="color:#f92672">.</span><span style="color:#a6e22e">singleton</span><span style="color:#f92672">(</span>scope<span style="color:#f92672">)).</span><span style="color:#a6e22e">build</span><span style="color:#f92672">()</span>
+     def result <span style="color:#f92672">=</span> app<span style="color:#f92672">.</span><span style="color:#a6e22e">acquireToken</span><span style="color:#f92672">(</span>clientCredentialParam<span style="color:#f92672">).</span><span style="color:#a6e22e">join</span><span style="color:#f92672">()</span>
+
+     <span style="color:#75715e">// Return to the caller.
+</span><span style="color:#75715e"></span>     result
+ <span style="color:#f92672">}</span>
+</code></pre></div><p>This worked, though I didn&rsquo;t realize it at first. I originally took my calling code of:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def accessToken <span style="color:#f92672">=</span> GetAccessToken<span style="color:#f92672">(</span>aadConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">client_id</span><span style="color:#f92672">,</span> aadConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">authority</span><span style="color:#f92672">,</span> aadConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">secret</span><span style="color:#f92672">,</span> aadConfig<span style="color:#f92672">.</span><span style="color:#a6e22e">scope</span><span style="color:#f92672">)</span>
+</code></pre></div><p>And attempted to just print it to the screen:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">println accessToken
+</code></pre></div><p>This resulted in an error message that spent quite a while driving me moderately insane:</p>
+<blockquote>
+<p>com.microsoft.aad.msal4j.MsalClientException: Cached JWT could not be parsed: Invalid JWT serialization: Missing dot delimiter(s)</p>
+</blockquote>
+<p>Not being super familiar with the <code>IAuthenticationResult</code> object type, this threw me for a bit of a loop since I didn&rsquo;t really know what to expect. Searching for this error just turned up generic results surrounding the JWT library that Microsoft calls from within the msal4j library. Searching for it in relation to msal4j in particular returns almost no results, and searching for with respect to Groovy returns <em>literally</em> no results.</p>
+<p>I tried to make a function to query the Microsoft Graph using the <code>accessToken</code> value passed as the Bearer, but that simply resulted in the same error. Since I was working on this on my MacBook Pro running a <a href="https://formulae.brew.sh/formula/openjdk#default">beta build of the OpenJDK 16 for Apple&rsquo;s M1 chip</a> and on a Linux VPS with OpenJDK 11, I tried running against OpenJDK 8 since that&rsquo;s the version that plays the nicest with Groovy, but I got the same result. I eventually even went to the point of setting up a Java environment with <a href="https://www.jetbrains.com/idea/">IntelliJ IDEA</a> to verify that the sample code worked in vanilla Java 15, which it did. While looking at the Java code in IDEA, though, I realized that the sample output was <em>not</em> calling the <code>accessToken</code> directly, but was rather calling a method on it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java">def tokenValue <span style="color:#f92672">=</span> accessToken<span style="color:#f92672">.</span><span style="color:#a6e22e">accessToken</span><span style="color:#f92672">()</span>
+</code></pre></div><p>I modified my code with this, passing the value from the method to my <code>GetUsersListFromGraph()</code> function, and sure enough the user accounts from my test tenant were dumped to the screen as expected. Obviously, this error was a pretty simple mistake on my part to not leverage the object from msal4j properly. That being said, I figured that noting the error message might be helpful for someone else who makes the same mistake and finds the same lack of results when searching for the error message. I also thought it was quite slick how seamlessly Grape makes importing libraries into Groovy code without needing to worry about downloading <code>.jar</code> files, specifying a <code>classpath</code> when calling Groovy, etc. I think it&rsquo;ll be interesting to see what new integrations I can create now with our monitoring platform.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

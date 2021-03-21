@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Cloudflare Analytics :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Anyone who knows me, reads the type of things I tweet about, and/or listens to the Same Shade of Difference podcast knows that I&amp;rsquo;m an advocate of online privacy. I&amp;rsquo;m all for blocking trackers, avoiding services from invasive companies like Facebook, and generally trying to keep as much of what I do online known only to me. That being said, while I typically configure my browser to block things like Google Analytics because Google is already a super creepy company that gathers an order of magnitude more data than it should about people, I also see the value in having analytics for a website." />
+<meta name="keywords" content="analytics, cloudflare, plausible, website, wordpress" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/cloudflare-analytics/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Cloudflare Analytics">
+<meta property="og:description" content="Anyone who knows me, reads the type of things I tweet about, and/or listens to the Same Shade of Difference podcast knows that I&amp;rsquo;m an advocate of online privacy. I&amp;rsquo;m all for blocking trackers, avoiding services from invasive companies like Facebook, and generally trying to keep as much of what I do online known only to me. That being said, while I typically configure my browser to block things like Google Analytics because Google is already a super creepy company that gathers an order of magnitude more data than it should about people, I also see the value in having analytics for a website." />
+<meta property="og:url" content="https://hugo.unusually.pink/cloudflare-analytics/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2021-01-28 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/cloudflare-analytics/">Cloudflare Analytics</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2021-01-28 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/analytics/">analytics</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/cloudflare/">cloudflare</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/plausible/">plausible</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/wordpress/">wordpress</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Anyone who knows me, reads the type of things I <a href="https://twitter.com/UnusuallyPink">tweet about</a>, and/or listens to the <a href="https://sameshadeofdifference.com/">Same Shade of Difference podcast</a> knows that I&rsquo;m an advocate of online privacy. I&rsquo;m all for blocking trackers, avoiding services from invasive companies like Facebook, and generally trying to keep as much of what I do online known only to me. That being said, while I typically configure my browser to block things like Google Analytics because Google is already a super creepy company that gathers an order of magnitude more data than it should about people, I also see the value in having analytics for a website. It&rsquo;s often helpful to see things like which content in particular is the most popular; if I know the types of content people like to see, then I can try to tailor what I write about to meet that need. Similarly it&rsquo;s honestly just cool to be able to see when my site gets traffic from people all across the globe. Seeing that someone on the other side of the planet found my content useful or interesting is just neat. As a result, I&rsquo;ve been on the lookout for an analytics options that isn&rsquo;t stalker-esque like what Google offers.</p>
+<p><img src="/images/marge_neat.jpg" alt=""></p>
+<p>One of the initial options I considered was <a href="https://plausible.io/">Plausible Analytics</a>. They have a presence on the <a href="https://en.wikipedia.org/wiki/Fediverse">Fediverse</a>, which is how I first became aware of the company. Their offering is appealing because it provides metrics to website owners without collecting personal data on the visitors, which is exactly what I&rsquo;ve been wanting. Unfortunately for me, there&rsquo;s no free option for Plausible, and while paying $4 a month for a year if you get 10,000 hits or less per month &ndash; a threshold I&rsquo;m <em>well</em> under &ndash; makes sense for a business or someone with a serious website, I didn&rsquo;t feel like spending $48 USD per year just to get some neat metrics was worth it for me. I&rsquo;m currently averaging around 1000 visits per month, so it&rsquo;s not exactly as though I&rsquo;m driving a business based around these analytics.</p>
+<p>With all of this in mind, the announcement of <a href="https://blog.cloudflare.com/privacy-first-web-analytics/">Cloudflare&rsquo;s privacy-focused analytics</a> immediately piqued my interest. Understandably, many people in technology circles have reservations about Cloudflare. Cloudflare serves as the gatekeeper to so much of the Internet&rsquo;s traffic that when they have an outage, sometimes it feels as though the entire Internet is down; that&rsquo;s not exactly an ideal situation for a healthy and robust Internet ecosystem. When Cloudflare&rsquo;s analytics platform originally launched, I was dismissive of it because it was only an option for those hosting their content behind Cloudflare. If I needed DDoS protection or a CDN then I might consider something like putting my site behind Cloudflare, but without that I&rsquo;m more than a little loathe to start transferring my DNS records.</p>
+<p>Right around the end of 2020, though, I saw that Cloudflare&rsquo;s analytics were now open to be used by <em>anyone</em> regardless of hosting. Curious, I logged into my existing Cloudflare account that I created back in the day when using Cloudflare was the only option for configuring <a href="https://pages.github.com/">GitHub Pages</a> with an SSL certificate. Sure enough, &ldquo;Web Analytics&rdquo; was an option within my Cloudflare Dashboard. All I had to do was provide the address for my site, and Cloudflare gave me a snippet of JavaScript to add for the analytics.</p>
+<p><img src="/images/cloudflare_add-1024x631.png" alt=""></p>
+<p>Given that my site is <a href="https://unusually.pink/unusually-pink-migration/">now hosted on WordPress</a>, I couldn&rsquo;t directly add content to the header or footer section of my HTML. After a quick DuckDuckGo search, though, I found some recommendations for the <strong>Insert Headers and Footers</strong> plugin. The plugin adds a tab to the <strong>Settings</strong> section of the WordPress Dashboard with fields for, you guessed it, the header and the footer. Any content that I place in there is automatically added to the header and/or footer of each page that WordPress renders. I simply pasted the snippet of JavaScript from Cloudflare into the footer section, and everything was up and running for me.</p>
+<p>Similar to Plausible, CloudFlare&rsquo;s analytics platform gives me some basic details without anything particularly creepy about the people visiting my site. I see things like the country they&rsquo;re from (nothing more specific than that), the browser, the operating system, the referrer (e.g. if someone is clicking a link to my site from Twitter or DuckDuckGo), and which page was viewed. The last part is the one that allows me to stay on top of what content people are finding the most useful. For example, since implementing Cloudflare analytics, I&rsquo;ve been able to see that <a href="https://unusually.pink/macos-big-sur-pip-installation-error/">my post</a> on how to resolve issues installing Python packages through <code>pip3</code> on macOS Big Sur has consistently been the most viewed. Behind that is <a href="https://unusually.pink/creating-a-jwt-in-the-groovy-programming-language/">my post on how to create a JWT in Groovy</a>; that&rsquo;s super useful since I had no idea if anyone else would even care about Groovy-related content.</p>
+<p><img src="/images/cloudflare_analytics-1024x581.png" alt=""></p>
+<p>The only thing that was immediately disappointing to me was that I could only add a single site; after adding Unusually Pink, there wasn&rsquo;t an option to add another site along with that. A little over a week ago, though, when I went to my Cloudflare dashboard to see how my traffic looked from the previous night, I noticed a new UI that included an option for additional sites. I quickly added several other sites to start keeping tabs on them as well. This is surprisingly helpful for me because it enables me to see that several sites I maintain get literally <em>no</em> traffic. Those are sites that I&rsquo;ll probably be taking offline and letting the domains expire since there&rsquo;s clearly not much of a point in keeping them around if having them online for their own sake isn&rsquo;t important to me (spoiler alert: it&rsquo;s not.)</p>
+<p>The only other thing worth mentioning is that, as is the case with any analytics platform, Cloudflare won&rsquo;t provide a completely accurate picture of who visits your site simply based on how each user configures their browser. For example, I noticed that the <a href="https://unusually.pink/safari-14/">tracking blocker built into current versions of Safari</a> plays nicely with Cloudflare. However, I confirmed that <a href="https://brave.com/">Brave</a>, the Chromium-based browser I use when I&rsquo;m absolutely forced to use a Chromium-based browser, and <a href="https://ublockorigin.com/">uBlock Origin</a> will still block the JavaScript element. As is always the case, your mileage may vary. Even without a 100% complete picture, though, I still like the insight that I glean from Cloudflare anaytics, and I don&rsquo;t feel like I&rsquo;m being abusive with the personal information for anyone visiting the site. With that being said, anyone who simply hates Cloudflare or disagrees with my assessment on just how private their analytics are can easily block them just as they can with every other analytics platform, which hopefully provides a happy medium.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

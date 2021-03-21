@@ -10,10 +10,10 @@
     <lastBuildDate>Fri, 12 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/mirror/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Swapping Mirrors On Manjaro Linux</title>
-      <link>https://hugo.unusually.pink/posts/swapping-mirrors-on-manjaro-linux/</link>
+      <link>https://hugo.unusually.pink/swapping-mirrors-on-manjaro-linux/</link>
       <pubDate>Fri, 12 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/swapping-mirrors-on-manjaro-linux/</guid>
+      <guid>https://hugo.unusually.pink/swapping-mirrors-on-manjaro-linux/</guid>
       <description>One of my favorite aspects of Linux ever since my first Ubuntu 6.06 installation has been the software repository. Back in 2006, installing the overwhelming majority of the software I might need from a supported repository stood in stark contrast with the Windows XP method of searching the web for the software you wanted, finding a download link that didn&amp;rsquo;t seem shady, and then hoping for the best.
 Repositories are frequently hosted by the maintainer of a Linux distribution (e.</description>
       <content>&lt;p&gt;One of my favorite aspects of Linux ever since my first Ubuntu 6.06 installation has been the software repository. Back in 2006, installing the overwhelming majority of the software I might need from a supported repository stood in stark contrast with the Windows XP method of searching the web for the software you wanted, finding a download link that didn&amp;rsquo;t &lt;em&gt;seem&lt;/em&gt; shady, and then hoping for the best.&lt;/p&gt;
@@ -27,9 +27,9 @@ Repositories are frequently hosted by the maintainer of a Linux distribution (e.
 &lt;p&gt;&lt;code&gt;sudo pacman -Syyu&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This picked a different mirror, and everything worked as expected. The problem was solved. Not satisfied with leaving things at that, though, I decided to see if I could tell of any indicators of a mirror being down. I first confirmed that I could ping &lt;strong&gt;us.mirrors.fossho.st&lt;/strong&gt;. Likewise, I could connect to it over port 80 (HTTP.) However, I couldn&amp;rsquo;t connect to it over port 443 (HTTPS.) I don&amp;rsquo;t actually know what mechanism is used for deliver updates, but I feel like it&amp;rsquo;s &lt;em&gt;very&lt;/em&gt; likely that HTTPS is used; I couldn&amp;rsquo;t see HTTP being the norm given that you wouldn&amp;rsquo;t be able to ensure the updates hadn&amp;rsquo;t been tampered with. A random port is always possible, though.&lt;/p&gt;
 &lt;p&gt;For the sake of comparison, I opened &lt;code&gt;/etc/pacman.d/mirrorlist&lt;/code&gt; back up and searched for another mirror in the US. &lt;strong&gt;mirror.dacentec.com&lt;/strong&gt; was the first hit. I repeated the same process and confirmed that I &lt;em&gt;could&lt;/em&gt; reach it on both ports 80 and 443.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/nmap_mirrors_full.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/nmap_mirrors_full.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;It seems like 443 is the key. It was only after doing this, though, that I realized a project like Manjaro likely has a status page for their mirrors. &lt;a href=&#34;https://repo.manjaro.org/&#34;&gt;I wasn&amp;rsquo;t disappointed.&lt;/a&gt; Checking this did appear to indicate that my original mirror is experiencing issues. Incidentally, the baseline mirror I tested is included in the same screenshot, and it&amp;rsquo;s shown to be up.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/mirror_status-1024x139.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/mirror_status-1024x139.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 </content>
     </item>
     

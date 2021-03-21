@@ -10,10 +10,10 @@
     <lastBuildDate>Sun, 30 Aug 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/cradlepoint/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>It&#39;s Always DNS</title>
-      <link>https://hugo.unusually.pink/posts/its-always-dns/</link>
+      <link>https://hugo.unusually.pink/its-always-dns/</link>
       <pubDate>Sun, 30 Aug 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/its-always-dns/</guid>
+      <guid>https://hugo.unusually.pink/its-always-dns/</guid>
       <description>There&amp;rsquo;s a saying among system administrators:
  It&amp;rsquo;s always DNS.
  Meaning that whenever there’s an issue, DNS is likely the culprit. This morning that adage proved itself yet again.

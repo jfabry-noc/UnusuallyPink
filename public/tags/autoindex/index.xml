@@ -10,10 +10,10 @@
     <lastBuildDate>Thu, 04 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/autoindex/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enable Directory Listing On Specific Directory With Nginx</title>
-      <link>https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/</link>
+      <link>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</link>
       <pubDate>Thu, 04 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/enable-directory-listing-on-specific-directory-with-nginx/</guid>
+      <guid>https://hugo.unusually.pink/enable-directory-listing-on-specific-directory-with-nginx/</guid>
       <description>Note: In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.
 Generally when you navigate to a website, such as https://unusually.pink/, you don&amp;rsquo;t actually get to see the files which live on the server at the location hosting all of the HTML, JavaScript, CSS, and other goodies for the site.</description>
       <content>&lt;p&gt;&lt;strong&gt;Note:&lt;/strong&gt; In the sample below, I&amp;rsquo;m using Ubuntu Linux as the host for my web server. The instructions should be the same for other flavors of Linux, though the path to your Nginx sites configuration files may be different.&lt;/p&gt;

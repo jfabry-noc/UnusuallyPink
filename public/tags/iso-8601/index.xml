@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 18 Jan 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/iso-8601/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Parse ISO 8601 String With Timezone Offset To Date Object In Groovy</title>
-      <link>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
+      <link>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</link>
       <pubDate>Mon, 18 Jan 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
+      <guid>https://hugo.unusually.pink/parse-iso-8601-string-with-timezone-offset-to-string-in-groovy/</guid>
       <description>My Groovy posts always have the absolute worst titles, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online.</description>
       <content>&lt;p&gt;My &lt;a href=&#34;https://unusually.pink/groovy-programming-creating-an-iso-date-at-a-specific-date-and-time-in-utc/&#34;&gt;Groovy posts always have the absolute worst titles&lt;/a&gt;, but I figure that making them verbose is really the only way to make them discoverable. I write a good bit of Groovy code at work, and given that it&amp;rsquo;s been a few years since the heyday of Groovy it can occasionally be a bit of a struggle to figure out exactly what I need with the resources I dig up online. Any time I manage to figure out something that was difficult to find information on, it seems like a good opportunity to fill the gap a bit.&lt;/p&gt;
 &lt;p&gt;I do a lot of work with APIs, mostly making calls against cloud-based systems. In the cloud, no one generally cares about what timezone you happen to be in, so UTC is always used. I&amp;rsquo;ve recently been making calls against local software platform, though, and &lt;strong&gt;it&lt;/strong&gt; returns timestamps in the local time of the server running it. Ick. I ended up with string values like the following which I then needed to parse as a Date object in Groovy for the sake of comparison.&lt;/p&gt;

@@ -10,10 +10,10 @@
     <lastBuildDate>Thu, 20 Jun 2019 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/discord/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Enabling Legacy Status Icons In Pop!_OS</title>
-      <link>https://hugo.unusually.pink/posts/enabling-legacy-status-icons-in-popos/</link>
+      <link>https://hugo.unusually.pink/enabling-legacy-status-icons-in-popos/</link>
       <pubDate>Thu, 20 Jun 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/enabling-legacy-status-icons-in-popos/</guid>
+      <guid>https://hugo.unusually.pink/enabling-legacy-status-icons-in-popos/</guid>
       <description>As we mentioned back in Episode 6, I had installed Pop!OS on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I want distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like Dropbox and Discord will drop a small icon somewhere in your OS to let you know the applications are running.</description>
       <content>&lt;p&gt;As we mentioned back in &lt;a href=&#34;https://www.unusually.pink/podcast/episode-6-huzzah-hobbies&#34;&gt;Episode 6&lt;/a&gt;, I had installed &lt;a href=&#34;https://system76.com/pop&#34;&gt;Pop!OS&lt;/a&gt; on my desktop. The design of the Pop!_OS interface is very streamlined and minimal to allow you to focus on things without as many distractions as you’ll frequently see in competing operating systems. That’s pretty awesome, but sometimes I &lt;em&gt;want&lt;/em&gt; distractions… namely the ones I get by seeing which applications I have up and running in the background. As you’re probably used to seeing, applications like &lt;a href=&#34;https://www.dropbox.com/&#34;&gt;Dropbox&lt;/a&gt; and &lt;a href=&#34;https://discordapp.com/&#34;&gt;Discord&lt;/a&gt; will drop a small icon somewhere in your OS to let you know the applications are running. For example, by default they’ll appear in the bottom right corner of the screen in Windows and at the upper right corner in macOS which is right next to the clock. In &lt;a href=&#34;https://ubuntu.com/&#34;&gt;Ubuntu&lt;/a&gt;, which Pop!_OS is based on, they’ll also show up next to the clock in the upper-right corner of the screen.&lt;/p&gt;
 &lt;p&gt;I could live without a Discord icon, but I really wanted one for Dropbox; it’s useful to see the icon change based on the sync status of the service. I did a little bit of digging, and the most challenging part was honestly what search terms to use in order to find the information for which I was hunting. Luckily, it didn’t take long for me to find the &lt;a href=&#34;https://pop.system76.com/docs/status-icons/&#34;&gt;official documentation&lt;/a&gt; on the matter.&lt;/p&gt;
@@ -25,7 +25,7 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Once it’s installed, launch it with:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;gnome-shell-extension-prefs
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Then turn on &lt;strong&gt;KStatusNotifierItem/AppIndicator Support&lt;/strong&gt;. Boom. Okay, not boom. I had to log out and back in first, as noted in the documentation. After &lt;em&gt;that&lt;/em&gt;, though, I was able to see my Dropbox icon in all its glory.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/EnablingLegacyStatusIconsInPop_OS_window_view.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/EnablingLegacyStatusIconsInPop_OS_window_view.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Worth it. Stay pink!&lt;/p&gt;
 </content>
     </item>

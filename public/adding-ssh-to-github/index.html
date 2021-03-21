@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Adding SSH To GitHub :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Between the Thanksgiving holiday and some shifting priorities when I got back to work, I hadn&amp;rsquo;t made any new commits to my GitHub account for about 10 days. This meant that I didn&amp;rsquo;t have any new posts to my recently-launched GitCommit site that makes a bit of a microblog from my commit messages. To be honest, putting it together was really an excuse to have something up at the domain I bought, but I really like the way it turned out." />
+<meta name="keywords" content="git, gitcommit, https, netlify, ssh, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/adding-ssh-to-github/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Adding SSH To GitHub">
+<meta property="og:description" content="Between the Thanksgiving holiday and some shifting priorities when I got back to work, I hadn&amp;rsquo;t made any new commits to my GitHub account for about 10 days. This meant that I didn&amp;rsquo;t have any new posts to my recently-launched GitCommit site that makes a bit of a microblog from my commit messages. To be honest, putting it together was really an excuse to have something up at the domain I bought, but I really like the way it turned out." />
+<meta property="og:url" content="https://hugo.unusually.pink/adding-ssh-to-github/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-12-23 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/adding-ssh-to-github/">Adding SSH To GitHub</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-12-23 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/git/">git</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/gitcommit/">gitcommit</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/https/">https</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/netlify/">netlify</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/ssh/">ssh</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Between the Thanksgiving holiday and some shifting priorities when I got back to work, I hadn&rsquo;t made any new commits to my <a href="https://github.com/jfabry-noc/">GitHub account</a> for about 10 days. This meant that I didn&rsquo;t have any new posts to my recently-launched <a href="https://gitcommit.gay">GitCommit</a> site that makes a bit of a microblog from my commit messages. To be honest, putting it together was really an excuse to have <em>something</em> up at the domain I bought, but I really like the way it turned out. After making a fresh commit yesterday, though, I received an email from GitHub telling me:</p>
+<blockquote>
+<p>You recently used a password to access the repository at jfabry-noc/OxidizedBackup with git using git/2.25.1.</p>
+<p>Basic authentication using a password to Git is deprecated and will soon no longer work.</p>
+</blockquote>
+<p>It also included a link to their <a href="https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/">authentication requirements documentation</a>. On the whole it made sense to me; I typically would just have <code>git</code> remember my credentials so that I never had to enter them. In the new setup, I would <em>have</em> to enter them, though I could configure how long they would remain cached. On the surface, this didn&rsquo;t bother me, and I went about my day making several additional commits beyond the first. Later on, though, I realized that my new commits weren&rsquo;t appearing on the GitCommit site. The site is hosted by <a href="https://netlify.com">Netlify</a>, and it works by polling my GitHub account via a <code>cron</code> job every 4 hours (I&rsquo;m hoping to eventually update it to use webhooks to have commit information pushed to it, but I haven&rsquo;t had an opportunity yet.) When a new commit happens, my code pulls the repository, the commit message, and the timestamp. It then updates the HTML and automatically makes an <em>additional</em> commit on its own repository (yes, I included code to avoid an endless repost loop.) Netlify has been configured to look at only the <strong>html</strong> directory in the repository, dynamically updating whenever a new change is commited to that directory, much like how <a href="https://pages.github.com/">GitHub Pages</a> or any other CI web hosting works.</p>
+<p>Since my new commits weren&rsquo;t showing up, I first checked the <a href="https://github.com/jfabry-noc/GitCommit">GitHub repo for GitCommit</a>. No new HTML changes had been commited to it. Next, I went to the VPS which executes the <code>cron</code> job. For my own sanity, I long ago learned that I should implement some type of logging for any code that I plan to run automatically so that I can easily troubleshoot it during this exact situation. Checking the log file, I saw that my code <em>did</em> successfully find the new commits and update the appropriate HTML file. It was able to make the expected commit, and running <code>git status</code> even confirmed that my local repository was ahead of the remote by 2 commits. However, running the following didn&rsquo;t work to push my changes up to GitHub so that Netlify could see them:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git push origin main
+</code></pre></div><p>Suddenly it clicked, and I realized that the change from earlier in the day was the culprit; my code could no longer <code>git push</code> because that was now prompting for a password that would never be typed given that the code was executed by <code>cron</code>. To confirm, I manually executed the script from my SSH session and saw the password prompt appear. Ick.</p>
+<p>Fortunately, I realized that I wouldn&rsquo;t need a password if I was syncing my repository via SSH rather than HTTPS. SSH would allow me to use certificates instead. First, I had to generate a new public-private key pair with:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">ssh-keygen -t ed25519 -C <span style="color:#e6db74">&#34;email@email.com&#34;</span>
+</code></pre></div><p>Yeah, I&rsquo;m not telling you my email address. I&rsquo;ll give you a hint; it&rsquo;s <a href="mailto:something@unusually.pink">something@unusually.pink</a>. Good luck. The above command asked for a couple of things such as the location where I wanted to store the keys and if I wanted to add a password for accessing them. I just took the defaults. Next up, I had to start a background SSH agent and tell it to use the private key I had just generated:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">eval <span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">$(</span>ssh-agent -s<span style="color:#66d9ef">)</span><span style="color:#e6db74">&#34;</span>
+ssh-add ~/.ssh/id<span style="color:#ae81ff">\_</span>ed25519
+</code></pre></div><p>With everything set on the client side, I now had to tell GitHub to use my public key for any SSH interactions. They have <a href="https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-y">very solid documentation</a> available with the exact steps. Just be sure you actually copy the content of the <strong>public</strong> key into GitHub rather than the private key. GitHub won&rsquo;t accept the private key because the formatting is wrong, but the very fact that I pasted it there made me paranoid enough to regenerate the pair and do it again.</p>
+<p>To test things out, I tried to clone one of my private repositories via the SSH link, which you can select from the tabs when trying to clone anything from GitHub.</p>
+<p><img src="/images/github_ssh.png" alt=""></p>
+<p>That worked successfully and verified that my keys were properly identifying me. The last step was to update the local repository for GitCommit to use a new URL for the remote repository. Regardless of whether I&rsquo;m using HTTPS or SSH, I still run <code>git push origin main</code> in order to sync it to the remote; the configuration of the local repository is what specifies which URL is used. In order to flip mine from HTTPS to SSH, I simply ran the following from my local directory for GitCommit:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">git remote set-url origin git@github.com:jfabry-noc/GitCommit.git
+</code></pre></div><p>After this, I re-ran my script and <code>git push</code> was able to successfully push my code to the remote without any interaction. After working through many commits today, I verified that my website was updated as expected.</p>
+<p>As a bonus note, astute readers may recall the issues I had following the published steps to sync the <a href="https://unusually.pink/all-dracula-everything/'">Dracula theme for git</a>. This was the exact same scenario where the instructions assumed that SSH was in use rather than HTTPS.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

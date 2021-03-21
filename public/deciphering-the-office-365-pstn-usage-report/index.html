@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Deciphering the Office 365 PSTN Usage Report :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Background Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there was a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings." />
+<meta name="keywords" content="UnsuallyPink" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Deciphering the Office 365 PSTN Usage Report">
+<meta property="og:description" content="Background Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&amp;rsquo;t realize there was a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings." />
+<meta property="og:url" content="https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-04-28 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/deciphering-the-office-365-pstn-usage-report/">Deciphering the Office 365 PSTN Usage Report</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-04-28 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/audioconferencing/">audioconferencing</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/dial-out-pool/">dial-out-pool</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/o365/">o365</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/office-365/">office-365</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/pstn/">pstn</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/python/">python</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/scripting/">scripting</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <h2 id="background">Background<a href="#background" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>Last week I received a bit of a mystifying alert from Office 365 letting me know that our pool of PSTN dial-out minutes for the month had been 80% consumed. This was mystifying due to the fact that as someone who has managed O365 for nearly a decade I didn&rsquo;t realize there <em>was</em> a pool of minutes. PSTN (Public Switched Telephone Network) had to be related in some way or another to the capability my company has purchased from Office 365 to have a dial-in option added to our Microsoft Teams meetings. Any meeting we create has a dial-in number so that anyone who has a poor data connection can still dial a telephone and at least join the audio portion of the meeting.</p>
+<p>While the main function of the Audioconferencing license is to provide that dial-<strong>in</strong> functionality, dial-<strong>out</strong> options also exist. For example, while in a Teams meeting if you realize you need someone else to participate you have the option to have Teams dial that person if you provide a phone number. Likewise, if you&rsquo;re struggling in a low-coverage area you can tap a button in the Teams mobile app to have the service call you.</p>
+<p>Sure enough (say what you want about Microsoft, but their documentation for Office 365 tends to be extremely good), I found the <a href="https://docs.microsoft.com/en-us/microsoftteams/audio-conferencing-subscription-dial-out">official confirmation</a>. It just seems like a bit of a forgotten caveat considering you have to go to the legacy Skype portal to see it; the numbers are completely absent from the Teams portal:</p>
+<blockquote>
+<p>You can monitor the usage against your dial-out minute pool in the &ldquo;legacy&rdquo; Skype for Business Admin Center. In the Microsoft Teams Admin Center, navigate to Legacy portal &gt; Reports &gt; PSTN Minute Pools. The Zone A dial-out minute pool will be labeled in the report as &ldquo;Outbound Calls to Zone A Countries.&rdquo;</p>
+</blockquote>
+<h2 id="digging-in">Digging In<a href="#digging-in" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>When I checked the total number of minutes we had in our pool, I did some quick math to confirm that we were allotted 60 dial-out minutes per Audioconferencing license that was <strong>assigned</strong>; purchased licenses that were not yet assigned to a user didn&rsquo;t factor into the equation.</p>
+<p>I was still a bit stumped as to <em>who</em> would be eating through our minutes, though, considering I figured dial-out to be a pretty niche feature. Luckily, the reporting section of the legacy Skype portal gives a report of how the minutes are used. There&rsquo;s even an option to export it for a particular time range. I exported the data on the month-to-date in my tenant, which saved a .csv file. Opening it up showed me that there was still some work to do. The report listed dates for each call, the UPN (userPrincipalName) of the user, a source number, a destination number, and the duration of the call&hellip; in seconds. It also included both the dial-out information I wanted <strong>and</strong> the dial-in information that I don&rsquo;t care about since that is unlimited. Ick.</p>
+<p>I first fired up my text editor and put together a Python script. It weeded out any of the dial-in entries. For all of the dial-out entries, it added the UPN of the user to a list of dictionaries with a count of the seconds for their call. For each entry in the report, it was checked against my list of dictionaries, one for each user. If the user already had a dictionary in the list, the duration of that call was added to the user&rsquo;s existing total. If the user wasn&rsquo;t in the list yet, the script would append a new dictionary to the list for that user with the duration of the current call serving as their starting point. So the key for each dictionary was the UPN and the value was the number of seconds. Each dictionary in the list only needed one key-value pair.</p>
+<p>I&rsquo;m not sharing this initial version of the script because while the code worked perfectly, the logic was flawed. The report actually showed that <a href="https://instagram.com/craftbrewgeek">Craft Brew Geek</a> was using <em>significantly</em> more minutes than anyone else. While I was aware of the fact that he was frequently using his phone for Teams meetings while everyone is under quarantine due to his fixed-line provider having issues, I thought he was doing that via LTE rather than PSTN. He described his method of joining meetings to me, and he was literally tapping the &ldquo;Join&rdquo; button from the Teams app on his phone. To verify this was using LTE data, I even noted the LTE data consumed by the Teams app on my phone for the month, did a 10 minute Teams audio-only call with Brandi by joining the same way Craft Brew Geek was, and then checking the data usage again. Sure enough, it went up by 10 MB; this process wasn&rsquo;t touching PSTN at all. I made doubly sure by assigning a policy to just my O365 account in Teams to block dial-out. I verified that tapping the &ldquo;Join&rdquo; button on my phone still worked fine while opting for the explicit &ldquo;Dial me&rdquo; option ended in an error.</p>
+<p>The report also struck me as odd because it only listed 2 days for Craft Brew Geek, despite the fact that I know he&rsquo;s been joining Teams calls the same way for 2 months now while we all work from home. I went back to the data this time paying attention to the source and destination numbers listed in the report. I noticed for all of Craft Brew Geek&rsquo;s entries, the number listed as the source number was the number from Microsoft that we selected as the &ldquo;default&rdquo; number for our tenant due to it having the closest proximity to the majority of our employees. The destination number was the same every time as well, but it <em>wasn&rsquo;t</em> Craft Brew Geek&rsquo;s number. It was the number for a different employee in our company.</p>
+<p>This is when I finally realized that the UPN listed in the report is <strong>not</strong> necessarily the UPN of the user who consumed the minutes; that wouldn&rsquo;t even necessarily make sense considering you could have a meeting dial-out to an external participant (e.g. if you were using Teams to conduct an interview) or you may not have any telephone information stored for your users in Office 365. Instead, the UPN listed in the report is who <strong>scheduled</strong> the meeting.</p>
+<p>Realizing that my logic was flawed due to the ambiguity of the report, I modified my script and replaced the UPN as the key in each dictionary with the destination telephone number. What I ended up with is <a href="https://gist.github.com/JFFail/a2da00a7c379d2805825a27a07bc89b4">this Python script</a>. It&rsquo;s quick and dirty since I wasn&rsquo;t trying anything fancy; I just wanted a quick, sorted listing of our dial-out usage.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python3" data-lang="python3"><span style="color:#f92672">import</span> csv
+
+usage\_tracker \<span style="color:#f92672">=</span> {}
+
+report\_file \<span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;./pstn\_report.csv&#34;</span>
+<span style="color:#66d9ef">with</span> open(report\_file, <span style="color:#e6db74">&#34;r&#34;</span>, newline\<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>) <span style="color:#66d9ef">as</span> csvfile:
+    reader \<span style="color:#f92672">=</span> csv<span style="color:#f92672">.</span>DictReader(csvfile)
+
+    <span style="color:#66d9ef">for</span> row <span style="color:#f92672">in</span> reader:
+        <span style="color:#66d9ef">if</span> row\[<span style="color:#e6db74">&#34;Call Type&#34;</span>\] \<span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;conf\_out&#34;</span>:
+            seconds \<span style="color:#f92672">=</span> int(row\[<span style="color:#e6db74">&#34;Duration Seconds&#34;</span>\])
+            <span style="color:#66d9ef">if</span> row\[<span style="color:#e6db74">&#34;Destination Number&#34;</span>\] <span style="color:#f92672">in</span> usage\_tracker<span style="color:#f92672">.</span>keys():
+                usage\_tracker\[row\[<span style="color:#e6db74">&#34;Destination Number&#34;</span>\]\] <span style="color:#f92672">+=</span> seconds
+            <span style="color:#66d9ef">else</span>:
+                usage\_tracker\[row\[<span style="color:#e6db74">&#34;Destination Number&#34;</span>\]\] \<span style="color:#f92672">=</span> seconds
+
+usage\_tuple\_list \<span style="color:#f92672">=</span> sorted(usage\_tracker<span style="color:#f92672">.</span>items(), key\<span style="color:#f92672">=</span><span style="color:#66d9ef">lambda</span> x: x\[<span style="color:#ae81ff">1</span>\], reverse\<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+
+total\_minutes \<span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+<span style="color:#66d9ef">for</span> element <span style="color:#f92672">in</span> usage\_tuple\_list:
+    current\_minutes \<span style="color:#f92672">=</span> round(element\[<span style="color:#ae81ff">1</span>\] <span style="color:#f92672">/</span> <span style="color:#ae81ff">60</span>)
+    total\_minutes <span style="color:#f92672">+=</span> current\_minutes
+    print(element\[<span style="color:#ae81ff">0</span>\] <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;: &#34;</span> <span style="color:#f92672">+</span> str(current\_minutes))
+
+print(<span style="color:#e6db74">&#34;============================&#34;</span>)
+print(total\_minutes)
+</code></pre></div><p>At this point, all I needed to do was figure out who the telephone numbers my script spit out belonged to. Our company maintains a listing of numbers for each employee, so it was simple for me to search it for each entry. This showed us that one employee who was using dial-out heavily for himself as a matter of convenience during the quarantine was using basically all of our minutes.</p>
+<h2 id="aftermath">Aftermath<a href="#aftermath" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h2>
+<p>The main takeaways from this incident are:</p>
+<ol>
+<li>Be mindful of the PSTN dial-out pool in Office 365 if you&rsquo;re doing audioconferencing. I hadn&rsquo;t thought of it because the O365 instance I managed previously was absolutely massive; this means we had significantly more minutes in the pool for a feature most people never use since the size of the pool is based on license assignment. Keep tabs on it in a smaller organization, especially when everyone is suddenly working remotely.</li>
+<li>The report from the legacy Skype admin center is pretty confusing, and it&rsquo;s easy to mistake who is consuming dial-out minutes. Keep tabs on the destination number(s) in the report to find out who is actually doing it.</li>
+</ol>
+<p>That&rsquo;s it! Stay pink (from a socially acceptable distance, of course.)</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

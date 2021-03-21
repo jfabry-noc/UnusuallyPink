@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Self-Hosting A Static Website :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set." />
+<meta name="keywords" content="gohugo, hugo, lets-encrypt, nginx, static, website" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/self-hosting-a-static-website/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Self-Hosting A Static Website">
+<meta property="og:description" content="Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&amp;rsquo;s myriad requirements, though, is a website containing the author&amp;rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set." />
+<meta property="og:url" content="https://hugo.unusually.pink/self-hosting-a-static-website/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-07-09 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/self-hosting-a-static-website/">Self-Hosting A Static Website</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-07-09 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/gohugo/">gohugo</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/hugo/">hugo</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/lets-encrypt/">lets-encrypt</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/nginx/">nginx</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/static/">static</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/website/">website</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>Earlier this week a friend reached out to me regarding a website. He had just finished developing his very first iOS game and was ready to submit it to Apple for approval. One of Apple&rsquo;s myriad requirements, though, is a website containing the author&rsquo;s privacy policy. My friend had no website and no idea how to make one, so he asked me if I could help. It seems wild to me that someone could have the chops to make an iOS app in Objective-C or Swift but not be able to make a website, but each of us has a different skill set.</p>
+<p>We first took some early steps gathering requirements. What did he want for the site? Literally just the privacy policy. Where did he want to host it? Wherever was the cheapest. Did he have a domain name already? Yes! This was fairly straightforward; he literally <em>just</em> wanted the very basics. After a bit of discussion I convinced him to write up a quick &ldquo;about me&rdquo; type of page so that we could have more than just the privacy policy. From there I could get to work.</p>
+<h1 id="hosting">Hosting<a href="#hosting" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>The first thing I did was have him head over to <a href="https://www.vultr.com/">Vultr</a> and spin up their cheapest instance. I think this is running him $5 USD per month. I had him pick <a href="https://ubuntu.com/">Ubuntu</a> as the server operating system given that it&rsquo;s the one I&rsquo;m most familiar with. My friend has some familiarity with Linux but not a lot of practical knowledge; when I asked him to shoot me some SSH credentials with <code>sudo</code> access he literally sent me the root account from Vultr. Ick.</p>
+<h1 id="configuring-the-host">Configuring The Host<a href="#configuring-the-host" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<h3 id="accounts">Accounts<a href="#accounts" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>My first goal was to configure the host. I started that off by creating user accounts for each of us:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">adduser username
+usermod -aG sudo username
+</code></pre></div><p>After switching users and verifying my new account worked, I disabled root&rsquo;s ability to log in:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo passwd -l root
+</code></pre></div><h3 id="ports">Ports<a href="#ports" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>Next I wanted to change the default SSH port since having 22 open means a million places from across the planet are going to throw garbage traffic at your server. I did this by modifying the SSH config at <code>/etc/ssh/sshd_config</code>, finding the line with <code>#Port 22</code>, uncommenting it, and changing the port to a high number of my friend&rsquo;s choice. Then I restarted SSH:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo systemctl restart ssh
+</code></pre></div><h3 id="firewall">Firewall<a href="#firewall" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>I wanted to enable the firewall as well, so I opened up with the new SSH port <em>and</em> 80 and 443 for our eventual website:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">sudo ufw allow sshPortNumber/tcp
+sudo ufw allow 80/tcp
+sudo ufw allow 443/tcp
+</code></pre></div><h3 id="webserver">Webserver<a href="#webserver" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>I next needed a web server; <a href="http://nginx.org/">Nginx</a> has been my go-to choice for a long time. Rather than re-hashing all of the steps, I&rsquo;ll just recommend following the excellent documentation from <a href="https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04">DigitalOcean</a> which nicely covers the Nginx configuration. That takes you to the point where you are hosting a website. Then you just need content on it.</p>
+<h3 id="certificate">Certificate<a href="#certificate" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h3>
+<p>I&rsquo;m an advocate of using HTTPS for everything, and with free certificates from <a href="https://letsencrypt.org/">Let&rsquo;s Encrypt</a> there&rsquo;s no reason not to. Given that we have shell access, using <code>certbot</code> is the way to go. There&rsquo;s also excellent <a href="https://certbot.eff.org/lets-encrypt/ubuntufocal-nginx">documentation on that process on Ubuntu with Nginx</a>. I highly recommend selecting the option to redirect any HTTP traffic to HTTPS.</p>
+<h1 id="website">Website<a href="#website" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>Now for the website itself. I&rsquo;m not really much of a web developer, and I dislike making anything frontend; I don&rsquo;t exactly have the best design sense. So I once again opted to leverage <a href="https://gohugo.io/">Hugo</a> to take care of that for me. I&rsquo;ve written about <a href="https://failti.me/posts/hugo_setup_guide/">the specifics of using Hugo in detail</a>. Since we really just wanted a generic landing page with my friend&rsquo;s socials and then links to the About and Privacy Policy pages, I ended up going with the <a href="https://themes.gohugo.io/hermit/">Hermit theme</a>. It has a nice, simple look. My friend&rsquo;s favorite color is mint green, so the default background also works nicely with that when I changed the accent color. The theme nicely includes an <a href="https://github.com/Track3/hermit/tree/master/exampleSite">exampleSite</a> so that I can steal their <code>config.toml</code> file and also their &ldquo;About&rdquo; page to make things even easier for myself.</p>
+<h1 id="backups">Backups<a href="#backups" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>One of the nice things about Hugo is that, since everything is a simple text file, it&rsquo;s very easy to compress your entire site and save a backup. Then if something terrible happens to your server, it&rsquo;s extremely easy to get the site back up and running on a different machine. In this case, I made tarballs for both the finished, compiled site and the Hugo directory storing the configuration and Markdown.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">tar -zvcf ~/temp/html_output.tar.gz /var/www/mySite.com/
+tar -zvcf ~/temp/hugo_directory.tar.gz /var/www/mySite.com/
+</code></pre></div><p>With the tarballs created, I used an SFTP client to copy them off the server for safe keeping.</p>
+<h1 id="wrap-up">Wrap Up<a href="#wrap-up" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>In total it took me about an hour and a half to get everything up and running. Having gone through this process <em>many</em> times for websites of my own, I&rsquo;ve got a decent bit of experience with the process, but this shows it still doesn&rsquo;t necessarily take a super long time to get a decent website up and running. The big benefits are:</p>
+<ol>
+<li>The site is <em>cheap</em> to run. Even the smallest instance at any VPS provider will be able to handle multiple sites with ease unless they start getting really popular, so if my friend wants to create any other sites in the future he won&rsquo;t need additional hosting.</li>
+<li>Backups are stupid simple. My friend isn&rsquo;t beholden to a hosting provider or trying to work within the confines of something more expensive like Wordpress or Squarespace.</li>
+</ol>
+<p>The downsides are present, though, so you have to be cool with them:</p>
+<ol>
+<li>Setup takes more technical chops than clicking through a Squarespace template editor. While the documentation for everything in this post is extremely good, if working out a terminal freaks you out then this likely isn&rsquo;t for you.</li>
+<li>Content is authored in Markdown. This likely doesn&rsquo;t matter for my friend at the moment since he&rsquo;s not really posting anything new to the site, but it would be something to keep in mind if he decided to start a blog. In that scenario, I usually just SSH to the server and author my content in <a href="https://www.vim.org/">Vim</a>. You could also author the Markdown elsewhere and copy it to the server, or use SFTP to open the Markdown file on the server from an editor on your local machine. It&rsquo;s definitely <em>not</em> as simple as a WYIWYG editor in your browser, though.</li>
+<li>Maintenance is something that will need to be done at least periodically. The server will need to be patched. That&rsquo;s easy enough to do with a simple <code>sudo apt update &amp;&amp; sudo apt upgrade</code> and then reboot when necessary, but it&rsquo;s just another step to keep in mind. Likewise, bouncing the server means that the website will be down, even if it&rsquo;s typically only for a moment or two.</li>
+</ol>
+<p>Being kind of pretentious, technical snob I personally find it <em>easier</em> to author my comment in Markdown on Vim instead of using a WYSIWYG editor in a GUI, but your mileage will vary based on your own prefrences.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>Swapfile Fix on Manjaro Linux Pinebook Pro :: Unusually Pink</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
+Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life." />
+<meta name="keywords" content="dd, fallocate, linux, manjaro, pinebook, pinebook-pro, swap, swapfile" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/" />
+
+
+
+
+<link rel="stylesheet" href="https://hugo.unusually.pink/assets/style.css">
+
+  <link rel="stylesheet" href="https://hugo.unusually.pink/assets/pink.css">
+
+
+
+
+
+
+<link rel="apple-touch-icon" href="https://hugo.unusually.pink/img/apple-touch-icon-192x192.png">
+
+  <link rel="shortcut icon" href="https://hugo.unusually.pink/img/favicon/pink.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+  
+    <meta name="twitter:site" content="" />
+  
+    <meta name="twitter:creator" content="UnusuallyPink" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="Swapfile Fix on Manjaro Linux Pinebook Pro">
+<meta property="og:description" content="I wrote about a month ago of an update on my Pinebook Pro after switching to Manjaro Linux. I continue to make heavy use of my Pinebook Pro while I&amp;rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.
+Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the directions from the Manjaro wiki so that I could hibernate the machine and get much better battery life." />
+<meta property="og:url" content="https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/" />
+<meta property="og:site_name" content="Unusually Pink" />
+
+  
+    <meta property="og:image" content="https://hugo.unusually.pink/img/favicon/pink.png">
+  
+
+<meta property="og:image:width" content="2048">
+<meta property="og:image:height" content="1024">
+
+
+  <meta property="article:published_time" content="2020-06-13 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="pink">
+
+
+<div class="container headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    UnusuallyPink
+  </div>
+</a>
+
+    </div>
+    
+      <div class="menu-trigger">menu</div>
+    
+  </div>
+  
+    <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+      
+    
+
+    
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<div class="post">
+  <h1 class="post-title">
+    <a href="https://hugo.unusually.pink/swapfile-fix-on-manjar-linux-pinebook-pro/">Swapfile Fix on Manjaro Linux Pinebook Pro</a></h1>
+  <div class="post-meta">
+    
+      <span class="post-date">
+        2020-06-13 
+      </span>
+    
+    
+    <span class="post-author">:: John Fabry</span>
+    
+  </div>
+
+  
+  <span class="post-tags">
+    
+    #<a href="https://hugo.unusually.pink/tags/dd/">dd</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/fallocate/">fallocate</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/linux/">linux</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/manjaro/">manjaro</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/pinebook/">pinebook</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/pinebook-pro/">pinebook-pro</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/swap/">swap</a>&nbsp;
+    
+    #<a href="https://hugo.unusually.pink/tags/swapfile/">swapfile</a>&nbsp;
+    
+  </span>
+  
+
+  
+
+  
+
+  <div class="post-content"><div>
+        <p>I wrote about a month ago of an update <a href="https://www.unusually.pink/blog/unusually-pink-impressions-pinebook-pro">on my Pinebook Pro</a> after <a href="https://www.unusually.pink/blog/pinebook-pro-follow-up-manjaro-linux">switching to Manjaro Linux</a>. I continue to make heavy use of my Pinebook Pro while I&rsquo;m still social distancing and staying at home, giving me lots of time to work on personal projects without much else to do.</p>
+<p>Today I ran into an interesting issue, though, after applying a round of updates. I mentioned in my last Pinebook Pro post about going through the process of creating a swapfile using the <a href="https://wiki.manjaro.org/index.php?title=Swap#Using_a_Swapfile">directions from the Manjaro wiki</a> so that I could hibernate the machine and get <em>much</em> better battery life. I literally just opened the device back up, though, and saw a familiar message that there wasn&rsquo;t enough swap space to successfully hibernate the machine, leaving me with about 20% less battery life than I had been expecting. Running <code>htop</code> quickly showed me that my swap space was back to nothing. Weird.</p>
+<p>Following the instructions, my swapfile is literally called <strong>swapfile</strong> on the root of the filesystem. I verified it was still in place with:</p>
+<pre><code>ll / | grep swap
+</code></pre><p>With the file still in place, I ran through the instructions again. These ones were both successful:</p>
+<pre><code>sudo mkswap /swapfile
+sudo chmod u=rw,go= /swapfile
+</code></pre><p>I got an error when running this, though:</p>
+<pre><code>sudo swapon /swappfile
+</code></pre><p>This told me:</p>
+<blockquote>
+<p>swapon: /swapfile: swapon failed: Invalid argument</p>
+</blockquote>
+<p>Weird. I verified that I still had my swapfile entry in <code>/etc/fstab</code> to assign the swapfile on boot by running:</p>
+<pre><code>sudo cat /etc/fstab
+</code></pre><p>I tried running the <code>swapon</code> command a different way to have it apply everything in the <code>fstab</code> file:</p>
+<pre><code>sudo swapon -a
+</code></pre><p>This gave me another &ldquo;Invalid argument&rdquo; error still referencing &ldquo;/swapfile&rdquo;. At this point, I took to the Internet. After a couple of searches, I stumbled across <a href="https://unix.stackexchange.com/questions/294600/i-cant-enable-swap-space-on-centos-7">a matching Stack Exchange question</a>. The top answer claims that the issue is the initial <code>fallocate</code> command used to create the file (the same command used in the Manjaro wiki) doesn&rsquo;t physically allocate the 4 GB on the storage for speed, but that&rsquo;s apparently problematic for <code>swapon</code>. Following that answer, I ran a <code>dd</code> command to replace my swapfile with something physically allocated:</p>
+<pre><code>sudo dd if=/dev/zero of=/swapfile count=4096 bs=1MiB
+</code></pre><p>This takes a few moments to run, especially on the eMMC storage of the Pinebook Pro. Once it completed, though, I repeated the other commands and verified they were all successful. Sure enough, running <code>htop</code> once again shows my 4 GB of allocated swap space.</p>
+
+      </div></div>
+
+  
+
+  
+
+</div>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>2021</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+<script src="https://hugo.unusually.pink/assets/main.js"></script>
+<script src="https://hugo.unusually.pink/assets/prism.js"></script>
+
+
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>

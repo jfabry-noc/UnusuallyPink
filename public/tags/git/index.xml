@@ -10,10 +10,10 @@
     <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://hugo.unusually.pink/tags/git/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>macOS Big Sur 11.2 Homebrew and Git Error</title>
-      <link>https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/</link>
+      <link>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</link>
       <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/macos-big-sur-11-2-homebrew-and-git-error/</guid>
+      <guid>https://hugo.unusually.pink/macos-big-sur-11-2-homebrew-and-git-error/</guid>
       <description>After I upgraded my macOS install from 11.1 to 11.2, the next time I tried running brew update to update all of the packages available in Homebrew, I got a wall of text regarding things going off the rails that ultimately culminated with this error:
  Error: Failure while executing; git config --replace-all homebrew.analyticsmessage true was terminated by uncaught signal KILL.
  When this happens, not only is Homebrew broken, but git itself is broken.</description>
@@ -37,10 +37,10 @@ brew reinstall pcre2
     
     <item>
       <title>Adding SSH To GitHub</title>
-      <link>https://hugo.unusually.pink/posts/adding-ssh-to-github/</link>
+      <link>https://hugo.unusually.pink/adding-ssh-to-github/</link>
       <pubDate>Wed, 23 Dec 2020 00:00:00 +0000</pubDate>
       
-      <guid>https://hugo.unusually.pink/posts/adding-ssh-to-github/</guid>
+      <guid>https://hugo.unusually.pink/adding-ssh-to-github/</guid>
       <description>Between the Thanksgiving holiday and some shifting priorities when I got back to work, I hadn&amp;rsquo;t made any new commits to my GitHub account for about 10 days. This meant that I didn&amp;rsquo;t have any new posts to my recently-launched GitCommit site that makes a bit of a microblog from my commit messages. To be honest, putting it together was really an excuse to have something up at the domain I bought, but I really like the way it turned out.</description>
       <content>&lt;p&gt;Between the Thanksgiving holiday and some shifting priorities when I got back to work, I hadn&amp;rsquo;t made any new commits to my &lt;a href=&#34;https://github.com/jfabry-noc/&#34;&gt;GitHub account&lt;/a&gt; for about 10 days. This meant that I didn&amp;rsquo;t have any new posts to my recently-launched &lt;a href=&#34;https://gitcommit.gay&#34;&gt;GitCommit&lt;/a&gt; site that makes a bit of a microblog from my commit messages. To be honest, putting it together was really an excuse to have &lt;em&gt;something&lt;/em&gt; up at the domain I bought, but I really like the way it turned out. After making a fresh commit yesterday, though, I received an email from GitHub telling me:&lt;/p&gt;
 &lt;blockquote&gt;
@@ -58,7 +58,7 @@ brew reinstall pcre2
 ssh-add ~/.ssh/id&lt;span style=&#34;color:#ae81ff&#34;&gt;\_&lt;/span&gt;ed25519
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;With everything set on the client side, I now had to tell GitHub to use my public key for any SSH interactions. They have &lt;a href=&#34;https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/adding-a-new-ssh-key-to-y&#34;&gt;very solid documentation&lt;/a&gt; available with the exact steps. Just be sure you actually copy the content of the &lt;strong&gt;public&lt;/strong&gt; key into GitHub rather than the private key. GitHub won&amp;rsquo;t accept the private key because the formatting is wrong, but the very fact that I pasted it there made me paranoid enough to regenerate the pair and do it again.&lt;/p&gt;
 &lt;p&gt;To test things out, I tried to clone one of my private repositories via the SSH link, which you can select from the tabs when trying to clone anything from GitHub.&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;images/github_ssh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://hugo.unusually.pink/images/github_ssh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;That worked successfully and verified that my keys were properly identifying me. The last step was to update the local repository for GitCommit to use a new URL for the remote repository. Regardless of whether I&amp;rsquo;m using HTTPS or SSH, I still run &lt;code&gt;git push origin main&lt;/code&gt; in order to sync it to the remote; the configuration of the local repository is what specifies which URL is used. In order to flip mine from HTTPS to SSH, I simply ran the following from my local directory for GitCommit:&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-shell&#34; data-lang=&#34;shell&#34;&gt;git remote set-url origin git@github.com:jfabry-noc/GitCommit.git
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;After this, I re-ran my script and &lt;code&gt;git push&lt;/code&gt; was able to successfully push my code to the remote without any interaction. After working through many commits today, I verified that my website was updated as expected.&lt;/p&gt;
